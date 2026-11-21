@@ -2,6 +2,18 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 01:10, MaciejMomot (branch 03-criteria-module, issue #4)
+
+- Add `src/criteria.py`: the criteria K1-K5 with Polish names, scales, weights and references (`CRITERIA`), and the function `assess()`.
+- `assess()` gives `potential`, `low`, `high`, `confidence`, `fact_share`, `criteria_version`, `criteria` and `missing`.
+- Decisions:
+  - A TRL value of null means "nie dotyczy". The weight of K2 then goes to the other criteria in proportion.
+  - An unknown value of another criterion gives a range: 0 for `low`, 5 for `high`.
+  - `potential` uses only the known criteria. Thus it is always in the range. If no criterion is known, `potential` is null.
+  - Each entry of `criteria` has `value`, `score` (0-5), `weight` (after the change of weights), `points`, `kind` and `applicable`. This adds fields to the contract of issue #3.
+- Add `estimate_implementation_level(text)` and `estimate_novelty(text)`: rules with Polish keywords, without AI. A plan ("zostanie wdrożony") counts as a concept. The evidence is always an exact part of the text.
+- Add `tests/test_criteria.py` (41 tests).
+
 ## 2026-11-22 00:40, MikolajRowicki (branch 02-web-sources)
 
 - Change the second team member in `AGENTS.md` to `MaciejMomot` (odd numbers).
