@@ -24,6 +24,15 @@ Other catalogues need manual entry, and each covers one sector. The research fou
 3. A transparent score of the implementation level and the potential, the same for all three areas.
 4. A demand signal: the card shows public institutions that bought similar solutions (BZP notices). This shows the application potential with data, not with an opinion.
 5. A duplicate check: "Czy to już istnieje?" A user describes a need in free text and gets similar existing solutions.
+6. A signal timeline on each card: patent, grant, award, media note, implementation. Venture capital funds use the same method to find projects with momentum.
+7. Watchlists and alerts: a user saves a query and gets new matching cards, as in the EQT Motherbrain platform.
+
+### Arguments for the pitch
+
+- Venture capital in Poland rarely finds projects from science. About 10% of approximately 450 investments of EU-funded funds in 2019-2026 have a science component ([xyz.pl](https://xyz.pl/vc-w-polsce-wciaz-omija-nauke-pfr-szuka-zmiany/)).
+- PFR Ventures started "Starter Science". It scores the ability of funds to find ideas ([ITwiz](https://itwiz.pl/pfr-stawia-na-nauke-nowy-komponent-ma-zwiekszyc-inwestycje-vc/)). Radar innowacji gives this ability to PCI, to funds and to other centres.
+- Top funds build their own data platforms for sourcing. EQT Motherbrain found 7 of approximately 50 investments of EQT Ventures ([Crunchbase](https://news.crunchbase.com/venture/venture-investors-ai-deal-sourcing/)). Radar innowacji applies this method to Polish public sources.
+- Radar innowacji uses signals about innovations and institutions, not about persons. Funds also track founders, but the FAQ asks for innovations, and the AI Act limits the profiling of persons.
 
 ## 2. Scope
 
@@ -31,9 +40,9 @@ Other catalogues need manual entry, and each covers one sector. The research fou
 
 | Area | Examples | Main sources |
 |---|---|---|
-| Technological | inventions, products, technical solutions | RAD-on (patents and projects), UPRP list, EPO linked data, NCBR, FE projects |
-| Educational | methods of teaching, tools for schools and universities | FE projects, Erasmus+ results, RAD-on projects |
-| Administrative | solutions for public administration and JST | FE projects, "Innowacyjny Samorząd", ZMP good practices, Kohesio |
+| Technological | inventions, products, technical solutions | RAD-on (patents and projects), UPRP list, EPO linked data, NCBR, FE projects, web pages of universities and startups |
+| Educational | methods of teaching, tools for schools and universities | Web pages of schools, competition results, FE projects, RAD-on projects |
+| Administrative | solutions for public administration and JST | Web pages of JST, FE projects, "Innowacyjny Samorząd", ZMP good practices, Kohesio |
 
 ### Definition of an innovation
 
@@ -50,7 +59,15 @@ A record that is only an idea gets the implementation level "koncepcja". The app
 
 ## 3. Users
 
-The application has one search and a filter for the user group (FAQ, section 3). The filter changes the default sort and the visible fields of the card.
+The user is each person who needs an innovation (FAQ, section 3). No user group has priority. The application has one search and a filter for the user group. The filter changes the default sort and the visible fields of the card.
+
+### Main flow
+
+1. The user writes a phrase: a topic or a need, for example "drony do monitoringu upraw" or "e-usługi w urzędzie".
+2. The application shows recommended innovations: a short list of cards, sorted by relevance and potential.
+3. The user opens a card and analyses the innovation: summary, criteria, sources, signal timeline, similar innovations.
+
+The first view of the map and of the lists is Podkarpackie. The search covers all of Poland.
 
 | User group | Typical question | Default sort and fields |
 |---|---|---|
@@ -63,7 +80,7 @@ The application has one search and a filter for the user group (FAQ, section 3).
 
 ## 4. Process
 
-1. **Discovery.** Loaders download records from the sources (section 6). A filter keeps records that describe a solution.
+1. **Discovery.** Loaders download records from the data sets and APIs (section 6). The crawler reads the web pages of institutions (section 6.1). A filter keeps records that describe a solution.
 2. **Record.** The application maps each record to one data schema. It removes personal data.
 3. **Classification.** The application selects the area and the type. The first method is keywords and the source type. A language model proposes a value for unclear records.
 4. **Assessment.** The rule module scores the five criteria (section 7).
@@ -89,6 +106,15 @@ The card has the items that the FAQ requires (section 5), plus the data for the 
 | Sources | Links, date of the data, date of the last check, license | Fact |
 | Similar innovations | 5 cards with the similarity value | Calculated |
 | Demand signals | BZP notices for similar solutions | Fact (notice) |
+| Signal timeline | 2023 patent, 2024 grant, 2025 award, 2026 media note | Fact for each event (source and date) |
+
+### Summary
+
+The prototype makes the summary without a language model:
+
+1. Description from the source. The FE list, RAD-on and competition pages have descriptions. This is a fact with a quote.
+2. Extractive summary. For a crawled page, an algorithm (for example TextRank) selects the 2-3 most important sentences of the text.
+3. Later: a language model (Bielik) writes summaries in a batch job (Kaggle). The application stores them. The card shows them with the label "szacunek". The application does not need the model at run time.
 
 ### Facts and estimates
 
@@ -109,23 +135,86 @@ Order of integration. All sources in the first group are free and need no key (t
 | Priority | Source | Content | Access | License | Area |
 |---|---|---|---|---|---|
 | 1 | Lista projektów FE 2021-2027 (dane.gov.pl) | About 36,500 projects with description, beneficiary, location | One XLSX | CC0 1.0 | All three |
-| 2 | RAD-on open data (OPI PIB) | 19,032 patents of science units, 48,853 research projects | REST JSON | CC0 1.0 | Technological, educational |
-| 3 | BZP notices (e-Zamówienia) | Purchases of public institutions | REST JSON | Free use; terms to check | Demand signal |
-| 4 | NCBR "Wyszukiwarka sukcesów beneficjentów" | About 316 implemented results | One HTML page | Not stated; robots allow | Technological |
-| 5 | Kohesio | EU projects 2014-2020 in Poland | Undocumented REST JSON | Probably CC BY 4.0 | All three |
-| 6 | UPRP "Lista Wynalazków" (dane.gov.pl) | 139,381 Polish patent applications to 2018 | CSV | CC BY 4.0 | Technological |
-| 7 | Interreg 2021-2027 (dane.gov.pl) | 207 projects with partners | XLSX | To check | Administrative |
-| 8 | "Innowacyjny Samorząd", ZMP good practices | Administrative innovations | Web page | Rights of the owner: store only title, link and own summary | Administrative |
+| 2 | Web pages of institutions (crawler, section 6.1) | News and project pages of schools, JST, universities, incubators | HTTP, `robots.txt` | Short summary and link only (TDM, art. 26³) | All three |
+| 3 | RAD-on open data (OPI PIB) | 19,032 patents of science units, 48,853 research projects | REST JSON | CC0 1.0 | Technological, educational |
+| 4 | BZP notices (e-Zamówienia) | Purchases of public institutions | REST JSON | Free use; terms to check | Demand signal |
+| 5 | NCBR "Wyszukiwarka sukcesów beneficjentów" | About 316 implemented results | One HTML page | Not stated; robots allow | Technological |
+| 6 | Kohesio | EU projects 2014-2020 in Poland | Undocumented REST JSON | Probably CC BY 4.0 | All three |
+| 7 | UPRP "Lista Wynalazków" (dane.gov.pl) | 139,381 Polish patent applications to 2018 | CSV | CC BY 4.0 | Technological |
+| 8 | Interreg 2021-2027 (dane.gov.pl) | 207 projects with partners | XLSX | To check | Administrative |
+| 9 | "Innowacyjny Samorząd", ZMP good practices | Administrative innovations | Web page | Rights of the owner: store only title, link and own summary | Administrative |
 
-Later sources: EPO linked open data, CORDIS, OpenAlex (free key), Erasmus+ results, a crawler for BIP, school and JST pages.
+Later sources: EPO OPS (if the team makes an account), EPO linked open data, CORDIS, OpenAlex (free key), Erasmus+ results, GitHub API, UPRP API (if the team makes an account).
 
-Sources not to use in the hackathon: UPRP e-Wyszukiwarka (account, bot protection), EPO OPS (no public redistribution), PBN API (token), Google Scholar (no API, no robots).
+Sources not to use:
+
+- UPRP e-Wyszukiwarka web page (bot protection);
+- EPO Register web page (the terms forbid robots);
+- PBN API (token for institutions only);
+- Google Scholar (no API; the terms forbid scraping);
+- LinkedIn and Facebook (the terms forbid scraping; personal data; profiling of persons under the AI Act).
+
+### 6.1 Crawler of institution web pages
+
+Many hidden innovations are only on the web pages of institutions, for example a robotics lab in a school or an application of a gmina. The FAQ (section 4) lists these pages as a source.
+
+Procedure:
+
+1. Make the seed list: the web pages of schools, JST, universities and incubators. For the demo, use one region (Podkarpackie, a few hundred addresses). Sources of the list: the BIP list of entities, school data on dane.gov.pl, ROR for universities.
+2. Read the news and project pages of each site. Obey `robots.txt` and the TDM reservation. Send one request each 2 seconds or less often to one host. Use a user agent with the name of the project.
+3. Extract the main text with trafilatura.
+4. Filter the text: keywords (for example "robotyka", "innowacja pedagogiczna", "aplikacja", "wdrożenie", "nagroda", "konkurs"), then semantic similarity to known innovation cards.
+5. Make a card from the text. Mark each field as a fact (with a quote) or an estimate.
+6. Show the new cards in the view "Nowe na radarze".
+
+Rules:
+
+- Save the innovation and the institution, not persons. Do not save names of pupils, teachers or other persons.
+- Save a short own summary and the link. Delete the raw HTML after the extraction.
+- Record the date of each page check. The next update checks the page again.
+
+Test of 2026-11-21 (29 sites of JST and universities in Podkarpackie, keyword filter, 109 s):
+
+- 22 of 29 sites answered. 7 sites had a timeout or an error.
+- The crawler read 247 pages and found 52 candidates.
+- About 7 candidates are real innovations, for example "Mobilny Urzędnik" (Rzeszów), "E-usługi publiczne" (Brzozów) and a robotics class (ALO Rzeszów). About 10 more are lists of projects, which are good pages for the next level.
+- The rest is noise. The keyword filter is too wide: "pracowni" also finds "pracownik", and "system" and "program" occur everywhere.
+- The homepages of JST link to few schools (4 found). The seed list of schools must come from a register, not from JST pages.
+- Pages with successes of pupils contain names. The extraction must remove them.
+
+Changes after the test: classify with embeddings or a language model, not with keywords only; add a register of schools to the seed list; follow the pages "projekty" and "sukcesy" first.
+
+The seed database of web sources is `data/web_sources.csv`. It has 43 sources in 8 categories:
+
+| Category | Examples | Strategy |
+|---|---|---|
+| `competitions` | Explory, Młody Innowator, Student-Wynalazca, Polski Produkt Przyszłości, Innowacyjny Samorząd, Kierunek innowacja | Result pages of each edition; one card for each awarded project |
+| `aggregator_gov` | gov.pl (nauka, edukacja, Laboratoria Przyszłości, CPPC), samorzad.gov.pl | News list pages; one format for many JST and schools |
+| `local_media` | Nowiny24, Super Nowości, Rzeszów News, esanok, Korso Sanockie, Radio Rzeszów, Wspólnota | RSS or tag pages, not the home page |
+| `student_groups` | Gazeta Politechniki, koła naukowe UR | Success news of groups |
+| `tto` | CTT of UR, AGH, PRz | Technology offer catalogues |
+| `innovation_bodies` | PCI, Aeropolis, Dolina Lotnicza | Leads only |
+| `jst` | Rzeszów, Brzozów, Urząd Marszałkowski | Pages "projekty" and "aktualności" |
+| `schools` | ALO Rzeszów | Pages "projekty" and "sukcesy" |
+
+Test of 2026-11-22 on the 35 sources that answered (635 requests, 174 s):
+
+- `competitions` give the most real innovations: Explory finalists, laureates of Innowacyjny Samorząd and Polski Produkt Przyszłości, medals of Student-Wynalazca.
+- `aggregator_gov` gives good items (Liga Robotów winners, a technical school in Jasło with a grant), but also many navigation pages.
+- `local_media` home pages give almost only noise (11 candidates from 160 pages). Use RSS and tag pages.
+- `tto` and `innovation_bodies` home pages give pages about programs, not innovations.
+
+Thus the crawler needs one strategy for each category, not one rule for all sites.
+
+Other web sources with the same method: results of competitions and olympiads (for example Olimpiada Innowacji Technicznych, robotics competitions) and pages of student research groups (koła naukowe).
 
 Each source has its own module in `src/sources/`. Each module has one function that returns the records and the metadata: source, date of the data, date of the download, license.
 
 ## 7. Assessment
 
 The criteria come from the FAQ (section 5). The scales are version v0.1. They need a calibration with the PCI mentors.
+
+The criteria come from the FAQ. The weights are a proposal of the team. They are not in a task document. Reasons: the FAQ stresses the real level of development and the Oslo Manual definition (implemented solutions), so K1 has the largest weight. TRL does not apply to educational and administrative innovations, so K2 has a small weight.
 
 | ID | Criterion | Scale | Weight | Reference |
 |---|---|---|---|---|
@@ -152,12 +241,14 @@ Rules:
 - Comparison: a table of 2-4 cards, with the criteria in rows.
 - Duplicate check: the user writes a need. The application shows similar cards with the similarity value and the common terms.
 - Similar cards: the 5 nearest cards by the embedding.
+- Signal timeline: the application joins records of different sources about the same innovation (same institution and similar text). Each record becomes one event on the timeline. More independent events give a higher value of K5 (credibility).
+- Watchlists and alerts: a user saves a query with filters, for example "drony, TRL 6 or more, podkarpackie". After each update, the application shows the new matching cards. The prototype shows them on the page. E-mail alerts come after the hackathon.
 
 ## 9. Architecture
 
 ```
 src/
-  sources/        one module for each data source
+  sources/        one module for each data source, also the crawler (crawler.py)
   pipeline.py     discovery, record, classification, deduplication
   criteria.py     criteria, scales, weights, rules (one module)
   search.py       full-text and vector search, similar cards
@@ -208,6 +299,8 @@ Use case 3, educational (if time remains): a teaching method from an FE project 
 - The time to find an existing solution for a need (demo: below 1 minute).
 - The number of cards and sources, and the share of cards with high confidence.
 - The share of cards with the implementation level 4 or 5.
+- Hit rate: the share of cards that an analyst marks as valuable (a metric of funds that use data).
+- Coverage: the share of known innovations (for example laureates of a competition) that the radar found without help.
 - After the hackathon: the number of contacts and implementations that started from a card.
 
 ## 12. Work plan
@@ -227,12 +320,20 @@ Use case 3, educational (if time remains): a teaching method from an FE project 
 | A source fails during the demo | The index is made in advance; the card shows "źródło niedostępne" |
 | A language model is too slow on the CPU | Use rules first; run the model in advance on Kaggle or not at all |
 | Wrong classification | Show it as an estimate with its reason |
-| Personal data in sources | Remove names of natural persons in the loader |
+| Personal data in sources | Remove names of natural persons in the loader and in the crawler |
+| The crawler finds few innovations or much noise | Test it early on 50 pages; keep the filter strict; show only cards with a quote |
+| A site blocks the crawler | Obey the block; continue with the other sites |
 | Weights without calibration | Show "kryteria v0.1" and the plan for calibration |
 
 ## 14. Open decisions
 
+Decided on 2026-11-22:
+
+- The user is each person who needs an innovation (FAQ, section 3). The main flow is phrase, recommendations, card.
+- The search covers all of Poland. Podkarpackie is the first view.
+- The prototype starts without a language model. Summaries come from the sources and from an extractive algorithm.
+
+Open:
+
 1. Accept the five criteria and the weights of section 7, or change them after a talk with the PCI mentors.
-2. Select the regions for the demo: all of Poland, or all of Poland with Podkarpackie as the first view.
-3. Decide on the language model: no model, or Bielik made in advance.
-4. Decide on the optional usage analytics (FAQ, section 7).
+2. Decide on the optional usage analytics (FAQ, section 7).

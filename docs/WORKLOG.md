@@ -2,6 +2,34 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 00:40, MikolajRowicki (branch 02-web-sources)
+
+- Change the second team member in `AGENTS.md` to `MaciejMomot` (odd numbers).
+- Deadline of the project: 2026-11-22 10:00.
+
+## 2026-11-22 00:35, MikolajRowicki (branch 02-web-sources)
+
+- Record decisions in `docs/project.md`: all user groups of the FAQ, main flow (phrase, recommendations, card), all of Poland with Podkarpackie first, summaries without a language model at the start, source of the weights.
+
+## 2026-11-22 00:25, MikolajRowicki (branch 02-web-sources)
+
+- Research how venture capital funds find projects. Add to `docs/project.md`: signal timeline, watchlists and alerts, arguments for the pitch (PFR Starter Science, EQT Motherbrain), hit rate and coverage.
+
+## 2026-11-22 00:15, MikolajRowicki (branch 02-web-sources)
+
+- Add `data/web_sources.csv`: 43 web sources in 8 categories, with the HTTP check and the crawl strategy of each category.
+- Test the crawler on the 35 sources that answered. Competitions and gov.pl aggregators give the best results. Home pages of media give noise. Record the result in `docs/project.md`, section 6.1.
+
+## 2026-11-21 23:50, MikolajRowicki (branch 02-web-sources)
+
+- Test the crawler on 29 sites of JST and universities in Podkarpackie (script outside the repository). Result: 52 candidates, about 7 real innovations. Record the result and the next changes in `docs/project.md`, section 6.1.
+
+## 2026-11-21 23:30, MikolajRowicki (branch 02-web-sources)
+
+- Add the crawler of institution web pages to `docs/project.md` as source 2 (section 6.1).
+- Add the list of sources not to use: LinkedIn and Facebook, with the reasons.
+- Add EPO OPS and UPRP API as later sources, if the team makes accounts.
+
 ## 2026-11-21 23:00, MikolajRowicki
 
 - Add `docs/project.md`: the concept from the FAQ, the innovation card, the five criteria (v0.1), the data sources, the architecture, the demo and the open decisions.

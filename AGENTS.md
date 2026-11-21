@@ -68,7 +68,7 @@ Do not put a trace of Claude or other AI help into the work. This rule overrides
 - The winning solution becomes public under the EUPL-1.2 license (rules of the task, §1 point 10 and §4). The winner gives the complete source code and the documentation to PCI. Then the Ministry of Digital Affairs puts the solution into its public GitHub repository. Thus all content of this repository must be ready for publication under EUPL-1.2.
 - Do each task on a branch from `main`.
 - Name each branch `NN-<topic>`, for example `04-innovation-form`. NN is the next number of a branch in the project (01, 02, 03, ...). Use lowercase letters, digits and hyphens.
-- The team has two persons. They work in parallel. `JakubPoltorak147` uses odd numbers (01, 03, ...) for branches and jobs. `MikolajRowicki` uses even numbers (02, 04, ...). Thus two persons never use the same number.
+- The team has two persons. They work in parallel. `MaciejMomot` uses odd numbers (01, 03, ...) for branches and jobs. `MikolajRowicki` uses even numbers (02, 04, ...). Thus two persons never use the same number.
 - Take the next number of your parity that is higher than all numbers in use.
 - Do not merge a branch into `main` directly. Open a pull request and merge it with "Squash and merge".
 - Keep each branch small and short. Merge it in a few hours. Long branches cause conflicts.
