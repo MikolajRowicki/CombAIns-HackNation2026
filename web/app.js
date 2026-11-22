@@ -123,7 +123,7 @@ function renderPotential(result) {
   );
 }
 
-function renderResult(result) {
+function renderResult(result, isNew = false) {
   const area = val(result.area);
   const level = val(result.implementation_level);
   const inst = result.institution || {};
@@ -136,6 +136,7 @@ function renderResult(result) {
     el(
       "div",
       { class: "result-tags" },
+      isNew && el("span", { class: "tag tag-new" }, "Nowe od ostatniej wizyty"),
       area && tag(result.area, `tag-${area}`, AREAS[area] || area),
       level && tag(result.implementation_level, "tag-level", `Wdrożenie ${level}/5: ${LEVELS[level] || ""}`),
     ),
@@ -153,6 +154,49 @@ function readParams() {
   return params;
 }
 
+// ---- Watchlists (saved queries) ----
+// The saved queries stay only in the browser of the user (localStorage): no login and no personal data.
+
+const WATCH_KEY = "radar.watchlists.v1";
+const WATCH_SEEN_LIMIT = 500;
+
+function loadWatches() {
+  try {
+    const watches = JSON.parse(localStorage.getItem(WATCH_KEY));
+    return Array.isArray(watches) ? watches : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveWatches(watches) {
+  try {
+    localStorage.setItem(WATCH_KEY, JSON.stringify(watches));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function cleanParams(params) {
+  const clean = {};
+  for (const key of ["q", ...FILTERS]) if (params[key]) clean[key] = params[key];
+  return clean;
+}
+
+function watchKey(params) {
+  return new URLSearchParams(cleanParams(params)).toString();
+}
+
+function describeParams(params) {
+  const parts = [params.q ? `„${params.q}”` : "wszystkie innowacje"];
+  if (params.area) parts.push(AREAS[params.area] || params.area);
+  parts.push(params.voivodeship || "cała Polska");
+  if (params.level_min) parts.push(`wdrożenie od ${params.level_min}/5`);
+  if (params.group) parts.push(GROUPS[params.group] || params.group);
+  return parts.join(" · ");
+}
+
 function initSearch(config) {
   const form = $("search-form");
   const list = $("result-list");
@@ -160,6 +204,7 @@ function initSearch(config) {
   const notice = $("notice");
   const title = $("results-title");
   let voivodeshipTouched = false;
+  let current = {};
 
   $("group").append(option("", "Wszyscy użytkownicy"), ...Object.entries(GROUPS).map(([k, v]) => option(k, v)));
   $("area").append(option("", "Wszystkie obszary"), ...Object.entries(AREAS).map(([k, v]) => option(k, v)));
@@ -193,6 +238,67 @@ function initSearch(config) {
     run(params);
   });
 
+  $("watch-button").addEventListener("click", () => {
+    const key = watchKey(current);
+    let watches = loadWatches();
+    if (watches.some((w) => w.key === key)) {
+      watches = watches.filter((w) => w.key !== key);
+    } else {
+      const seen = [...list.querySelectorAll("[data-id]")].map((node) => node.dataset.id);
+      watches.unshift({ key, params: cleanParams(current), seen, created: new Date().toISOString() });
+    }
+    if (!saveWatches(watches)) {
+      status.textContent = "Przeglądarka nie pozwala zapisać obserwowanych wyszukiwań.";
+      return;
+    }
+    updateWatchButton();
+    renderWatchPanel();
+  });
+
+  function updateWatchButton() {
+    const watched = loadWatches().some((w) => w.key === watchKey(current));
+    $("watch-button").textContent = watched ? "★ Obserwujesz to wyszukiwanie" : "☆ Obserwuj to wyszukiwanie";
+    $("watch-button").setAttribute("aria-pressed", watched ? "true" : "false");
+  }
+
+  function go(params) {
+    apply(params);
+    const query = new URLSearchParams(cleanParams(params));
+    history.pushState(params, "", query.toString() ? `?${query}` : "./");
+    run(params);
+    $("results").focus();
+  }
+
+  // Count the new results of each saved query: results that the user did not see at the last visit.
+  function renderWatchPanel() {
+    const watches = loadWatches();
+    $("watchlist").hidden = !watches.length;
+    const items = watches.map((watch) => {
+      const label = describeParams(watch.params);
+      const count = el("span", { class: "watch-count" }, "sprawdzam…");
+      const open = el("button", { type: "button", class: "watch-open" }, label);
+      open.addEventListener("click", () => go({ q: "", group: "", area: "", voivodeship: "", level_min: "", ...watch.params }));
+      const remove = el("button", { type: "button", class: "watch-remove", "aria-label": `Usuń: ${label}` }, "×");
+      remove.addEventListener("click", () => {
+        saveWatches(loadWatches().filter((w) => w.key !== watch.key));
+        updateWatchButton();
+        renderWatchPanel();
+      });
+      fetchResults(watch.params)
+        .then(({ data }) => {
+          const seen = new Set(watch.seen || []);
+          const fresh = (data.results || []).filter((r) => !seen.has(r.id)).length;
+          count.textContent = fresh ? `nowe od ostatniej wizyty: ${fresh}` : "brak nowych";
+          count.classList.toggle("watch-count-new", fresh > 0);
+        })
+        .catch(() => {
+          count.textContent = "nie udało się sprawdzić";
+        });
+      return el("li", { class: "watch" }, open, count, remove);
+    });
+    $("watch-list").replaceChildren(...items);
+  }
+
   window.addEventListener("popstate", () => {
     const params = readParams();
     apply(params);
@@ -205,6 +311,8 @@ function initSearch(config) {
   }
 
   async function run(params) {
+    current = params;
+    updateWatchButton();
     status.textContent = "Szukam…";
     list.replaceChildren();
     notice.hidden = true;
@@ -220,7 +328,23 @@ function initSearch(config) {
         notice.hidden = false;
       }
       const results = data.results || [];
-      list.replaceChildren(...results.map(renderResult));
+      // For a saved query, mark the results that are new since the last visit, then remember them as seen.
+      const watches = loadWatches();
+      const watch = watches.find((w) => w.key === watchKey(params));
+      const seen = new Set(watch?.seen || []);
+      list.replaceChildren(
+        ...results.map((r) => {
+          const node = renderResult(r, Boolean(watch) && !seen.has(r.id));
+          node.dataset.id = r.id;
+          return node;
+        }),
+      );
+      if (watch) {
+        watch.seen = [...new Set([...results.map((r) => r.id), ...seen])].slice(0, WATCH_SEEN_LIMIT);
+        watch.last_visit = new Date().toISOString();
+        saveWatches(watches);
+        renderWatchPanel();
+      }
       status.textContent = results.length
         ? `Znaleziono ${data.total ?? results.length} ${plural(data.total ?? results.length)}.`
         : "Brak wyników. Spróbuj innych słów, usuń filtry lub wybierz „Cała Polska”.";
@@ -234,6 +358,7 @@ function initSearch(config) {
   if (!location.search) initial.voivodeship = config.default_voivodeship || "";
   apply(initial);
   run(initial);
+  renderWatchPanel();
 }
 
 function plural(n) {
@@ -486,7 +611,7 @@ function renderDemand(demand) {
 
 function renderSimilar(similar) {
   if (!similar?.length) return null;
-  return section("Podobne innowacje", el("ol", { class: "result-list" }, similar.map(renderResult)));
+  return section("Podobne innowacje", el("ol", { class: "result-list" }, similar.map((r) => renderResult(r))));
 }
 
 function renderCard(item, definitions) {

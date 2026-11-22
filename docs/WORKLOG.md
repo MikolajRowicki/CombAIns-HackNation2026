@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 03:20, MaciejMomot (branch 11-watchlists, issue #14)
+
+- Add watchlists to the search page: the button "Obserwuj to wyszukiwanie" saves the query and the filters.
+- The saved queries stay only in the browser (`localStorage`, key `radar.watchlists.v1`). No login and no personal data.
+- The panel "Obserwowane wyszukiwania" shows the number of new results of each saved query since the last visit.
+- A new result has the tag "Nowe od ostatniej wizyty". After the visit, the page records the results as seen.
+- The watchlists use the same search function as the page. Thus they operate with the API and with the sample data.
+- Check: headless Edge with the sample data of PR #24 (save, simulated update, new tags, reset after the visit, remove).
+
 ## 2026-11-22 02:50, MaciejMomot (branch 09-card-page, issue #6)
 
 - Add the card page `web/innovation.html`. The code is in `web/app.js` and `web/style.css`.

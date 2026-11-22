@@ -49,8 +49,17 @@
 
     <div id="notice" class="notice" hidden></div>
 
+    <section id="watchlist" class="watchlist" aria-labelledby="watchlist-title" hidden>
+      <h2 id="watchlist-title">Obserwowane wyszukiwania</h2>
+      <p class="muted">Zapisane tylko w tej przeglądarce. Po aktualizacji bazy zobaczysz tu nowe pasujące innowacje.</p>
+      <ul id="watch-list" class="watch-list"></ul>
+    </section>
+
     <section id="results" class="results" aria-labelledby="results-title" tabindex="-1">
-      <h2 id="results-title" class="results-title">Wyniki</h2>
+      <div class="results-head">
+        <h2 id="results-title" class="results-title">Wyniki</h2>
+        <button id="watch-button" type="button" class="btn-secondary" aria-pressed="false">☆ Obserwuj to wyszukiwanie</button>
+      </div>
       <p id="status" class="status" role="status" aria-live="polite"></p>
       <ol id="result-list" class="result-list"></ol>
     </section>
