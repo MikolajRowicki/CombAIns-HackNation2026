@@ -2,6 +2,19 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 20-pipeline-api, issues #9 and #11)
+
+- Add `src/pipeline.py`: `python -m src.pipeline update [--voivodeship X] [--source Y]`. It loads each source, writes the records and the full-text index and records the status of each source. A failed source does not stop the update.
+- Add `src/search.py`: SQLite FTS5 search on Polish lemmas (simplemma) with a prefix match, filters (area, voivodeship, minimum implementation level), the user group as a sort preference, and similar innovations (same words in the title and the keywords).
+- Ranking: `rank_score = 0.7 × relevance + 0.3 × potential / 100`. Relevance is BM25 divided by the best BM25 of the query.
+- Add to `src/app.py`: `GET /api/search`, `GET /api/innovations/{id}` (with `similar`) and `GET /api/sources`. The variable `RADAR_DB` changes the path of the database.
+- Add `tests/test_pipeline.py` (recorded RAD-on responses, no network).
+- Add the update step to the start procedure in `README.md`.
+- Check: Podkarpackie, 977 records. A search takes 0.01-0.07 s. Headless Edge shows the search page and the card with the real data.
+- Open items:
+  - Similar innovations use common words only. Embeddings come later. An example: a patent about collectors of a helicopter finds solar collectors.
+  - The card shows "0" under "Gotowość technologiczna" if the record has no keywords (`web/app.js`, line 659: `item.keywords?.length && ...`).
+
 ## 2026-11-22, MikolajRowicki (branch 14-radon-loader, issue #8)
 
 - Add `src/sources/__init__.py`: `SourceData` holds the records of one source and the metadata (source, date of the data, date of the download, license, errors).

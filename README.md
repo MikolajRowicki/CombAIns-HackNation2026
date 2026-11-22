@@ -104,8 +104,11 @@ W katalogu głównym repozytorium:
 ```bash
 uv venv --python 3.13 .venv
 uv pip sync --python .venv requirements.txt
+uv run --no-project python -m src.pipeline update --voivodeship podkarpackie
 uv run --no-project uvicorn src.app:app --reload
 ```
+
+Krok `src.pipeline update` pobiera dane ze źródeł i buduje bazę `data/cache/radar.db` (dla województwa podkarpackiego ok. 30 s). Bez parametru `--voivodeship` pobiera dane z całej Polski. Ten sam krok, uruchamiany cyklicznie (np. przez cron), aktualizuje bazę.
 
 Aplikacja działa pod adresem http://127.0.0.1:8000. Użytkownik nie potrzebuje konta ani klucza API.
 
