@@ -1,0 +1,706 @@
+{
+ "institutions": {
+  "results": [
+   {
+    "country": "Polska",
+    "federationNumber": null,
+    "addresses": [
+     {
+      "country": "Polska",
+      "voivodeship": "podkarpackie",
+      "city": "Sanok",
+      "postalCd": "38-500",
+      "street": "ul. Głogowa",
+      "bNumber": "1",
+      "lNumber": null,
+      "dateFrom": "2012-07-18"
+     }
+    ],
+    "regon": null,
+    "targetInstitutions": [],
+    "countryCd": "167",
+    "pib": "0",
+    "institutionUuid": "583d155e-2380-48bb-a340-fdd014634722",
+    "lNumber": null,
+    "supervisingInstitutions": [
+     {
+      "supervisingInstitutionID": "2b2e64d0-dc32-4575-ba6c-073f0757f4f9",
+      "supervisingInstitutionName": "Minister Nauki i Szkolnictwa Wyższego (poprzednio MEiN)",
+      "dateFrom": "2012-07-18"
+     }
+    ],
+    "supervisingInstitutionID": "2b2e64d0-dc32-4575-ba6c-073f0757f4f9",
+    "nip": null,
+    "www": null,
+    "managerFunction": null,
+    "espAddress": null,
+    "id": "45102",
+    "iKindName": "Uczelnia niepubliczna",
+    "federationComposition": null,
+    "edaAddress": null,
+    "postalCd": "38-500",
+    "bNumber": "1",
+    "panNumber": null,
+    "branches": null,
+    "supervisingInstitutionName": "Minister Nauki i Szkolnictwa Wyższego (poprzednio MEiN)",
+    "iLiqStartDT": null,
+    "eunNumber": "374",
+    "uTypeName": "zawodowa",
+    "iStartDT": "2012-07-18",
+    "iLiqDT": "2013-07-09",
+    "name": "Wyższa Szkoła Sanocka z siedzibą w Sanoku",
+    "statuses": [
+     {
+      "statusName": "Działająca",
+      "dateFrom": "2012-07-18"
+     },
+     {
+      "statusName": "Zlikwidowana",
+      "dateFrom": "2013-07-09"
+     }
+    ],
+    "iKindCd": "10",
+    "yearPib": null,
+    "dataSource": "POLON",
+    "status": "Zlikwidowana",
+    "statusCode": "3",
+    "city": "Sanok",
+    "siTypeName": null,
+    "ministryNumber": "000",
+    "street": "ul. Głogowa",
+    "voivodeship": "podkarpackie",
+    "transformedInstitutions": [],
+    "types": [
+     {
+      "typeName": "zawodowa",
+      "dateFrom": "2012-07-18"
+     }
+    ],
+    "lastRefresh": "1750836896799",
+    "krs": null,
+    "names": [
+     {
+      "name": "Wyższa Szkoła Sanocka z siedzibą w Sanoku",
+      "dateFrom": "2012-07-18"
+     }
+    ],
+    "institutionUid": "bcyMt7eWnGn4Z6ntmef64wg",
+    "siTypeCd": null,
+    "uTypeCd": "2",
+    "voivodeshipCode": "9"
+   },
+   {
+    "country": "Polska",
+    "federationNumber": null,
+    "addresses": [
+     {
+      "country": "Polska",
+      "voivodeship": "podkarpackie",
+      "city": "Krosno",
+      "postalCd": "38-400",
+      "street": "Rynek",
+      "bNumber": "1",
+      "lNumber": null,
+      "dateFrom": "1999-07-01"
+     }
+    ],
+    "regon": "370468370",
+    "targetInstitutions": [],
+    "countryCd": "167",
+    "pib": "0",
+    "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+    "lNumber": null,
+    "supervisingInstitutions": [
+     {
+      "supervisingInstitutionID": "2b2e64d0-dc32-4575-ba6c-073f0757f4f9",
+      "supervisingInstitutionName": "Minister Nauki i Szkolnictwa Wyższego (poprzednio MEiN)",
+      "dateFrom": "1999-07-01"
+     }
+    ],
+    "supervisingInstitutionID": "2b2e64d0-dc32-4575-ba6c-073f0757f4f9",
+    "nip": "6842175051",
+    "www": "http://www.pans.krosno.pl",
+    "managerFunction": "Rektor",
+    "espAddress": "/PWSZKrosno/SkrytkaESP",
+    "id": "3924",
+    "iKindName": "Uczelnia publiczna",
+    "federationComposition": null,
+    "edaAddress": "AE:PL-44469-33452-ITCVG-23",
+    "postalCd": "38-400",
+    "bNumber": "1",
+    "panNumber": null,
+    "branches": null,
+    "supervisingInstitutionName": "Minister Nauki i Szkolnictwa Wyższego (poprzednio MEiN)",
+    "iLiqStartDT": null,
+    "eunNumber": null,
+    "uTypeName": "akademicka",
+    "iStartDT": "1999-07-01",
+    "iLiqDT": null,
+    "name": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+    "statuses": [
+     {
+      "statusName": "Działająca",
+      "dateFrom": "1999-07-01"
+     }
+    ],
+    "iKindCd": "13",
+    "yearPib": null,
+    "dataSource": "POLON",
+    "status": "Działająca",
+    "statusCode": "1",
+    "city": "Krosno",
+    "siTypeName": null,
+    "ministryNumber": "337",
+    "street": "Rynek",
+    "voivodeship": "podkarpackie",
+    "transformedInstitutions": [],
+    "types": [
+     {
+      "typeName": "zawodowa",
+      "dateFrom": "1999-07-01"
+     },
+     {
+      "typeName": "akademicka",
+      "dateFrom": "2026-08-28"
+     }
+    ],
+    "lastRefresh": "1793961007945",
+    "krs": null,
+    "names": [
+     {
+      "name": "Karpacka Państwowa Uczelnia w Krośnie",
+      "dateFrom": "2020-05-01"
+     },
+     {
+      "name": "Państwowa Wyższa Szkoła Zawodowa im. Stanisława Pigonia w Krośnie",
+      "dateFrom": "2012-07-27"
+     },
+     {
+      "name": "Państwowa Wyższa Szkoła Zawodowa w Krośnie",
+      "dateFrom": "1999-07-01"
+     },
+     {
+      "name": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "dateFrom": "2023-01-01"
+     }
+    ],
+    "institutionUid": "bp7rrXRg6cIx_NCZXugZZqQ",
+    "siTypeCd": null,
+    "uTypeCd": "1",
+    "voivodeshipCode": "9"
+   }
+  ],
+  "pagination": {
+   "maxCount": 23,
+   "token": "MTc5Mzk2MTAwNzk0NQ=="
+  },
+  "version": "1.13.0"
+ },
+ "products": {
+  "results": [
+   {
+    "protectionRegionCode": "33",
+    "protectionRegion": "Polska",
+    "priorityExhibitionNumber": null,
+    "grantingInstitutionCode": "3",
+    "applicationNumber": "428990",
+    "plantBotanicName": null,
+    "applicants": [
+     {
+      "relatedInstitutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "relatedInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "institutions": [
+       {
+        "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+        "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+        "higherEducationInstitutionMarker": "true",
+        "higherEducationInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+       }
+      ]
+     }
+    ],
+    "priorityNumber": null,
+    "relatedInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+     }
+    ],
+    "plantVarietyNames": [],
+    "priorityApplicationNumberUPRP": null,
+    "priorityRegion": null,
+    "plantSpeciesNames": [],
+    "priorityFirstApplication": "true",
+    "protectionTitle": "Uchwyt do naprawy kolektorów wydechowych śmigłowców",
+    "publicationDate": "2023-11-06",
+    "grantingInstitutionName": "Urząd Patentowy Rzeczpospolitej Polskiej",
+    "dateSubmissionTranslation": null,
+    "protectionTypeCode": "1",
+    "productDescription": "Przedmiotem zgłoszenia jest uchwyt spawalniczy do naprawy kolektorów wydechowych śmigłowców technologią zgrzewania z poziomą osią obrotu. Uchwyt charakteryzuje się tym, że posiada motoreduktor, zasilanie elektryczne z akumulatorem, sterowanie motoreduktora ze stycznikami nożnymi, wydłużoną część ramienia z regulacją rozstawienia kół oraz na końcu ramienia ma podporę z zespołem drugiego mocowania i mechanizm regulacji wysokości podpory belki.",
+    "publicationNumber": "243937",
+    "productTitles": [
+     {
+      "code": "polski",
+      "value": "Uchwyt do naprawy kolektorów wydechowych śmigłowców"
+     }
+    ],
+    "protectionType": "Patent na wynalazek",
+    "protectionUuid": "1335DA79A89C91D314C64C018740D73B",
+    "lastRefresh": "1762501887537",
+    "priorityClaimDate": null,
+    "grantingInstitutionCountry": null,
+    "dataSource": "POLON",
+    "applicationDate": "2019-02-20"
+   },
+   {
+    "protectionRegionCode": "33",
+    "protectionRegion": "Polska",
+    "priorityExhibitionNumber": null,
+    "grantingInstitutionCode": "3",
+    "applicationNumber": "434646",
+    "plantBotanicName": null,
+    "applicants": [
+     {
+      "relatedInstitutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "relatedInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "institutions": [
+       {
+        "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+        "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+        "higherEducationInstitutionMarker": "true",
+        "higherEducationInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+       }
+      ]
+     }
+    ],
+    "priorityNumber": null,
+    "relatedInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+     }
+    ],
+    "plantVarietyNames": [],
+    "priorityApplicationNumberUPRP": null,
+    "priorityRegion": null,
+    "plantSpeciesNames": [],
+    "priorityFirstApplication": "true",
+    "protectionTitle": "Kompozycja pierwotniakobójcza zawierająca olejek eteryczny oraz sposób  wytwarzania kompozycji pierwotniakobójczej",
+    "publicationDate": "2023-08-28",
+    "grantingInstitutionName": "Urząd Patentowy Rzeczpospolitej Polskiej",
+    "dateSubmissionTranslation": null,
+    "protectionTypeCode": "1",
+    "productDescription": "Przedmiotem wynalazku jest kompozycja pierwotniakobójcza do leczenia i/lub zapobiegania chorób wywoływanych przez pierwotniaki u ludzi zawierająca olejek eteryczny, charakteryzująca się tym, że olejek eteryczny występuje w postaci kompleksu z mieszaniną kwasów organicznych i metalem. Kolejnym przedmiotem wynalazku jest sposób wytwarzania wspomnianej kompozycji, który obejmuje następujące etapy: a) zmieszanie olejku eterycznego z mieszaniną kwasów organicznych w stosunku wagowym od 80:1 do 1:80; b) dodanie katalizatora do mieszaniny z etapu a); c) dodawanie metalu wybranego z grupy obejmującej żelazo, bizmut, cynk, miedź, mangan, kobalt, molibden, chrom, srebro, złoto, platynę, wolfram, german, cynę, stront, antymon, ich sole, lub tlenki; d) ogrzewanie mieszaniny z katalizatorem uzyskanej w etapie c) do temperatury wrzenia oraz kontynuowanie ogrzewania w temperaturze wrzenia pod chłodnicą zwrotną przez 20-120 minut; e) odstawienie produktu reakcji do wystygnięcia na okres od 10 do 24 godzin; f) filtrowanie ostudzonego produktu reakcji.",
+    "publicationNumber": "243427",
+    "productTitles": [
+     {
+      "code": "polski",
+      "value": "Kompozycja pierwotniakobójcza zawierająca olejek eteryczny oraz sposób  wytwarzania kompozycji pierwotniakobójczej"
+     }
+    ],
+    "protectionType": "Patent na wynalazek",
+    "protectionUuid": "22F55F6BF42B5909124F797360BF11C2",
+    "lastRefresh": "1762501888728",
+    "priorityClaimDate": null,
+    "grantingInstitutionCountry": null,
+    "dataSource": "POLON",
+    "applicationDate": "2020-07-13"
+   },
+   {
+    "protectionRegionCode": "33",
+    "protectionRegion": "Polska",
+    "priorityExhibitionNumber": null,
+    "grantingInstitutionCode": "3",
+    "applicationNumber": "434642",
+    "plantBotanicName": null,
+    "applicants": [
+     {
+      "relatedInstitutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "relatedInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "institutions": [
+       {
+        "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+        "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+        "higherEducationInstitutionMarker": "true",
+        "higherEducationInstitutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+       }
+      ]
+     }
+    ],
+    "priorityNumber": null,
+    "relatedInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie"
+     }
+    ],
+    "plantVarietyNames": [],
+    "priorityApplicationNumberUPRP": null,
+    "priorityRegion": null,
+    "plantSpeciesNames": [],
+    "priorityFirstApplication": "true",
+    "protectionTitle": "Kompozycja pierwotniakobójcza do leczenia i/lub zapobiegania chorób wywoływanych przez pierwotniaki u ludzi zawierająca olejek cedrowy oraz sposób jej wytwarzania",
+    "publicationDate": "2022-11-21",
+    "grantingInstitutionName": "Urząd Patentowy Rzeczpospolitej Polskiej",
+    "dateSubmissionTranslation": null,
+    "protectionTypeCode": "1",
+    "productDescription": "Przedmiotem wynalazku jest kompozycja pierwotniakobójcza do leczenia i/lub zapobiegania chorób wywoływanych przez pierwotniaki u ludzi zawierająca olejek cedrowy, charakteryzująca się tym, że olejek cedrowy występuje w postaci kompleksu z kwasem organicznym i metalem. Kolejnym przedmiotem wynalazku jest sposób wytwarzania kompozycji pierwotniakobójczej, który obejmuje następujące etapy: a) zmieszanie olejku cedrowego z kwasem organicznym w stosunku wagowym od 80:1 do 1:80; b) dodanie katalizatora do mieszaniny z etapu a); c) dodawanie metalu wybranego z grupy obejmującej miedź, cynk, mangan, ich sole lub tlenki; d) ogrzewanie mieszaniny z katalizatorem uzyskanej w etapie c) do temperatury wrzenia oraz kontynuowanie ogrzewania w temperaturze wrzenia pod chłodnicą zwrotną przez 20-120 minut; e) odstawienie produktu reakcji do wystygnięcia na okres od 10 do 24 godzin; f) filtrowanie ostudzonego produktu reakcji.",
+    "publicationNumber": "241697",
+    "productTitles": [
+     {
+      "code": "polski",
+      "value": "Kompozycja pierwotniakobójcza do leczenia i/lub zapobiegania chorób wywoływanych przez pierwotniaki u ludzi zawierająca olejek cedrowy oraz sposób jej wytwarzania"
+     }
+    ],
+    "protectionType": "Patent na wynalazek",
+    "protectionUuid": "287714FE7FD8B098C9B9F532FD2F7060",
+    "lastRefresh": "1762501891959",
+    "priorityClaimDate": null,
+    "grantingInstitutionCountry": null,
+    "dataSource": "POLON",
+    "applicationDate": "2020-07-13"
+   }
+  ],
+  "pagination": {
+   "maxCount": 8,
+   "token": "MTc5MDkwMzIzMjI0OA=="
+  },
+  "version": "1.1.7"
+ },
+ "projects": {
+  "results": [
+   {
+    "projectAbstractEn": "The subject of the planned scientific project is the production of sponge cakes, free from gluten, lactose, sucrose\nand GMO with high health promoting values. The new product will be the only one of its kind available on the food\nmarket and will be dedicated to people with gluten and lactose intolerance problems, people with metabolic\ndiseases, and people who value a healthy diet. The sponge cakes will be made of millet, potato, chickpea and rice\nflours. They will be enriched with natural plant extracts and the addition of yam flour, which will increase the\nhealth-enhancing value of the product, through the increase of antioxidant activity and the presence of natural\nsugar compounds characterized by a low glycemic index. The innovative biscotti will be a key element of the diet\nfor people with various metabolic diseases and for those who prefer a vegan diet.",
+    "keywords": "biszkopty, mąki bezglutenowe, dieta wegetariańska, laktoza, wartość prozdrowotna",
+    "edition": "Nabór III, Konkurs nr 1/2021",
+    "projectUuid": "62a9a2ae4dbd097005182bbd",
+    "projectAbstractPl": "Tematyka planowanego projektu naukowego dotyczy wyprodukowania biszkoptów, wolnych od glutenu, laktozy,\nsacharozy i GMO o wysokich wartościach prozdrowotnych. Powstały produkt będzie nowym i jedynym takim\nwyrobem dostępnym na rynku żywnościowym i przeznaczony dla osób mających problemy z nietolerancją\nglutenu, laktozy oraz dla osób z chorobami metabolicznymi, jak również dla osób ceniących zdrowy sposób\nżywienia. Wytwarzane będą biszkopty z mąki z: prosa, ziemniaczanej, ciecierzycy oraz ryżowej. Wzbogacane będą\nnaturalnymi ekstraktami roślinnymi oraz dodatkiem mąki z batata, która podwyższy wartość prozdrowotną\nproduktu, poprzez wzrost aktywności antyoksydacyjnej oraz obecność naturalnych związków cukrowych\ncharakteryzujących się niskim indeksem glikemicznym. Wyprodukowane innowacyjne biszkopty stanowić będą\nkluczowy element diety dla osób z różnymi chorobami metabolicznymi oraz dla osób preferujących dietę\nwegańską.",
+    "projectStartDate": "2022-04-01",
+    "implementingInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Karpacka Państwowa Uczelnia w Krośnie",
+      "leader": "Tak",
+      "foreignInstitutionLeader": "Nie",
+      "higherEducationAndScience": "Tak",
+      "ownFunds": "0"
+     }
+    ],
+    "disseminationOfScience": "Tak",
+    "nationalFunds": "186680",
+    "partnership": "Projekt realizowany samodzielnie",
+    "projectGrantDate": "2021-12-22",
+    "anotherProjectClassification": "Podkarpackie Centrum Innowacji” współfinansowanego z  Europejskiego  Funduszu Rozwoju Regionalnego w ramach Osi  Priorytetowej nr I „Konkurencyjna i innowacyjna gospodarka” z Regionalnego Programu Operacyjnego Województwa Podkarpackiego na lata 2014-2020",
+    "acronym": "PCI",
+    "lastRefresh": "1747045541509",
+    "projectNumber": "62/KPU/1/DG/PCI/2021",
+    "projectEndDate": "2022-09-30",
+    "projectTitleEn": "Development of an innovative technology for baking gluten-free sponge cakes, lactose, sucrose, GMO with increased health-promoting properties",
+    "financedCompetition": "Tak",
+    "entityShowingAchievementsName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+    "namePriority": null,
+    "receivedFunds": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Karpacka Państwowa Uczelnia w Krośnie",
+      "nationalFunds": "186680",
+      "foreignFunds": null,
+      "totalFunds": "186680",
+      "financingInstitutionUuid": null,
+      "financingInstitutionName": "Podkarpackie Centrum Innowacji"
+     }
+    ],
+    "projectClassification": "Inna",
+    "relatedProjects": [],
+    "foreignFunds": "0",
+    "disciplines": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Karpacka Państwowa Uczelnia w Krośnie",
+      "disciplineCode": "DS010401N",
+      "disciplineName": "rolnictwo i ogrodnictwo",
+      "percentageShare": "50"
+     },
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Karpacka Państwowa Uczelnia w Krośnie",
+      "disciplineCode": "DS010402N",
+      "disciplineName": "technologia żywności i żywienia",
+      "percentageShare": "50"
+     }
+    ],
+    "projectTitlePl": "Opracowanie innowacyjnej technologii wypieku biszkoptów wolnych od glutenu, laktozy, sacharozy, GMO o podwyższonych właściwościach prozdrowotnych",
+    "financingInstitutions": [
+     {
+      "financingInstitutionUuid": null,
+      "financingInstitutionName": "Podkarpackie Centrum Innowacji",
+      "kindOfFinancingInstitution": "Krajowa",
+      "grantDate": "2021-12-22",
+      "settlementDate": "2022-09-30",
+      "sourceOfFinancing": "inne",
+      "anotherSourceOfFinancing": "Europejski  Fundusz Rozwoju Regionalnego ",
+      "receivedFunds": "186680",
+      "nationalFunds": "186680",
+      "foreignFunds": "0",
+      "urlAddress": "kpu@kpu.krosno.pl",
+      "country": "Polska",
+      "voivodeship": "podkarpackie",
+      "addressCity": "Krosno [woj. podkarpackie, pow. Krosno, gm. Krosno,miasto]",
+      "addressPostalCode": "38-400",
+      "addressStreet": "ulica Rynek [Krosno]",
+      "addressBuildingNumber": "1",
+      "addressApartmentNumber": null
+     }
+    ],
+    "dataSource": "POLON",
+    "entityShowingAchievementsUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+    "totalFunds": "186680"
+   },
+   {
+    "projectAbstractEn": null,
+    "keywords": "ojczyzna, patriotyzm",
+    "edition": "edycja II",
+    "projectUuid": "677d0a386d19015179e4e2c4",
+    "projectAbstractPl": "Projekt zatytułowany „Po co Tobie Ojczyzna? –  o modelach patriotyzmu i biograficznych doświadczeniach seniorów” skierowany jest do słuchaczy Krośnieńskiego Uniwersytetu III Wieku. Celem projektu jest popularyzacja wyników badań podstawowych uzyskanych w ramach realizowanego już projektu przez wnioskodawcę: Modele patriotyzmu w perspektywie doświadczeń biograficznych 20, 40 i 60 latków na Podkarpaciu (ID 539392) oraz wzbogacenie prezentowanego materiału empirycznego o osobiste doświadczenia uczestników wyrażone w postaci  narracji i esejów na temat „Po co Tobie Ojczyna?” odwołujących się do wspomnień i przeżyć. Zapoznanie z wynikami badań uczestników, staje się podstawą do dyskursu o charakterze naukowym nad omawianą tematyką, ukazywaniem znaczenia problematyki ojczyźnianej a tym samym umacnianie zakorzenienia w miejscu. Takie założenie celów do realizacji umożliwi holistyczne ujęcie problematyki patriotyzmu oraz obrazuje cykliczność prowadzonych badań.\nW realizacji projektu wyróżnić można następujące etapy:\n1.      Upowszechnienie wyników badań dotyczących modeli patriotyzmu w perspektywie doświadczeń biograficznych 20, 40 i 60 latków na Podkarpaciu (cykl 10 wykładów, organizowanych raz w miesiącu dla słuchaczy UTW).\n2.      Ujawnianie/artykułowanie i konfrontowanie jednostkowych i grupowych punktów widzenia z tym, co już ustalono w toku badań. Organizacja cyklu spotkań z seniorami w małych grupach (10 – 12 osobowych) odwołujących się do kategorii wiodących wyodrębnionych w badaniach podstawowych i wywołanie tematycznie zogniskowanej wypowiedzi, odwołującej się do określonych okresów w życiu, przeżyć i wątków (możliwość opowiadania).  \n3.      Ukazanie nowych perspektyw, znaczeń i sensów  na podstawie analizy esejów uczestników na temat: Po co Tobie Ojczyzna? Publikacja uzyskanych rezultatów działania.  \nEfektem działań w projekcie jest zapoznanie z wynikami badań uczestników, która staje się podstawą do dyskursu o charakterze naukowym nad omawianą tematyką, ukazywaniem znaczenia problematyki ojczyźnianej a tym samym umacnianie zakorzenienia w miejscu.\nOgólne rezultaty projektu należy odnieść do kilku płaszczyzn działania:\n1. Uczestnicy zostaną zapoznani z modelowymi rozwiązaniami dotyczącymi ujmowania patriotyzmu przez kolejne pokolenia na Podkarpaciu. W tym znaczeniu  wnioskodawca upowszechni wyniki badań a uczestnicy poszerzą i pogłębią wiedzę dotycząca patriotyzmu.\n2. Utworzona zostanie przestrzeń ujawniania/artykułowania i konfrontowania jednostkowych i grupowych punktów widzenia z tym, co już ustalono w toku badań. Wspólna analiza prezentowanego materiału empirycznego stanowi rodzaj uzgodnionej interpretacji elementów badań, które należy utrzymywać, wzmacniać lub modyfikować. Efektem takich działań jest wypracowanie narzędzi użytecznych dla praktyki pedagogicznej opartych na holistycznym obrazie przedmiotu badania.\n3. Dostrzec należy także podwyższenie umiejętności badawczych i kooperacyjnych realizatorów projektu, co stanowi podstawę dalszych poszukiwań naukowych i obrazuje cykliczność procesu badawczego.\n4. Zaangażowanie seniorów w opisywane działania pozwoli im na poznawanie i pogłębianie wiedzy o zagadnieniach i ludziach, ćwiczenie umysłu i pamięci, ciągłe doskonalenie siebie.\n5. Czas trwania projektu (24 miesiące, cykliczność spotkań) pozwoli na integrację seniorów, zagospodarowanie czasu wolnego.\nWspólna dyskurs naukowy nad prezentowanym materiałem empirycznym stanowi rodzaj uzgodnionej interpretacji elementów badań, które należy utrzymywać, wzmacniać, modyfikować. Pozwala także na uświadamianie uczestnikom ich zasobów i możliwości także badawczych w kontekście oczekiwań otoczenia i wpisuje się w obszar społecznej odpowiedzialności.",
+    "projectStartDate": "2023-12-01",
+    "implementingInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "leader": "Tak",
+      "foreignInstitutionLeader": "Nie",
+      "higherEducationAndScience": "Tak",
+      "ownFunds": "9190"
+     }
+    ],
+    "disseminationOfScience": "Tak",
+    "nationalFunds": "80000",
+    "partnership": "Projekt realizowany samodzielnie",
+    "projectGrantDate": "2023-09-04",
+    "anotherProjectClassification": "Społeczna odpowiedzialność nauki II - Popularyzacja nauki",
+    "acronym": null,
+    "lastRefresh": "1747045790469",
+    "projectNumber": "POPUL/SP/0436/2023/01",
+    "projectEndDate": "2025-11-30",
+    "projectTitleEn": null,
+    "financedCompetition": "Tak",
+    "entityShowingAchievementsName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+    "namePriority": null,
+    "receivedFunds": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "nationalFunds": "80000",
+      "foreignFunds": null,
+      "totalFunds": "80000",
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki"
+     }
+    ],
+    "projectClassification": "Inna",
+    "relatedProjects": [],
+    "foreignFunds": "0",
+    "disciplines": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "disciplineCode": "DS010509N",
+      "disciplineName": "pedagogika",
+      "percentageShare": "100"
+     }
+    ],
+    "projectTitlePl": "Po co Tobie Ojczyzna? – o modelach patriotyzmu i biograficznych doświadczeniach seniorów",
+    "financingInstitutions": [
+     {
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki",
+      "kindOfFinancingInstitution": "Krajowa",
+      "grantDate": "2023-09-04",
+      "settlementDate": null,
+      "sourceOfFinancing": "inne",
+      "anotherSourceOfFinancing": null,
+      "receivedFunds": "80000",
+      "nationalFunds": "80000",
+      "foreignFunds": "0",
+      "urlAddress": "https://www.gov.pl/web/edukacja-i-nauka",
+      "country": "Polska",
+      "voivodeship": "mazowieckie",
+      "addressCity": "Warszawa [woj. mazowieckie, pow. Warszawa, gm. Warszawa,miasto]",
+      "addressPostalCode": "00-529",
+      "addressStreet": "Wspólna [Śródmieście]",
+      "addressBuildingNumber": "1/3",
+      "addressApartmentNumber": null
+     }
+    ],
+    "dataSource": "POLON",
+    "entityShowingAchievementsUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+    "totalFunds": "80000"
+   },
+   {
+    "projectAbstractEn": null,
+    "keywords": "edukacja, nowoczesna edukacja, wczesnoszkolna edukacja, wychowanie",
+    "edition": "Edycja II",
+    "projectUuid": "6777e7819dcaeb23535d1a65",
+    "projectAbstractPl": "Projekt obejmuje zorganizowanie dwudniowej ogólnopolskiej konferencji naukowej, która stanie się płaszczyzną wymiany poglądów pomiędzy naukowcami (ze znaczących ośrodków naukowych w kraju), prezentującymi wyniki badań ześrodkowane wokół kategorii miejsc i nie- miejsc edukacji. Tak określony cel ogólny łączy się z realizacją celów szczegółowych: budowaniem ośrodka wymiany myśli naukowej, prowadzeniem warsztatów dla uczestników konferencji, wdrażaniem proponowanych rozwiązań do praktyki edukacyjnej, popularyzowaniem wyników badań w ramach tworzonych internetowych stron poświęconych problematyce konferencji.\nPodjęta problematyka ściśle odnosi się do pedagogiki społecznej, a bardziej szczegółowo do pedagogiki miejsca (Mendel, 2017), teoretycznej perspektywy badań nad edukacją. Koncentruje się na sposobach pedagogicznego myślenia i działania przez pobudzanie sił społecznych oraz ich zamianę w działanie. Dotyczy realnych i symbolicznych wymiarów miejsca, doświadczania miejsca, tożsamości miejsca, zakorzenienia w miejscu, zależności od miejsca.\nMiejsce to przestrzeń doświadczona (Buczyńska-Garewicz, 2006), obszar określony w nieokreślonym, ograniczony w bezkresnym, foremny w chaotycznym. Stanowi niezbywalny warunek zadomowienia człowieka w przestrzeni, w której osoba czuje się pewnie, panując nad związanymi z nim pojęciami (Mendel, 2006). To struktura własna, osobista, indywidualna, organizowana wokół przyjmowanych wartości (Theiss, 2008), otwarty punkt węzłowy wewnątrz szerszej sieci interakcji (Easthope 2004). Cechują go historyczne odniesienia, pamięć własna, więzi społeczne i interakcje dające poczucie bezpieczeństwa i tożsamości wynikającej z praktyki a nawet osobistego zaangażowania. Miejsce jest obszarem doświadczania podmiotów, stanowi system współzależności o różnej trwałości i sile powiazań, podtrzymywanych lub tworzonych w praktyce dnia codziennego przez człowieka. Nadawanie znaczeń miejscu, powala budować indywidulane poczucie związku z miejscem. Miejsce nie istniej w gotowej formie. Jest ustawicznie tworzone i ulega zmianom powodowanym przemianami społecznymi, w tym rozwojem technologii, mobilnością człowieka, wielością miejsc, w których przebywa, ich fragmentacją. Czynnikami wpływającymi na zmianę miejsca są także zagrożenia cywilizacyjne – konflikty i wojna, czy epidemiczne – covid. Wywołują one konieczność przemieszczania się, nierzadko powodując utratę miejsca dotychczasowego. W tym ujęciu miejsce stało się lokalizacją dynamiczną, zmienną, otwartą. Ten stan generuje konieczność ponownego rozpoznawania roli i znaczenia miejsca, zwłaszcza w kategorii odczytywania doświadczeń miejsca. Maja one różne wymiary dla ludzi i instytucji, są efektem oddziaływania wielu podmiotów.\nW ramach konferencji uczestnicy skoncentrują się na ukazaniu miejsc edukacji ze względu na ich różnorodność w kontekście cech takich jak trwałość i wspólnotowość. Mowa będzie zatem o miejscach jako źródłach tożsamości, identyfikacji i podmiotowości. Poruszona zostanie także tematyka zagubienia i utraty miejsca, oderwania uczestników procesu edukacji od konkretnych miejsc i ich fragmentacja (Danilewicz, 2016).\nTak nakreślone ramy projektu, zachęciły wnioskodawcę do zaproszenia znaczących postaci ze świata nauki na konferencję oraz przedstawicieli środowiska lokalnego, którzy przedstawią implikacje zagadnienia dla praktyki społecznej i edukacyjnej. Przewiduje się wygłoszenie wykładów wprowadzających przez znawców zagadnienia, którzy zostaną zaproszeni na konferencję:\nprof. Dariusza Kubinowskiego, Szczecin\nprof. Tadeusza Pilcha, Warszawa\nprof. Jana Szmyda, Kraków\nprof. Marię Mendel, Gdańsk\nprof. Mirosława Szymańskiego, Kraków\nDyskusja naukowa zogniskowana zostanie wokół następujących zagadnień:\n1.      Doświadczanie miejsca a sposoby jego badania. Spór o naturę miejsca.\n2.      „Miejsca” korzystne i niekorzystne dla edukacji. Przyczyny przejawy, możliwości.\n3.      Rodzina miejscem wspólnotowej edukacji. Doświadczenia dnia codziennego.\n4.      Szkoła jako miejsce w perspektywie antropologii humanistycznej i aksjologicznej – potrzeby współczesnych przewartościowań.\n5.      Miejsca edukacji lokalnej i regionalnej. W poszukiwaniu tożsamości i spójności społecznej.\nRealizacja celów projektu wyznacza zakładane efekty planowane do osiągnięcia. Zaliczono do nich:\n1.      Upowszechnienie najnowszych wyników badań dotyczących miejsc i nie - miejsc edukacji;\n2.      Utworzenie paneli/grup badawczych zajmujących się wybranymi aspektami badań nad miejscami i niby-miejscami edukacji.\n3.      Opracowanie kanonu dobrych praktyk, wynikających z prowadzonych badań i upowszechnienie jej w postaci elektronicznej na stronie wnioskodawcy (utworzenie zakładki Miejsca i nie-miejsca edukacji. Dobre praktyki);\n4.      Wdrażanie do praktyki edukacyjnej rozwiązań wynikających z badań naukowych – program konferencji przewiduje zajęcia warsztatowe dla uczestników prowadzone przez specjalistów;\n5.      Budowanie przestrzeni edukacyjnej – w oparciu o współpracę z podmiotami realizującymi edukację kulturową w regionie;\n6.      Publikacje naukowe uczestników konferencji.",
+    "projectStartDate": "2023-10-01",
+    "implementingInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "leader": "Tak",
+      "foreignInstitutionLeader": "Nie",
+      "higherEducationAndScience": "Tak",
+      "ownFunds": "2552"
+     }
+    ],
+    "disseminationOfScience": "Tak",
+    "nationalFunds": "20200",
+    "partnership": "Projekt realizowany samodzielnie",
+    "projectGrantDate": "2023-12-08",
+    "anotherProjectClassification": "Doskonała Nauka II - Wsparcie konferencji naukowych",
+    "acronym": null,
+    "lastRefresh": "1747045829508",
+    "projectNumber": "KONF/SP/0363/2023/01",
+    "projectEndDate": "2024-09-30",
+    "projectTitleEn": null,
+    "financedCompetition": "Tak",
+    "entityShowingAchievementsName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+    "namePriority": null,
+    "receivedFunds": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "nationalFunds": "20200",
+      "foreignFunds": null,
+      "totalFunds": "20200",
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki"
+     }
+    ],
+    "projectClassification": "Inna",
+    "relatedProjects": [],
+    "foreignFunds": "0",
+    "disciplines": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "disciplineCode": "DS010509N",
+      "disciplineName": "pedagogika",
+      "percentageShare": "100"
+     }
+    ],
+    "projectTitlePl": "Miejsca i nie-miejsca edukacji",
+    "financingInstitutions": [
+     {
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki",
+      "kindOfFinancingInstitution": "Krajowa",
+      "grantDate": "2023-12-08",
+      "settlementDate": null,
+      "sourceOfFinancing": "inne",
+      "anotherSourceOfFinancing": null,
+      "receivedFunds": "20200",
+      "nationalFunds": "20200",
+      "foreignFunds": "0",
+      "urlAddress": "https://www.gov.pl/web/edukacja-i-nauka",
+      "country": "Polska",
+      "voivodeship": "mazowieckie",
+      "addressCity": "Warszawa [woj. mazowieckie, pow. Warszawa, gm. Warszawa,miasto]",
+      "addressPostalCode": "00-529",
+      "addressStreet": "Wspólna [Śródmieście]",
+      "addressBuildingNumber": "1/3",
+      "addressApartmentNumber": null
+     }
+    ],
+    "dataSource": "POLON",
+    "entityShowingAchievementsUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+    "totalFunds": "20200"
+   },
+   {
+    "projectAbstractEn": null,
+    "keywords": "patriotyzm",
+    "edition": "edycja I",
+    "projectUuid": "677d0f4a6d19015179e4e2e9",
+    "projectAbstractPl": "Projekt zatytułowany: Modele patriotyzmu w perspektywie doświadczeń biograficznych 20, 40 i 60 latków na Podkarpaciu obejmuje badania podstawowe zmierzające do opracowania rozwiązań modelowych dotyczących wymienionej problematyki.\nCele projektu określono jako scharakteryzowanie przejawów patriotyzmu występujących u trzech kolejnych pokoleń mieszkańców Podkarpacia oraz określenie modelów patriotyzmu typowych dla regionu. Opracowanie modelów patriotyzmu wiąże się z realizacją celów szczegółowych odnoszących się do uporządkowania informacji uzyskanych drogą badań empirycznych i analiz teoretycznych o istniejących kategoriach definiowania patriotyzmu, sposobach identyfikacji z Polską badanych grup, przejawach patriotyzmu badanych w podstawowych dziedzinach życia, podejmowanych działaniach patriotycznych, miejscach przejawiania patriotyzmu, emocjach i uczuciach towarzyszących działaniom o charakterze patriotycznym, źródłach patriotyzmu badanych, jak też wadze nadawanej działaniom patriotycznym przez badanych. Jednocześnie wyodrębnione zostaną wspólne, ogólne elementy składające się na podstawowe ramy modelów. W ten sposób dokonany zostanie wybór zasadniczych elementów odnoszących się do modelów, z jednoczesnym odrzuceniem elementów mało przydatnych i zbyt szczegółowych. Opracowane modele opierać się będą na badaniu określonych środowisk, ale posiadać będą także wartość wielofunkcyjną.\n \nProwadzone w ramach projektu badania podstawowe obejmują cztery zasadnicze etapy:\n\n    Opracowanie perspektywy teoretycznej i narzędzi badawczych;\n    Przeprowadzenie badań empirycznych;\n    Wyprowadzenie modelów patriotyzmu;\n    Upowszechnienie wyników badań - publikacja artykułów naukowych w czasopismach punktowanych, zamieszczenie raportu na stronie ineternetowej uczelni.\n\nRezultaty projektu ogniskują się zatem w dwóch zasadniczych obszarach. Po pierwsze, umożliwiają wyprowadzenie modelów patriotyzmu jako reprezentacji rzeczywistości, jej abstrakcyjnego przedstawienia, co pozwala uporządkować i uprościć spojrzenie osób na daną rzeczywistość poprzez odtworzenie jej podstawowych cech, wskazanie związków między tymi cechami. Określa zatem dziedzinę rzeczywistości za pomocą teoretycznych pojęć, ukazując funkcjonalne zależności pomiędzy nimi (Duraj – Nowakowa, 2010, s. 148-149). Pozwoli to na opracowanie wskazówek heurystycznych dla danego problemu w procesie wyjaśniania zjawisk i budowania teorii. W tym znaczeniu projekt przyczyni się do wzbogacenia wiedzy naukowej.\nPo drugie, umożliwi sformułowanie wskazówek dla praktyki społeczno-pedagogicznej pozwalających na kształtowanie postaw patriotycznych u dzieci i młodzieży w oparciu o rozwiązania modelowe. Efektem projektu jest równiez trwała współpraca pomiędzy podmiotami zaangażowanymi w wymienione działania, obejmująca działania dośrodkowe, odśrodkowe i środowiskowo-rozszerzone.",
+    "projectStartDate": "2022-04-07",
+    "implementingInstitutions": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "leader": "Tak",
+      "foreignInstitutionLeader": "Nie",
+      "higherEducationAndScience": "Tak",
+      "ownFunds": "0"
+     }
+    ],
+    "disseminationOfScience": "Tak",
+    "nationalFunds": "112990",
+    "partnership": "Projekt realizowany samodzielnie",
+    "projectGrantDate": "2022-04-07",
+    "anotherProjectClassification": "Nauka dla społeczeństwa",
+    "acronym": null,
+    "lastRefresh": "1747045829755",
+    "projectNumber": "NdS/539392/2021/2022",
+    "projectEndDate": "2024-04-06",
+    "projectTitleEn": null,
+    "financedCompetition": "Tak",
+    "entityShowingAchievementsName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+    "namePriority": null,
+    "receivedFunds": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "nationalFunds": "112990",
+      "foreignFunds": null,
+      "totalFunds": "112990",
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki"
+     }
+    ],
+    "projectClassification": "Inna",
+    "relatedProjects": [],
+    "foreignFunds": "0",
+    "disciplines": [
+     {
+      "institutionUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+      "institutionName": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "disciplineCode": "DS010509N",
+      "disciplineName": "pedagogika",
+      "percentageShare": "100"
+     }
+    ],
+    "projectTitlePl": "Modele patriotyzmu w perspektywie doświadczeń biograficznych 20, 40 i 60 latków na Podkarpaciu",
+    "financingInstitutions": [
+     {
+      "financingInstitutionUuid": "12eafb91-5705-4f57-b7a7-c026bd249f7c",
+      "financingInstitutionName": "Ministerstwo Edukacji i Nauki",
+      "kindOfFinancingInstitution": "Krajowa",
+      "grantDate": "2022-04-07",
+      "settlementDate": null,
+      "sourceOfFinancing": "inne",
+      "anotherSourceOfFinancing": null,
+      "receivedFunds": "112990",
+      "nationalFunds": "112990",
+      "foreignFunds": "0",
+      "urlAddress": "https://www.gov.pl/web/edukacja-i-nauka",
+      "country": "Polska",
+      "voivodeship": "mazowieckie",
+      "addressCity": "Warszawa [woj. mazowieckie, pow. Warszawa, gm. Warszawa,miasto]",
+      "addressPostalCode": "00-529",
+      "addressStreet": "Wspólna [Śródmieście]",
+      "addressBuildingNumber": "1/3",
+      "addressApartmentNumber": null
+     }
+    ],
+    "dataSource": "POLON",
+    "entityShowingAchievementsUuid": "8a2706f6-8163-4308-939d-e9d29bba9654",
+    "totalFunds": "112990"
+   }
+  ],
+  "pagination": {
+   "maxCount": 7,
+   "token": "MTc2MTYxODgyODA4Mg=="
+  },
+  "version": "1.1.5"
+ }
+}
