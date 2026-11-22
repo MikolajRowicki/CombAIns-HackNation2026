@@ -79,7 +79,7 @@ Do not put a trace of Claude or other AI help into the work. This rule overrides
 
 - Before you create a new file, tell the user the name of the file and the reason. The team must know all files and their purpose.
 - Keep the number of files small.
-- After each step of work, add an entry to `docs/WORKLOG.md` with the date, the time and the changes.
+- After each step of work, add an entry to `docs/WORKLOG.md` with the date, the person and the changes. Do not write the time.
 - Do not change the files in `task/`. They are the original materials of the task.
 - Do not create `CLAUDE.md` or `CLAUDE.local.md`. If one of these files exists, Claude Code does not read `AGENTS.md`.
 - Keep personal settings of a tool out of git (see `.gitignore`). Do not commit the folder `.claude/`.
