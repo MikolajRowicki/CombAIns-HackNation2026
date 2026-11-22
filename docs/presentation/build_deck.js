@@ -148,7 +148,7 @@ async function main() {
     placeholder: "body",
   });
   s.addText("CombAIns", {
-    x: 0.6, y: 4.3, w: 6, h: 0.8, fontSize: 40, color: C.accent2, bold: true, margin: 0, valign: "middle", isTextBox: true,
+    x: 0.6, y: 4.3, w: 6, h: 0.8, fontSize: 40, color: C.background1, bold: true, margin: 0, valign: "middle", isTextBox: true,
   });
   s.addNotes(
     "Radar innowacji to jedno miejsce, w którym gmina, szkoła, uczelnia, firma czy inwestor znajdzie polskie innowacje, które już działają. " +
