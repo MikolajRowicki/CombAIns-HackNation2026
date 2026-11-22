@@ -106,3 +106,14 @@ def test_new_card_in_30_seconds():
     card = data.records[0]
     assert card.sources and card.assessment
     assert time.monotonic() - start <= 30
+
+
+def test_contacts_are_institutions_or_links(records):
+    from src.applications import find_contacts
+
+    card = records["sample"]["web-mobilny-urzednik-rzeszow"]
+    links, note = find_contacts(card)
+    assert {link.kind for link in links} <= {"institution", "source", "search"}
+    assert any(link.kind == "source" for link in links)
+    assert any("BIP" in link.label for link in links)
+    assert note

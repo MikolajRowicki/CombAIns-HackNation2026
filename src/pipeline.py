@@ -8,8 +8,11 @@ import argparse
 import re
 import sqlite3
 import time
+import unicodedata
 from collections.abc import Callable
 from datetime import date
+
+import httpx
 
 from src import applications, db, search
 from src.criteria import assess, estimate_application_potential
@@ -192,6 +195,41 @@ def estimate_application_potential_all(conn: sqlite3.Connection) -> int:
     return changed
 
 
+def _name_key(name: str) -> str:
+    """Compare names without Polish letters, case and punctuation ("Politechnika Gdanska" = "Politechnika Gdańska")."""
+    text = unicodedata.normalize("NFKD", name.lower().replace("ł", "l"))
+    return " ".join(re.findall(r"[a-z0-9]+", text.encode("ascii", "ignore").decode()))
+
+
+def add_institution_contacts(conn: sqlite3.Connection) -> int:
+    """Add the official web page and the general e-mail of science units (RAD-on) to cards of all sources."""
+    try:
+        with httpx.Client(timeout=60, headers={"User-Agent": "RadarInnowacji/0.1"}) as client:
+            units = radon.fetch_institutions(client)
+    except httpx.HTTPError as error:
+        print(f"contacts: ERROR {error}")
+        return 0
+    full = {_name_key(u.name): u for u in units if u.website or u.email}
+    # A short name without the patron ("Politechnika Rzeszowska" for "... im. Ignacego Łukasiewicza") must be unique.
+    short: dict[str, list] = {}
+    for key, unit in full.items():
+        short.setdefault(key.split(" im ")[0], []).append(unit)
+    changed = 0
+    for record in db.all_innovations(conn):
+        key = _name_key(record.institution.name)
+        candidates = short.get(key, [])
+        unit = full.get(key) or (candidates[0] if len(candidates) == 1 else None)
+        if unit is None or (record.institution.website, record.institution.email) == (unit.website, unit.email):
+            continue
+        data = record.model_dump()
+        data["institution"]["website"] = unit.website
+        data["institution"]["email"] = unit.email
+        db.upsert_innovation(conn, Innovation.model_validate(data))
+        changed += 1
+    conn.commit()
+    return changed
+
+
 def update(conn: sqlite3.Connection, voivodeships: list[str] | None = None, sources: list[str] | None = None) -> None:
     """Load the sources one by one. If a source fails, record the error and continue (AGENTS.md, rule 14)."""
     for name in sources or [*SOURCES, "bzp"]:
@@ -211,6 +249,7 @@ def update(conn: sqlite3.Connection, voivodeships: list[str] | None = None, sour
         print(f"{name}: {len(data.records)} records, {len(data.errors)} errors, {time.monotonic() - start:.0f} s")
     merged, linked = link_records(conn)
     print(f"link: {merged} merged, {linked} linked")
+    print(f"contacts: {add_institution_contacts(conn)} cards")
     print(f"K4: {estimate_application_potential_all(conn)} cards")
 
 

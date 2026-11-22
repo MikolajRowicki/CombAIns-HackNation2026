@@ -720,6 +720,21 @@ function renderApplications(apps) {
       ),
     );
   }
+  // Official channels of the institution and links only: the radar never shows a person (AGENTS.md).
+  if (apps.contacts?.length) {
+    const contactItem = (c) => {
+      if (c.url.startsWith("mailto:")) {
+        const address = c.url.slice("mailto:".length);
+        return /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(address) ? el("a", { href: `mailto:${address}` }, c.label) : null;
+      }
+      return link(c.url, c.label);
+    };
+    parts.push(
+      el("h3", {}, "Jak nawiązać kontakt"),
+      el("ul", { class: "plain-list" }, apps.contacts.map((c) => contactItem(c) && el("li", {}, contactItem(c)))),
+      apps.contact_note && el("p", { class: "muted small" }, apps.contact_note),
+    );
+  }
   return section("Gdzie można zastosować", ...parts);
 }
 

@@ -32,6 +32,8 @@ class Institution(BaseModel):
     kind: InstitutionKind
     city: str | None = None
     voivodeship: str | None = Field(None, description="Lowercase Polish name, for example 'podkarpackie'.")
+    website: str | None = Field(None, description="Official web page of the institution (public register).")
+    email: str | None = Field(None, description="General e-mail of the institution only, never the e-mail of a person.")
 
 
 class CriterionScore(BaseModel):
@@ -158,6 +160,14 @@ class Path(BaseModel):
     reference: str
 
 
+class ContactLink(BaseModel):
+    """A way to contact the institution: its official channel, the page of the source or a search link."""
+
+    label: str
+    url: str
+    kind: Literal["institution", "source", "search"]
+
+
 class Applications(BaseModel):
     """Output of src.applications.recommend(). All items are estimates of rules (kind "estimate")."""
 
@@ -166,6 +176,8 @@ class Applications(BaseModel):
     audiences: list[Audience] = []
     adopters: list[Adopter] = []
     paths: list[Path] = []
+    contacts: list[ContactLink] = []
+    contact_note: str | None = None
 
 
 class InnovationDetail(Innovation):

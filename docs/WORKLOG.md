@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 60-contacts)
+
+- Add the contact of institutions: `Institution.website` and `Institution.email` (official channels only).
+  - `radon.public_email()` keeps only a general address (words such as kancelaria, rektorat, biuro, info, or the name of the domain). An address with a first name or another unknown word goes out.
+  - The pipeline step `add_institution_contacts()` reads all RAD-on units and adds the contact to cards of all sources with the same name (compared without Polish letters). Result: 1380 cards (RAD-on 926, EPO 247, FE 122, NCBR 85).
+- Add `applications.find_contacts()` and the card section "Jak nawiązać kontakt": web page and e-mail of the institution, links to the sources, a search link (BIP for a JST, KRS for a company), and a note (CTT of a university, ePUAP of an office).
+- Similar innovations: sort by relevance only (`search(..., by_relevance=True)`). After PR #51 the potential lifted unrelated cards into the list of similar innovations.
+- The list "Kto ma podobne rozwiązania" skips hidden persons and missing names.
+- Tests: general e-mails, contact links; the pipeline test does not use the network for the contact step.
+
 ## 2026-11-22, MikolajRowicki (branch 58-deck-mobile)
 
 - Presentation (`build_deck.js`, PPTX and PDF made again):

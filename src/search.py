@@ -158,6 +158,7 @@ def search(
     limit: int = 20,
     exclude: str | None = None,
     offset: int = 0,
+    by_relevance: bool = False,
 ) -> SearchResponse:
     where, args = _filters(area, voivodeship, level_min)
     if exclude:
@@ -194,7 +195,11 @@ def search(
 
     preferred = GROUP_AREAS.get(group or "")
     ranked = [(_result(innovation, relevance), group_bonus(group, innovation)) for innovation, relevance in scored]
-    ranked.sort(key=lambda x: (preferred is not None and x[0].area.value != preferred, -(x[0].rank_score + x[1])))
+    if by_relevance:
+        # Similar innovations: only the text decides. The potential must not lift an unrelated card.
+        ranked.sort(key=lambda x: -x[0].relevance)
+    else:
+        ranked.sort(key=lambda x: (preferred is not None and x[0].area.value != preferred, -(x[0].rank_score + x[1])))
     results = [r for r, _ in ranked]
     return SearchResponse(total=max(total, len(results)), results=results[offset : offset + limit])
 
@@ -203,7 +208,7 @@ def detail(conn: sqlite3.Connection, innovation: Innovation, k: int = 5) -> Inno
     """Return the card with the k most similar innovations and the applications (src/applications.py)."""
     text = " ".join([innovation.title, *innovation.keywords])
     # More candidates than k, so that the list of other institutions is not empty.
-    candidates = search(conn, text, exclude=innovation.id, limit=4 * k).results if text.strip() else []
+    candidates = search(conn, text, exclude=innovation.id, limit=4 * k, by_relevance=True).results if text.strip() else []
     return InnovationDetail(
         **innovation.model_dump(exclude={"demand"}),
         similar=candidates[:k],

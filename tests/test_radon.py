@@ -92,3 +92,13 @@ def test_failed_source_part_does_not_stop_the_loader():
     data = radon.load(["podkarpackie"], client=client(fail={"products"}))
     assert len(data.errors) == 1 and data.errors[0].startswith("products")
     assert len(data.records) == 4
+
+
+def test_only_general_e_mails_of_institutions():
+    assert radon.public_email("kancelaria@prz.edu.pl") == "kancelaria@prz.edu.pl"
+    assert radon.public_email("rektorur@ur.edu.pl") == "rektorur@ur.edu.pl"
+    assert radon.public_email("psw@psw.jaslo.pl") == "psw@psw.jaslo.pl"
+    assert radon.public_email("jan.kowalski@prz.edu.pl") is None
+    assert radon.public_email("przemysl.wsiiz@gmail.com") is None
+    assert radon.public_email(None) is None
+    assert radon.public_website("www.iwst.rzeszow.pl") == "https://www.iwst.rzeszow.pl"

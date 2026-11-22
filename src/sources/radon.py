@@ -13,7 +13,7 @@ import httpx
 
 from src.criteria import assess, estimate_implementation_level, estimate_novelty
 from src.models import FieldValue, Innovation, Institution, Source, TimelineEvent
-from src.sources import SourceData, summary_quote
+from src.sources import SourceData, fe_projects, summary_quote
 
 BASE_URL = "https://radon.nauka.gov.pl/opendata/polon"
 NAME = "RAD-on (OPI PIB)"
@@ -74,9 +74,46 @@ def fetch_institutions(client: httpx.Client, voivodeships: list[str] | None = No
         if voivodeships and raw.get("voivodeship") not in voivodeships:
             continue
         found.append(
-            Institution(name=raw["name"], kind="university", city=raw.get("city"), voivodeship=raw.get("voivodeship"))
+            Institution(
+                name=raw["name"],
+                kind="university",
+                city=raw.get("city"),
+                voivodeship=raw.get("voivodeship"),
+                website=public_website(raw.get("www")),
+                email=public_email(raw.get("eMail")),
+            )
         )
     return found
+
+
+# Words of a general (not personal) e-mail address of an institution.
+_GENERAL_EMAIL = (
+    "kancelaria", "sekretariat", "rektor", "dziekanat", "biuro", "info", "kontakt", "office", "uczelnia",
+    "instytut", "admin", "poczta", "ctt", "transfer", "sekretarz", "centrum", "pans", "akademia", "urzad",
+)
+
+
+def public_website(url: str | None) -> str | None:
+    url = (url or "").strip()
+    if not url:
+        return None
+    return url if url.startswith(("http://", "https://")) else f"https://{url}"
+
+
+def public_email(email: str | None) -> str | None:
+    """Return the e-mail only if it is clearly general ("kancelaria@prz.edu.pl"). A name of a person goes out."""
+    email = (email or "").strip().lower()
+    if email.count("@") != 1:
+        return None
+    local, domain = email.split("@")
+    domain_words = set(re.split(r"[.-]", domain))
+    for word in re.split(r"[._-]+", local):
+        if word in fe_projects.FIRST_NAMES:
+            return None
+        general = len(word) <= 2 or word in domain_words or any(g in word for g in _GENERAL_EMAIL)
+        if not general:
+            return None
+    return email
 
 
 def _date(value: str | None) -> date | None:

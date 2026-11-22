@@ -22,6 +22,8 @@ def mock_client() -> httpx.Client:
 @pytest.fixture
 def db_path(tmp_path, monkeypatch):
     monkeypatch.setattr(radon, "PAUSE", 0)
+    # The contact step reads RAD-on over the network; the tests do not use the network.
+    monkeypatch.setattr(pipeline, "add_institution_contacts", lambda conn: 0)
     path = tmp_path / "radar.db"
     conn = db.connect(path)
     pipeline.store(conn, radon.load(["podkarpackie"], client=mock_client()))

@@ -5,6 +5,7 @@ All results are estimates of rules. Each result has its reason. The rules do not
 """
 
 import re
+from urllib.parse import quote_plus
 
 from src.criteria import CRITERIA, _evidence
 from src.models import (
@@ -12,6 +13,7 @@ from src.models import (
     Adopter,
     Applications,
     Audience,
+    ContactLink,
     Innovation,
     Path,
     SearchResult,
@@ -93,7 +95,8 @@ def find_adopters(innovation: Innovation, similar: list[SearchResult]) -> list[A
     adopters = []
     for result in similar:
         name = result.institution.name
-        if name in seen:
+        # A hidden person or a missing name is not a partner that a user can contact.
+        if name in seen or "dane ukryte" in name or name.startswith("brak nazwy"):
             continue
         seen.add(name)
         adopters.append(
@@ -194,12 +197,49 @@ def _paths(innovation: Innovation) -> list[Path]:
     return paths
 
 
+_SEARCH = "https://duckduckgo.com/?q="
+_NOTES = {
+    "university": "Licencję i współpracę z firmami prowadzi zwykle centrum transferu technologii (CTT) uczelni.",
+    "jst": "Pytanie o wdrożenie można wysłać przez elektroniczną skrzynkę podawczą urzędu (ePUAP) lub sekretariat.",
+    "school": "Kontakt przez sekretariat szkoły lub organ prowadzący (gmina, powiat).",
+}
+
+
+def find_contacts(innovation: Innovation) -> tuple[list[ContactLink], str | None]:
+    """Return the ways to contact the institution. Only official channels of institutions, never a person."""
+    inst = innovation.institution
+    hidden = "dane ukryte" in inst.name
+    links = []
+    if inst.website:
+        links.append(ContactLink(label="Strona instytucji", url=inst.website, kind="institution"))
+    if inst.email:
+        links.append(ContactLink(label=f"E-mail instytucji: {inst.email}", url=f"mailto:{inst.email}", kind="institution"))
+    for source in innovation.sources:
+        links.append(ContactLink(label=f"Opis w źródle: {source.name}", url=source.url, kind="source"))
+    if not inst.website and not hidden:
+        if inst.kind == "jst":
+            label, query = "Wyszukaj BIP instytucji", f"BIP {inst.name}"
+        elif inst.kind == "company":
+            label, query = "Wyszukaj firmę (KRS, strona WWW)", f"{inst.name} KRS"
+        else:
+            label, query = "Wyszukaj stronę instytucji", inst.name
+        links.append(ContactLink(label=label, url=_SEARCH + quote_plus(query), kind="search"))
+    if hidden:
+        note = "Beneficjent jest osobą fizyczną lub firmą jednoosobową: radar nie pokazuje jego danych. Kontakt tylko przez źródło."
+    else:
+        note = _NOTES.get(inst.kind)
+    return links, note
+
+
 def recommend(innovation: Innovation, similar: list[SearchResult]) -> Applications:
     sectors = find_sectors(innovation)
+    contacts, note = find_contacts(innovation)
     return Applications(
         version=APPLICATIONS_VERSION,
         sectors=sectors,
         audiences=find_audiences(innovation, sectors),
         adopters=find_adopters(innovation, similar),
         paths=_paths(innovation),
+        contacts=contacts,
+        contact_note=note,
     )
