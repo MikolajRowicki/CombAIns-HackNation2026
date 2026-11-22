@@ -8,25 +8,18 @@ The loader obeys robots.txt and its Crawl-delay, and keeps the pages in data/cac
 
 import csv
 import re
-import time
-from datetime import date, datetime, timedelta
+from datetime import date
 from pathlib import Path
-from urllib.parse import urlparse
 
 import httpx
 import trafilatura
-from protego import Protego
 
 from src.criteria import assess, estimate_novelty
 from src.models import FieldValue, Innovation, Institution, Source, TimelineEvent
-from src.sources import SourceData
+from src.sources import USER_AGENT, PageFetcher, SourceData
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES_CSV = ROOT / "data" / "web_sources.csv"
-CACHE = ROOT / "data" / "cache" / "pages"
-CACHE_DAYS = 7
-USER_AGENT = "RadarInnowacji/0.1"
-MIN_PAUSE = 1.5
 NAME = "Wyniki konkursów (strony WWW)"
 LICENSE = "Prawa wydawcy strony; radar zapisuje krótki cytat i link (art. 26³ i 29 pr. aut.)"
 
@@ -61,37 +54,6 @@ _LIST_ITEM = re.compile(r"^-\s*([IV]+)\s+miejsce:\s*([^(\n]{3,80}?)\s*\(([^\n]{5
 def _sources() -> list[dict]:
     with SOURCES_CSV.open(encoding="utf-8") as f:
         return [row for row in csv.DictReader(f) if row["category"] == "competition_results"]
-
-
-class _Fetcher:
-    """Read pages with a cache. Obey robots.txt and the Crawl-delay of each host."""
-
-    def __init__(self, client: httpx.Client):
-        self.client = client
-        self.robots: dict[str, Protego] = {}
-        self.last: dict[str, float] = {}
-
-    def get(self, url: str) -> str:
-        CACHE.mkdir(parents=True, exist_ok=True)
-        path = CACHE / (re.sub(r"[^\w]+", "_", url)[-150:] + ".html")
-        if path.exists() and datetime.fromtimestamp(path.stat().st_mtime) > datetime.now() - timedelta(days=CACHE_DAYS):
-            return path.read_text(encoding="utf-8")
-        host = urlparse(url).netloc
-        if host not in self.robots:
-            response = self.client.get(f"https://{host}/robots.txt")
-            self.robots[host] = Protego.parse(response.text if response.status_code == 200 else "")
-        robots = self.robots[host]
-        if not robots.can_fetch(url, USER_AGENT):
-            raise PermissionError(f"robots.txt forbids {url}")
-        pause = max(MIN_PAUSE, robots.crawl_delay(USER_AGENT) or 0)
-        wait = self.last.get(host, 0) + pause - time.monotonic()
-        if wait > 0:
-            time.sleep(wait)
-        response = self.client.get(url)
-        self.last[host] = time.monotonic()
-        response.raise_for_status()
-        path.write_text(response.text, encoding="utf-8")
-        return response.text
 
 
 # Do not split a sentence after abbreviations such as "gm." or "pow.".
@@ -287,7 +249,7 @@ def load(voivodeships: list[str] | None = None, client: httpx.Client | None = No
     data = SourceData(name=NAME, url=str(SOURCES_CSV.relative_to(ROOT)), license=LICENSE, retrieved=retrieved)
     own_client = client is None
     client = client or httpx.Client(timeout=60, headers={"User-Agent": USER_AGENT}, follow_redirects=True)
-    fetcher = _Fetcher(client)
+    fetcher = PageFetcher(client)
     seen = set()
     for row in _sources():
         parser = PARSERS.get(row["strategy"])

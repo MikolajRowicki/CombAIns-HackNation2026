@@ -2,6 +2,17 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 34-ncbr, new sources)
+
+- Add `src/sources/ncbr.py`: the NCBR list "Wyszukiwarka sukcesów beneficjentów" (316 projects) and the page of each project. The card takes only the sections about the problem and the users. 312 cards, all of Poland (178 technological, 103 educational).
+  - Beneficiaries that are natural persons (also "Firma Jan Kowalski") are not used. Sentences with "dr", "prof." and a name are removed from the description.
+  - The page has typing errors in the voivodeships ("zachodnioporskie"); `difflib` maps them to the official names.
+  - The list is small and national, so the loader ignores the voivodeship filter.
+- Add `src/sources/interreg.py`: Interreg 2021-2027 projects (dane.gov.pl, dataset 15971, CC0 1.0). It uses `fe_projects.row_to_innovation()`. A project is kept if the FE filter keeps it or if the text describes a solution (system, platform, method, technology). 101 cards.
+- Move the page fetcher (cache, `robots.txt`, Crawl-delay) from `competitions.py` to `src/sources/__init__.py` (`PageFetcher`), so that all web loaders use it.
+- `fe_projects.person_name()` has a new parameter `foreign`. Only Interreg uses it: names of foreign institutions ("Obec Skalité", "Cardinal Stefan Wyszynski Hospital") are not persons. The FE list keeps the old rule, so "Jan Kowalski Auto Center" stays hidden.
+- Add `tests/test_ncbr.py`, `tests/test_interreg.py` and the fixtures `ncbr_list.html`, `ncbr_detail.html` (made-up persons only).
+
 ## 2026-11-22, MikolajRowicki (branch 32-link-records, issue #13)
 
 - Add the step `link_records()` to `src/pipeline.py`. It runs after each update and joins records of different sources about the same innovation.

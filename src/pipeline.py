@@ -14,13 +14,23 @@ from datetime import date
 from src import db, search
 from src.criteria import assess
 from src.models import FieldValue, Innovation, SourceStatus
-from src.sources import SourceData, bzp, competitions, fe_projects, radon
+from src.sources import (
+    SourceData,
+    bzp,
+    competitions,
+    fe_projects,
+    interreg,
+    ncbr,
+    radon,
+)
 
 # Each source is one function. A new source is one more entry here.
 SOURCES: dict[str, tuple[str, Callable[..., SourceData]]] = {
     "radon": (radon.NAME, lambda voivodeships: radon.load(voivodeships)),
     "fe": (fe_projects.NAME, lambda voivodeships: fe_projects.load(voivodeships)),
     "competitions": (competitions.NAME, lambda voivodeships: competitions.load(voivodeships)),
+    "ncbr": (ncbr.NAME, lambda voivodeships: ncbr.load(voivodeships)),
+    "interreg": (interreg.NAME, lambda voivodeships: interreg.load(voivodeships)),
 }
 
 

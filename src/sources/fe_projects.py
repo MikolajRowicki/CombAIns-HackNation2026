@@ -69,6 +69,14 @@ INSTITUTION_WORDS = re.compile(
     r"|centrum|zakład|przedsiębiorstw|spółdzielni|muzeum|teatr|bibliotek|ośrod|agencj|izba|park|klaster|szkoł|zespół",
     re.IGNORECASE,
 )
+# Foreign partners of Interreg projects, for example "Obec Skalité" or "Cardinal Stefan Wyszynski Hospital".
+# A name with one of these words is an institution, also if it has a first name of a patron.
+FOREIGN_INSTITUTION = re.compile(
+    r"municipalit|commune|\bobec\b|\bmesto\b|město|euroregion|universit|county|region|voivodeship|administration"
+    r"|department|centre|center|association|foundation|hochschule|gemeinde|stadt|savivaldyb|council|office|agency"
+    r"|hospital|college|cluster",
+    re.IGNORECASE,
+)
 COMPANY = re.compile(r"\b(?:sp\.?\s*z\s*o\.?\s*o|spółka|s\.\s*a\.|sp\.\s*k\.|sp\.\s*j\.|s\.c\.)", re.IGNORECASE)
 
 # Common Polish first names (nominative). A beneficiary name with a first name and a surname is a natural
@@ -199,11 +207,14 @@ _WORD = re.compile(r"[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż-]+")
 HIDDEN_NAME = "osoba fizyczna lub przedsiębiorca indywidualny (dane ukryte)"
 
 
-def person_name(beneficiary: str) -> str | None:
+def person_name(beneficiary: str, foreign: bool = False) -> str | None:
     """Return the part of the name that is a first name and a surname, or None.
 
     A patron after "im." (for example "Szkoła Podstawowa im. Marii Konopnickiej") is not a beneficiary.
     """
+    # Only for lists with foreign partners (Interreg). In the FE list, "Jan Kowalski Auto Center" is a sole trader.
+    if foreign and FOREIGN_INSTITUTION.search(beneficiary):
+        return None
     text = re.split(r"\bim\.|\bimienia\b", beneficiary, maxsplit=1)[0]
     words = _WORD.findall(text)
     for first, last in itertools.pairwise(words):
@@ -279,13 +290,15 @@ def is_innovation(row: dict) -> bool:
     )
 
 
-def row_to_innovation(row: dict, resource_url: str, data_date: date | None, retrieved: date) -> Innovation:
+def row_to_innovation(
+    row: dict, resource_url: str, data_date: date | None, retrieved: date, foreign: bool = False
+) -> Innovation:
     """Map one row of the file to a card. The description comes from the application, so the text is in the future tense.
 
     Thus the implementation level comes from the dates of the project, not from the text (test on the real file).
     """
     beneficiary = str(row.get("beneficiary") or "").strip()
-    person = person_name(beneficiary)
+    person = person_name(beneficiary, foreign)
     title = hide(re.sub(r"\s+", " ", str(row["title"])).strip(), person)
     description = hide(re.sub(r"\s+", " ", str(row["description"])).strip(), person)
     category = re.sub(r"\s+", " ", str(row.get("category") or "")).strip()

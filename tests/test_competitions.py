@@ -5,7 +5,7 @@ import httpx
 import pytest
 
 from src.criteria import assess
-from src.sources import competitions
+from src.sources import PageFetcher, competitions
 
 HTML = (Path(__file__).parent / "fixtures" / "competition_page.html").read_text(encoding="utf-8")
 URL = "https://example.org/laureaci"
@@ -51,14 +51,12 @@ def test_no_names_of_persons(records):
         assert "Testowy" not in card.model_dump_json()
 
 
-def test_robots_txt_is_obeyed(tmp_path, monkeypatch):
-    monkeypatch.setattr(competitions, "CACHE", tmp_path)
-
+def test_robots_txt_is_obeyed(tmp_path):
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.path == "/robots.txt":
             return httpx.Response(200, text="User-agent: *\nDisallow: /laureaci\n")
         return httpx.Response(200, text=HTML)
 
-    fetcher = competitions._Fetcher(httpx.Client(transport=httpx.MockTransport(handler)))
+    fetcher = PageFetcher(httpx.Client(transport=httpx.MockTransport(handler)), cache=tmp_path)
     with pytest.raises(PermissionError):
         fetcher.get(URL)
