@@ -460,8 +460,8 @@ async function main() {
   text(s, "Porównanie 2–4 kart · link do udostępnienia · eksport CSV", { x: 4.5, y: 5.18, w: 5, h: 0.26, fontSize: 11, color: C.accent1, bold: true, align: "right", valign: "middle" });
   s.addNotes(
     "Tu mamy trzy karty z bazy obok siebie. E-urząd z Horyńca ma najwyższy wynik, 69, ale z przedziałem od 53 do 76. Nie wiemy, na ile jest nowatorski, i nie wpisujemy tam zera. " +
-      "Wirtualny Urzędnik z Zawoi ma 67 i jego przedział się zamyka, bo każde kryterium ma wartość. " +
-      "Zielona kropka: wartość wprost ze źródła. Pomarańczowa: wyliczyła ją reguła, a na karcie widać, dlaczego.",
+      "Wirtualny Urzędnik z Zawoi ma 67 i jego przedział to jedna liczba, bo każde kryterium ma wartość. " +
+      "Zielona kropka oznacza wartość wprost ze źródła. Pomarańczowa znaczy, że wyliczyła ją reguła, a na karcie widać, dlaczego.",
   );
 
   // ---- 8. Use cases ----

@@ -2,6 +2,10 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 76-deck-mega-edits)
+
+- Alternative presentation: a person changed the speaker notes of slide 7 in PowerPoint. The same text is now in `build_deck_mega.js`. The PDF is made again.
+
 ## 2026-11-22, MikolajRowicki (branch 74-deck-mega)
 
 - Add an alternative presentation with a dark radar look. The first presentation does not change.
