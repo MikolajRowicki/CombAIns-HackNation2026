@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 31-presentation-refresh, issue #17)
+
+- Make the presentation again with the comments of MikolajRowicki in issue #17, on the database of 22.11.2026 (3498 cards, 8 sources and BZP).
+- Colors of PCI, as on the web page. New screenshots of the current interface in `docs/presentation/img/`: search, card of the JST case, assessment panel of the university case.
+- 10 slides: title, problem, seven steps with the numbers of the database, search, card ("ze źródła", "przybliżone"), assessment (K4 from the data), 8 sources with licenses, two use cases (task section 6, d and e), functions and deployment, next steps.
+- Slide 8 shows the two use cases with facts from the API: e-urząd Horyniec-Zdrój (path "replikacja", measures, similar gminas, BZP buyers) and the electrode technology of Politechnika Rzeszowska (two sources in one card, path "transfer technologii", measures).
+- No text tells that the source is the FAQ (decision of the team), also not on the slide about the analytics.
+- Before the screenshots, update the FE source in the database of MikolajRowicki, so that the names of persons in titles are hidden (PR #55).
+
 ## 2026-11-22, MaciejMomot (branch 29-hide-names-in-titles)
 
 - Fix a leak of personal data: a card showed the name of a sole trader in a project title ("firmy … Jan Kowalski"). The row had no beneficiary, so the rule on the beneficiary name did not find the person.
