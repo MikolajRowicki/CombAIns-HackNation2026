@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 32-link-records, issue #13)
+
+- Add the step `link_records()` to `src/pipeline.py`. It runs after each update and joins records of different sources about the same innovation.
+- Rule: the same institution (name without words such as "gmina" or "sp. z o.o.") and a Jaccard index of the title lemmas of 0.33 or more. At 0.9 or more, the records are one project: one card with both sources.
+- A linked card gets the sources and the timeline events of the other record. Two sources raise K5 (credibility) to 4 ("Dwa niezależne źródła") as a fact; then the assessment is calculated again.
+- The step reads all records in the order of the id, so the result does not depend on the order of the updates. A second run changes nothing.
+- Result on Podkarpackie: 2 merged duplicates (RAD-on project = FE project) and 4 pairs "grant -> patent", for example "Elektroda nasadkowa do zgrzewania oporowego": grant 2017, application 2022, patent 2025.
+- Add `db.delete_innovation()`, `db.all_innovations()` and `tests/test_linking.py`.
+- Issue #13 is complete.
+
 ## 2026-11-22, MikolajRowicki (branch 28-competitions, issue #10)
 
 - Add `src/sources/competitions.py`: one card for each awarded or distinguished project of the competition "Innowacyjny Samorząd" (Serwis Samorządowy PAP, pages on wartowiedziec.pl).

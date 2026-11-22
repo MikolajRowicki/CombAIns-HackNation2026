@@ -103,3 +103,12 @@ def set_source_status(conn: sqlite3.Connection, status: SourceStatus) -> None:
 def list_sources(conn: sqlite3.Connection) -> list[SourceStatus]:
     rows = conn.execute("SELECT name, records, last_check, error FROM sources ORDER BY name").fetchall()
     return [SourceStatus(**dict(row)) for row in rows]
+
+
+def delete_innovation(conn: sqlite3.Connection, innovation_id: str) -> None:
+    for table in ("innovations", "innovations_fts", "innovations_vec"):
+        conn.execute(f"DELETE FROM {table} WHERE id = ?", (innovation_id,))
+
+
+def all_innovations(conn: sqlite3.Connection) -> list[Innovation]:
+    return [Innovation.model_validate(json.loads(r["data"])) for r in conn.execute("SELECT data FROM innovations ORDER BY id")]

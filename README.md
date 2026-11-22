@@ -80,6 +80,7 @@ Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, na
 - **Wyszukiwarka z rekomendacjami.** Wyniki są sortowane według trafności (70%) i potencjału (30%). Wyszukiwanie hybrydowe łączy pełnotekstowe (BM25) i semantyczne (embeddingi).
 - **Filtry:** grupa użytkowników, obszar, województwo, minimalny poziom wdrożenia. Widok startowy to województwo podkarpackie, a wyszukiwanie obejmuje całą Polskę.
 - **Karta innowacji:** opis, obszar i typ, instytucja i region, status wdrożenia, TRL (jeśli dotyczy), ocena z przedziałem i pewnością, każde kryterium z wagą, źródła z datami i licencjami, oś czasu sygnałów, sygnały popytu, podobne innowacje.
+- **Łączenie źródeł:** po każdej aktualizacji radar łączy rekordy różnych źródeł o tej samej innowacji (ta sama instytucja i podobny tytuł). Karta dostaje wtedy wszystkie źródła i wspólną oś czasu, np. grant z 2017 r., zgłoszenie patentowe z 2022 r. i patent z 2025 r. Dwa niezależne źródła podnoszą wiarygodność (K5) do 4. Ten sam projekt w dwóch źródłach (np. RAD-on i lista FE) to jedna karta.
 - **Porównanie** 2–4 kart w tabeli kryteriów.
 - **Obserwowane zapytania:** zapisane wyszukiwanie pokazuje „Nowe od ostatniej wizyty”. Zapis odbywa się tylko w przeglądarce, bez logowania.
 - **Status źródeł:** aplikacja pokazuje, które źródło nie odpowiedziało i kiedy było ostatnio sprawdzone.
