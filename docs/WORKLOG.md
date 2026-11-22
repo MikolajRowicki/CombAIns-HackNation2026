@@ -2,6 +2,13 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 64-deck-old-look)
+
+- The team prefers the earlier look of the presentation (icon circles, source cards with icons, numbered points). The script starts again from the version of PR #57.
+- The content changes stay: no footer and no slide numbers; 3 498 cards from 16 voivodeships; the current similar e-offices; the contact of the university; one slide for the search and the card (10 slides); the team slide with photos.
+- The abbreviations (JST, TRL, BZP) are not explained on the slides again: the explanations were only for the team.
+- Slide 9 has the contact to institutions and the phone version; the anonymous analytics moved to the column for organizations.
+
 ## 2026-11-22, MikolajRowicki (branch 62-deck-cleanup)
 
 - Presentation: the same content with a simpler design.
