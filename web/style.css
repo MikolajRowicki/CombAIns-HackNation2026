@@ -228,3 +228,10 @@ body:has(.compare-bar:not([hidden])) { padding-bottom: 64px; }
   .compare-table tbody th { width: 110px; min-width: 110px; }
   .compare-table thead th { min-width: 170px; }
 }
+
+/* ---- Source status ---- */
+.sources-panel { margin: 0 0 48px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.sources-panel h2 { font-size: 1.05rem; margin: 0 0 6px; }
+.source-list { margin: 0; padding-left: 20px; font-size: 0.95rem; }
+.source-failed { color: var(--admin); }
+.source-error { font-weight: 600; }

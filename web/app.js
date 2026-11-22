@@ -80,32 +80,53 @@ async function loadConfig() {
   return { default_voivodeship: "", examples: [] };
 }
 
-// Use the API. If the API does not exist yet (404), use the sample data and filter it here.
 async function fetchResults(params) {
   const query = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) if (value) query.set(key, value);
   query.set("limit", "20");
   const response = await fetch(`api/search?${query}`);
-  if (response.ok) return { data: await response.json(), sample: false };
-  if (response.status !== 404) throw new Error(`API: HTTP ${response.status}`);
-
-  const sample = await fetch("sample/search.json");
-  if (!sample.ok) throw new Error("Brak API i brak danych przykładowych");
-  return { data: filterSample(await sample.json(), params), sample: true };
+  if (!response.ok) throw new Error(`API: HTTP ${response.status}`);
+  return { data: await response.json() };
 }
 
-function filterSample(data, params) {
-  const words = (params.q || "").toLowerCase().split(/\s+/).filter((w) => w.length > 2);
-  const results = (data.results || []).filter((r) => {
-    const text = `${r.title} ${val(r.summary) || ""}`.toLowerCase();
-    if (words.length && !words.some((w) => text.includes(w.slice(0, Math.max(4, w.length - 2))))) return false;
-    if (params.area && val(r.area) !== params.area) return false;
-    if (params.voivodeship && r.institution?.voivodeship !== params.voivodeship) return false;
-    if (params.level_min && (val(r.implementation_level) || 0) < Number(params.level_min)) return false;
-    return true;
-  });
-  results.sort((a, b) => (b.rank_score ?? b.potential ?? 0) - (a.rank_score ?? a.potential ?? 0));
-  return { total: results.length, results };
+// Status of each source: number of records, date of the last check and the last error (AGENTS.md, rules 11 and 14).
+async function renderSourceStatus() {
+  const list = $("source-list");
+  const warning = $("source-notice");
+  if (!list) return;
+  const warn = (text) => {
+    warning.textContent = text;
+    warning.hidden = false;
+  };
+  try {
+    const response = await fetch("api/sources");
+    if (!response.ok) throw new Error(`API: HTTP ${response.status}`);
+    const sources = await response.json();
+    if (!sources.length) {
+      warn("Baza danych jest jeszcze pusta: aktualizacja źródeł nie została uruchomiona.");
+      list.replaceChildren(el("li", { class: "missing" }, "Brak źródeł w bazie."));
+      return;
+    }
+    const failed = sources.filter((s) => s.error);
+    if (failed.length) {
+      warn(`Przy ostatniej aktualizacji nie odpowiedziały źródła: ${failed.map((s) => s.name).join(", ")}. Wyniki mogą być niepełne.`);
+    }
+    list.replaceChildren(
+      ...sources.map((s) =>
+        el(
+          "li",
+          { class: s.error ? "source-failed" : null },
+          el("strong", {}, s.name),
+          ` · ${s.records} ${pluralPl(s.records, "rekord", "rekordy", "rekordów")}`,
+          ` · sprawdzono: ${formatDate(s.last_check) || "nigdy"}`,
+          s.error && el("span", { class: "source-error" }, ` · błąd: ${s.error}`),
+        ),
+      ),
+    );
+  } catch (error) {
+    console.error(error);
+    list.replaceChildren(el("li", { class: "missing" }, "Nie udało się pobrać stanu źródeł."));
+  }
 }
 
 function renderPotential(result) {
@@ -202,7 +223,6 @@ function initSearch(config) {
   const form = $("search-form");
   const list = $("result-list");
   const status = $("status");
-  const notice = $("notice");
   const title = $("results-title");
   let voivodeshipTouched = false;
   let current = {};
@@ -316,18 +336,13 @@ function initSearch(config) {
     updateWatchButton();
     status.textContent = "Szukam…";
     list.replaceChildren();
-    notice.hidden = true;
     title.textContent = params.q
       ? `Wyniki dla „${params.q}”`
       : params.voivodeship
         ? `Innowacje: województwo ${params.voivodeship}`
         : "Innowacje w całej Polsce";
     try {
-      const { data, sample } = await fetchResults(params);
-      if (sample) {
-        notice.textContent = "Wyszukiwarka nie jest jeszcze połączona z bazą. Pokazuję dane przykładowe.";
-        notice.hidden = false;
-      }
+      const { data } = await fetchResults(params);
       const results = data.results || [];
       // For a saved query, mark the results that are new since the last visit, then remember them as seen.
       const watches = loadWatches();
@@ -360,13 +375,19 @@ function initSearch(config) {
   apply(initial);
   run(initial);
   renderWatchPanel();
+  renderSourceStatus();
+}
+
+// Polish plural: 1 innowacja, 2-4 innowacje, 5+ innowacji (12-14 take the last form).
+function pluralPl(n, one, few, many) {
+  if (n === 1) return one;
+  const last = n % 10;
+  const lastTwo = n % 100;
+  return last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14) ? few : many;
 }
 
 function plural(n) {
-  if (n === 1) return "innowację";
-  const last = n % 10;
-  const lastTwo = n % 100;
-  return last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14) ? "innowacje" : "innowacji";
+  return pluralPl(n, "innowację", "innowacje", "innowacji");
 }
 
 // ---- Innovation card ----
@@ -656,7 +677,7 @@ function renderCard(item, definitions) {
           ? [el("dt", {}, "Gdzie można zastosować"), el("dd", {}, item.application_areas.join(", "))]
           : [],
       ),
-      item.keywords?.length && el("p", { class: "keywords" }, item.keywords.map((k) => el("span", { class: "tag" }, k))),
+      item.keywords?.length > 0 && el("p", { class: "keywords" }, item.keywords.map((k) => el("span", { class: "tag" }, k))),
     ),
     renderAssessment(item, definitions),
     renderSources(item.sources),
@@ -671,25 +692,12 @@ function renderCard(item, definitions) {
   ];
 }
 
-// Use the API. If the API does not exist yet, use the sample card. A 404 from a running API means "not found".
+// A 404 means that the innovation is not in the database.
 async function fetchInnovation(id) {
   const response = await fetch(`api/innovations/${encodeURIComponent(id)}`);
-  if (response.ok) return { data: await response.json(), sample: false };
-  if (response.status !== 404) throw new Error(`API: HTTP ${response.status}`);
-  const probe = await fetch("api/sources");
-  if (probe.status !== 404) return { data: null, sample: false };
-  return { data: await sampleInnovation(id), sample: true };
-}
-
-// The sample has one full card. Other ids get the short record of the sample search results.
-async function sampleInnovation(id) {
-  const getJson = async (url) => {
-    const response = await fetch(url);
-    return response.ok ? response.json() : null;
-  };
-  const [full, search] = await Promise.all([getJson("sample/innovation.json"), getJson("sample/search.json")]);
-  if (full?.id === id) return full;
-  return [...(search?.results || []), ...(full?.similar || [])].find((r) => r.id === id) || null;
+  if (response.ok) return { data: await response.json() };
+  if (response.status === 404) return { data: null };
+  throw new Error(`API: HTTP ${response.status}`);
 }
 
 async function fetchCriteria() {
@@ -704,7 +712,6 @@ async function fetchCriteria() {
 
 async function initCard() {
   const card = $("card");
-  const notice = $("notice");
   const id = new URLSearchParams(location.search).get("id");
   if (document.referrer.startsWith(location.origin) && new URL(document.referrer).pathname.endsWith("/")) {
     $("back-link").href = document.referrer;
@@ -716,11 +723,12 @@ async function initCard() {
   if (!id) return show(el("p", { class: "missing" }, "Brak identyfikatora innowacji w adresie strony."));
 
   try {
-    const [{ data, sample }, definitions] = await Promise.all([fetchInnovation(id), fetchCriteria()]);
-    if (!data) return show(el("p", { class: "missing" }, "Nie znaleziono innowacji o tym identyfikatorze."));
-    if (sample) {
-      notice.textContent = "Baza nie jest jeszcze połączona. Pokazuję przykładową kartę.";
-      notice.hidden = false;
+    const [{ data }, definitions] = await Promise.all([fetchInnovation(id), fetchCriteria()]);
+    if (!data) {
+      return show(
+        el("p", { class: "missing" }, "Nie znaleziono innowacji o tym identyfikatorze. Mogła zostać usunięta przy aktualizacji bazy."),
+        el("p", {}, el("a", { href: "./" }, "Przejdź do wyszukiwania")),
+      );
     }
     document.title = `${data.title} · Radar innowacji`;
     show(renderCard(data, definitions));
@@ -942,7 +950,6 @@ function renderCompare(items, definitions, onRemove) {
 
 async function initCompare() {
   const box = $("compare");
-  const notice = $("notice");
   const fromUrl = new URLSearchParams(location.search).get("ids");
   let ids = fromUrl ? fromUrl.split(",").filter(Boolean).slice(0, COMPARE_MAX) : loadCompare();
   if (fromUrl) saveCompare(ids);
@@ -979,11 +986,6 @@ async function initCompare() {
     const [results, defs] = await Promise.all([Promise.all(ids.map((id) => fetchInnovation(id))), fetchCriteria()]);
     definitions = defs;
     loaded = results.map((r) => r.data).filter(Boolean);
-    if (results.some((r) => r.sample)) {
-      notice.textContent =
-        "Baza nie jest jeszcze połączona. Pokazuję dane przykładowe: tylko jedna karta ma pełną ocenę kryteriów.";
-      notice.hidden = false;
-    }
     render();
   } catch (error) {
     console.error(error);

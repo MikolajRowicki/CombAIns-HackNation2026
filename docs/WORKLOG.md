@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 21-connect-api, issue #12)
+
+- Connect the web page to the API of PR #34. Remove the sample data fallback from the search, the card and the comparison. The tests still use `web/sample/`.
+- Add the panel "Źródła danych" to the search page: the number of records and the date of the last check of each source (`GET /api/sources`).
+- If a source failed at the last update, the page shows a warning with the name of the source. If the database is empty, the page tells it.
+- The card tells the user when an id is not in the database (404).
+- Fix the "0" on the card of a record without keywords (found by MikolajRowicki in PR #34).
+- Check: headless Edge on the uvicorn server with the real database (Podkarpackie, 977 records): filters, card, 404, comparison, a failed source, an empty database, no console errors.
+
 ## 2026-11-22, MikolajRowicki (branch 20-pipeline-api, issues #9 and #11)
 
 - Add `src/pipeline.py`: `python -m src.pipeline update [--voivodeship X] [--source Y]`. It loads each source, writes the records and the full-text index and records the status of each source. A failed source does not stop the update.
