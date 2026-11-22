@@ -187,7 +187,7 @@ async function main() {
     x: 0.5, y: 4.95, w: 5.2, h: 0.25, fontSize: 9, color: C.accent6, margin: 0, isTextBox: true,
   });
   s.addNotes(
-    "Dane o innowacjach istnieją, ale są rozproszone. Lista projektów FE to 36,5 tys. wierszy w jednym pliku. RAD-on ma ponad 19 tys. patentów uczelni. " +
+    "Dane o innowacjach istnieją, ale są rozproszone. Lista projektów FE to 36,5 tys. wierszy w jednym pliku. RAD-on ma ponad 19 tys. patentów jednostek naukowych, czyli uczelni i instytutów. " +
       "Tylko około 10% inwestycji funduszy VC finansowanych ze środków UE ma komponent naukowy. Katalogi dobrych praktyk wymagają ręcznego zgłaszania.",
   );
 
@@ -228,7 +228,7 @@ async function main() {
   s.addNotes(
     "Radar sam odkrywa innowacje w ośmiu otwartych źródłach, porządkuje je w jeden schemat, klasyfikuje i ocenia. " +
       "Użytkownik niczego nie zgłasza i nie zakłada konta. Baza ma dziś 3 498 kart z 16 województw, w tym 1 625 z Podkarpacia. " +
-      "Indeks powstaje z wyprzedzeniem, więc wyszukiwanie trwa ułamek sekundy, a pełna aktualizacja kilka minut.",
+      "Indeks powstaje z wyprzedzeniem, więc wyszukiwanie trwa ułamek sekundy. Aktualizacja wszystkich źródeł trwa około 4 minut; pierwsza, bez pamięci podręcznej, około 20 minut.",
   );
 
   // ---- 4. Demo: from a need to the card ----
@@ -298,7 +298,7 @@ async function main() {
   s.addNotes(
     "Pięć kryteriów: poziom wdrożenia, dojrzałość technologiczna, innowacyjność, potencjał zastosowania i wiarygodność. Wagi to jawna propozycja zespołu w wersji v0.1. " +
       "Brak danych nie oznacza zera, więc pokazujemy przedział. Potencjał zastosowania liczymy z danych: opisu, kosztu, liczby sektorów i zamówień publicznych. " +
-      "Model językowy może proponować wartości, ale nigdy nie jest jedynym źródłem oceny.",
+      "Radar nie używa modelu językowego: każda wartość wynika z jawnej reguły albo wprost ze źródła, więc ten sam rekord zawsze dostaje tę samą ocenę.",
   );
 
   // ---- 7. Sources ----
@@ -375,7 +375,7 @@ async function main() {
   s.addNotes(
     "Dwa przypadki z prawdziwych danych. Gmina szuka e-usług: radar pokazuje e-urząd w Horyńcu-Zdroju, gminy z podobnym wdrożeniem i instytucje, które kupują podobne rozwiązania. " +
       "Rekomendowana ścieżka to replikacja w innej instytucji, z miernikami skuteczności. " +
-      "Drugi przypadek: technologia Politechniki Rzeszowskiej. Radar łączy projekt badawczy i patent w jedną kartę z osią czasu i proponuje transfer technologii.",
+      "Drugi przypadek: technologia Politechniki Rzeszowskiej. Radar łączy projekt badawczy i prawo ochronne na wzór użytkowy w jedną kartę z osią czasu, proponuje transfer technologii i podaje oficjalny kontakt do uczelni.",
   );
 
   // ---- 9. Decision tool and deployment ----
@@ -403,7 +403,7 @@ async function main() {
   for (const [i, [Icon, head, body]] of userFeatures.entries()) await iconRow(s, Icon, 0.5, 1.55 + i * 0.63, 4.4, head, body, C.accent1);
   for (const [i, [Icon, head, body]] of orgFeatures.entries()) await iconRow(s, Icon, 5.2, 1.55 + i * 0.63, 4.3, head, body, C.accent3);
   s.addNotes(
-    "Radar nie kończy się na liście: można porównać karty, obserwować wyszukiwania, skontaktować się z instytucją, wyeksportować dane do CSV i pobrać je przez API. " +
+    "Radar nie kończy się na liście: można porównać karty, obserwować wyszukiwania, skontaktować się z instytucją, wyeksportować dane do CSV i pobrać je przez API. Strona działa też na telefonie. " +
       "Region i źródła są w konfiguracji, a nie w kodzie, więc radar może działać w każdym województwie. Nie ma logowania ani danych osobowych. " +
       "Fundusze VC budują własne platformy danych do szukania projektów, np. EQT Motherbrain. PFR Ventures w programie Starter Science ocenia, czy fundusze umieją znaleźć projekty z nauki. Radar daje tę metodę PCI, samorządom i uczelniom.",
   );

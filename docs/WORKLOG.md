@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 66-speaker-notes)
+
+- Check of all speaker notes of the presentation against the slides and the application. Fixes:
+  - slide 5: the note said that a language model can propose values; the application uses no language model;
+  - slide 7: "patent" is a utility model (prawo ochronne na wzór użytkowy) in this case; add the contact of the university;
+  - slide 2: the 19 000 patents belong to science units (universities and institutes), not only to universities;
+  - slide 3: the real times of the update (about 4 minutes, the first one about 20 minutes);
+  - slide 8: add the phone version.
+
 ## 2026-11-22, MikolajRowicki (branch 64-deck-old-look)
 
 - The team prefers the earlier look of the presentation (icon circles, source cards with icons, numbered points). The script starts again from the version of PR #57.
