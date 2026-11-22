@@ -180,6 +180,32 @@ Przed pokazem zbuduj bazę (`src.pipeline update`). Potem aplikacja działa bez 
    - ścieżkę „Transfer technologii” z miernikami skuteczności.
 2. **Rozwiązanie z innej gminy dla urzędu.** Wybierz „Kim jesteś? → instytucje publiczne i samorządy” i wpisz „e-usługi w urzędzie”. Radar pokazuje wdrożone rozwiązania JST. Karta pokazuje ścieżkę „Replikacja w innej instytucji” z miernikami: liczba instytucji, które przejęły rozwiązanie, liczba użytkowników i efekt w nowym miejscu.
 
+### Film demonstracyjny
+
+Film (do 3 minut) pokazuje wszystkie etapy pracy radaru: źródła, wyszukiwanie, kartę e-urzędu z Horyńca-Zdroju, ocenę, zastosowanie, kartę technologii Politechniki Rzeszowskiej, porównanie, obserwowanie wyszukiwań i API. Pliku filmu nie ma w repozytorium, bo jest duży. Skrypty w `docs/video/` pozwalają nagrać go od nowa, na przykład po zmianach w interfejsie:
+
+1. Uruchom aplikację na `http://localhost:8000` z aktualną bazą.
+2. Wygeneruj lektora z tekstów w `docs/video/narration.json` (jeden plik na fragment). Film z 22.11.2026 ma głos ElevenLabs „Maciej – Clear, Engaging Explainer” i model `eleven_v4`. Zapisz pliki jako `data/cache/video/audio/s1.mp3` … `s9.mp3`.
+3. Przytnij ciszę i przyspiesz lektora o 10%:
+
+   ```bash
+   uv run --no-project --with imageio-ffmpeg python docs/video/audio.py 1.1
+   ```
+
+4. Nagraj przeglądarkę (Microsoft Edge bez okna). Każdy fragment nagrania trwa tyle, ile jego lektor:
+
+   ```bash
+   uv run --no-project --with playwright python docs/video/record.py
+   ```
+
+5. Złóż obraz i dźwięk w `data/cache/video/Radar_innowacji_demo.mp4`. Skrypt ostrzega, gdy film jest dłuższy niż 3 minuty:
+
+   ```bash
+   uv run --no-project --with imageio-ffmpeg python docs/video/build.py
+   ```
+
+Głos z darmowego planu ElevenLabs wolno użyć tylko niekomercyjnie, a tytuł opublikowanego filmu musi zawierać „elevenlabs.io”.
+
 ## Źródła danych
 
 Wszystkie źródła są bezpłatne i nie wymagają klucza API. Aplikacja zapisuje licencję każdego źródła oraz datę danych i datę pobrania. Aktualny stan źródeł zwraca `GET /api/sources`.
@@ -345,5 +371,8 @@ Wszystkie komponenty mają licencje zgodne z EUPL-1.2.
 | PptxGenJS, React, react-icons (tylko prezentacja) | generowanie slajdów `docs/presentation/` | MIT |
 | sharp (tylko prezentacja) | przetwarzanie zrzutów ekranu i ikon | Apache-2.0 |
 | Ikony Font Awesome Free (tylko prezentacja) | ikony na slajdach | CC BY 4.0 (© Fonticons, Inc.) |
+| Playwright (tylko film) | nagranie przeglądarki, `docs/video/` | Apache-2.0 |
+| imageio-ffmpeg z programem FFmpeg (tylko film) | obróbka dźwięku i złożenie filmu | BSD-2-Clause; FFmpeg: GPL (narzędzie uruchamiane lokalnie, nie jest częścią aplikacji) |
+| ElevenLabs (tylko film, narzędzie AI) | głos lektora (synteza mowy) | usługa; plan darmowy: tylko użytek niekomercyjny, tytuł filmu zawiera „elevenlabs.io” |
 
 Pełna lista pakietów z wersjami: `requirements.txt`.

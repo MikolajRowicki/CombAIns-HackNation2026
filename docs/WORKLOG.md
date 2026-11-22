@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 79-video-script)
+
+- Add `docs/video/`: the procedure that makes the demo video (3 minutes or less).
+  - `narration.json`: the Polish text of the narration in 9 segments.
+  - `audio.py`: trims the silence of each narration clip and applies one tempo.
+  - `record.py`: records the browser with Playwright. Each segment lasts as long as its narration clip.
+  - `build.py`: joins the frames and the narration into an MP4 file in `data/cache/video/`.
+- The video file is not in git. The frames go to the temporary folder of the system, because OneDrive makes the recording too slow.
+- README: add the section "Film demonstracyjny" and the licenses of Playwright, imageio-ffmpeg (FFmpeg) and ElevenLabs.
+
 ## 2026-11-22, FilipLangiewicz (branch 77-docker)
 
 - Add `Dockerfile` and `.dockerignore`: an image of the application for a server or for Google Cloud Run.
