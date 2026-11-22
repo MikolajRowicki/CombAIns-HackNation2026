@@ -18,6 +18,7 @@ from src.sources import (
     SourceData,
     bzp,
     competitions,
+    epo,
     fe_projects,
     interreg,
     kohesio,
@@ -33,6 +34,7 @@ SOURCES: dict[str, tuple[str, Callable[..., SourceData]]] = {
     "ncbr": (ncbr.NAME, lambda voivodeships: ncbr.load(voivodeships)),
     "interreg": (interreg.NAME, lambda voivodeships: interreg.load(voivodeships)),
     "kohesio": (kohesio.NAME, lambda voivodeships: kohesio.load(voivodeships)),
+    "epo": (epo.NAME, lambda voivodeships: epo.load(voivodeships)),
 }
 
 

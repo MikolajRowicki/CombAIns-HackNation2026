@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 40-more-sources, more sources)
+
+- Add `src/sources/epo.py`: European patents (B1) of applicants with an address in Poland, last 5 years, from the EPO Linked Open Data SPARQL endpoint (CC BY 4.0, no key, `robots.txt` allows `/linked-data/query`). 1164 cards in 13 s.
+  - The data has no city, so the card has no voivodeship. The title is the English one; the keywords come from the IPC section in Polish.
+  - Only clear institutions: a legal form of a company, a university or an institution word. Natural persons ("KOWALSKI, Jan") and sole traders with a first name ("Stalpa Stanislaw ...", often without Polish letters) go out.
+  - Implementation level 2 and TRL 4 as estimates, as for the RAD-on patents; novelty 4 (a European patent).
+- Not used: Erasmus+ project results (HTTP 403 for automatic requests).
+- Add `tests/test_epo.py`.
+
 ## 2026-11-22, MikolajRowicki (branch 38-review-fixes, review against the criteria of the jury)
 
 - The review compared `README.md`, the presentation and the code. Fixes:

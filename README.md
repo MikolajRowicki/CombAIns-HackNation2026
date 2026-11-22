@@ -152,12 +152,17 @@ Wszystkie źródła są bezpłatne i nie wymagają klucza API. Aplikacja zapisuj
 | NCBR, „Wyszukiwarka sukcesów beneficjentów” | ok. 310 zakończonych projektów z opisem problemu i odbiorców | HTML (lista i strony projektów), `robots.txt` zezwala | niepodana; zapisujemy opis z linkiem | technologiczny, edukacyjny |
 | Interreg 2021–2027 zarządzane przez Polskę (dane.gov.pl, zbiór 15971) | ok. 100 projektów transgranicznych z rozwiązaniem (system, platforma, metoda) | XLSX | CC0 1.0 | technologiczny, administracyjny |
 | Kohesio (Komisja Europejska) | zakończone projekty UE 2014–2020 w Polsce: e-usługi, systemy, pracownie, aplikacje | JSON API bez klucza (nieudokumentowane) | brak podanej licencji; zasady ponownego wykorzystania treści KE (decyzja 2011/833/UE), założenie | wszystkie |
+| EPO Linked Open Data (Europejski Urząd Patentowy) | ok. 1160 patentów europejskich udzielonych polskim firmom, uczelniom i instytutom w ostatnich 5 latach | SPARQL bez klucza (`robots.txt` zezwala) | CC BY 4.0 | technologiczny |
 
 Lista projektów FE: aktualizacja pobiera najnowszy miesięczny plik XLSX ze zbioru 13939 na dane.gov.pl do `data/cache/`. Gdy API nie odpowiada, wystarczy pobrać plik ręcznie i zapisać go jako `data/cache/fe_<id zasobu>.xlsx`. Radar zostawia projekty z sygnałem innowacji: kategoria wsparcia B+R, innowacji lub TIK albo słowo „innowac”, „e-usług” itp. w tytule. Nazwy beneficjentów, którzy są osobami fizycznymi lub przedsiębiorcami indywidualnymi, są ukryte. Opisy pochodzą z wniosków, dlatego poziom wdrożenia wynika z dat projektu.
 
 NCBR: radar czyta listę sukcesów i strony projektów. Z każdej strony bierze tylko sekcje „Jaki problem rozwiązuje nasz projekt?” i „Kto korzysta/skorzysta z wyników projektu?”. Nie bierze sekcji o zespole. Beneficjentów, którzy są osobami fizycznymi, radar pomija, a zdania z tytułami naukowymi i nazwiskami usuwa. Lista jest mała i ogólnopolska, dlatego radar wczytuje ją w całości, także przy filtrze województwa. Pierwsze pobranie trwa ok. 8 minut (przerwa 1,5 s między stronami), kolejne korzystają z pamięci podręcznej przez 7 dni.
 
 Kohesio: radar szuka kilku polskich fraz („innowacyjny”, „e-usługi”, „wdrożenie systemu”, „pracownia”, „aplikacja”) i bierze tylko projekty zakończone. Zakończony projekt z lat 2014–2020 to rozwiązanie, które już istnieje, np. e-Zamówienia albo e-Doręczenia. API nie ma dokumentacji, dlatego radar zapisuje odpowiedzi w pamięci podręcznej i przy błędzie korzysta z pozostałych źródeł.
+
+EPO: radar pobiera patenty europejskie (B1) zgłaszających z adresem w Polsce. Dane nie podają miasta, dlatego karta nie ma województwa. Tytuły są po angielsku; polskie słowa kluczowe pochodzą z sekcji klasyfikacji IPC (np. „elektrotechnika, energetyka, elektronika”), więc karty znajdzie też polskie zapytanie. Radar bierze tylko zgłaszających, którzy są wyraźnie instytucjami (forma prawna spółki, uczelnia, instytut, centrum itp.). Osoby fizyczne i firmy jednoosobowe z imieniem i nazwiskiem pomija.
+
+Erasmus+ (platforma wyników projektów) odpowiada kodem 403 na zapytania automatyczne, dlatego radar jej nie używa.
 
 CORDIS (projekty programu Horyzont Europa, wskazane w FAQ) radar na razie pomija: plik `robots.txt` serwisu cordis.europa.eu zabrania automatycznego pobierania katalogu `/data/` z plikami zbiorczymi. Po hackathonie plik można pobierać ręcznie albo przez data.europa.eu.
 
@@ -231,7 +236,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 
 - **Brak danych instytucji w kodzie.** Region startowy, lista stron do crawlera i partnerzy są w konfiguracji i w bazie, nie w kodzie. Inne centrum innowacji uruchamia radar dla swojego regionu bez zmian w kodzie.
 - **Jedno źródło to jeden moduł.** Nowe źródło dodaje się jako moduł w `src/sources/` z jedną funkcją, która zwraca rekordy i metadane: źródło, datę danych, datę pobrania i licencję.
-- **Cała Polska od początku.** Wszystkie źródła (FE 2021–2027, RAD-on, BZP, NCBR, Interreg, Kohesio, „Innowacyjny Samorząd”) są ogólnopolskie.
+- **Cała Polska od początku.** Wszystkie źródła (FE 2021–2027, RAD-on, BZP, NCBR, Interreg, Kohesio, EPO, „Innowacyjny Samorząd”) są ogólnopolskie.
 - **Lekka infrastruktura.** Jedna baza SQLite z FTS5 i sqlite-vec, serwer FastAPI. Aplikacja działa na zwykłym serwerze lub laptopie, bez GPU i bez płatnych usług. Ciężkie obliczenia (embeddingi dużych zbiorów) mogą być wykonywane z wyprzedzeniem w osobnym zadaniu.
 - **Wersjonowane kryteria.** Organizacja może skalibrować wagi. Każda ocena zapisuje wersję kryteriów, więc wyniki różnych wersji da się porównać.
 
@@ -260,7 +265,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 ## Rozwój po hackathonie
 
 1. Kalibracja wag i skal z mentorami i analitykami PCI.
-2. Kolejne źródła: CORDIS (plik pobierany ręcznie lub przez data.europa.eu, bo `robots.txt` blokuje automat), lista wynalazków UPRP, OpenAlex, EPO, kolejne edycje konkursów, ogólny crawler stron szkół i JST z listy podmiotów BIP.
+2. Kolejne źródła: CORDIS (plik pobierany ręcznie lub przez data.europa.eu, bo `robots.txt` blokuje automat), lista wynalazków UPRP, OpenAlex, opisy patentów EPO, kolejne edycje konkursów, ogólny crawler stron szkół i JST z listy podmiotów BIP.
 3. Wyszukiwanie semantyczne: embeddingi `sdadas/mmlw-roberta-base` (Apache-2.0) liczone z wyprzedzeniem.
 4. Klasyfikacja i streszczenia przez otwarty model językowy (np. Bielik, Apache-2.0), wykonywane z wyprzedzeniem i oznaczone jako „przybliżone”.
 5. Panel analityka PCI: potwierdzanie lub korekta wartości z zapisem powodu.
