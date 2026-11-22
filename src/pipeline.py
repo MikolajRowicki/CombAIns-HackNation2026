@@ -20,6 +20,7 @@ from src.sources import (
     competitions,
     fe_projects,
     interreg,
+    kohesio,
     ncbr,
     radon,
 )
@@ -31,6 +32,7 @@ SOURCES: dict[str, tuple[str, Callable[..., SourceData]]] = {
     "competitions": (competitions.NAME, lambda voivodeships: competitions.load(voivodeships)),
     "ncbr": (ncbr.NAME, lambda voivodeships: ncbr.load(voivodeships)),
     "interreg": (interreg.NAME, lambda voivodeships: interreg.load(voivodeships)),
+    "kohesio": (kohesio.NAME, lambda voivodeships: kohesio.load(voivodeships)),
 }
 
 
@@ -38,6 +40,13 @@ def store(conn: sqlite3.Connection, data: SourceData) -> None:
     for record in data.records:
         db.upsert_innovation(conn, record)
         search.index(conn, record)
+    # A record that the source does not give any more (for example after a change of a filter) goes out.
+    # If the source gave no records (an error), the old records stay.
+    if data.records:
+        new = {r.id for r in data.records}
+        for record in db.all_innovations(conn):
+            if record.sources[0].name == data.name and record.id not in new:
+                db.delete_innovation(conn, record.id)
     db.set_source_status(
         conn,
         SourceStatus(

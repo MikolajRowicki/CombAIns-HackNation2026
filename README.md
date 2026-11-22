@@ -147,10 +147,15 @@ Wszystkie źródła są bezpłatne i nie wymagają klucza API. Aplikacja zapisuj
 | Wyniki konkursu „Innowacyjny Samorząd” (Serwis Samorządowy PAP, strony wartowiedziec.pl) | laureaci i wyróżnieni: wdrożone projekty JST z całej Polski | HTML, `robots.txt` (Crawl-delay 60 s) | prawa wydawcy; zapisujemy krótki cytat i link | administracyjny |
 | NCBR, „Wyszukiwarka sukcesów beneficjentów” | ok. 310 zakończonych projektów z opisem problemu i odbiorców | HTML (lista i strony projektów), `robots.txt` zezwala | niepodana; zapisujemy opis z linkiem | technologiczny, edukacyjny |
 | Interreg 2021–2027 zarządzane przez Polskę (dane.gov.pl, zbiór 15971) | ok. 100 projektów transgranicznych z rozwiązaniem (system, platforma, metoda) | XLSX | CC0 1.0 | technologiczny, administracyjny |
+| Kohesio (Komisja Europejska) | zakończone projekty UE 2014–2020 w Polsce: e-usługi, systemy, pracownie, aplikacje | JSON API bez klucza (nieudokumentowane) | brak podanej licencji; zasady ponownego wykorzystania treści KE (decyzja 2011/833/UE), założenie | wszystkie |
 
 Lista projektów FE: aktualizacja pobiera najnowszy miesięczny plik XLSX ze zbioru 13939 na dane.gov.pl do `data/cache/`. Gdy API nie odpowiada, wystarczy pobrać plik ręcznie i zapisać go jako `data/cache/fe_<id zasobu>.xlsx`. Radar zostawia projekty z sygnałem innowacji: kategoria wsparcia B+R, innowacji lub TIK albo słowo „innowac”, „e-usług” itp. w tytule. Nazwy beneficjentów, którzy są osobami fizycznymi lub przedsiębiorcami indywidualnymi, są ukryte. Opisy pochodzą z wniosków, dlatego poziom wdrożenia wynika z dat projektu.
 
 NCBR: radar czyta listę sukcesów i strony projektów. Z każdej strony bierze tylko sekcje „Jaki problem rozwiązuje nasz projekt?” i „Kto korzysta/skorzysta z wyników projektu?”. Nie bierze sekcji o zespole. Beneficjentów, którzy są osobami fizycznymi, radar pomija, a zdania z tytułami naukowymi i nazwiskami usuwa. Lista jest mała i ogólnopolska, dlatego radar wczytuje ją w całości, także przy filtrze województwa. Pierwsze pobranie trwa ok. 8 minut (przerwa 1,5 s między stronami), kolejne korzystają z pamięci podręcznej przez 7 dni.
+
+Kohesio: radar szuka kilku polskich fraz („innowacyjny”, „e-usługi”, „wdrożenie systemu”, „pracownia”, „aplikacja”) i bierze tylko projekty zakończone. Zakończony projekt z lat 2014–2020 to rozwiązanie, które już istnieje, np. e-Zamówienia albo e-Doręczenia. API nie ma dokumentacji, dlatego radar zapisuje odpowiedzi w pamięci podręcznej i przy błędzie korzysta z pozostałych źródeł.
+
+CORDIS (projekty programu Horyzont Europa, wskazane w FAQ) radar na razie pomija: plik `robots.txt` serwisu cordis.europa.eu zabrania automatycznego pobierania katalogu `/data/` z plikami zbiorczymi. Po hackathonie plik można pobierać ręcznie albo przez data.europa.eu.
 
 Interreg: plik ma te same pola co lista FE, dlatego radar stosuje te same reguły obszaru, poziomu wdrożenia i ukrywania osób fizycznych. Partner wiodący może być za granicą; wtedy karta nie ma województwa.
 

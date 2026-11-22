@@ -2,6 +2,18 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 36-kohesio, new source)
+
+- Add `src/sources/kohesio.py`: finished EU projects of 2014-2020 in Poland from the Kohesio API (no key, no documentation).
+  - Search: 5 Polish phrases, 50 projects each. Details: `/api/projects/project?id=...` through `PageFetcher` (cache, pause).
+  - Only finished projects. The mapping uses `fe_projects.row_to_innovation()`; the area uses the categories of 2014-2020 (078-080 e-administration, 049-052 and 115-118 education).
+  - The voivodeship comes from the name of the regional programme. National programmes have no voivodeship.
+  - Licence: none stated; the card writes the reuse policy of the Commission (Decision 2011/833/EU) as an assumption.
+- Not used: CORDIS. `robots.txt` of cordis.europa.eu forbids `/data/`, the folder of the bulk files.
+- Kohesio uses the innovation filter of the FE list (or the categories 078-080): construction or equipment only goes out. Result: 56 cards (12 in Podkarpackie, the others national).
+- `pipeline.store()` now deletes the records of a source that the source does not give any more. If the source gives no records (an error), the old records stay.
+- Add `tests/test_kohesio.py`.
+
 ## 2026-11-22, MikolajRowicki (branch 34-ncbr, new sources)
 
 - Add `src/sources/ncbr.py`: the NCBR list "Wyszukiwarka sukcesów beneficjentów" (316 projects) and the page of each project. The card takes only the sections about the problem and the users. 312 cards, all of Poland (178 technological, 103 educational).
