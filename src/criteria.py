@@ -150,7 +150,7 @@ def _round(x: float) -> int:
 
 
 def _read(cid: str, field) -> tuple:
-    """Return (value, kind) of one criterion. The value None means unknown (for TRL: not applicable)."""
+    """Return (value, kind) of one criterion. The value None means unknown."""
     if field is None:
         return None, None
     value = field.get("value")
@@ -174,10 +174,11 @@ def assess(record: dict) -> dict:
 
     The record has the keys implementation_level, trl, novelty, application_potential and credibility.
     Each value is {"value": number or None, "kind": "fact" | "estimate"} or None.
+    A null value means unknown. For TRL, a null field (or no key) means "nie dotyczy" (contract of PR #24).
     Other keys are ignored. Thus a full Innovation record is also a correct input.
     """
     read = {cid: _read(cid, record.get(c["field"])) for cid, c in CRITERIA.items()}
-    trl_applies = read["K2"][0] is not None
+    trl_applies = record.get("trl") is not None
     base_total = sum(c["weight"] for cid, c in CRITERIA.items() if cid != "K2" or trl_applies)
 
     criteria = {}

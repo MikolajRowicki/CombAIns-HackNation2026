@@ -2,6 +2,13 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 03:40, MaciejMomot (branch 13-trl-missing)
+
+- Accept the contract changes of PR #24. Change the TRL rule to the contract: `trl: null` means "nie dotyczy", and `trl.value: null` means that the data is missing.
+- `src/criteria.py`: K2 does not apply only if the field `trl` is null. A missing TRL value now widens the range, as the other criteria do.
+- `web/app.js`: the card shows "nie dotyczy" only for `trl: null`. For a null `trl.value`, it shows "brak danych".
+- Add a test for a missing TRL value. No sample record has a null `trl.value`, so the sample assessments do not change.
+
 ## 2026-11-22 03:20, MaciejMomot (branch 11-watchlists, issue #14)
 
 - Add watchlists to the search page: the button "Obserwuj to wyszukiwanie" saves the query and the filters.

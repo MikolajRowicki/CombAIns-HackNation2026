@@ -617,7 +617,6 @@ function renderSimilar(similar) {
 function renderCard(item, definitions) {
   const area = val(item.area);
   const level = val(item.implementation_level);
-  const trl = val(item.trl);
   const inst = item.institution || {};
   const region = [inst.city, inst.voivodeship].filter(Boolean).join(", ");
 
@@ -647,8 +646,8 @@ function renderCard(item, definitions) {
         ),
         fact("Region", region ? { value: region } : null),
         fact("Status wdrożenia", item.implementation_level, (v) => `${v}/5 · ${LEVELS[v] || ""}`),
-        // The contract uses null TRL for "nie dotyczy" (a non-technological innovation).
-        fact("Gotowość technologiczna", trl === null || trl === undefined ? { value: "nie dotyczy" } : item.trl, (v) =>
+        // Contract (PR #24): a null trl means "nie dotyczy"; a null trl.value means that the data is missing.
+        fact("Gotowość technologiczna", item.trl === null || item.trl === undefined ? { value: "nie dotyczy" } : item.trl, (v) =>
           typeof v === "number" ? `TRL ${v}/9` : v,
         ),
         item.application_areas?.length

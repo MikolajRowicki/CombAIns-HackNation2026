@@ -77,7 +77,7 @@ def test_unknown_values_give_a_range():
     a = assess(
         {
             "implementation_level": fv(5),
-            "trl": fv(None, "estimate"),
+            "trl": None,
             "novelty": None,
             "application_potential": fv(None),
             "credibility": fv(3, "estimate"),
@@ -90,6 +90,25 @@ def test_unknown_values_give_a_range():
     assert a["potential"] == 87
     assert a["fact_share"] == 35
     assert a["confidence"] == "low"
+
+
+def test_trl_applies_but_value_is_missing():
+    a = assess(
+        {
+            "implementation_level": fv(5),
+            "trl": fv(None, "estimate"),
+            "novelty": fv(3),
+            "application_potential": fv(4),
+            "credibility": fv(5),
+        }
+    )
+    assert a["criteria"]["K2"]["applicable"] is True
+    assert a["criteria"]["K2"]["weight"] == 15.0
+    assert a["missing"] == ["K2"]
+    # Known: 30 + 12 + 16 + 15 = 73 points. Unknown weight: 15.
+    assert (a["low"], a["high"]) == (73, 88)
+    assert a["potential"] == 86
+    assert a["confidence"] == "high"
 
 
 def test_no_data():
