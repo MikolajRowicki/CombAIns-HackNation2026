@@ -1,0 +1,11 @@
+# Direct dependencies of the application. Make the lock with uv (see AGENTS.md).
+fastapi
+uvicorn
+httpx
+pydantic
+openpyxl
+beautifulsoup4
+trafilatura>=1.8
+protego
+sqlite-vec
+simplemma

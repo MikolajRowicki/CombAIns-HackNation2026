@@ -2,7 +2,7 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
-## 2026-11-22 01:10, MaciejMomot (branch 03-criteria-module, issue #4)
+## 2026-11-22 01:15, MaciejMomot (branch 03-criteria-module, issue #4)
 
 - Add `src/criteria.py`: the criteria K1-K5 with Polish names, scales, weights and references (`CRITERIA`), and the function `assess()`.
 - `assess()` gives `potential`, `low`, `high`, `confidence`, `fact_share`, `criteria_version`, `criteria` and `missing`.
@@ -13,6 +13,14 @@ Add an entry after each step of work. Give the date, the time, the person and th
   - Each entry of `criteria` has `value`, `score` (0-5), `weight` (after the change of weights), `points`, `kind` and `applicable`. This adds fields to the contract of issue #3.
 - Add `estimate_implementation_level(text)` and `estimate_novelty(text)`: rules with Polish keywords, without AI. A plan ("zostanie wdrożony") counts as a concept. The evidence is always an exact part of the text.
 - Add `tests/test_criteria.py` (41 tests).
+
+## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
+
+- Add the application skeleton: `src/app.py` (FastAPI, `GET /api/health`, static files from `web/`), `web/index.html`, `tests/test_app.py`.
+- Add `requirements.in`, `requirements-dev.in` and the lock `requirements.txt`. PyTorch and sentence-transformers come later with the search (issue #9).
+- Decisions: the web page is static HTML and JS that calls the JSON API (no Jinja2). The start command is `uv run --no-project uvicorn src.app:app --reload`.
+- Check: sqlite-vec 0.1.9 and FTS5 load on Python 3.13 (Windows). All licenses are permissive, except certifi (MPL-2.0, a transitive dependency of httpx, used without change).
+- Add `README.md` with the start procedure and the license table.
 
 ## 2026-11-22 00:40, MikolajRowicki (branch 02-web-sources)
 
