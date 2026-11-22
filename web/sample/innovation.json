@@ -1,0 +1,309 @@
+{
+  "id": "radon-241314",
+  "title": "Układ do symulacji intruzów w ruchu powietrznym i sposób badania wizyjnych układów antykolizyjnych",
+  "summary": {
+    "value": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko …",
+    "kind": "fact",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko",
+    "reason": null
+  },
+  "description": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko pilota (C) znajduje się poza ekranem sferycznym. Wynalazek dotyczy również sposobu badania wizyjnych układów antykolizyjnych.",
+  "area": {
+    "value": "technological",
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+  },
+  "type": {
+    "value": "wynalazek: układ i metoda badawcza",
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+  },
+  "institution": {
+    "name": "Politechnika Rzeszowska im. Ignacego Łukasiewicza",
+    "kind": "university",
+    "city": "Rzeszów",
+    "voivodeship": "podkarpackie"
+  },
+  "implementation_level": {
+    "value": 2,
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+  },
+  "trl": {
+    "value": 4,
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Układ symulacji służy do badań systemów wizyjnych w warunkach laboratoryjnych (TRL 4)."
+  },
+  "novelty": {
+    "value": 3,
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+  },
+  "application_potential": {
+    "value": 3,
+    "kind": "estimate",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": "Zastosowanie w badaniach systemów antykolizyjnych dronów i statków powietrznych; branża lotnicza regionu."
+  },
+  "credibility": {
+    "value": 3,
+    "kind": "fact",
+    "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+    "evidence": null,
+    "reason": null
+  },
+  "assessment": {
+    "potential": 51,
+    "low": 51,
+    "high": 51,
+    "confidence": "low",
+    "criteria_version": "v0.1",
+    "criteria": {
+      "K1": {
+        "value": 2,
+        "weight": 30.0,
+        "kind": "estimate"
+      },
+      "K2": {
+        "value": 2,
+        "weight": 15.0,
+        "kind": "estimate"
+      },
+      "K3": {
+        "value": 3,
+        "weight": 20.0,
+        "kind": "estimate"
+      },
+      "K4": {
+        "value": 3,
+        "weight": 20.0,
+        "kind": "estimate"
+      },
+      "K5": {
+        "value": 3,
+        "weight": 15.0,
+        "kind": "fact"
+      }
+    }
+  },
+  "sources": [
+    {
+      "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+      "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "data_date": "2025-11-07",
+      "retrieved": "2026-11-22",
+      "license": "CC0 1.0"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2019-08-05",
+      "event": "patent",
+      "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 430792)",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66"
+    },
+    {
+      "date": "2022-09-05",
+      "event": "patent",
+      "label": "Patent na wynalazek nr 241314",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66"
+    }
+  ],
+  "demand": [],
+  "keywords": [
+    "lotnictwo",
+    "drony",
+    "systemy antykolizyjne",
+    "symulacja",
+    "systemy wizyjne"
+  ],
+  "similar": [
+    {
+      "id": "ncbr-safedam",
+      "title": "SAFEDAM – monitoring wałów przeciwpowodziowych z użyciem dronów i danych satelitarnych",
+      "summary": {
+        "value": "Nasz system dokonuje rewolucji nie tylko w monitoringu wałów, ale także w koordynacji akcji ratunkowych, gdyby doszło do powodzi.",
+        "kind": "fact",
+        "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+        "evidence": "Nasz system dokonuje rewolucji nie tylko w monitoringu wałów, ale także w koordynacji akcji ratunkowych, gdyby doszło do powodzi.",
+        "reason": null
+      },
+      "area": {
+        "value": "technological",
+        "kind": "estimate",
+        "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+        "evidence": null,
+        "reason": "System IT z dronami, skanerem laserowym i danymi satelitarnymi."
+      },
+      "institution": {
+        "name": "Politechnika Warszawska (lider konsorcjum)",
+        "kind": "university",
+        "city": "Warszawa",
+        "voivodeship": "mazowieckie"
+      },
+      "implementation_level": {
+        "value": 3,
+        "kind": "fact",
+        "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+        "evidence": "Projekt SAFEDAM - ćwiczenia terenowe w powiecie sandomierskim",
+        "reason": null
+      },
+      "potential": 67,
+      "confidence": "medium",
+      "relevance": 1.0,
+      "rank_score": 0.901
+    },
+    {
+      "id": "insam7-regionalny-model-ruchu-podkarpackie",
+      "title": "Regionalny Model Ruchu dla Województwa Podkarpackiego",
+      "summary": {
+        "value": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Województwo Podkarpackie",
+        "kind": "jst",
+        "city": "Rzeszów",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+        "reason": null
+      },
+      "potential": 76,
+      "confidence": "medium",
+      "relevance": 0.6,
+      "rank_score": 0.648
+    },
+    {
+      "id": "radon-233431",
+      "title": "Układ do bezkontaktowego składania podpisu i weryfikacji jego autentyczności",
+      "summary": {
+        "value": "Sposób bezkontaktowego składania podpisu i weryfikacji jego autentyczności, polegający na wykonaniu podpisu przy pomocy imitacji pisadła i analizie sygnałów powstających podczas czynności składania podpisu charakteryzuje się tym, że na końcówce imitacji pisadła instaluje się emiter, korzystnie …",
+        "kind": "fact",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+        "evidence": "Sposób bezkontaktowego składania podpisu i weryfikacji jego autentyczności, polegający na wykonaniu podpisu przy pomocy imitacji pisadła i analizie sygnałów powstających podczas czynności składania podpisu charakteryzuje się tym, że na końcówce imitacji pisadła instaluje się emiter, korzystnie",
+        "reason": null
+      },
+      "area": {
+        "value": "technological",
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+        "evidence": null,
+        "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+      },
+      "institution": {
+        "name": "Politechnika Gdańska",
+        "kind": "university",
+        "city": "Gdańsk",
+        "voivodeship": "pomorskie"
+      },
+      "implementation_level": {
+        "value": 2,
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+        "evidence": null,
+        "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+      },
+      "potential": 51,
+      "confidence": "low",
+      "relevance": 0.6,
+      "rank_score": 0.573
+    },
+    {
+      "id": "radon-243356",
+      "title": "Wiata przystanku komunikacyjnego",
+      "summary": {
+        "value": "Przedmiotem wynalazku jest przystanek komunikacyjny z wiatą posiadającą ściany i zadaszenie, zlokalizowany przy zatoce przystankowej.",
+        "kind": "fact",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+        "evidence": "Przedmiotem wynalazku jest przystanek komunikacyjny z wiatą posiadającą ściany i zadaszenie, zlokalizowany przy zatoce przystankowej.",
+        "reason": null
+      },
+      "area": {
+        "value": "technological",
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+        "evidence": null,
+        "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+      },
+      "institution": {
+        "name": "Politechnika Lubelska",
+        "kind": "university",
+        "city": "Lublin",
+        "voivodeship": "lubelskie"
+      },
+      "implementation_level": {
+        "value": 2,
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+        "evidence": null,
+        "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+      },
+      "potential": 55,
+      "confidence": "low",
+      "relevance": 0.4,
+      "rank_score": 0.445
+    },
+    {
+      "id": "radon-246741",
+      "title": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej (RIRS)",
+      "summary": {
+        "value": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+        "kind": "fact",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+        "reason": null
+      },
+      "area": {
+        "value": "technological",
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": null,
+        "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+      },
+      "institution": {
+        "name": "Uniwersytet Rzeszowski",
+        "kind": "university",
+        "city": "Rzeszów",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 2,
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": null,
+        "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+      },
+      "potential": 51,
+      "confidence": "low",
+      "relevance": 0.4,
+      "rank_score": 0.433
+    }
+  ]
+}

@@ -2,6 +2,24 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 03:00, MikolajRowicki (branch 06-record-schema, issue #3)
+
+- Add `src/models.py`: the record schema (`Innovation`, `FieldValue`), the API responses and the Polish labels of all codes (`LABELS`).
+- Add `src/db.py`: SQLite schema with the tables `innovations` (JSON and filter columns), `innovations_fts` (FTS5), `innovations_vec` (sqlite-vec, cosine, 768 dimensions) and `sources`.
+- Add `tests/fixtures/sample_innovations.json`: 18 real records from RAD-on, NCBR, wartowiedziec.pl and polishscience.pl. The set has all three areas and 9 voivodeships. The records have no names of persons.
+- Add `web/sample/search.json`, `web/sample/innovation.json` and `web/sample/meta.json` for the web page.
+- Add `tests/test_models.py`. The test checks that each quote is a part of the source text.
+- Changes to the contract of the issue (Maciej must accept them):
+  - new endpoint `GET /api/meta`;
+  - full `FieldValue` in the search results;
+  - `trl: null` means "not applicable", and `trl.value: null` means "no data".
+- Findings:
+  - The BZP API blocked the second request ("Dostęp zablokowany"). Issue #13 must use a low request rate and a cache.
+  - The publication dates from trafilatura are not correct for gov.pl and wartowiedziec.pl. Thus `data_date` stays empty.
+  - No sample record has the confidence "high", because most criteria are estimates.
+  - Page text contains non-breaking spaces. The pipeline must normalize them before the quote check.
+- A script outside the repository made the sample records. The assessment uses the rules of `docs/project.md`, section 7. After issue #4, run the assessment again with `src/criteria.py`.
+
 ## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
 
 - Add the application skeleton: `src/app.py` (FastAPI, `GET /api/health`, static files from `web/`), `web/index.html`, `tests/test_app.py`.

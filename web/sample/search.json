@@ -1,0 +1,285 @@
+{
+  "total": 8,
+  "results": [
+    {
+      "id": "web-mobilny-urzednik-rzeszow",
+      "title": "Mobilny Urzędnik – obsługa spraw urzędowych w domu mieszkańca",
+      "summary": {
+        "value": "Mieszkańcy Rzeszowa, którzy nie mogą samodzielnie dotrzeć do Urzędu Miasta, mogą skorzystać z usługi „Mobilny Urzędnik”.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+        "evidence": "Mieszkańcy Rzeszowa, którzy nie mogą samodzielnie dotrzeć do Urzędu Miasta, mogą skorzystać z usługi „Mobilny Urzędnik”.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+        "evidence": null,
+        "reason": "Usługa urzędu miasta dla mieszkańców."
+      },
+      "institution": {
+        "name": "Gmina Miasto Rzeszów (Urząd Miasta Rzeszowa)",
+        "kind": "jst",
+        "city": "Rzeszów",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+        "evidence": "mogą skorzystać z usługi „Mobilny Urzędnik”",
+        "reason": null
+      },
+      "potential": 71,
+      "confidence": "medium",
+      "relevance": 1.0,
+      "rank_score": 0.913
+    },
+    {
+      "id": "insam7-zawoja-wirtualny-urzednik",
+      "title": "Wirtualny Urzędnik – chatbot dla mieszkańców i asystent dla pracowników urzędu",
+      "summary": {
+        "value": "Trzecie miejsce otrzymała Zawoja za projekt „Wirtualny Urzędnik”. Gmina wdrożyła system oparty na sztucznej inteligencji obejmujący chatbot publiczny 24/7 dla mieszkańców oraz asystenta wewnętrznego dla pracowników urzędu.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Trzecie miejsce otrzymała Zawoja za projekt „Wirtualny Urzędnik”. Gmina wdrożyła system oparty na sztucznej inteligencji obejmujący chatbot publiczny 24/7 dla mieszkańców oraz asystenta wewnętrznego dla pracowników urzędu.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Gmina Zawoja",
+        "kind": "jst",
+        "city": "Zawoja",
+        "voivodeship": "małopolskie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Gmina wdrożyła system oparty na sztucznej inteligencji",
+        "reason": null
+      },
+      "potential": 81,
+      "confidence": "medium",
+      "relevance": 0.8,
+      "rank_score": 0.803
+    },
+    {
+      "id": "insam7-ciechanowiec-teleopieka",
+      "title": "Program teleopieki domowej dla seniorów i osób z niepełnosprawnościami",
+      "summary": {
+        "value": "Drugie miejsce otrzymał Ciechanowiec za „Program teleopieki domowej – innowacyjny system wsparcia seniorów i osób z niepełnosprawnościami”.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Drugie miejsce otrzymał Ciechanowiec za „Program teleopieki domowej – innowacyjny system wsparcia seniorów i osób z niepełnosprawnościami”.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Gmina Ciechanowiec",
+        "kind": "jst",
+        "city": "Ciechanowiec",
+        "voivodeship": "podlaskie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+        "reason": null
+      },
+      "potential": 81,
+      "confidence": "medium",
+      "relevance": 0.6,
+      "rank_score": 0.663
+    },
+    {
+      "id": "insam7-ostrowiecki-egib-ai",
+      "title": "Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji",
+      "summary": {
+        "value": "Wśród powiatów pierwsze miejsce otrzymał powiat ostrowiecki za projekt „Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji”. Projekt pozwala na usprawnienie procesu aktualizacji ewidencji gruntów i budynków (EGiB) poprzez wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych – od momentu ich wpływu, przez skanowanie ekstrakcję i walidację danych, aż po przygotowanie propozycji zmiany zatwierdzanej przez upoważnionego operatora.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Wśród powiatów pierwsze miejsce otrzymał powiat ostrowiecki za projekt „Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji”. Projekt pozwala na usprawnienie procesu aktualizacji ewidencji gruntów i budynków (EGiB) poprzez wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych – od momentu ich wpływu, przez skanowanie ekstrakcję i walidację danych, aż po przygotowanie propozycji zmiany zatwierdzanej przez upoważnionego operatora.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Powiat Ostrowiecki",
+        "kind": "jst",
+        "city": "Ostrowiec Świętokrzyski",
+        "voivodeship": "świętokrzyskie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych",
+        "reason": null
+      },
+      "potential": 91,
+      "confidence": "medium",
+      "relevance": 0.4,
+      "rank_score": 0.553
+    },
+    {
+      "id": "insam7-janikowo-cyfrowy-audytor",
+      "title": "Cyfrowy Audytor Prawa Miejscowego – przegląd aktów prawa miejscowego z użyciem AI",
+      "summary": {
+        "value": "W kategorii gmin miejsko-wiejskich zwyciężył projekt „Cyfrowy Audytor Prawa Miejscowego -systemowy przegląd aktów prawa miejscowego Gminy Janikowo z wykorzystaniem zaawansowanej sztucznej inteligencji”.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "W kategorii gmin miejsko-wiejskich zwyciężył projekt „Cyfrowy Audytor Prawa Miejscowego -systemowy przegląd aktów prawa miejscowego Gminy Janikowo z wykorzystaniem zaawansowanej sztucznej inteligencji”.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Gmina Janikowo",
+        "kind": "jst",
+        "city": "Janikowo",
+        "voivodeship": "kujawsko-pomorskie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+        "reason": null
+      },
+      "potential": 91,
+      "confidence": "medium",
+      "relevance": 0.4,
+      "rank_score": 0.553
+    },
+    {
+      "id": "insam7-regionalny-model-ruchu-podkarpackie",
+      "title": "Regionalny Model Ruchu dla Województwa Podkarpackiego",
+      "summary": {
+        "value": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+        "reason": null
+      },
+      "area": {
+        "value": "administrative",
+        "kind": "estimate",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": null,
+        "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+      },
+      "institution": {
+        "name": "Województwo Podkarpackie",
+        "kind": "jst",
+        "city": "Rzeszów",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+        "reason": null
+      },
+      "potential": 76,
+      "confidence": "medium",
+      "relevance": 0.4,
+      "rank_score": 0.508
+    },
+    {
+      "id": "ncbr-uczelnia-bez-barier-krosno",
+      "title": "Uczelnia bez barier – dostępność uczelni dla osób z niepełnosprawnościami",
+      "summary": {
+        "value": "Dzięki realizacji projektu realnie i znacząco zwiększyła się dostępność Uczelni dla osób z niepełnosprawnościami oraz ze specjalnymi potrzebami w zakresie dostępności architektonicznej, komunikacyjnej, administrowanych stron internetowych, narzędzi informatycznych i procedur kształcenia.",
+        "kind": "fact",
+        "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+        "evidence": "Dzięki realizacji projektu realnie i znacząco zwiększyła się dostępność Uczelni dla osób z niepełnosprawnościami oraz ze specjalnymi potrzebami w zakresie dostępności architektonicznej, komunikacyjnej, administrowanych stron internetowych, narzędzi informatycznych i procedur kształcenia.",
+        "reason": null
+      },
+      "area": {
+        "value": "educational",
+        "kind": "estimate",
+        "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+        "evidence": null,
+        "reason": "Rozwiązania dla uczelni: dostępność kształcenia."
+      },
+      "institution": {
+        "name": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+        "kind": "university",
+        "city": "Krosno",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 5,
+        "kind": "fact",
+        "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+        "evidence": "Strona internetowa Uczelni została dostosowana do wymogów standardu WCAG 2.1.",
+        "reason": null
+      },
+      "potential": 76,
+      "confidence": "medium",
+      "relevance": 0.2,
+      "rank_score": 0.368
+    },
+    {
+      "id": "radon-246741",
+      "title": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej (RIRS)",
+      "summary": {
+        "value": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+        "kind": "fact",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+        "reason": null
+      },
+      "area": {
+        "value": "technological",
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": null,
+        "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+      },
+      "institution": {
+        "name": "Uniwersytet Rzeszowski",
+        "kind": "university",
+        "city": "Rzeszów",
+        "voivodeship": "podkarpackie"
+      },
+      "implementation_level": {
+        "value": 2,
+        "kind": "estimate",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "evidence": null,
+        "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+      },
+      "potential": 51,
+      "confidence": "low",
+      "relevance": 0.2,
+      "rank_score": 0.293
+    }
+  ]
+}

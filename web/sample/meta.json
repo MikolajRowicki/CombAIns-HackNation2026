@@ -1,0 +1,136 @@
+{
+  "labels": {
+    "area": {
+      "technological": "technologiczny",
+      "educational": "edukacyjny",
+      "administrative": "administracyjny"
+    },
+    "implementation_level": {
+      "1": "koncepcja",
+      "2": "prototyp",
+      "3": "testy",
+      "4": "wdrożenie pilotażowe",
+      "5": "stosowane w praktyce"
+    },
+    "institution_kind": {
+      "jst": "jednostka samorządu terytorialnego",
+      "school": "szkoła lub placówka edukacyjna",
+      "university": "uczelnia lub jednostka naukowa",
+      "company": "przedsiębiorstwo",
+      "other": "inna instytucja"
+    },
+    "kind": {
+      "fact": "fakt",
+      "estimate": "szacunek"
+    },
+    "confidence": {
+      "high": "wysoka",
+      "medium": "średnia",
+      "low": "niska"
+    },
+    "event": {
+      "grant": "dofinansowanie",
+      "patent": "patent",
+      "award": "nagroda",
+      "media": "publikacja w mediach",
+      "implementation": "wdrożenie"
+    },
+    "user_group": {
+      "investors": "inwestorzy i podmioty komercyjne",
+      "public": "instytucje publiczne i samorządy",
+      "science": "uczelnie i jednostki naukowe",
+      "schools": "szkoły i placówki edukacyjne",
+      "startups": "startupy i przedsiębiorstwa",
+      "innovators": "indywidualni innowatorzy i wynalazcy"
+    },
+    "voivodeship": {
+      "dolnośląskie": "dolnośląskie",
+      "kujawsko-pomorskie": "kujawsko-pomorskie",
+      "lubelskie": "lubelskie",
+      "lubuskie": "lubuskie",
+      "łódzkie": "łódzkie",
+      "małopolskie": "małopolskie",
+      "mazowieckie": "mazowieckie",
+      "opolskie": "opolskie",
+      "podkarpackie": "podkarpackie",
+      "podlaskie": "podlaskie",
+      "pomorskie": "pomorskie",
+      "śląskie": "śląskie",
+      "świętokrzyskie": "świętokrzyskie",
+      "warmińsko-mazurskie": "warmińsko-mazurskie",
+      "wielkopolskie": "wielkopolskie",
+      "zachodniopomorskie": "zachodniopomorskie"
+    }
+  },
+  "criteria_version": "v0.1",
+  "criteria": [
+    {
+      "id": "K1",
+      "name": "Poziom wdrożenia",
+      "weight": 30,
+      "reference": "FAQ zadania, sekcja 5; Oslo Manual 2018 (OECD/Eurostat)",
+      "scale": {
+        "1": "koncepcja",
+        "2": "prototyp",
+        "3": "testy",
+        "4": "wdrożenie pilotażowe",
+        "5": "stosowane w praktyce"
+      }
+    },
+    {
+      "id": "K2",
+      "name": "Dojrzałość technologiczna (TRL)",
+      "weight": 15,
+      "reference": "Skala TRL 1-9 programu Horyzont Europa",
+      "scale": {
+        "1": "TRL 1-2",
+        "2": "TRL 3-4",
+        "3": "TRL 5-6",
+        "4": "TRL 7-8",
+        "5": "TRL 9",
+        "nie dotyczy": "innowacja nietechnologiczna: waga kryterium przechodzi proporcjonalnie na pozostałe"
+      }
+    },
+    {
+      "id": "K3",
+      "name": "Innowacyjność",
+      "weight": 20,
+      "reference": "Oslo Manual 2018 (stopień nowości)",
+      "scale": {
+        "1": "nowość w instytucji",
+        "2": "nowość w regionie",
+        "3": "nowość w Polsce",
+        "4": "nowość w Europie",
+        "5": "nowość na świecie"
+      }
+    },
+    {
+      "id": "K4",
+      "name": "Potencjał zastosowania",
+      "weight": 20,
+      "reference": "Interreg Europe (dobre praktyki); E. Rogers, dyfuzja innowacji",
+      "scale": {
+        "0": "spełnione warunki: 0 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))",
+        "1": "spełnione warunki: 1 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))",
+        "2": "spełnione warunki: 2 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))",
+        "3": "spełnione warunki: 3 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))",
+        "4": "spełnione warunki: 4 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))",
+        "5": "spełnione warunki: 5 z 5 (dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, zastosowanie w więcej niż jednym sektorze, sygnały popytu (BZP))"
+      }
+    },
+    {
+      "id": "K5",
+      "name": "Wiarygodność",
+      "weight": 15,
+      "reference": "FAQ zadania, sekcja 5; Nesta Standards of Evidence",
+      "scale": {
+        "0": "brak danych",
+        "1": "deklaracja własna",
+        "2": "opis z liczbami lub szczegółami",
+        "3": "jedno weryfikowalne źródło",
+        "4": "dwa niezależne źródła",
+        "5": "publiczne potwierdzenie wdrożenia"
+      }
+    }
+  ]
+}

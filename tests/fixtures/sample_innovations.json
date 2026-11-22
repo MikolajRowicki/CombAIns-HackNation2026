@@ -1,0 +1,2300 @@
+[
+  {
+    "id": "radon-241314",
+    "title": "Układ do symulacji intruzów w ruchu powietrznym i sposób badania wizyjnych układów antykolizyjnych",
+    "summary": {
+      "value": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko …",
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko",
+      "reason": null
+    },
+    "description": "Przedmiotem wynalazku jest układ do symulacji intruzów w ruchu powietrznym, zwłaszcza do badań wizyjnych układów antykolizyjnych, obejmujący: generator intruzów (A) obejmujący co najmniej układ wizualizacji intruzów zawierający ekran sferyczny (A1), oraz stanowisko pilota (C), przy czym stanowisko pilota (C) znajduje się poza ekranem sferycznym. Wynalazek dotyczy również sposobu badania wizyjnych układów antykolizyjnych.",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+    },
+    "type": {
+      "value": "wynalazek: układ i metoda badawcza",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+    },
+    "institution": {
+      "name": "Politechnika Rzeszowska im. Ignacego Łukasiewicza",
+      "kind": "university",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+    },
+    "trl": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Układ symulacji służy do badań systemów wizyjnych w warunkach laboratoryjnych (TRL 4)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": "Zastosowanie w badaniach systemów antykolizyjnych dronów i statków powietrznych; branża lotnicza regionu."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 51,
+      "low": 51,
+      "high": 51,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 2,
+          "weight": 30.0,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": 2,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+        "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66",
+        "data_date": "2025-11-07",
+        "retrieved": "2026-11-22",
+        "license": "CC0 1.0"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2019-08-05",
+        "event": "patent",
+        "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 430792)",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66"
+      },
+      {
+        "date": "2022-09-05",
+        "event": "patent",
+        "label": "Patent na wynalazek nr 241314",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010651AC9B78A3838D0F07425C07DD66"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "lotnictwo",
+      "drony",
+      "systemy antykolizyjne",
+      "symulacja",
+      "systemy wizyjne"
+    ]
+  },
+  {
+    "id": "radon-246953",
+    "title": "Urządzenie do nauki chodzenia po schodach",
+    "summary": {
+      "value": "Urządzenie charakteryzuje się tym, że podstawa (2) jest w postaci podłużnej płyty oraz jest przegubowo połączona od strony jednego ze swoich krótszych boków z poziomą ramą (1), z którą jest przegubowo połączony, od strony jednego z krótszych boków podstawy (2), co najmniej jeden siłownik liniowy …",
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": "Urządzenie charakteryzuje się tym, że podstawa (2) jest w postaci podłużnej płyty oraz jest przegubowo połączona od strony jednego ze swoich krótszych boków z poziomą ramą (1), z którą jest przegubowo połączony, od strony jednego z krótszych boków podstawy (2), co najmniej jeden siłownik liniowy",
+      "reason": null
+    },
+    "description": "Urządzenie charakteryzuje się tym, że podstawa (2) jest w postaci podłużnej płyty oraz jest przegubowo połączona od strony jednego ze swoich krótszych boków z poziomą ramą (1), z którą jest przegubowo połączony, od strony jednego z krótszych boków podstawy (2), co najmniej jeden siłownik liniowy (7), którego drugi koniec jest przegubowo połączony ze spodem podstawy (2), przy czym na podstawie rozmieszczone są stopnie (8, 9), z których każdy jest osadzony na wale silnika elektrycznego usytuowanym równolegle do osi obrotu podstawy (2) względem ramy (1).",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+    },
+    "type": {
+      "value": "wynalazek: urządzenie rehabilitacyjne",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+    },
+    "institution": {
+      "name": "Politechnika Rzeszowska im. Ignacego Łukasiewicza",
+      "kind": "university",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+    },
+    "trl": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Urządzenie opisane konstrukcyjnie w patencie; brak danych o badaniach klinicznych (TRL 4)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": "Możliwe zastosowanie w ośrodkach rehabilitacji i placówkach opieki."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 51,
+      "low": 51,
+      "high": 51,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 2,
+          "weight": 30.0,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": 2,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+        "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64",
+        "data_date": "2025-11-07",
+        "retrieved": "2026-11-22",
+        "license": "CC0 1.0"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2022-11-29",
+        "event": "patent",
+        "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 442991)",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64"
+      },
+      {
+        "date": "2025-04-07",
+        "event": "patent",
+        "label": "Patent na wynalazek nr 246953",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=04B3C5F72BEA8A87521808F35F6E0C64"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "rehabilitacja",
+      "fizjoterapia",
+      "nauka chodzenia",
+      "schody",
+      "urządzenie medyczne"
+    ]
+  },
+  {
+    "id": "radon-246741",
+    "title": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej (RIRS)",
+    "summary": {
+      "value": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny.",
+      "reason": null
+    },
+    "description": "Trenażer zabiegu wstecznej chirurgii wewnątrznerkowej, przeznaczony jest do nauki i doskonalenia w zakresie wykonywania zabiegu wstecznej chirurgii wewnątrznerkowej dla lekarzy urologów i studentów medycyny. Trenażer, w którym model układów kielichowo — miedniczkowych nerek wykonany jest na podstawie anatomicznego obrazu tomografii komputerowej nerek metodą druku 3 D z silikonu i układy kielichowo — miedniczkowe nerek połączone są z modelem moczowodów, pęcherza moczowego i cewki moczowej, a niezależnie od tego wyposażony jest w modele złogów moczowych, charakteryzuje się tym, że każdy z układów kielichowo - miedniczkowych (1) nerek złożony jest z dwóch  połączonych rozłącznie i szczelnie części, stanowiących wydruk 3 D układów kielichowo — miedniczkowych (1) nerek o twardości Shora w zakresie 45 - 65° ShA wykonany z filamentu otrzymanego z poliuretanu termoplastycznego uzyskanego z mieszaniny diizocyjanianu heksametylenowego z glikolem etylenowym w proporcji 1 : 2 o twardości Shorea 50 - 70° ShA wymieszanego z wykorzystaniem wytłaczarki dwuślimakowej z dodatkiem 6 - 8% wagowych krzemionki zawierającej tlenek glinu, 1 - 3% wagowych ftalanu dibutylu i 1 - 3% wagowych polietylenu szczepionego bezwodnikiem maleinowym w zakresie temperatur 200 - 220°C i trenażer wyposażony jest w co najmniej jeden czujnik temperatury (12) i czujnik ciśnienia (14), połączone elektrycznie z wyświetlaczem temperatury (13) i wyświetlaczem ciśnienia (15) usytuowanymi w zasięgu wzroku lekarza, a niezależnie od tego modele złogów moczowych (9) wykonane są z soli wapniowych lub szczawianowych lub fosforanowych lub moczanowych zsyntezowanych chemicznie, następnie wymieszanych w proporcji 3:1 z wodą destylowaną, i sprasowanych pod ciśnieniem 2-4 MPa na prasie hydraulicznej do postaci wypraski poddanej następnie wyprażeniu w piecu w temperaturze 900 - 1000°C i, kolejno, rozkruszeniu oraz w miarę potrzeb – doszlifowaniu.",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+    },
+    "type": {
+      "value": "wynalazek: trenażer medyczny",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+    },
+    "institution": {
+      "name": "Uniwersytet Rzeszowski",
+      "kind": "university",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+    },
+    "trl": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Trenażer opisany w patencie; brak danych o użyciu w szkoleniach (TRL 4)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": "Możliwe zastosowanie w szkoleniu lekarzy na uczelniach medycznych i w szpitalach."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 51,
+      "low": 51,
+      "high": 51,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 2,
+          "weight": 30.0,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": 2,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+        "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215",
+        "data_date": "2025-11-07",
+        "retrieved": "2026-11-22",
+        "license": "CC0 1.0"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2022-10-24",
+        "event": "patent",
+        "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 442625)",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215"
+      },
+      {
+        "date": "2025-03-03",
+        "event": "patent",
+        "label": "Patent na wynalazek nr 246741",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=165DDAE82CE9ED1BA1D977A0D36DF215"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "urologia",
+      "trenażer",
+      "symulacja medyczna",
+      "edukacja medyczna",
+      "RIRS"
+    ]
+  },
+  {
+    "id": "radon-243356",
+    "title": "Wiata przystanku komunikacyjnego",
+    "summary": {
+      "value": "Przedmiotem wynalazku jest przystanek komunikacyjny z wiatą posiadającą ściany i zadaszenie, zlokalizowany przy zatoce przystankowej.",
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": "Przedmiotem wynalazku jest przystanek komunikacyjny z wiatą posiadającą ściany i zadaszenie, zlokalizowany przy zatoce przystankowej.",
+      "reason": null
+    },
+    "description": "Przedmiotem wynalazku jest przystanek komunikacyjny z wiatą posiadającą ściany i zadaszenie, zlokalizowany przy zatoce przystankowej. Charakteryzuje się on tym, że w obrębie zatoki, w miejscu zatrzymywania się pojazdów, jest zagłębiona komora, w której umieszczona jest poduszka pneumatyczna (1) posiadająca wlot i wylot powietrza, na której ułożona jest płyta najazdowa (2). Na wlocie powietrza do poduszki pneumatycznej (1) znajduje się pierwszy zawór zwrotny (3). Na wylocie powietrza z poduszki pneumatycznej (1) znajduje się drugi zawór zwrotny (4) i zbiornik sprężonego powietrza (5), z którego wylot z zaworem redukcyjnym (6) połączony jest z układem dysz (7) zamontowanych w zadaszeniu nad wejściem do wiaty.",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+    },
+    "type": {
+      "value": "wynalazek: element infrastruktury miejskiej",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+    },
+    "institution": {
+      "name": "Politechnika Lubelska",
+      "kind": "university",
+      "city": "Lublin",
+      "voivodeship": "lubelskie"
+    },
+    "implementation_level": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+    },
+    "trl": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Patent opisuje konstrukcję; brak danych o prototypie (TRL 3)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": "Każdy samorząd kupuje wiaty przystankowe; rozwiązanie pasuje do zamówień JST."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 55,
+      "low": 55,
+      "high": 55,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 2,
+          "weight": 30.0,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": 2,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+        "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6",
+        "data_date": "2025-11-07",
+        "retrieved": "2026-11-22",
+        "license": "CC0 1.0"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2022-01-13",
+        "event": "patent",
+        "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 44011822)",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6"
+      },
+      {
+        "date": "2023-08-14",
+        "event": "patent",
+        "label": "Patent na wynalazek nr 243356",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=010DF95A379A5BFED4368E69B35B69F6"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "transport publiczny",
+      "przystanek",
+      "infrastruktura miejska",
+      "wiata",
+      "samorząd"
+    ]
+  },
+  {
+    "id": "radon-233431",
+    "title": "Układ do bezkontaktowego składania podpisu i weryfikacji jego autentyczności",
+    "summary": {
+      "value": "Sposób bezkontaktowego składania podpisu i weryfikacji jego autentyczności, polegający na wykonaniu podpisu przy pomocy imitacji pisadła i analizie sygnałów powstających podczas czynności składania podpisu charakteryzuje się tym, że na końcówce imitacji pisadła instaluje się emiter, korzystnie …",
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": "Sposób bezkontaktowego składania podpisu i weryfikacji jego autentyczności, polegający na wykonaniu podpisu przy pomocy imitacji pisadła i analizie sygnałów powstających podczas czynności składania podpisu charakteryzuje się tym, że na końcówce imitacji pisadła instaluje się emiter, korzystnie",
+      "reason": null
+    },
+    "description": "Sposób bezkontaktowego składania podpisu i weryfikacji jego autentyczności, polegający na wykonaniu podpisu przy pomocy imitacji pisadła i analizie sygnałów powstających podczas czynności składania podpisu charakteryzuje się tym, że na końcówce imitacji pisadła instaluje się emiter, korzystnie diodę podczerwieni, a na drodze światła emitowanego przez emiter instaluje się kamerę zaopatrzoną w czujnik śledzący strumień światła, zaś imitacją pisadła trzymanego w dłoni wykonuje się gesty, symulujące składanie rzeczywistego podpisu na materialnym podłożu. Zmiany strumienia światła rejestruje się za pomocą kamery. Zapis tych zmian analizuje się w układzie decyzyjnym, przy pomocy zaimplementowanego algorytmu, zawierającego dane w postaci cech statycznych obrazujących kształt podpisu oraz cech dynamicznych, które zawierają dane zależności czasowych powstawania podpisu, przy czym dokonuje się porównania z wzorcowym podpisem, a wynik weryfikacji korzystnie wyświetla się na ekranie. Układ do bezkontaktowego składania podpisu i weryfikacji jego autentyczności, składający się z imitacji pisadła wyposażonego w emiter światła oraz współpracującego bezkontaktowo czujnika światła charakteryzuje się tym, że kamera wyposażona jest w czujnik światła (K), który połączony jest z układem analizy (U), w którym układ przetwarzania wstępnego (UW), połączony jest układem akwizycji podpisu (UP), który połączony jest z układem parametryzacji (UC), który połączony jest z układem weryfikacji autentyczności (UA), przy czym układ weryfikacji autentyczności (UA), połączony jest z ekranem (E).",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Źródłem jest patent uczelni w RAD-on: rozwiązanie techniczne."
+    },
+    "type": {
+      "value": "wynalazek: układ elektroniczny",
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Rodzaj ochrony w RAD-on: patent na wynalazek."
+    },
+    "institution": {
+      "name": "Politechnika Gdańska",
+      "kind": "university",
+      "city": "Gdańsk",
+      "voivodeship": "pomorskie"
+    },
+    "implementation_level": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Patent potwierdza działający wynalazek. Źródło nie podaje informacji o wdrożeniu."
+    },
+    "trl": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Układ opisany w patencie; brak danych o testach poza laboratorium (TRL 4)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Patent wymaga nowości wynalazku. Ochrona obejmuje Polskę; brak danych o zgłoszeniach za granicą."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": "Możliwe zastosowanie w urzędach, bankach i usługach, które wymagają podpisu klienta."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 51,
+      "low": 51,
+      "high": 51,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 2,
+          "weight": 30.0,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": 2,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "RAD-on: patenty i prawa ochronne (OPI PIB)",
+        "url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE",
+        "data_date": "2025-11-07",
+        "retrieved": "2026-11-22",
+        "license": "CC0 1.0"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2015-12-22",
+        "event": "patent",
+        "label": "Zgłoszenie wynalazku w UPRP (nr zgłoszenia 415448)",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE"
+      },
+      {
+        "date": "2019-10-31",
+        "event": "patent",
+        "label": "Patent na wynalazek nr 233431",
+        "source_url": "https://radon.nauka.gov.pl/opendata/polon/products?resultNumbers=1&protectionUuid=072AB19EB2AB3A03312BA4D7BAB6CFCE"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "podpis",
+      "uwierzytelnianie",
+      "bezpieczeństwo",
+      "elektronika",
+      "weryfikacja"
+    ]
+  },
+  {
+    "id": "ncbr-vshaper-5ax",
+    "title": "VSHAPER 5AX – pięcioosiowa drukarka 3D",
+    "summary": {
+      "value": "Nowatorskie rozwiązania druku 5AX umożliwiają wydruk skomplikowanych modeli, wymagających przenoszenia dużych obciążeń w różnych kierunkach i łączenia wielu materiałów",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": "Nowatorskie rozwiązania druku 5AX umożliwiają wydruk skomplikowanych modeli, wymagających przenoszenia dużych obciążeń w różnych kierunkach i łączenia wielu materiałów",
+      "reason": null
+    },
+    "description": "Innowacyjna w skali światowej drukarka przyrostowa\nNowatorskie rozwiązania druku 5AX umożliwiają wydruk skomplikowanych modeli, wymagających przenoszenia dużych obciążeń w różnych kierunkach i łączenia wielu materiałów\nRozwinięcie technologii VSHAPER 5AX to wprowadzenie do świata druku 3D rozwiązań dotychczas niespotykanych. Nowatorskie rozwiązania druku 5AX umożliwiają wydruk skomplikowanych modeli, wymagających przenoszenia dużych obciążeń w różnych kierunkach i łączenia wielu materiałów. Technologia 5AX wpływa na optymalizację procesów produkcyjnych, pozwala na bardziej zaawansowaną personalizację produktu oraz znacząco zmniejsza czas wprowadzenia go na rynek w masowej produkcji. Maszyna ta może więc zostać wykorzystana do prototypowania modeli o wysokim stopniu skomplikowania ale także rozwiązuje problem produkcji elementów o dużej złożoności tworzonych w małych nakładach. Dzięki przewidzianej szerokiej gamie materiałów – modele te mogą zostać wykorzystane do użytku w pełnym przekroju branż. Możliwość druku materiałami o wysokiej odporności temperaturowej, chemicznej i mechanicznej powoduje, że modele wydrukowane za pomocą VSHAPER 5AX MACHINE mogą być stosowane nawet do najcięższych przemysłowych zastosowań. Dodatkowo zastosowanie druku 3D pozwala osiągnąć oszczędności sięgające nawet 70% w porównaniu z obróbką ubytkową. Jest również dużo bardziej ekologiczne ze względu m.in. na dużo mniejszą produkcję odpadów, które w tym przypadku powstają w minimalnych ilościach. Bardzo istotnym czynnikiem jest również czas. Od projektu modelu do fizycznego przedmiotu spełniającego wszystkie założenia mija zazwyczaj od kilku do kilkunastu godzin! Można zatem przyjąć, że wprowadzenie na rynek maszyny VSHAPER 5AX MACHINE skompilowało rozwiązania problemów zaproponowane przez tradycyjne – trzyosiowe – drukarki 3D oraz szereg nowych – dużo bardziej zaawansowanych.\nProjekt VSHAPER 5AX MACHINE i jego efekt w postaci 5-osiowej drukarki 3D od początku skierowany był do firm ze zidentyfikowaną potrzebą tworzenia skomplikowanych modeli, której to potrzeby nie zaspokajały konwencjonalne drukarki 3D. Dzięki zastosowaniu wielu innowacyjnych, a także autorskich rozwiązań takich jak wychylno-obrotowa platforma robocza, podciśnieniowy i grzany stół roboczy, zamknięta i aktywnie grzana komora robocza - VSHAPER 5AX MACHINE jest w stanie spełnić wymagania dotyczące najwyższej jakości i precyzji tworzonych modeli.",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": null,
+      "reason": "Produkt przemysłowy: maszyna do druku 3D."
+    },
+    "type": {
+      "value": "produkt: maszyna przemysłowa",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": null,
+      "reason": "Opis maszyny w źródle."
+    },
+    "institution": {
+      "name": "Vshaper Sp. z o.o.",
+      "kind": "company",
+      "city": null,
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": "wprowadzenie na rynek maszyny VSHAPER 5AX MACHINE",
+      "reason": null
+    },
+    "trl": {
+      "value": 9,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": null,
+      "reason": "Maszyna jest wprowadzona na rynek (TRL 9)."
+    },
+    "novelty": {
+      "value": 5,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": "Innowacyjna w skali światowej drukarka przyrostowa",
+      "reason": "Deklaracja beneficjenta w tytule projektu; brak niezależnego porównania."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": null,
+      "reason": "Druk elementów o dużej złożoności dla wielu branż przemysłu."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 90,
+      "low": 90,
+      "high": 90,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 30.0,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": 5,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 5,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2016-02-01",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Operacyjny Inteligentny Rozwój)",
+        "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa"
+      },
+      {
+        "date": "2019-11-30",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/innowacyjna-w-skali-swiatowej-drukarka-przyrostowa"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "druk 3D",
+      "druk 5-osiowy",
+      "prototypowanie",
+      "przemysł",
+      "produkcja addytywna"
+    ]
+  },
+  {
+    "id": "ncbr-safedam",
+    "title": "SAFEDAM – monitoring wałów przeciwpowodziowych z użyciem dronów i danych satelitarnych",
+    "summary": {
+      "value": "Nasz system dokonuje rewolucji nie tylko w monitoringu wałów, ale także w koordynacji akcji ratunkowych, gdyby doszło do powodzi.",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": "Nasz system dokonuje rewolucji nie tylko w monitoringu wałów, ale także w koordynacji akcji ratunkowych, gdyby doszło do powodzi.",
+      "reason": null
+    },
+    "description": "Zaawansowane technologie wspomagające przeciwdziałanie zagrożeniom związanym z powodziami\nNasz system dokonuje rewolucji nie tylko w monitoringu wałów, ale także w koordynacji akcji ratunkowych, gdyby doszło do powodzi.\nW Polsce istnieją tysiące kilometrów wałów przeciwpowodziowych. Klasyczny monitoring ich stanu polega na wykonywaniu bezpośrednich pomiarów geodezyjnych co kilkaset metrów. Tymczasem dokładna analiza stanu zabezpieczeń przeciwpowodziowych może ratować życie i dobytek tysięcy osób. SAFEDAM poprzez działanie z powietrza pozwala analizować stan każdego metra kwadratowego wału!\nProjekt SAFEDAM polega na przygotowaniu systemu monitorującego wały przeciwpowodziowe wielokrotnie szczegółowiej niż w dotychczasowej praktyce. Do monitoringu wykorzystywane są bezzałogowe systemy latające oraz dane lotnicze i satelitarne. Newralgiczne fragmenty wałów mogą być mierzone z dokładnością do kilku centymetrów dzięki zastosowaniu skanera laserowego i danych fotogrametrycznych. Dane 3D pozyskane w ten sposób są automatycznie analizowane pod nadzorem służb hydrologicznych i służą do tworzenia wizualizacji dla służb Państwowej Straży Pożarnej i specjalistów zarządzania kryzysowego. Jesteśmy w stanie dostarczać im precyzyjne informacje dotyczące stanu poszczególnych fragmentów zabezpieczeń, zgodnie z założeniem, że zawsze najlepiej jest zapobiegać ewentualnym nieszczęśliwym wydarzeniom.\nSAFEDAM ma dwie konfiguracje: prewencyjną – czyli pozyskiwania danych umożliwiających stały monitoring zabezpieczeń przeciwpowodziowych, oraz interwencyjną, czyli wspomagającą służby w sytuacjach zagrożenia i podczas powodzi. Dzięki temu służby mogą precyzyjnie określać, gdzie prawdopodobieństwo pogarszania się sytuacji i zagrożenie jest największe – czyli gdzie ingerencja, zarówno zabezpieczająca, jak i ratunkowa, jest lub będzie potrzebna.\nProjekt SAFEDAM - ćwiczenia terenowe w powiecie sandomierskim",
+    "area": {
+      "value": "technological",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": null,
+      "reason": "System IT z dronami, skanerem laserowym i danymi satelitarnymi."
+    },
+    "type": {
+      "value": "system informatyczny z bezzałogowymi statkami powietrznymi",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": null,
+      "reason": "Opis systemu w źródle."
+    },
+    "institution": {
+      "name": "Politechnika Warszawska (lider konsorcjum)",
+      "kind": "university",
+      "city": "Warszawa",
+      "voivodeship": "mazowieckie"
+    },
+    "implementation_level": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": "Projekt SAFEDAM - ćwiczenia terenowe w powiecie sandomierskim",
+      "reason": null
+    },
+    "trl": {
+      "value": 7,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": null,
+      "reason": "System sprawdzono w ćwiczeniach terenowych PSP (TRL 7)."
+    },
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": "monitorującego wały przeciwpowodziowe wielokrotnie szczegółowiej niż w dotychczasowej praktyce",
+      "reason": "Porównanie z praktyką w Polsce według opisu projektu."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": null,
+      "reason": "Służby PSP, samorządy i zarządzanie kryzysowe w całej Polsce."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 67,
+      "low": 67,
+      "high": 67,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 3,
+          "weight": 30.0,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": 4,
+          "weight": 15.0,
+          "kind": "estimate"
+        },
+        "K3": {
+          "value": 3,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 20.0,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 15.0,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2015-12-22",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Obronność i Bezpieczeństwo)",
+        "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami"
+      },
+      {
+        "date": "2020-05-21",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/zaawansowane-technologie-wspomagajace-przeciwdzialanie-zagrozeniom-zwiazanym-z-powodziami"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "powódź",
+      "wały przeciwpowodziowe",
+      "drony",
+      "zarządzanie kryzysowe",
+      "skaning laserowy",
+      "satelity"
+    ]
+  },
+  {
+    "id": "ncbr-elektronika-automotive",
+    "title": "Elektronika dla branży automotive – program kształcenia inżynierów z udziałem firm",
+    "summary": {
+      "value": "Elektronika dla branży automotive. Kuźnia kadr dla przemysłu. Zysk dla regionu",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": "Elektronika dla branży automotive. Kuźnia kadr dla przemysłu. Zysk dla regionu",
+      "reason": null
+    },
+    "description": "Elektronika dla branży automotive\nElektronika dla branży automotive. Kuźnia kadr dla przemysłu. Zysk dla regionu\nPodkarpacie to region Polski specjalizujący się m.in. w technologiach motoryzacyjnych. Jedną z inteligentnych specjalizacji województwa jest właśnie motoryzacja. Działające tu polskie firmy dostarczają podzespoły największym producentom samochodów w Europie. Potrzebują do tego wysoko wykwalifikowanej kadry specjalistów. Z reguły niemal wszyscy absolwenci Politechniki Rzeszowskiej z kierunków studiów takich jak: elektronika, automatyka i robotyka, elektrotechnika czy informatyka są natychmiast „wsysani” przez różne branże, a miejsca pracy na nich ciągle czekają. Jednak w początkowej fazie po zatrudnieniu konieczne okazuje się przygotowanie dla nich serii specjalistycznych szkoleń wdrażających młodych inżynierów do pracy. Łączy się to z poświęceniem znacznej ilości czasu, bardzo dużymi nakładami finansowymi i organizacyjnymi w przedsiębiorstwach, a jednocześnie odsuwa możliwie szybki awans absolwentów. Projekt edukacyjno-dydaktyczny „Elektronika dla branży automotive”, którego realizacji podjął się Wydział Elektrotechniki i Informatyki, skrócił i usprawnił ten proces.\nJednak w początkowej fazie po zatrudnieniu konieczne okazuje się przygotowanie dla nich serii specjalistycznych szkoleń wdrażających młodych inżynierów do pracy. Łączy się to z poświęceniem znacznej ilości czasu, bardzo dużymi nakładami finansowymi i organizacyjnymi w przedsiębiorstwach, a jednocześnie odsuwa możliwie szybki awans absolwentów. Projekt edukacyjno-dydaktyczny „Elektronika dla branży automotive”, którego realizacji podjął się Wydział Elektrotechniki i Informatyki, skrócił i usprawnił ten proces.",
+    "area": {
+      "value": "educational",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": null,
+      "reason": "Program kształcenia studentów: rozwiązanie dla uczelni."
+    },
+    "type": {
+      "value": "program kształcenia",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": null,
+      "reason": "Projekt edukacyjno-dydaktyczny według źródła."
+    },
+    "institution": {
+      "name": "Politechnika Rzeszowska im. Ignacego Łukasiewicza",
+      "kind": "university",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": "skrócił i usprawnił ten proces",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": null,
+      "reason": "Program odpowiada na potrzeby firm motoryzacyjnych regionu."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": null,
+      "reason": "Wzór dla uczelni technicznych w regionach z przemysłem motoryzacyjnym."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 69,
+      "low": 69,
+      "high": 69,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2018-01-01",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Operacyjny Wiedza Edukacja Rozwój)",
+        "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive"
+      },
+      {
+        "date": "2019-10-31",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/elektronika-dla-branzy-automotive"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "motoryzacja",
+      "elektronika",
+      "kształcenie inżynierów",
+      "współpraca z przemysłem",
+      "uczelnia"
+    ]
+  },
+  {
+    "id": "ncbr-uczelnia-bez-barier-krosno",
+    "title": "Uczelnia bez barier – dostępność uczelni dla osób z niepełnosprawnościami",
+    "summary": {
+      "value": "Dzięki realizacji projektu realnie i znacząco zwiększyła się dostępność Uczelni dla osób z niepełnosprawnościami oraz ze specjalnymi potrzebami w zakresie dostępności architektonicznej, komunikacyjnej, administrowanych stron internetowych, narzędzi informatycznych i procedur kształcenia.",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": "Dzięki realizacji projektu realnie i znacząco zwiększyła się dostępność Uczelni dla osób z niepełnosprawnościami oraz ze specjalnymi potrzebami w zakresie dostępności architektonicznej, komunikacyjnej, administrowanych stron internetowych, narzędzi informatycznych i procedur kształcenia.",
+      "reason": null
+    },
+    "description": "Uczelnia bez barier - w kierunku edukacji włączającej\nDzięki realizacji projektu realnie i znacząco zwiększyła się dostępność Uczelni dla osób z niepełnosprawnościami oraz ze specjalnymi potrzebami w zakresie dostępności architektonicznej, komunikacyjnej, administrowanych stron internetowych, narzędzi informatycznych i procedur kształcenia.\nPozyskaliśmy środki, które pozwoliły sfinansować działania, które nie były możliwe do sfinansowania w takim zakresie z dotacji przekazywanej co roku na działalność Biura Osób z Niepełnosprawnościami. Zamontowano podnośnik w jednym z budynków Uczelni, dzięki czemu stał się on w pełni dostępny architektonicznie. Strona internetowa Uczelni została dostosowana do wymogów standardu WCAG 2.1. Kadra dydaktyczna i administracyjna Uczelni została przeszkolona w zakresie szkoleń świadomościowych i specjalistycznych, co pozwoliło zwiększyć dostępność procesu dydaktycznego. Powstał obowiązkowy kurs e-learningowy z zakresu zwiększania świadomości na temat niepełnosprawności dla studentów. Stworzono film uświadamiający bariery i problemy na jakie napotykają studenci z niepełnosprawnościami podczas studiów. Powstało Centrum Wsparcia, w którym oferujemy wsparcie psychologiczne i edukacyjne. Wdrożono dostępne aplikacje mobilne obsługi studentów oraz wirtualnej edukacji.",
+    "area": {
+      "value": "educational",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": null,
+      "reason": "Rozwiązania dla uczelni: dostępność kształcenia."
+    },
+    "type": {
+      "value": "rozwiązanie organizacyjne",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": null,
+      "reason": "Zestaw działań dostępności według źródła."
+    },
+    "institution": {
+      "name": "Państwowa Akademia Nauk Stosowanych w Krośnie",
+      "kind": "university",
+      "city": "Krosno",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": "Strona internetowa Uczelni została dostosowana do wymogów standardu WCAG 2.1.",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": null,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": null,
+      "reason": "Źródło nie porównuje rozwiązania z innymi uczelniami."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": null,
+      "reason": "Każda uczelnia musi zapewnić dostępność; wzór działań do powtórzenia."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 76,
+      "low": 65,
+      "high": 88,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": null,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2020-01-01",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Operacyjny Wiedza Edukacja Rozwój)",
+        "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej"
+      },
+      {
+        "date": "2023-07-31",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/uczelnia-bez-barier---w-kierunku-edukacji-wlaczajacej"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "dostępność",
+      "niepełnosprawność",
+      "WCAG",
+      "edukacja włączająca",
+      "uczelnia"
+    ]
+  },
+  {
+    "id": "ncbr-mooc-pjm",
+    "title": "Masowy, otwarty kurs polskiego języka migowego (MOOC)",
+    "summary": {
+      "value": "Projekt wpływa na zwiększenie oferty kształcenia w zakresie polskiego języka migowego poprzez stworzenie i realizację kursu",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": "Projekt wpływa na zwiększenie oferty kształcenia w zakresie polskiego języka migowego poprzez stworzenie i realizację kursu",
+      "reason": null
+    },
+    "description": "Masowy, otwarty kurs polskiego języka migowego na poziomie podstawowym\nProjekt wpływa na zwiększenie oferty kształcenia w zakresie polskiego języka migowego poprzez stworzenie i realizację kursu\nKurs dostępny jest bezpłatnie na platformie navoica.pl dla wszystkich zainteresowanych nauką tego języka osób. Forma zdalna realizacji",
+    "area": {
+      "value": "educational",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": null,
+      "reason": "Kurs online: narzędzie edukacyjne."
+    },
+    "type": {
+      "value": "kurs online (MOOC)",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": null,
+      "reason": "Kurs w formie MOOC według źródła."
+    },
+    "institution": {
+      "name": "Uniwersytet Humanistyczno-Przyrodniczy im. Jana Długosza w Częstochowie",
+      "kind": "university",
+      "city": "Częstochowa",
+      "voivodeship": "śląskie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": "Kurs dostępny jest bezpłatnie na platformie navoica.pl",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": null,
+      "reason": "Kursy PJM istnieją; nowością jest bezpłatna forma online."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": null,
+      "reason": "Kurs jest otwarty; szkoły i urzędy mogą użyć go do szkolenia pracowników."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 74,
+      "low": 74,
+      "high": 74,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2019-10-01",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Operacyjny Wiedza Edukacja Rozwój)",
+        "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym"
+      },
+      {
+        "date": "2021-09-30",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/masowy-otwarty-kurs-polskiego-jezyka-migowego-na-poziomie-podstawowym"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "język migowy",
+      "MOOC",
+      "kurs online",
+      "dostępność",
+      "edukacja"
+    ]
+  },
+  {
+    "id": "ncbr-od-genu-do-ekosystemu",
+    "title": "Od genu do ekosystemu – program edukacji biologicznej dla uczniów szkół podstawowych",
+    "summary": {
+      "value": "Celem głównym jest poszerzenie i pogłębianie wiedzy oraz umiejętności z różnych dyscyplin biologii, a także poznanie metodyki pracy metodą naukową zarówno w warunkach kameralnych, jak i terenowych",
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": "Celem głównym jest poszerzenie i pogłębianie wiedzy oraz umiejętności z różnych dyscyplin biologii, a także poznanie metodyki pracy metodą naukową zarówno w warunkach kameralnych, jak i terenowych",
+      "reason": null
+    },
+    "description": "Od genu do ekosystemu\nProgram skierowany jest do dwóch grup wiekowych uczniów szkół podstawowych (10-12 lat i 13-15 lat). Wydział Nauk Biologicznych UWr ma duże doświadczenie w realizacji podobnych przedsięwzięć. Na tej podstawie zdiagnozowano potrzeby i oczekiwania w zakresie edukacyjnym, a także bariery ekonomiczne związane z udziałem w zajęciach poza miejscem zamieszkania. W czasie rekrutacji nie stosowano testów kwalifikacyjnych, a do udziału w projekcie wystarcza ogólny poziom wiedzy uzyskanej w szkole. Zajęcia przyczynią się do rozwoju kompetencji dzieci z przeciętnymi predyspozycjami do uczenia się.\nCelem głównym jest poszerzenie i pogłębianie wiedzy oraz umiejętności z różnych dyscyplin biologii, a także poznanie metodyki pracy metodą naukową zarówno w warunkach kameralnych, jak i terenowych. Podczas realizacji zajęć kształtowane są umiejętność planowania i prowadzenia obserwacji i doświadczeń, prowadzenia właściwej dokumentacji uzyskanych danych, rozumowania i poprawnego wnioskowania. Autorom programu zależy na tym, aby na wszelkich zajęciach stosowane były nowoczesne metody i techniki badawcze, również z wykorzystaniem technologii informacyjnej. W równym stopniu dba się o kształtowanie kompetencji kluczowych.",
+    "area": {
+      "value": "educational",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": "Program zajęć dla uczniów szkół podstawowych."
+    },
+    "type": {
+      "value": "program edukacyjny",
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": "Program zajęć według źródła."
+    },
+    "institution": {
+      "name": "Uniwersytet Wrocławski",
+      "kind": "university",
+      "city": "Wrocław",
+      "voivodeship": "dolnośląskie"
+    },
+    "implementation_level": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": "Program zrealizowano w projekcie 2018-2021; źródło nie podaje, czy zajęcia trwają dalej."
+    },
+    "trl": null,
+    "novelty": {
+      "value": null,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": "Źródło nie porównuje programu z innymi programami edukacji biologicznej."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": "Program mogą przejąć inne uczelnie i szkoły; potrzebne są laboratoria."
+    },
+    "credibility": {
+      "value": 3,
+      "kind": "fact",
+      "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 65,
+      "low": 53,
+      "high": 76,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 4,
+          "weight": 35.3,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": null,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 3,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "NCBR: Wyszukiwarka sukcesów beneficjentów",
+        "url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Licencja nie została podana; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2018-07-01",
+        "event": "grant",
+        "label": "Start projektu z dofinansowaniem (Program Operacyjny Wiedza Edukacja Rozwój)",
+        "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu"
+      },
+      {
+        "date": "2021-02-28",
+        "event": "implementation",
+        "label": "Zakończenie projektu; rezultat opisany przez NCBR",
+        "source_url": "https://www.gov.pl/web/ncbr/od-genu-do-ekosystemu"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "biologia",
+      "metoda naukowa",
+      "szkoła podstawowa",
+      "uniwersytet młodego odkrywcy",
+      "zajęcia terenowe"
+    ]
+  },
+  {
+    "id": "web-robolab-dolina-lotnicza",
+    "title": "RoboLAB – laboratorium robotyki dla uczniów szkół średnich Podkarpacia",
+    "summary": {
+      "value": "The Foundation for the Support of Education of the “Aviation Valley” Association is launching the project RoboLAB, which is addressed to students of secondary schools in the Podkarpacie Region",
+      "kind": "fact",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": "The Foundation for the Support of Education of the “Aviation Valley” Association is launching the project RoboLAB, which is addressed to students of secondary schools in the Podkarpacie Region",
+      "reason": null
+    },
+    "description": "The Foundation for the Support of Education of the “Aviation Valley” Association is launching the project RoboLAB, which is addressed to students of secondary schools in the Podkarpacie Region, and also to other students in the future. The participants of the project will develop robots to start in international competitions.\nAccording to PRz, the project is divided into two modules. The first consists of a series of classes and training sessions allowing students to gain knowledge in order to participate in the international robotics competition organized by the Foundation. For the purposes of these competitions, students will develop complex robotic structures that will perform the tasks set by the organizers.\nRoboLAB will be located in the PRz building. Researchers of the University of Rzeszów, experts in robotics, mechanics, automation and programming, will substantively support the project, thanks to which robots developrd by teams will be able to compete on the international arena in the near future.",
+    "area": {
+      "value": "educational",
+      "kind": "estimate",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": "Program zajęć z robotyki dla uczniów szkół średnich."
+    },
+    "type": {
+      "value": "program zajęć pozaszkolnych",
+      "kind": "estimate",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": "Zajęcia i treningi do zawodów robotycznych według źródła."
+    },
+    "institution": {
+      "name": "Fundacja Wspierania Edukacji Stowarzyszenia „Dolina Lotnicza”",
+      "kind": "other",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 1,
+      "kind": "estimate",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": "Artykuł z 2021 r. zapowiada start projektu. Brak nowszych danych o realizacji."
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": "Laboratorium robotyki dla uczniów z udziałem przemysłu lotniczego regionu."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": "Wzór współpracy szkół, uczelni i firm; wymaga partnera przemysłowego."
+    },
+    "credibility": {
+      "value": 2,
+      "kind": "fact",
+      "source_url": "https://www.polishscience.pl/en/?p=170917",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 38,
+      "low": 38,
+      "high": 38,
+      "confidence": "low",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 1,
+          "weight": 35.3,
+          "kind": "estimate"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 2,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "polishscience.pl",
+        "url": "https://www.polishscience.pl/en/?p=170917",
+        "data_date": "2021-03-12",
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2021-03-12",
+        "event": "media",
+        "label": "Artykuł o starcie projektu RoboLAB",
+        "source_url": "https://www.polishscience.pl/en/?p=170917"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "robotyka",
+      "szkoła średnia",
+      "zawody robotyczne",
+      "Dolina Lotnicza",
+      "STEM"
+    ]
+  },
+  {
+    "id": "web-mobilny-urzednik-rzeszow",
+    "title": "Mobilny Urzędnik – obsługa spraw urzędowych w domu mieszkańca",
+    "summary": {
+      "value": "Mieszkańcy Rzeszowa, którzy nie mogą samodzielnie dotrzeć do Urzędu Miasta, mogą skorzystać z usługi „Mobilny Urzędnik”.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": "Mieszkańcy Rzeszowa, którzy nie mogą samodzielnie dotrzeć do Urzędu Miasta, mogą skorzystać z usługi „Mobilny Urzędnik”.",
+      "reason": null
+    },
+    "description": "Mieszkańcy Rzeszowa, którzy nie mogą samodzielnie dotrzeć do Urzędu Miasta, mogą skorzystać z usługi „Mobilny Urzędnik”.\nPomoc skierowana jest do mieszkańców Rzeszowa o szczególnych potrzebach, głównie seniorów oraz osób, które z powodu niepełnosprawności mają ograniczenia w poruszaniu się i nie mogą samodzielnie dotrzeć do urzędu.\nUsługa polega na obsłudze spraw urzędowych na terenie Rzeszowa w miejscu zamieszkania potrzebującej osoby. Pracownik Urzędu Miasta Rzeszowa przyjmie pismo do urzędu, dostarczy potrzebne druki urzędowe, pomoże w ich wypełnieniu, przyjmie niezbędne dokumenty, a następnie zarejestruje je w urzędzie. Jeżeli sprawa tego wymaga, dostarczy także np. wydaną decyzję w prowadzonej sprawie.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": null,
+      "reason": "Usługa urzędu miasta dla mieszkańców."
+    },
+    "type": {
+      "value": "usługa publiczna",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": null,
+      "reason": "Obsługa spraw urzędowych w miejscu zamieszkania."
+    },
+    "institution": {
+      "name": "Gmina Miasto Rzeszów (Urząd Miasta Rzeszowa)",
+      "kind": "jst",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": "mogą skorzystać z usługi „Mobilny Urzędnik”",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 1,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": null,
+      "reason": "Podobne usługi działają w innych miastach, na przykład w Łodzi."
+    },
+    "application_potential": {
+      "value": 5,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": null,
+      "reason": "Każda gmina może wprowadzić usługę bez specjalnej infrastruktury."
+    },
+    "credibility": {
+      "value": 2,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 71,
+      "low": 71,
+      "high": 71,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 1,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 5,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 2,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl (źródło: Urząd Miasta Rzeszowa)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/67639-na-rzecz-lokalnej-spolecznosci-mobilny-urzednik-dojedzie-do-mieszkanca",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [],
+    "demand": [],
+    "keywords": [
+      "seniorzy",
+      "niepełnosprawność",
+      "obsługa mieszkańców",
+      "urząd",
+      "usługa mobilna"
+    ]
+  },
+  {
+    "id": "insam7-regionalny-model-ruchu-podkarpackie",
+    "title": "Regionalny Model Ruchu dla Województwa Podkarpackiego",
+    "summary": {
+      "value": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "Drugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+      "reason": null
+    },
+    "description": "Wrocław, Rybnik, Janikowo, Igołomia-Wawrzeńczyce, powiat ostrowiecki oraz województwo łódzkie - to zwycięzcy VII edycji konkursu „Innowacyjny Samorząd”. Podczas uroczystej gali w Warszawie nagrodzono najbardziej kreatywne jednostki samorządu terytorialnego, które wdrożyły rozwiązania usprawniające usługi publiczne i podnoszące jakość życia mieszkańców.\nDrugie miejsce zajął „Regionalny Model Ruchu dla Województwa Podkarpackiego”, czyli cyfrowe, specjalistyczne narzędzie analityczne odwzorowujące funkcjonowanie regionalnego systemu transportowego oraz jego powiązania z krajowym i ponadregionalnym układem transportowym.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+    },
+    "type": {
+      "value": "narzędzie analityczne",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Opis projektu w artykule o laureatach."
+    },
+    "institution": {
+      "name": "Województwo Podkarpackie",
+      "kind": "jst",
+      "city": "Rzeszów",
+      "voivodeship": "podkarpackie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Modele ruchu mają duże miasta; model regionalny jest rzadszy."
+    },
+    "application_potential": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Inne województwa mogą zbudować model; potrzebne są dane i specjaliści."
+    },
+    "credibility": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 76,
+      "low": 76,
+      "high": 76,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 5,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl: laureaci VII edycji konkursu „Innowacyjny Samorząd” (źródło: samorzad.pap.pl)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      },
+      {
+        "name": "wartowiedziec.pl: zapowiedź gali VII edycji (28 maja 2026)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/79538-zpp-partnerem-konkursu-innowacyjny-samorzad-jst-moga-zglaszac-swoje-projekty",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-28",
+        "event": "award",
+        "label": "II miejsce (kategoria: województwa) w VII edycji konkursu „Innowacyjny Samorząd”",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "transport",
+      "model ruchu",
+      "planowanie",
+      "województwo",
+      "analiza danych"
+    ]
+  },
+  {
+    "id": "insam7-ostrowiecki-egib-ai",
+    "title": "Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji",
+    "summary": {
+      "value": "Wśród powiatów pierwsze miejsce otrzymał powiat ostrowiecki za projekt „Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji”. Projekt pozwala na usprawnienie procesu aktualizacji ewidencji gruntów i budynków (EGiB) poprzez wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych – od momentu ich wpływu, przez skanowanie ekstrakcję i walidację danych, aż po przygotowanie propozycji zmiany zatwierdzanej przez upoważnionego operatora.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "Wśród powiatów pierwsze miejsce otrzymał powiat ostrowiecki za projekt „Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji”. Projekt pozwala na usprawnienie procesu aktualizacji ewidencji gruntów i budynków (EGiB) poprzez wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych – od momentu ich wpływu, przez skanowanie ekstrakcję i walidację danych, aż po przygotowanie propozycji zmiany zatwierdzanej przez upoważnionego operatora.",
+      "reason": null
+    },
+    "description": "Wrocław, Rybnik, Janikowo, Igołomia-Wawrzeńczyce, powiat ostrowiecki oraz województwo łódzkie - to zwycięzcy VII edycji konkursu „Innowacyjny Samorząd”. Podczas uroczystej gali w Warszawie nagrodzono najbardziej kreatywne jednostki samorządu terytorialnego, które wdrożyły rozwiązania usprawniające usługi publiczne i podnoszące jakość życia mieszkańców.\nWśród powiatów pierwsze miejsce otrzymał powiat ostrowiecki za projekt „Zautomatyzowana aktualizacja ewidencji gruntów i budynków z wykorzystaniem sztucznej inteligencji”. Projekt pozwala na usprawnienie procesu aktualizacji ewidencji gruntów i budynków (EGiB) poprzez wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych – od momentu ich wpływu, przez skanowanie ekstrakcję i walidację danych, aż po przygotowanie propozycji zmiany zatwierdzanej przez upoważnionego operatora.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+    },
+    "type": {
+      "value": "system informatyczny (AI)",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Opis projektu w artykule o laureatach."
+    },
+    "institution": {
+      "name": "Powiat Ostrowiecki",
+      "kind": "jst",
+      "city": "Ostrowiec Świętokrzyski",
+      "voivodeship": "świętokrzyskie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "wdrożenie rozwiązania automatyzującego przetwarzanie aktów notarialnych",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Automatyzacja przetwarzania aktów notarialnych w EGiB; źródło nie wskazuje podobnych wdrożeń."
+    },
+    "application_potential": {
+      "value": 5,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Każdy powiat prowadzi ewidencję gruntów i budynków."
+    },
+    "credibility": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 91,
+      "low": 91,
+      "high": 91,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 5,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 5,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl: laureaci VII edycji konkursu „Innowacyjny Samorząd” (źródło: samorzad.pap.pl)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      },
+      {
+        "name": "wartowiedziec.pl: zapowiedź gali VII edycji (28 maja 2026)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/79538-zpp-partnerem-konkursu-innowacyjny-samorzad-jst-moga-zglaszac-swoje-projekty",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-28",
+        "event": "award",
+        "label": "I miejsce (kategoria: powiaty) w VII edycji konkursu „Innowacyjny Samorząd”",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "ewidencja gruntów",
+      "EGiB",
+      "sztuczna inteligencja",
+      "akty notarialne",
+      "geodezja",
+      "automatyzacja"
+    ]
+  },
+  {
+    "id": "insam7-zawoja-wirtualny-urzednik",
+    "title": "Wirtualny Urzędnik – chatbot dla mieszkańców i asystent dla pracowników urzędu",
+    "summary": {
+      "value": "Trzecie miejsce otrzymała Zawoja za projekt „Wirtualny Urzędnik”. Gmina wdrożyła system oparty na sztucznej inteligencji obejmujący chatbot publiczny 24/7 dla mieszkańców oraz asystenta wewnętrznego dla pracowników urzędu.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "Trzecie miejsce otrzymała Zawoja za projekt „Wirtualny Urzędnik”. Gmina wdrożyła system oparty na sztucznej inteligencji obejmujący chatbot publiczny 24/7 dla mieszkańców oraz asystenta wewnętrznego dla pracowników urzędu.",
+      "reason": null
+    },
+    "description": "Wrocław, Rybnik, Janikowo, Igołomia-Wawrzeńczyce, powiat ostrowiecki oraz województwo łódzkie - to zwycięzcy VII edycji konkursu „Innowacyjny Samorząd”. Podczas uroczystej gali w Warszawie nagrodzono najbardziej kreatywne jednostki samorządu terytorialnego, które wdrożyły rozwiązania usprawniające usługi publiczne i podnoszące jakość życia mieszkańców.\nTrzecie miejsce otrzymała Zawoja za projekt „Wirtualny Urzędnik”. Gmina wdrożyła system oparty na sztucznej inteligencji obejmujący chatbot publiczny 24/7 dla mieszkańców oraz asystenta wewnętrznego dla pracowników urzędu.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+    },
+    "type": {
+      "value": "system informatyczny (AI)",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Opis projektu w artykule o laureatach."
+    },
+    "institution": {
+      "name": "Gmina Zawoja",
+      "kind": "jst",
+      "city": "Zawoja",
+      "voivodeship": "małopolskie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "Gmina wdrożyła system oparty na sztucznej inteligencji",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Chatboty w urzędach są coraz częstsze; nowością jest użycie w małej gminie wiejskiej."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Rozwiązanie dla każdej gminy; wymaga przygotowania bazy wiedzy urzędu."
+    },
+    "credibility": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 81,
+      "low": 81,
+      "high": 81,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 5,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl: laureaci VII edycji konkursu „Innowacyjny Samorząd” (źródło: samorzad.pap.pl)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      },
+      {
+        "name": "wartowiedziec.pl: zapowiedź gali VII edycji (28 maja 2026)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/79538-zpp-partnerem-konkursu-innowacyjny-samorzad-jst-moga-zglaszac-swoje-projekty",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-28",
+        "event": "award",
+        "label": "III miejsce (kategoria: gminy wiejskie) w VII edycji konkursu „Innowacyjny Samorząd”",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "chatbot",
+      "sztuczna inteligencja",
+      "obsługa mieszkańców",
+      "urząd",
+      "asystent"
+    ]
+  },
+  {
+    "id": "insam7-janikowo-cyfrowy-audytor",
+    "title": "Cyfrowy Audytor Prawa Miejscowego – przegląd aktów prawa miejscowego z użyciem AI",
+    "summary": {
+      "value": "W kategorii gmin miejsko-wiejskich zwyciężył projekt „Cyfrowy Audytor Prawa Miejscowego -systemowy przegląd aktów prawa miejscowego Gminy Janikowo z wykorzystaniem zaawansowanej sztucznej inteligencji”.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "W kategorii gmin miejsko-wiejskich zwyciężył projekt „Cyfrowy Audytor Prawa Miejscowego -systemowy przegląd aktów prawa miejscowego Gminy Janikowo z wykorzystaniem zaawansowanej sztucznej inteligencji”.",
+      "reason": null
+    },
+    "description": "Wrocław, Rybnik, Janikowo, Igołomia-Wawrzeńczyce, powiat ostrowiecki oraz województwo łódzkie - to zwycięzcy VII edycji konkursu „Innowacyjny Samorząd”. Podczas uroczystej gali w Warszawie nagrodzono najbardziej kreatywne jednostki samorządu terytorialnego, które wdrożyły rozwiązania usprawniające usługi publiczne i podnoszące jakość życia mieszkańców.\nW kategorii gmin miejsko-wiejskich zwyciężył projekt „Cyfrowy Audytor Prawa Miejscowego -systemowy przegląd aktów prawa miejscowego Gminy Janikowo z wykorzystaniem zaawansowanej sztucznej inteligencji”.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+    },
+    "type": {
+      "value": "system informatyczny (AI)",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Opis projektu w artykule o laureatach."
+    },
+    "institution": {
+      "name": "Gmina Janikowo",
+      "kind": "jst",
+      "city": "Janikowo",
+      "voivodeship": "kujawsko-pomorskie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 3,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Systemowy przegląd prawa miejscowego z AI; źródło nie wskazuje podobnych wdrożeń."
+    },
+    "application_potential": {
+      "value": 5,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Każda gmina uchwala akty prawa miejscowego."
+    },
+    "credibility": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 91,
+      "low": 91,
+      "high": 91,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 3,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 5,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 5,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl: laureaci VII edycji konkursu „Innowacyjny Samorząd” (źródło: samorzad.pap.pl)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      },
+      {
+        "name": "wartowiedziec.pl: zapowiedź gali VII edycji (28 maja 2026)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/79538-zpp-partnerem-konkursu-innowacyjny-samorzad-jst-moga-zglaszac-swoje-projekty",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-28",
+        "event": "award",
+        "label": "I miejsce (kategoria: gminy miejsko-wiejskie) w VII edycji konkursu „Innowacyjny Samorząd”",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "prawo miejscowe",
+      "sztuczna inteligencja",
+      "uchwały",
+      "audyt",
+      "gmina"
+    ]
+  },
+  {
+    "id": "insam7-ciechanowiec-teleopieka",
+    "title": "Program teleopieki domowej dla seniorów i osób z niepełnosprawnościami",
+    "summary": {
+      "value": "Drugie miejsce otrzymał Ciechanowiec za „Program teleopieki domowej – innowacyjny system wsparcia seniorów i osób z niepełnosprawnościami”.",
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "Drugie miejsce otrzymał Ciechanowiec za „Program teleopieki domowej – innowacyjny system wsparcia seniorów i osób z niepełnosprawnościami”.",
+      "reason": null
+    },
+    "description": "Wrocław, Rybnik, Janikowo, Igołomia-Wawrzeńczyce, powiat ostrowiecki oraz województwo łódzkie - to zwycięzcy VII edycji konkursu „Innowacyjny Samorząd”. Podczas uroczystej gali w Warszawie nagrodzono najbardziej kreatywne jednostki samorządu terytorialnego, które wdrożyły rozwiązania usprawniające usługi publiczne i podnoszące jakość życia mieszkańców.\nDrugie miejsce otrzymał Ciechanowiec za „Program teleopieki domowej – innowacyjny system wsparcia seniorów i osób z niepełnosprawnościami”.",
+    "area": {
+      "value": "administrative",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Laureat konkursu dla jednostek samorządu terytorialnego."
+    },
+    "type": {
+      "value": "usługa społeczna",
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Opis projektu w artykule o laureatach."
+    },
+    "institution": {
+      "name": "Gmina Ciechanowiec",
+      "kind": "jst",
+      "city": "Ciechanowiec",
+      "voivodeship": "podlaskie"
+    },
+    "implementation_level": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": "które wdrożyły rozwiązania usprawniające usługi publiczne",
+      "reason": null
+    },
+    "trl": null,
+    "novelty": {
+      "value": 2,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Teleopieka działa w wielu gminach; to wdrożenie w małej gminie."
+    },
+    "application_potential": {
+      "value": 4,
+      "kind": "estimate",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": "Rozwiązanie dla gmin z dużą liczbą seniorów."
+    },
+    "credibility": {
+      "value": 5,
+      "kind": "fact",
+      "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+      "evidence": null,
+      "reason": null
+    },
+    "assessment": {
+      "potential": 81,
+      "low": 81,
+      "high": 81,
+      "confidence": "medium",
+      "criteria_version": "v0.1",
+      "criteria": {
+        "K1": {
+          "value": 5,
+          "weight": 35.3,
+          "kind": "fact"
+        },
+        "K2": {
+          "value": null,
+          "weight": 0.0,
+          "kind": null
+        },
+        "K3": {
+          "value": 2,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K4": {
+          "value": 4,
+          "weight": 23.5,
+          "kind": "estimate"
+        },
+        "K5": {
+          "value": 5,
+          "weight": 17.6,
+          "kind": "fact"
+        }
+      }
+    },
+    "sources": [
+      {
+        "name": "wartowiedziec.pl: laureaci VII edycji konkursu „Innowacyjny Samorząd” (źródło: samorzad.pap.pl)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      },
+      {
+        "name": "wartowiedziec.pl: zapowiedź gali VII edycji (28 maja 2026)",
+        "url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/79538-zpp-partnerem-konkursu-innowacyjny-samorzad-jst-moga-zglaszac-swoje-projekty",
+        "data_date": null,
+        "retrieved": "2026-11-22",
+        "license": "Prawa wydawcy; zapisano tylko krótkie cytaty i link"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-28",
+        "event": "award",
+        "label": "II miejsce (kategoria: gminy miejsko-wiejskie) w VII edycji konkursu „Innowacyjny Samorząd”",
+        "source_url": "https://wartowiedziec.pl/serwis-glowny/aktualnosci/80775-znamy-laureatow-vii-edycji-konkursu-innowacyjny-samorzad"
+      }
+    ],
+    "demand": [],
+    "keywords": [
+      "teleopieka",
+      "seniorzy",
+      "niepełnosprawność",
+      "opieka domowa",
+      "usługi społeczne"
+    ]
+  }
+]

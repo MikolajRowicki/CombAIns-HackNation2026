@@ -24,6 +24,17 @@ Testy:
 uv run --no-project python -m pytest
 ```
 
+## Źródła danych
+
+Dane przykładowe (`tests/fixtures/sample_innovations.json`, 18 rekordów) pochodzą z publicznych źródeł, pobranych 22.11.2026. Nie zawierają danych osobowych: aplikacja pomija nazwiska wynalazców i autorów.
+
+| Źródło | Zawartość | Licencja i sposób użycia |
+|---|---|---|
+| [RAD-on (OPI PIB)](https://radon.nauka.gov.pl/opendata/polon/products), API `products` | patenty uczelni | CC0 1.0 |
+| [NCBR: Wyszukiwarka sukcesów beneficjentów](https://www.gov.pl/web/ncbr/wyszukiwarka-sukcesow-beneficjentow) | opisy zrealizowanych projektów | licencja nie jest podana; zapisujemy krótkie cytaty i link |
+| [wartowiedziec.pl](https://wartowiedziec.pl) | laureaci konkursu „Innowacyjny Samorząd”, usługa „Mobilny Urzędnik” | prawa wydawcy; zapisujemy krótkie cytaty i link |
+| [polishscience.pl](https://www.polishscience.pl) | projekt RoboLAB | prawa wydawcy; zapisujemy krótkie cytaty i link |
+
 ## Licencje komponentów
 
 Rozwiązanie jest przygotowane do publikacji na licencji EUPL-1.2. Wszystkie komponenty mają licencje zgodne z EUPL-1.2.
