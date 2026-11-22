@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 23-level-rules)
+
+- Make the keyword rules of `estimate_implementation_level()` stricter. With the real RAD-on data (Podkarpackie), 20 projects got level 5, and most of them were wrong.
+- Level 5 needs a statement about use: "jest stosowany", "wdrożono", "funkcjonuje od", "stosowane w praktyce". A single word ("funkcjonującym", "stosowaną") does not count.
+- A negation ("nie były stosowane", "nie wdrożono") gives no level.
+- A plan covers the rest of the clause: "zostanie opracowana i wdrożona", "wdrożona zostanie", "ma na celu", "przewidziane jest", "zaplanowane".
+- Result on the same data: level 5 has 2 records (was 20), level 4 has 9 (was 12).
+- Add 15 test cases, most of them from the RAD-on texts.
+
 ## 2026-11-22, MaciejMomot (branch 21-connect-api, issue #12)
 
 - Connect the web page to the API of PR #34. Remove the sample data fallback from the search, the card and the comparison. The tests still use `web/sample/`.

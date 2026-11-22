@@ -243,23 +243,35 @@ def assess(record: dict) -> dict:
 # The text of a source is Polish, so the patterns use Polish word stems.
 
 # A plan or a future event is a concept, not an implementation. This rule runs first and
-# removes the matched words, so "zostanie wdrożony" does not count as "wdrożony".
+# removes the matched words, so "zostanie wdrożony" and "wdrożona zostanie" do not count as "wdrożony".
+# The rule removes the rest of the clause, so "zostanie opracowana i wdrożona" counts as one plan.
 _PLAN = (
-    r"\b(?:planuj\w*|planowan\w*|zamierza\w*|zostanie|zostaną|będzie|będą|ma\s+zostać|mają\s+zostać)"
-    r"(?:\s+\w+){1,3}"
+    r"\b\w+\s+(?:zostanie|zostaną)\b[^.;!?\n]{0,120}|"
+    r"\b(?:planuj\w*|planowan\w*|zaplanowan\w*|przewidzian\w*|zamierza\w*|zostanie|zostaną|będzie|będą|ma\s+zostać|mają\s+zostać"
+    r"|ma\s+na\s+celu|mają\s+na\s+celu|celem\s+(?:\w+\s+){0,2}jest)"
+    r"[^.;!?\n]{1,120}"
+)
+
+# A negation ("nie były stosowane") is no evidence of a level. This rule removes the words and gives no level.
+_NEGATION = r"\bnie\s+(?:\w+\s+){0,2}?(?:stosowan|wdroż|uruchomi|funkcjonuj|testowan)\w*"
+
+# Level 5 needs a statement about use, not only a word. Thus "laboratorium funkcjonującym w ramach"
+# or "lek stosowany w leczeniu" (a description of a known method) do not count (test on RAD-on data).
+_USED = r"stosowan(?:y|a|e|ą|ych|ymi)\b(?!\s+jako)"
+_IN_USE = (
+    r"\bwdrożon[oaey]\b(?!\s+(?:zostanie|zostaną|będzie|będą))|\bwdrożył\w*|\b" + _USED + r"\s+w\s+praktyce"
+    r"|\b(?:jest|są|został\w*|zostały|już)\s+(?:już\s+|z\s+powodzeniem\s+)?"
+    + _USED
+    + r"|\bw\s+użyciu\b|\b(?:funkcjonuje|działa)\s+od\b|\buruchomion[oaey]\b"
+    r"|\bwprowadzon\w*\s+do\s+(?:użytku|sprzedaży|oferty)"
+    r"|\bdostępn\w*\s+dla\s+(?:mieszkańców|użytkowników|klientów|uczniów|pacjentów)"
 )
 
 _LEVEL_RULES = [
+    (None, _NEGATION),
     (1, _PLAN),
     (4, r"\bwdroż\w*\s+pilotaż\w*|\bpilotaż\w*|\bpilotow(?:o|y|e|a|ego|ej|ym|ych|anie|ania|ano)\b"),
-    (
-        5,
-        (
-            r"\bwdrożon\w*|\bwdrożył\w*|\bstosowan[eyaą]\b|\bw\s+użyciu\b|\bfunkcjonuj\w*|\buruchomion\w*"
-            r"|\bdziała\s+od\b|\bwprowadzon\w*\s+do\s+(?:użytku|sprzedaży|oferty)"
-            r"|\bdostępn\w*\s+dla\s+(?:mieszkańców|użytkowników|klientów|uczniów|pacjentów)"
-        ),
-    ),
+    (5, _IN_USE),
     (3, r"\bprzetestowan\w*|\btestowan\w*|\btest(?:y|ów|ach|ami|u|em)?\b|\bwalidacj\w*|\bwersj\w*\s+beta\b"),
     (2, r"\bprototyp\w*|\bdemonstrator\w*|\bmodel\w*\s+funkcjonaln\w*|\bmakiet\w*"),
     (1, r"\bkoncepcj\w*|\bpomysł\w*|\bstudi\w*\s+wykonalności\b"),
@@ -318,12 +330,15 @@ def _evidence(text: str, start: int, end: int) -> str:
 
 
 def _match_rules(text: str, rules: list) -> list:
-    """Return the matches as (level, start, end). Each matched part of the text counts only once."""
+    """Return the matches as (level, start, end). Each matched part of the text counts only once.
+
+    A rule with the level None removes its words and gives no match.
+    """
     work = text
     found = []
     for level, pattern in rules:
-        for m in re.finditer(pattern, work, re.IGNORECASE):
-            found.append((level, m.start(), m.end()))
+        if level is not None:
+            found.extend((level, m.start(), m.end()) for m in re.finditer(pattern, work, re.IGNORECASE))
         work = re.sub(pattern, lambda m: " " * len(m.group()), work, flags=re.IGNORECASE)
     return found
 
