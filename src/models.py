@@ -118,8 +118,55 @@ class SearchResponse(BaseModel):
     results: list[SearchResult]
 
 
+class Sector(BaseModel):
+    """A sector where the innovation can be used. Estimate: a rule found the words in the source text."""
+
+    label: str
+    recipients: str
+    evidence: str = Field(description="Exact part of the source text.")
+    reason: str
+
+
+class Audience(BaseModel):
+    group: UserGroup
+    label: str
+    reason: str
+
+
+class Adopter(BaseModel):
+    """Another institution with a similar innovation: a candidate partner or a candidate for the next adoption."""
+
+    name: str
+    kind: InstitutionKind
+    voivodeship: str | None = None
+    innovation_id: str
+    innovation_title: str
+    relevance: float
+
+
+class Path(BaseModel):
+    """A next step for the innovation, with the rule that selected it and the measures of effectiveness."""
+
+    id: str
+    name: str
+    reason: str
+    measures: list[str]
+    reference: str
+
+
+class Applications(BaseModel):
+    """Output of src.applications.recommend(). All items are estimates of rules (kind "estimate")."""
+
+    version: str
+    sectors: list[Sector] = []
+    audiences: list[Audience] = []
+    adopters: list[Adopter] = []
+    paths: list[Path] = []
+
+
 class InnovationDetail(Innovation):
     similar: list[SearchResult] = []
+    applications: Applications | None = None
 
 
 class SourceStatus(BaseModel):

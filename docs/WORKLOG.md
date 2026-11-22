@@ -2,6 +2,21 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 24-use-cases, issue #15)
+
+- Add `src/applications.py` (rules v0.1): where an innovation can be used and by whom (task section 6, points d and e). The card gets `applications`:
+  - sectors with typical recipients, with a quote from the source;
+  - user groups of the FAQ with the reason;
+  - other institutions with similar innovations (candidate partners or next adopters);
+  - the path with its reason, the measures of effectiveness and the reference: P1 technology transfer, P2 market use, P3 replication in another institution, P4 pilot with evaluation, P5 more data.
+- Add the models `Applications`, `Sector`, `Audience`, `Adopter` and `Path` to `src/models.py`. `search.detail()` fills `applications`.
+- Add the section "Gdzie można zastosować i kto może wdrożyć" to the card (`web/app.js`, `web/style.css`).
+- RAD-on: skip projects without a signal of a solution in the text (for example dictionaries and history). Podkarpackie now gives 927 records.
+- Add `tests/cases.json` (7 cases: 3 areas, 3 sources, 2 voivodeships; 2 demo cases) and `tests/test_cases.py`.
+- Add `pytest.ini`: the marker `slow`. `pytest` skips the slow tests; `pytest -m slow` runs them with the network.
+- Check: 98 tests pass. The slow tests pass: technological demo (RAD-on, 32 s), administrative demo (FE, 12 s), new card in 30 s or less.
+- Add the demo procedure to `README.md`.
+
 ## 2026-11-22, MaciejMomot (branch 25-fe-projects, issue #7)
 
 - Add `src/sources/fe_projects.py`: the loader of the list of FE 2021-2027 projects (dane.gov.pl, dataset 13939, CC0 1.0). Register it in `src/pipeline.py` as `fe`.

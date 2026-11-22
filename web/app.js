@@ -631,6 +631,81 @@ function renderDemand(demand) {
   );
 }
 
+// Task section 6, points d and e: where the innovation can be used, by whom, and the next path with its measures.
+function renderApplications(apps) {
+  if (!apps) return null;
+  const note = el(
+    "p",
+    { class: "muted" },
+    `Szacunek na podstawie reguł (wersja ${apps.version}): tekst źródła, obszar, poziom wdrożenia i podobne innowacje.`,
+  );
+  const parts = [note];
+  if (apps.sectors?.length) {
+    parts.push(
+      el("h3", {}, "Sektory i odbiorcy"),
+      el(
+        "ul",
+        { class: "applications" },
+        apps.sectors.map((s) =>
+          el(
+            "li",
+            {},
+            el("strong", {}, s.label),
+            `: ${s.recipients} `,
+            el("span", { class: "tag tag-estimate", title: s.reason }, "szacunek"),
+            el("div", { class: "evidence" }, `„${s.evidence}”`),
+          ),
+        ),
+      ),
+    );
+  }
+  if (apps.audiences?.length) {
+    parts.push(
+      el("h3", {}, "Dla kogo"),
+      el("ul", { class: "applications" }, apps.audiences.map((a) => el("li", {}, el("strong", {}, a.label), `: ${a.reason}`))),
+    );
+  }
+  if (apps.adopters?.length) {
+    parts.push(
+      el("h3", {}, "Instytucje z podobnymi rozwiązaniami (możliwi partnerzy lub kolejni odbiorcy)"),
+      el(
+        "ul",
+        { class: "applications" },
+        apps.adopters.map((a) =>
+          el(
+            "li",
+            {},
+            el("strong", {}, a.name),
+            a.voivodeship ? ` (${a.voivodeship}) · ` : " · ",
+            el("a", { href: `innovation.html?id=${encodeURIComponent(a.innovation_id)}` }, a.innovation_title),
+          ),
+        ),
+      ),
+    );
+  }
+  if (apps.paths?.length) {
+    parts.push(
+      el("h3", {}, "Rekomendowana ścieżka"),
+      el(
+        "ol",
+        { class: "applications" },
+        apps.paths.map((p) =>
+          el(
+            "li",
+            {},
+            el("strong", {}, `${p.id}. ${p.name}`),
+            el("div", {}, `Uzasadnienie: ${p.reason}`),
+            el("div", {}, "Mierniki skuteczności:"),
+            el("ul", {}, p.measures.map((m) => el("li", {}, m))),
+            el("div", { class: "muted" }, `Podstawa: ${p.reference}`),
+          ),
+        ),
+      ),
+    );
+  }
+  return section("Gdzie można zastosować i kto może wdrożyć", ...parts);
+}
+
 function renderSimilar(similar) {
   if (!similar?.length) return null;
   return section("Podobne innowacje", el("ol", { class: "result-list" }, similar.map((r) => renderResult(r))));
@@ -680,6 +755,7 @@ function renderCard(item, definitions) {
       item.keywords?.length > 0 && el("p", { class: "keywords" }, item.keywords.map((k) => el("span", { class: "tag" }, k))),
     ),
     renderAssessment(item, definitions),
+    renderApplications(item.applications),
     renderSources(item.sources),
     renderTimeline(item.timeline),
     renderDemand(item.demand),

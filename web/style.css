@@ -235,3 +235,7 @@ body:has(.compare-bar:not([hidden])) { padding-bottom: 64px; }
 .source-list { margin: 0; padding-left: 20px; font-size: 0.95rem; }
 .source-failed { color: var(--admin); }
 .source-error { font-weight: 600; }
+
+.applications { padding-left: 1.2rem; }
+.applications > li { margin-bottom: 0.6rem; }
+.card-section h3 { font-size: 1rem; margin: 1rem 0 0.4rem; }

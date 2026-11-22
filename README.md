@@ -116,7 +116,22 @@ Testy:
 
 ```bash
 uv run --no-project python -m pytest
+uv run --no-project python -m pytest -m slow
 ```
+
+Pierwsze polecenie nie potrzebuje sieci: używa nagranych odpowiedzi źródeł i stałych przypadków z `tests/cases.json` (obszar, poziom wdrożenia, TRL, przedział oceny, sektory i ścieżka). Drugie polecenie przechodzi cały proces z siecią: pobranie ze źródła, ocena, indeks, wyszukiwanie i karta. Sprawdza też, że karta nowej innowacji powstaje w 30 sekund lub szybciej.
+
+### Demonstracja (dwa przypadki użycia, zadanie, sekcja 6)
+
+Przed pokazem zbuduj bazę (`src.pipeline update`). Potem aplikacja działa bez sieci, bo wyszukiwanie korzysta tylko z lokalnej bazy `data/cache/radar.db`.
+
+1. **Technologia z uczelni dla firmy.** Wpisz „śmigłowiec” lub „rehabilitacja”. Radar pokazuje patenty uczelni z Podkarpacia. Karta pokazuje:
+   - poziom wdrożenia i TRL z etykietą „szacunek” i powodem;
+   - ocenę według 5 kryteriów z przedziałem i pewnością;
+   - sektory zastosowania z cytatem ze źródła;
+   - instytucje z podobnymi rozwiązaniami;
+   - ścieżkę „Transfer technologii” z miernikami skuteczności.
+2. **Rozwiązanie z innej gminy dla urzędu.** Wybierz „Kim jesteś? → instytucje publiczne i samorządy” i wpisz „e-usługi w urzędzie”. Radar pokazuje wdrożone rozwiązania JST. Karta pokazuje ścieżkę „Replikacja w innej instytucji” z miernikami: liczba instytucji, które przejęły rozwiązanie, liczba użytkowników i efekt w nowym miejscu.
 
 ## Źródła danych
 

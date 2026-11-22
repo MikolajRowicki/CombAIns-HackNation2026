@@ -74,10 +74,18 @@ def test_no_personal_data():
 
 
 def test_basic_research_projects_are_skipped():
-    raw = {"receivedFunds": [{"financingInstitutionName": "Narodowe Centrum Nauki"}]}
+    raw = {
+        "projectTitlePl": "Prototyp czujnika do monitoringu mostów",
+        "receivedFunds": [{"financingInstitutionName": "Narodowe Centrum Nauki"}],
+    }
     assert not radon.is_innovation_project(raw)
     raw["receivedFunds"].append({"financingInstitutionName": "Narodowe Centrum Badań i Rozwoju"})
     assert radon.is_innovation_project(raw)
+
+
+def test_humanities_projects_are_skipped():
+    raw = {"projectTitlePl": "Słownik biograficzny polskich pisarek emigracyjnych 1939-1989", "receivedFunds": []}
+    assert not radon.is_innovation_project(raw)
 
 
 def test_failed_source_part_does_not_stop_the_loader():

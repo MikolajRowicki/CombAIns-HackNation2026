@@ -1,0 +1,136 @@
+{
+  "about": "Fixed test cases (AGENTS.md, section Tests). 'cases' use recorded data and run without the network. 'demo' are the use cases of the task (section 6) and run with the network (pytest -m slow).",
+  "criteria_version": "v0.1",
+  "applications_version": "v0.1",
+  "cases": [
+    {
+      "id": "radon-243937",
+      "data": "radon_fixture",
+      "note": "Patent of a public university of applied sciences (Krosno): a holder for the repair of helicopter exhaust collectors.",
+      "expected": {
+        "area": "technological",
+        "implementation_level": 2,
+        "trl": 4,
+        "voivodeship": "podkarpackie",
+        "potential": [40, 60],
+        "confidence": "low",
+        "sectors_include": ["lotnictwo i kosmonautyka"],
+        "paths_include": ["P1"]
+      }
+    },
+    {
+      "id": "radon-project-62a9a2ae4dbd097005182bbd",
+      "data": "radon_fixture",
+      "note": "Project funded by PCI: a technology of gluten-free biscuits.",
+      "expected": {
+        "area": "technological",
+        "implementation_level": 1,
+        "trl": "missing",
+        "voivodeship": "podkarpackie",
+        "potential": [25, 45],
+        "sectors_include": ["rolnictwo i przetwórstwo spożywcze"],
+        "paths_include": ["P1", "P5"]
+      }
+    },
+    {
+      "id": "ncbr-vshaper-5ax",
+      "data": "sample",
+      "note": "Company product from the NCBR list of successes: a five-axis 3D printer.",
+      "expected": {
+        "area": "technological",
+        "implementation_level": 5,
+        "trl": 9,
+        "voivodeship": "podkarpackie",
+        "potential": [80, 100],
+        "sectors_include": ["przemysł maszynowy i produkcja"],
+        "paths_include": ["P2"]
+      }
+    },
+    {
+      "id": "web-mobilny-urzednik-rzeszow",
+      "data": "sample",
+      "note": "Administrative innovation of a JST: an official visits the home of a resident.",
+      "expected": {
+        "area": "administrative",
+        "implementation_level": 5,
+        "trl": "not_applicable",
+        "voivodeship": "podkarpackie",
+        "potential": [60, 85],
+        "sectors_include": ["administracja publiczna"],
+        "paths_include": ["P3"]
+      }
+    },
+    {
+      "id": "insam7-zawoja-wirtualny-urzednik",
+      "data": "sample",
+      "note": "Administrative innovation from another region (laureate of Innowacyjny Samorząd): a chatbot for residents.",
+      "expected": {
+        "area": "administrative",
+        "implementation_level": 5,
+        "trl": "not_applicable",
+        "voivodeship": "małopolskie",
+        "potential": [70, 95],
+        "sectors_include": ["administracja publiczna"],
+        "paths_include": ["P3"]
+      }
+    },
+    {
+      "id": "ncbr-uczelnia-bez-barier-krosno",
+      "data": "sample",
+      "note": "Educational innovation of a university: accessibility for persons with disabilities.",
+      "expected": {
+        "area": "educational",
+        "implementation_level": 5,
+        "trl": "not_applicable",
+        "voivodeship": "podkarpackie",
+        "potential": [65, 90],
+        "sectors_include": ["edukacja"],
+        "paths_include": ["P3"]
+      }
+    },
+    {
+      "id": "web-robolab-dolina-lotnicza",
+      "data": "sample",
+      "note": "Educational concept: a robotics lab for pupils. Low level, so the path is a pilot.",
+      "expected": {
+        "area": "educational",
+        "implementation_level": 1,
+        "trl": "not_applicable",
+        "voivodeship": "podkarpackie",
+        "potential": [25, 50],
+        "sectors_include": ["edukacja"],
+        "paths_include": ["P4"]
+      }
+    }
+  ],
+  "demo": [
+    {
+      "id": "demo-technological",
+      "title": "Technologia z uczelni dla firmy",
+      "source": "radon",
+      "voivodeship": "podkarpackie",
+      "query": "śmigłowiec",
+      "expected": {
+        "area": "technological",
+        "voivodeship": "podkarpackie",
+        "min_results": 1,
+        "trl": "present",
+        "paths_include": ["P1"]
+      }
+    },
+    {
+      "id": "demo-administrative",
+      "title": "Rozwiązanie z innej gminy dla urzędu",
+      "source": "fe",
+      "voivodeship": "podkarpackie",
+      "query": "e-usługi w urzędzie",
+      "expected": {
+        "area": "administrative",
+        "voivodeship": "podkarpackie",
+        "min_results": 1,
+        "trl": "not_applicable",
+        "paths_include": ["P3", "P4"]
+      }
+    }
+  ]
+}

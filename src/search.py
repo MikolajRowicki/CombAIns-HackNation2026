@@ -7,6 +7,7 @@ from functools import lru_cache
 
 import simplemma
 
+from src import applications
 from src.models import Innovation, InnovationDetail, SearchResponse, SearchResult
 
 # Ranking of the contract (src/models.py): relevance has priority, the potential breaks ties.
@@ -139,7 +140,12 @@ def search(
 
 
 def detail(conn: sqlite3.Connection, innovation: Innovation, k: int = 5) -> InnovationDetail:
-    """Return the card with the k most similar innovations (same words in the title and the keywords)."""
+    """Return the card with the k most similar innovations and the applications (src/applications.py)."""
     text = " ".join([innovation.title, *innovation.keywords])
-    similar = search(conn, text, exclude=innovation.id, limit=k).results if text.strip() else []
-    return InnovationDetail(**innovation.model_dump(), similar=similar)
+    # More candidates than k, so that the list of other institutions is not empty.
+    candidates = search(conn, text, exclude=innovation.id, limit=4 * k).results if text.strip() else []
+    return InnovationDetail(
+        **innovation.model_dump(),
+        similar=candidates[:k],
+        applications=applications.recommend(innovation, candidates),
+    )

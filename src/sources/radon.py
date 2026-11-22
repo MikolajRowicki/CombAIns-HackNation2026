@@ -29,6 +29,15 @@ NON_INNOVATION_FUNDERS = {
     "Narodowa Agencja Wymiany Akademickiej",
     "Polsko-Amerykańska Komisja Fulbrighta",
 }
+# A project must describe a solution: a technology, a product, a tool, a method of teaching or a therapy.
+# Without these words, the project is usually humanities research (for example a dictionary or a history).
+SOLUTION_SIGNAL = re.compile(
+    r"innowac|technologi|technology|wdroż|prototyp|urządzeni|aplikacj|oprogramow|produkt|patent|demonstrator"
+    r"|komercjaliz|platform|narzędzi|rozwiązani\w* (?:techn|praktycz|innowac)|e-usług|dydaktyczn|kształceni"
+    r"|szkoleni|leczeni|terapi|klinicz|przechowalnicz|trwałoś",
+    re.IGNORECASE,
+)
+
 EDUCATION_FUNDERS = {
     "Fundacja Rozwoju Systemu Edukacji",
     "European Education and Culture Executive Agency",
@@ -156,8 +165,14 @@ def _funders(raw: dict) -> list[str]:
 
 
 def is_innovation_project(raw: dict) -> bool:
+    """Keep a project only if a funder is not basic research and the text describes a solution (Oslo Manual)."""
     funders = _funders(raw)
-    return not funders or not set(funders) <= NON_INNOVATION_FUNDERS
+    if funders and set(funders) <= NON_INNOVATION_FUNDERS:
+        return False
+    text = " ".join(
+        raw.get(k) or "" for k in ("projectTitlePl", "projectTitleEn", "projectAbstractPl", "projectAbstractEn")
+    )
+    return bool(SOLUTION_SIGNAL.search(text))
 
 
 def project_to_innovation(raw: dict, institution: Institution, retrieved: date) -> Innovation:
