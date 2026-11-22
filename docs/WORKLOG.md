@@ -2,6 +2,14 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 44-analytics)
+
+- Add anonymous usage counters (FAQ, section 7): table `usage` (day, kind, value, count) in `src/db.py`.
+- `/api/search` counts the filters (area, group, voivodeship) and "z frazą" or "bez frazy". It never stores the text of a query, because the text can contain a name.
+- `/api/innovations/{id}` counts the viewed card and its area.
+- Add `GET /api/stats?days=30`: the top values of each counter, with the titles of the viewed cards.
+- No IP address, no user identifier, no cookie. Add a test that the text of a query is not stored.
+
 ## 2026-11-22, MikolajRowicki (branch 42-submission, issue #19)
 
 - Add `LICENSE` with the text of EUPL-1.2 (SPDX). The rules of the task (§1 point 10, §4) require this licence; the file did not exist.

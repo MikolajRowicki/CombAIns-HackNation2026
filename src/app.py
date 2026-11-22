@@ -49,6 +49,12 @@ def search_innovations(
     offset: int = Query(0, ge=0, le=search.MAX_CANDIDATES),
 ) -> SearchResponse:
     with closing(connection()) as conn:
+        # Anonymous usage (FAQ, section 7): only the filters, never the text of the query.
+        if offset == 0:
+            db.count_usage(conn, "search", "z frazą" if q.strip() else "bez frazy")
+            for kind, value in (("area", area), ("group", group), ("voivodeship", voivodeship)):
+                if value:
+                    db.count_usage(conn, kind, value)
         return search.search(conn, q, area, voivodeship, level_min, group, limit, offset=offset)
 
 
@@ -108,7 +114,23 @@ def innovation(innovation_id: str) -> InnovationDetail:
         record = db.get_innovation(conn, innovation_id)
         if record is None:
             raise HTTPException(404, "Nie znaleziono innowacji")
+        db.count_usage(conn, "view", record.id)
+        db.count_usage(conn, "view_area", record.area.value)
         return search.detail(conn, record)
+
+
+@app.get("/api/stats")
+def stats(days: int = Query(30, ge=1, le=365)) -> dict:
+    """Return anonymous counters of the last days: filters of the searches and viewed cards (FAQ, section 7)."""
+    with closing(connection()) as conn:
+        data = db.usage_stats(conn, days)
+        titles = {}
+        for item in data.get("view", []):
+            card = db.get_innovation(conn, item["value"])
+            titles[item["value"]] = card.title if card else None
+    for item in data.get("view", []):
+        item["title"] = titles[item["value"]]
+    return {"days": days, "counters": data}
 
 
 @app.get("/api/sources", response_model=list[SourceStatus])

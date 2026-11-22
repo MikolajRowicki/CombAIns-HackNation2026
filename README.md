@@ -263,7 +263,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 - **Legalne źródła.** Radar korzysta tylko z danych bezpłatnych i legalnych, zapisuje licencję każdego źródła, przestrzega `robots.txt` i warunków korzystania ze stron oraz ogranicza liczbę zapytań do jednego serwera. Ze stron WWW zapisuje tylko opis potrzebny do karty i link. Kopie stron trzyma w lokalnej pamięci podręcznej najwyżej 7 dni, żeby nie obciążać serwerów, a potem je usuwa.
 - **Obserwowane zapytania tylko w przeglądarce.** Zapisane wyszukiwania są w `localStorage` użytkownika, nie na serwerze.
 - **Sekrety poza repozytorium.** Ewentualne klucze są tylko w pliku `.env`, którego nie ma w repozytorium.
-- **Analityka (opcjonalna).** Jeśli zostanie włączona, będzie anonimowa: obszary wyszukiwania, oglądane karty, popularne kategorie. Bez adresów IP i identyfikatorów użytkowników.
+- **Anonimowa analityka (FAQ, sekcja 7).** Radar liczy tylko filtry wyszukiwań (obszar, grupa użytkowników, województwo, wyszukiwanie z frazą lub bez) i oglądane karty, w sumach dziennych. Nie zapisuje treści zapytań (mogłyby zawierać nazwisko), adresów IP, identyfikatorów ani ciasteczek. Wyniki: `GET /api/stats`.
 
 ## Integracja z istniejącymi systemami
 
@@ -271,6 +271,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
   - `GET /api/search?q=&area=&voivodeship=&level_min=&group=&limit=` – wyszukiwanie z filtrami;
   - `GET /api/innovations/{id}` – pełna karta z podobnymi innowacjami;
   - `GET /api/sources` – stan źródeł danych;
+  - `GET /api/stats?days=30` – anonimowe liczniki: najczęstsze obszary, grupy, województwa i oglądane karty;
   - `GET /api/health` – stan aplikacji.
 - **Eksport CSV:** `GET /api/export.csv?q=&area=&voivodeship=&level_min=&group=&limit=` – wyniki z oceną, pewnością, wersją kryteriów i linkami do źródeł, do arkusza lub systemu CRM (UTF-8, separator `;`).
 - **Kryteria:** `GET /api/criteria` – nazwy, skale, wagi i źródła kryteriów oceny.

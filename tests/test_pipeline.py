@@ -88,3 +88,17 @@ def test_group_bonus_changes_the_order_only_a_little(db_path):
     assert search.group_bonus(None, card) == 0
     for result in science:
         assert result.rank_score == pytest.approx(0.7 * result.relevance + 0.3 * (result.potential or 0) / 100, abs=1e-3)
+
+
+def test_anonymous_usage_counters(db_path):
+    with TestClient(app_module.app) as client:
+        first = client.get("/api/search", params={"q": "Jan Kowalski", "area": "technological"}).json()["results"]
+        client.get("/api/search", params={"area": "technological", "group": "investors"})
+        client.get(f"/api/innovations/{first[0]['id']}") if first else None
+        stats = client.get("/api/stats").json()["counters"]
+    assert {"value": "technological", "count": 2} in stats["area"]
+    assert stats["group"][0]["value"] == "investors"
+    # The text of a query is never stored.
+    assert "Kowalski" not in str(stats)
+    conn = db.connect(db_path)
+    assert "Kowalski" not in str([tuple(r) for r in conn.execute("SELECT * FROM usage")])

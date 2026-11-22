@@ -46,6 +46,15 @@ CREATE VIRTUAL TABLE IF NOT EXISTS notices_fts USING fts5(
     tokenize = 'unicode61 remove_diacritics 2'
 );
 
+-- Anonymous usage counters (FAQ, section 7): no query text, no IP address, no user identifier.
+CREATE TABLE IF NOT EXISTS usage (
+    day TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    value TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (day, kind, value)
+);
+
 CREATE TABLE IF NOT EXISTS sources (
     name TEXT PRIMARY KEY,
     records INTEGER NOT NULL DEFAULT 0,
@@ -112,3 +121,26 @@ def delete_innovation(conn: sqlite3.Connection, innovation_id: str) -> None:
 
 def all_innovations(conn: sqlite3.Connection) -> list[Innovation]:
     return [Innovation.model_validate(json.loads(r["data"])) for r in conn.execute("SELECT data FROM innovations ORDER BY id")]
+
+
+def count_usage(conn: sqlite3.Connection, kind: str, value: str) -> None:
+    conn.execute(
+        """INSERT INTO usage (day, kind, value, count) VALUES (date('now'), ?, ?, 1)
+           ON CONFLICT(day, kind, value) DO UPDATE SET count = count + 1""",
+        (kind, value),
+    )
+    conn.commit()
+
+
+def usage_stats(conn: sqlite3.Connection, days: int = 30, top: int = 10) -> dict[str, list[dict]]:
+    rows = conn.execute(
+        """SELECT kind, value, SUM(count) AS n FROM usage WHERE day >= date('now', ?)
+           GROUP BY kind, value ORDER BY kind, n DESC""",
+        (f"-{days} days",),
+    ).fetchall()
+    stats: dict[str, list[dict]] = {}
+    for row in rows:
+        items = stats.setdefault(row["kind"], [])
+        if len(items) < top:
+            items.append({"value": row["value"], "count": row["n"]})
+    return stats
