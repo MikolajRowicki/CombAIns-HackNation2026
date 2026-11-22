@@ -4,11 +4,62 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Radar innowacji</title>
+  <meta name="description" content="Odkrywaj istniejące polskie innowacje, sprawdzaj ich rzeczywisty poziom rozwoju i miejsca zastosowania.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Radar innowacji</h1>
-    <p>Odkrywaj istniejące polskie innowacje, sprawdzaj ich rzeczywisty poziom rozwoju i miejsca zastosowania.</p>
+  <a class="skip-link" href="#results">Przejdź do wyników</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">◎</span> Radar innowacji</a>
+      <p class="tagline">Istniejące polskie innowacje w jednym miejscu: technologiczne, edukacyjne i administracyjne.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="search-form" class="search" role="search">
+      <label for="q" class="search-label">Czego szukasz? Opisz temat lub potrzebę</label>
+      <div class="search-row">
+        <input id="q" name="q" type="search" autocomplete="off" placeholder="np. system rezerwacji wizyt w urzędzie">
+        <button type="submit" class="btn-primary">Szukaj</button>
+      </div>
+      <p class="examples" id="examples" aria-label="Przykładowe wyszukiwania"></p>
+
+      <fieldset class="filters">
+        <legend class="visually-hidden">Filtry</legend>
+        <div class="filter">
+          <label for="group">Kim jesteś?</label>
+          <select id="group" name="group"></select>
+        </div>
+        <div class="filter">
+          <label for="area">Obszar</label>
+          <select id="area" name="area"></select>
+        </div>
+        <div class="filter">
+          <label for="voivodeship">Województwo</label>
+          <select id="voivodeship" name="voivodeship"></select>
+        </div>
+        <div class="filter">
+          <label for="level_min">Poziom wdrożenia co najmniej</label>
+          <select id="level_min" name="level_min"></select>
+        </div>
+      </fieldset>
+    </form>
+
+    <div id="notice" class="notice" hidden></div>
+
+    <section id="results" class="results" aria-labelledby="results-title" tabindex="-1">
+      <h2 id="results-title" class="results-title">Wyniki</h2>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <ol id="result-list" class="result-list"></ol>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ocena według kryteriów z FAQ zadania (wersja kryteriów v0.1). Każda karta pokazuje źródła i oddziela fakty od szacunków.</p>
+    </div>
+  </footer>
 </body>
 </html>

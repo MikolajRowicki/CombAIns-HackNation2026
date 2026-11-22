@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 02:10, MaciejMomot (branch 07-search-page, issue #5)
+
+- Make the search page: `web/index.html`, `web/app.js`, `web/style.css`. Plain HTML and JS, no library, no build step.
+- Add `web/config.json`: the default voivodeship and the search examples. Thus the code has no region.
+- The page calls `GET /api/search`. If the API gives 404, the page uses `web/sample/search.json` (issue #3), filters it in the browser and shows a notice.
+- The first view shows the default voivodeship. A search with a phrase covers all of Poland, if the user did not select a voivodeship.
+- The page accepts a FieldValue or a plain value in each field. A tag with an estimate shows "szacunek" and the reason.
+- The page builds the DOM with `textContent` only. Thus text from the sources cannot inject HTML.
+- Check: headless Edge with test data (default view, search, filter, back button, no console errors).
+
 ## 2026-11-22 01:40, MaciejMomot (branch 05-readme, issue #16)
 
 - Write the structure and the first full text of `README.md` in Polish: problem, solution, process, main functions, user groups, data sources, criteria and rules, assumptions and limits, scale-up, security, integration, development, license.
