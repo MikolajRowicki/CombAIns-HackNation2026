@@ -2,6 +2,7 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+<<<<<<< Updated upstream
 ## 2026-11-22, MaciejMomot (branch 27-ui-polish)
 
 Changes after the review of the user interface by the team.
@@ -14,6 +15,19 @@ Changes after the review of the user interface by the team.
 - New page `web/about.html` ("O radarze"): the status of the sources, the meaning of the labels, the method with the criteria, the weights, the scales, the references and the version, and the privacy. The search page shows only a warning if a source failed.
 - No text tells that the source of the criteria is the FAQ: the references in `src/criteria.py` and the text in `README.md` changed.
 - `src/sources/fe_projects.py`: the type keeps the case ("projekt FE: rozwiązania TIK…"). `src/applications.py`: names of the missing criteria, not codes.
+=======
+## 2026-11-22, MikolajRowicki (branch 28-competitions, issue #10)
+
+- Add `src/sources/competitions.py`: one card for each awarded or distinguished project of the competition "Innowacyjny Samorząd" (Serwis Samorządowy PAP, pages on wartowiedziec.pl).
+- The result pages are in `data/web_sources.csv`, category `competition_results` (S044: VII edition 2026, S045: IV edition 2023). The column `strategy` names the parser.
+- The loader obeys `robots.txt` and its Crawl-delay (60 s on wartowiedziec.pl). It keeps the pages in `data/cache/pages/` for 7 days.
+- The parser finds "X za projekt „Y”", lists "I miejsce: X (Y)" and titles with the name of the JST. It changes the case of the name ("powiatowi krotoszyńskiemu" -> "Powiat krotoszyński"). It skips sentences with quotes of persons.
+- The date comes from the page (`class="date"`), because the date of trafilatura is not correct for this site.
+- Implementation level 5 and credibility 5 are facts: the page says that the competition awards implemented projects. The card gets an "award" event.
+- Result: 46 cards (VII edition: 16 prizes and 22 distinctions; IV edition: 8 prizes). Only some cards have a voivodeship: the pages do not give it.
+- Not used: "Kierunek innowacja" (only names of teachers, no description), PARP "Polski Produkt Przyszłości" (bot protection), VI edition 2025 (free text without quotes).
+- Add `tests/test_competitions.py` and `tests/fixtures/competition_page.html` (short quotes only, a made-up person name for the test).
+>>>>>>> Stashed changes
 
 ## 2026-11-22, MikolajRowicki (branch 26-bzp, issue #13)
 

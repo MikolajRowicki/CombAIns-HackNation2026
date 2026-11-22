@@ -143,9 +143,12 @@ Wszystkie źródła są bezpłatne i nie wymagają klucza API. Aplikacja zapisuj
 | Strony WWW instytucji (crawler) | aktualności i projekty szkół, JST, uczelni, inkubatorów, wyniki konkursów | HTTP, `robots.txt` | tylko krótkie streszczenie i link (TDM, art. 26³ pr. aut.) | wszystkie |
 | RAD-on, dane otwarte (OPI PIB) | patenty jednostek naukowych, projekty badawcze | REST JSON | CC0 1.0 | technologiczny, edukacyjny |
 | Ogłoszenia BZP (e-Zamówienia) | zakupy instytucji publicznych (sygnały popytu) | REST JSON | wolne użycie | sygnał popytu |
+| Wyniki konkursu „Innowacyjny Samorząd” (Serwis Samorządowy PAP, strony wartowiedziec.pl) | laureaci i wyróżnieni: wdrożone projekty JST z całej Polski | HTML, `robots.txt` (Crawl-delay 60 s) | prawa wydawcy; zapisujemy krótki cytat i link | administracyjny |
 | NCBR, „Wyszukiwarka sukcesów beneficjentów” | wdrożone wyniki projektów | HTML | niepodana; `robots.txt` zezwala | technologiczny |
 
 Lista projektów FE: aktualizacja pobiera najnowszy miesięczny plik XLSX ze zbioru 13939 na dane.gov.pl do `data/cache/`. Gdy API nie odpowiada, wystarczy pobrać plik ręcznie i zapisać go jako `data/cache/fe_<id zasobu>.xlsx`. Radar zostawia projekty z sygnałem innowacji: kategoria wsparcia B+R, innowacji lub TIK albo słowo „innowac”, „e-usług” itp. w tytule. Nazwy beneficjentów, którzy są osobami fizycznymi lub przedsiębiorcami indywidualnymi, są ukryte. Opisy pochodzą z wniosków, dlatego poziom wdrożenia wynika z dat projektu.
+
+Wyniki konkursów: adresy stron wyników są w `data/web_sources.csv` (kategoria `competition_results`), nie w kodzie. Radar tworzy jedną kartę dla każdego nagrodzonego lub wyróżnionego projektu. Laureatem jest JST, nie osoba. Nagroda jury to publiczne potwierdzenie wdrożenia, dlatego poziom wdrożenia i wiarygodność są faktami z cytatem. Strony innych konkursów z listy (np. „Kierunek innowacja”) podają tylko nazwiska nauczycieli bez opisu innowacji, a PARP blokuje automatyczne pobieranie, dlatego radar ich nie używa.
 
 Pełna lista źródeł, kolejność integracji i źródła wykluczone (z powodami) są w `docs/project.md`, sekcja 6.
 
