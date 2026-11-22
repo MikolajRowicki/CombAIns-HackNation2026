@@ -2,6 +2,12 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 01:40, MaciejMomot (branch 05-readme, issue #16)
+
+- Write the structure and the first full text of `README.md` in Polish: problem, solution, process, main functions, user groups, data sources, criteria and rules, assumptions and limits, scale-up, security, integration, development, license.
+- Keep the start procedure and the license table of MikolajRowicki.
+- Open items: MikolajRowicki checks the data sources part. Before the submission, check that each function in the README operates (comparison, CSV export, watchlists).
+
 ## 2026-11-22 01:15, MaciejMomot (branch 03-criteria-module, issue #4)
 
 - Add `src/criteria.py`: the criteria K1-K5 with Polish names, scales, weights and references (`CRITERIA`), and the function `assess()`.
