@@ -241,10 +241,10 @@
         "evidence": "Strona internetowa Uczelni została dostosowana do wymogów standardu WCAG 2.1.",
         "reason": null
       },
-      "potential": 76,
+      "potential": 85,
       "confidence": "medium",
       "relevance": 0.2,
-      "rank_score": 0.368
+      "rank_score": 0.395
     },
     {
       "id": "radon-246741",

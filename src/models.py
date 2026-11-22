@@ -1,7 +1,7 @@
 """Data contract of the application: the innovation record and the API responses.
 
 The backend, the tests and the web page use these models. Codes are in English.
-The Polish labels of the codes are in LABELS (served by GET /api/meta).
+LABELS has the Polish labels of the codes. The criteria are in src/criteria.py (GET /api/criteria).
 """
 
 from datetime import date
@@ -35,18 +35,27 @@ class Institution(BaseModel):
 
 
 class CriterionScore(BaseModel):
-    value: int | None = Field(description="0-5 on the common scale, or None if the data is missing.")
-    weight: float
-    kind: Kind | None = None
+    """One criterion of the assessment, as src/criteria.py calculates it."""
+
+    value: int | float | None = Field(description="Value on the scale of the criterion (TRL 1-9 for K2).")
+    score: int | float | None = Field(description="Value on the common scale 0-5.")
+    weight: float = Field(description="Weight after the change for a TRL that does not apply.")
+    points: float | None
+    kind: Kind | None
+    applicable: bool
 
 
 class Assessment(BaseModel):
-    potential: int = Field(ge=0, le=100)
+    """Output of src.criteria.assess()."""
+
+    potential: int | None = Field(ge=0, le=100, description="None if no criterion is known.")
     low: int = Field(ge=0, le=100)
     high: int = Field(ge=0, le=100)
     confidence: Confidence
+    fact_share: int = Field(ge=0, le=100, description="Share of the weight with facts, in percent.")
     criteria_version: str
     criteria: dict[str, CriterionScore]
+    missing: list[str] = []
 
 
 class Source(BaseModel):
@@ -98,7 +107,7 @@ class SearchResult(BaseModel):
     area: FieldValue
     institution: Institution
     implementation_level: FieldValue
-    potential: int
+    potential: int | None
     confidence: Confidence
     relevance: float = Field(ge=0, le=1)
     rank_score: float = Field(description="0.7 * relevance + 0.3 * potential / 100")
@@ -118,20 +127,6 @@ class SourceStatus(BaseModel):
     records: int
     last_check: date | None = None
     error: str | None = None
-
-
-class CriterionInfo(BaseModel):
-    id: str
-    name: str
-    scale: dict[str, str]
-    weight: float
-    reference: str
-
-
-class Meta(BaseModel):
-    labels: dict[str, dict[str, str]]
-    criteria: list[CriterionInfo]
-    criteria_version: str
 
 
 LABELS: dict[str, dict[str, str]] = {

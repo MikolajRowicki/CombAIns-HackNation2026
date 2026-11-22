@@ -7,18 +7,60 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - Add `src/models.py`: the record schema (`Innovation`, `FieldValue`), the API responses and the Polish labels of all codes (`LABELS`).
 - Add `src/db.py`: SQLite schema with the tables `innovations` (JSON and filter columns), `innovations_fts` (FTS5), `innovations_vec` (sqlite-vec, cosine, 768 dimensions) and `sources`.
 - Add `tests/fixtures/sample_innovations.json`: 18 real records from RAD-on, NCBR, wartowiedziec.pl and polishscience.pl. The set has all three areas and 9 voivodeships. The records have no names of persons.
-- Add `web/sample/search.json`, `web/sample/innovation.json` and `web/sample/meta.json` for the web page.
-- Add `tests/test_models.py`. The test checks that each quote is a part of the source text.
+- Add `web/sample/search.json` and `web/sample/innovation.json` for the web page.
+- Add `tests/test_models.py`. The test checks that each quote is a part of the source text. It also checks that `src.criteria.assess()` gives the same assessment again.
 - Changes to the contract of the issue (Maciej must accept them):
-  - new endpoint `GET /api/meta`;
   - full `FieldValue` in the search results;
-  - `trl: null` means "not applicable", and `trl.value: null` means "no data".
+  - `trl: null` means "not applicable", and `trl.value: null` means "no data";
+  - `Assessment` has the output of `src/criteria.py` (`score`, `points`, `applicable`, `fact_share`, `missing`).
+- Merge with `main`: remove the planned `GET /api/meta`, because `GET /api/criteria` (Maciej) gives the criteria. The web page keeps its copy of the labels. `LABELS` in `src/models.py` is for the backend.
+- Calculate the assessment of the sample records again with `src.criteria.assess()`.
 - Findings:
   - The BZP API blocked the second request ("Dostęp zablokowany"). Issue #13 must use a low request rate and a cache.
   - The publication dates from trafilatura are not correct for gov.pl and wartowiedziec.pl. Thus `data_date` stays empty.
   - No sample record has the confidence "high", because most criteria are estimates.
   - Page text contains non-breaking spaces. The pipeline must normalize them before the quote check.
-- A script outside the repository made the sample records. The assessment uses the rules of `docs/project.md`, section 7. After issue #4, run the assessment again with `src/criteria.py`.
+- A script outside the repository made the sample records.
+
+## 2026-11-22 02:50, MaciejMomot (branch 09-card-page, issue #6)
+
+- Add the card page `web/innovation.html`. The code is in `web/app.js` and `web/style.css`.
+- Sections: title and summary, main facts, assessment, sources, signal timeline, demand signals (BZP), description, similar innovations.
+- Each field shows "fakt" (quote and source link) or "szacunek" (reason). A null TRL shows "nie dotyczy".
+- The assessment table joins each criterion to the field that caused it. "Jak liczymy ocenę?" shows the scales, weights and references.
+- The card shows no assessment if the innovation has no sources (`AGENTS.md`, rule 1).
+- Add `GET /api/criteria` in `src/app.py`. It returns `CRITERIA` from `src/criteria.py`, so the web page has no copy of the criteria.
+- The page calls `GET /api/innovations/{id}`. If the API does not exist yet (`/api/sources` gives 404), the page uses `web/sample/innovation.json`.
+- Links from the data use only http and https.
+- Check: headless Edge with a test card (desktop and phone width, no console errors).
+
+## 2026-11-22 02:10, MaciejMomot (branch 07-search-page, issue #5)
+
+- Make the search page: `web/index.html`, `web/app.js`, `web/style.css`. Plain HTML and JS, no library, no build step.
+- Add `web/config.json`: the default voivodeship and the search examples. Thus the code has no region.
+- The page calls `GET /api/search`. If the API gives 404, the page uses `web/sample/search.json` (issue #3), filters it in the browser and shows a notice.
+- The first view shows the default voivodeship. A search with a phrase covers all of Poland, if the user did not select a voivodeship.
+- The page accepts a FieldValue or a plain value in each field. A tag with an estimate shows "szacunek" and the reason.
+- The page builds the DOM with `textContent` only. Thus text from the sources cannot inject HTML.
+- Check: headless Edge with test data (default view, search, filter, back button, no console errors).
+
+## 2026-11-22 01:40, MaciejMomot (branch 05-readme, issue #16)
+
+- Write the structure and the first full text of `README.md` in Polish: problem, solution, process, main functions, user groups, data sources, criteria and rules, assumptions and limits, scale-up, security, integration, development, license.
+- Keep the start procedure and the license table of MikolajRowicki.
+- Open items: MikolajRowicki checks the data sources part. Before the submission, check that each function in the README operates (comparison, CSV export, watchlists).
+
+## 2026-11-22 01:15, MaciejMomot (branch 03-criteria-module, issue #4)
+
+- Add `src/criteria.py`: the criteria K1-K5 with Polish names, scales, weights and references (`CRITERIA`), and the function `assess()`.
+- `assess()` gives `potential`, `low`, `high`, `confidence`, `fact_share`, `criteria_version`, `criteria` and `missing`.
+- Decisions:
+  - A TRL value of null means "nie dotyczy". The weight of K2 then goes to the other criteria in proportion.
+  - An unknown value of another criterion gives a range: 0 for `low`, 5 for `high`.
+  - `potential` uses only the known criteria. Thus it is always in the range. If no criterion is known, `potential` is null.
+  - Each entry of `criteria` has `value`, `score` (0-5), `weight` (after the change of weights), `points`, `kind` and `applicable`. This adds fields to the contract of issue #3.
+- Add `estimate_implementation_level(text)` and `estimate_novelty(text)`: rules with Polish keywords, without AI. A plan ("zostanie wdrożony") counts as a concept. The evidence is always an exact part of the text.
+- Add `tests/test_criteria.py` (41 tests).
 
 ## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
 

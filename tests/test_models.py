@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 import sqlite_vec
 
+from src.criteria import assess
 from src.db import (
     EMBEDDING_DIM,
     connect,
@@ -15,9 +16,9 @@ from src.db import (
 )
 from src.models import (
     LABELS,
+    Assessment,
     Innovation,
     InnovationDetail,
-    Meta,
     SearchResponse,
     SourceStatus,
 )
@@ -69,9 +70,12 @@ def test_web_samples_follow_the_contract(records):
         assert result.rank_score == pytest.approx(0.7 * result.relevance + 0.3 * result.potential / 100, abs=1e-3)
     detail = InnovationDetail.model_validate(load(ROOT / "web" / "sample" / "innovation.json"))
     assert detail.similar
-    meta = Meta.model_validate(load(ROOT / "web" / "sample" / "meta.json"))
-    assert meta.labels == LABELS
-    assert sum(c.weight for c in meta.criteria) == 100
+
+
+def test_assessment_is_repeatable(records):
+    # The same record and the same criteria version must give the same score (AGENTS.md, rule 7).
+    for r in records:
+        assert r.assessment.model_dump() == Assessment.model_validate(assess(r.model_dump())).model_dump(), r.id
 
 
 def test_database_round_trip(records):

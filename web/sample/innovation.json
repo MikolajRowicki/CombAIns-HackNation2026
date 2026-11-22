@@ -69,34 +69,51 @@
     "low": 51,
     "high": 51,
     "confidence": "low",
+    "fact_share": 15,
     "criteria_version": "v0.1",
     "criteria": {
       "K1": {
         "value": 2,
+        "score": 2,
         "weight": 30.0,
-        "kind": "estimate"
+        "points": 12.0,
+        "kind": "estimate",
+        "applicable": true
       },
       "K2": {
-        "value": 2,
+        "value": 4,
+        "score": 2,
         "weight": 15.0,
-        "kind": "estimate"
+        "points": 6.0,
+        "kind": "estimate",
+        "applicable": true
       },
       "K3": {
         "value": 3,
+        "score": 3,
         "weight": 20.0,
-        "kind": "estimate"
+        "points": 12.0,
+        "kind": "estimate",
+        "applicable": true
       },
       "K4": {
         "value": 3,
+        "score": 3,
         "weight": 20.0,
-        "kind": "estimate"
+        "points": 12.0,
+        "kind": "estimate",
+        "applicable": true
       },
       "K5": {
         "value": 3,
+        "score": 3,
         "weight": 15.0,
-        "kind": "fact"
+        "points": 9.0,
+        "kind": "fact",
+        "applicable": true
       }
-    }
+    },
+    "missing": []
   },
   "sources": [
     {

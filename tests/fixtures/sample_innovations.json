@@ -70,34 +70,51 @@
       "low": 51,
       "high": 51,
       "confidence": "low",
+      "fact_share": 15,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 2,
+          "score": 2,
           "weight": 30.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
-          "value": 2,
+          "value": 4,
+          "score": 2,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 6.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -202,34 +219,51 @@
       "low": 51,
       "high": 51,
       "confidence": "low",
+      "fact_share": 15,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 2,
+          "score": 2,
           "weight": 30.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
-          "value": 2,
+          "value": 4,
+          "score": 2,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 6.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -334,34 +368,51 @@
       "low": 51,
       "high": 51,
       "confidence": "low",
+      "fact_share": 15,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 2,
+          "score": 2,
           "weight": 30.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
-          "value": 2,
+          "value": 4,
+          "score": 2,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 6.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -466,34 +517,51 @@
       "low": 55,
       "high": 55,
       "confidence": "low",
+      "fact_share": 15,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 2,
+          "score": 2,
           "weight": 30.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
-          "value": 2,
+          "value": 3,
+          "score": 2,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 6.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 16.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -598,34 +666,51 @@
       "low": 51,
       "high": 51,
       "confidence": "low",
+      "fact_share": 15,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 2,
+          "score": 2,
           "weight": 30.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
-          "value": 2,
+          "value": 4,
+          "score": 2,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 6.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -730,34 +815,51 @@
       "low": 90,
       "high": 90,
       "confidence": "medium",
+      "fact_share": 45,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 30.0,
-          "kind": "fact"
+          "points": 30.0,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
-          "value": 5,
+          "value": 9,
+          "score": 5,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 15.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 5,
+          "score": 5,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 20.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 16.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -862,34 +964,51 @@
       "low": 67,
       "high": 67,
       "confidence": "medium",
+      "fact_share": 45,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 3,
+          "score": 3,
           "weight": 30.0,
-          "kind": "fact"
+          "points": 18.0,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
-          "value": 4,
+          "value": 7,
+          "score": 4,
           "weight": 15.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 12.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 20.0,
-          "kind": "estimate"
+          "points": 16.0,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 15.0,
-          "kind": "fact"
+          "points": 9.0,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -989,34 +1108,51 @@
       "low": 69,
       "high": 69,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 10.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1111,38 +1247,57 @@
       "reason": null
     },
     "assessment": {
-      "potential": 76,
+      "potential": 85,
       "low": 65,
       "high": 88,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": null,
+          "score": null,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": null,
+          "kind": null,
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 18.8,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 10.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": [
+        "K3"
+      ]
     },
     "sources": [
       {
@@ -1241,34 +1396,51 @@
       "low": 74,
       "high": 74,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 18.8,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 10.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1363,38 +1535,57 @@
       "reason": null
     },
     "assessment": {
-      "potential": 65,
+      "potential": 69,
       "low": 53,
       "high": 76,
       "confidence": "low",
+      "fact_share": 18,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 4,
+          "score": 4,
           "weight": 35.3,
-          "kind": "estimate"
+          "points": 28.2,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": null,
+          "score": null,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": null,
+          "kind": null,
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 3,
+          "score": 3,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 10.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": [
+        "K3"
+      ]
     },
     "sources": [
       {
@@ -1493,34 +1684,51 @@
       "low": 38,
       "high": 38,
       "confidence": "low",
+      "fact_share": 18,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 1,
+          "score": 1,
           "weight": 35.3,
-          "kind": "estimate"
+          "points": 7.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 2,
+          "score": 2,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 7.1,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1613,34 +1821,51 @@
       "low": 71,
       "high": 71,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 1,
+          "score": 1,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 4.7,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 5,
+          "score": 5,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 23.5,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 2,
+          "score": 2,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 7.1,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1726,34 +1951,51 @@
       "low": 76,
       "high": 76,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 5,
+          "score": 5,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 17.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1853,34 +2095,51 @@
       "low": 91,
       "high": 91,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 5,
+          "score": 5,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 23.5,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 5,
+          "score": 5,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 17.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -1981,34 +2240,51 @@
       "low": 81,
       "high": 81,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 18.8,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 5,
+          "score": 5,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 17.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -2108,34 +2384,51 @@
       "low": 91,
       "high": 91,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 3,
+          "score": 3,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 14.1,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 5,
+          "score": 5,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 23.5,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 5,
+          "score": 5,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 17.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
@@ -2235,34 +2528,51 @@
       "low": 81,
       "high": 81,
       "confidence": "medium",
+      "fact_share": 53,
       "criteria_version": "v0.1",
       "criteria": {
         "K1": {
           "value": 5,
+          "score": 5,
           "weight": 35.3,
-          "kind": "fact"
+          "points": 35.3,
+          "kind": "fact",
+          "applicable": true
         },
         "K2": {
           "value": null,
-          "weight": 0.0,
-          "kind": null
+          "score": null,
+          "weight": 0,
+          "points": null,
+          "kind": null,
+          "applicable": false
         },
         "K3": {
           "value": 2,
+          "score": 2,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 9.4,
+          "kind": "estimate",
+          "applicable": true
         },
         "K4": {
           "value": 4,
+          "score": 4,
           "weight": 23.5,
-          "kind": "estimate"
+          "points": 18.8,
+          "kind": "estimate",
+          "applicable": true
         },
         "K5": {
           "value": 5,
+          "score": 5,
           "weight": 17.6,
-          "kind": "fact"
+          "points": 17.6,
+          "kind": "fact",
+          "applicable": true
         }
-      }
+      },
+      "missing": []
     },
     "sources": [
       {
