@@ -78,7 +78,7 @@ Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, na
 
 ## Główne funkcje
 
-- **Wyszukiwarka z rekomendacjami.** Wyniki są sortowane według trafności (70%) i potencjału (30%). Wyszukiwanie pełnotekstowe (SQLite FTS5, BM25) działa na polskich lematach (simplemma), więc znajduje też odmienione formy słów („śmigłowiec” znajduje „śmigłowców”). Wyszukiwanie semantyczne (embeddingi) to plan po hackathonie.
+- **Wyszukiwarka z rekomendacjami.** Wyniki są sortowane według trafności (70%) i potencjału (30%). Wyszukiwanie pełnotekstowe (SQLite FTS5, BM25) działa na polskich lematach (simplemma), więc znajduje też odmienione formy słów („śmigłowiec” znajduje „śmigłowców”). Karta, która zawiera wszystkie słowa zapytania, jest wyżej niż karta z jednym popularnym słowem (trafność = pokrycie zapytania² × BM25). Wyszukiwanie semantyczne (embeddingi) to plan po hackathonie.
 - **Filtry:** grupa użytkowników, obszar, województwo, minimalny poziom wdrożenia. Widok startowy to województwo podkarpackie, a wyszukiwanie obejmuje całą Polskę.
 - **Karta innowacji:** opis, obszar i typ, instytucja i region, status wdrożenia, TRL (jeśli dotyczy), ocena z przedziałem i pewnością, każde kryterium z wagą, źródła z datami i licencjami, oś czasu sygnałów, sygnały popytu, podobne innowacje.
 - **Gdzie można zastosować i kto może wdrożyć:** sektory z cytatem ze źródła, grupy odbiorców, instytucje z podobnymi rozwiązaniami (możliwi partnerzy lub kolejni odbiorcy) i rekomendowana ścieżka (transfer technologii, wdrożenie rynkowe, replikacja w innej instytucji, pilotaż z ewaluacją, uzupełnienie danych) z uzasadnieniem i miernikami skuteczności. Reguły są w `src/applications.py` (wersja v0.1).

@@ -67,12 +67,31 @@ def index(conn: sqlite3.Connection, innovation: Innovation) -> None:
     )
 
 
+def _stem(token: str) -> str:
+    """A prefix for Polish endings: "robotyka" -> "robot", so that "robotów" and "robotyki" match too."""
+    return token[: max(4, len(token) - 3)]
+
+
+def coverage(query: str, indexed: str) -> float:
+    """Return the share of the query words that occur in the indexed text (as a lemma or with the same prefix)."""
+    words = tokens(query)
+    if not words:
+        return 1.0
+    present = set(indexed.split())
+    hits = 0
+    for word in words:
+        lemma, stem = _lemma(word), _stem(word)
+        if lemma in present or (len(stem) >= 4 and any(w.startswith(stem) for w in present)):
+            hits += 1
+    return hits / len(words)
+
+
 def _match_query(text: str, max_terms: int = 30) -> str | None:
     """Make an FTS5 query: each word as its lemma or as a prefix of the word, joined with OR."""
     terms = []
     for token in tokens(text)[:max_terms]:
         terms.append(f'"{_lemma(token)}"')
-        stem = token[: max(4, len(token) - 2)]
+        stem = _stem(token)
         if len(stem) >= 4:
             terms.append(f'"{stem}"*')
     return " OR ".join(dict.fromkeys(terms)) or None
@@ -147,14 +166,23 @@ def search(
     match = _match_query(q)
     if match:
         rows = conn.execute(
-            f"""SELECT i.data, bm25(innovations_fts, 10.0, 4.0, 1.0, 4.0) AS score
+            f"""SELECT i.data, bm25(innovations_fts, 10.0, 4.0, 1.0, 4.0) AS score,
+                       f.title || ' ' || f.summary || ' ' || f.keywords || ' ' || f.description AS indexed
                 FROM innovations_fts f JOIN innovations i ON i.id = f.id
                 WHERE innovations_fts MATCH ?{where} ORDER BY score LIMIT {MAX_CANDIDATES}""",
             [match, *args],
         ).fetchall()
         # BM25 in SQLite is negative: the best match has the lowest value.
         best = rows[0]["score"] if rows else -1.0
-        scored = [(Innovation.model_validate(json.loads(r["data"])), r["score"] / best if best else 0.0) for r in rows]
+        # A card with all the words of the query is more relevant than a card with one frequent word:
+        # relevance = coverage² × (0.5 + 0.5 × BM25 relative to the best card).
+        scored = [
+            (
+                Innovation.model_validate(json.loads(r["data"])),
+                coverage(q, r["indexed"]) ** 2 * (0.5 + 0.5 * (r["score"] / best if best else 0.0)),
+            )
+            for r in rows
+        ]
         total = len(rows)
     else:
         rows = conn.execute(

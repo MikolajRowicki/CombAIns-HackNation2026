@@ -2,6 +2,12 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 48-search-coverage)
+
+- The search joins the words of a query with OR. Thus a card with only one frequent word ("szkoła") could be above a card with all the words.
+- Add `search.coverage()`: the share of the query words in the indexed text of the card. Relevance = coverage² × (0.5 + 0.5 × BM25 relative to the best card).
+- The prefix of a word is now shorter by 3 letters ("robotyka" -> "robot"), so that more Polish forms match.
+
 ## 2026-11-22, MikolajRowicki (branch 46-k4-estimate)
 
 - Before, K4 (application potential) was "brak danych" on all cards, so all scores were wide ranges.
