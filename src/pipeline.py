@@ -12,11 +12,12 @@ from datetime import date
 
 from src import db, search
 from src.models import SourceStatus
-from src.sources import SourceData, radon
+from src.sources import SourceData, fe_projects, radon
 
 # Each source is one function. A new source is one more entry here.
 SOURCES: dict[str, tuple[str, Callable[..., SourceData]]] = {
     "radon": (radon.NAME, lambda voivodeships: radon.load(voivodeships)),
+    "fe": (fe_projects.NAME, lambda voivodeships: fe_projects.load(voivodeships)),
 }
 
 

@@ -130,6 +130,8 @@ Wszystkie źródła są bezpłatne i nie wymagają klucza API. Aplikacja zapisuj
 | Ogłoszenia BZP (e-Zamówienia) | zakupy instytucji publicznych (sygnały popytu) | REST JSON | wolne użycie | sygnał popytu |
 | NCBR, „Wyszukiwarka sukcesów beneficjentów” | wdrożone wyniki projektów | HTML | niepodana; `robots.txt` zezwala | technologiczny |
 
+Lista projektów FE: aktualizacja pobiera najnowszy miesięczny plik XLSX ze zbioru 13939 na dane.gov.pl do `data/cache/`. Gdy API nie odpowiada, wystarczy pobrać plik ręcznie i zapisać go jako `data/cache/fe_<id zasobu>.xlsx`. Radar zostawia projekty z sygnałem innowacji: kategoria wsparcia B+R, innowacji lub TIK albo słowo „innowac”, „e-usług” itp. w tytule. Nazwy beneficjentów, którzy są osobami fizycznymi lub przedsiębiorcami indywidualnymi, są ukryte. Opisy pochodzą z wniosków, dlatego poziom wdrożenia wynika z dat projektu.
+
 Pełna lista źródeł, kolejność integracji i źródła wykluczone (z powodami) są w `docs/project.md`, sekcja 6.
 
 ### Dane przykładowe

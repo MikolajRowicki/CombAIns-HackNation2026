@@ -2,6 +2,18 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 25-fe-projects, issue #7)
+
+- Add `src/sources/fe_projects.py`: the loader of the list of FE 2021-2027 projects (dane.gov.pl, dataset 13939, CC0 1.0). Register it in `src/pipeline.py` as `fe`.
+- The loader asks the API for the newest XLSX of the dataset and downloads it once to `data/cache/`. If the API fails, it uses a file in `data/cache/` that a person downloaded.
+- Filter: a category of intervention of research, innovation or ICT, or an innovation word in the title, and a description of 80 characters or more. Result for Podkarpackie: 779 of 2352 projects (with 144 projects for the whole country).
+- Area by rules: education categories or words, then public bodies and e-services, then technological.
+- The descriptions come from the applications (future tense). Thus the implementation level comes from the dates: ended 4, running 2, not started 1. The keyword rules gave wrong levels on this text.
+- Personal data: a beneficiary name with a first name and a surname (a natural person or a sole trader) is replaced with "dane ukryte". The loader also removes the name from the title and the description.
+- Move the summary function of RAD-on to `src/sources/__init__.py` (`summary_quote`). Both loaders use it.
+- Add `tests/test_fe_projects.py` and `tests/fixtures/fe_projects.json`: 7 real public rows and 1 synthetic sole trader (not a real person).
+- Check: "e-usługi w urzędzie" finds the e-office projects of gminas in Podkarpackie (use case 2 of the demo).
+
 ## 2026-11-22, MaciejMomot (branch 23-level-rules)
 
 - Make the keyword rules of `estimate_implementation_level()` stricter. With the real RAD-on data (Podkarpackie), 20 projects got level 5, and most of them were wrong.

@@ -13,7 +13,7 @@ import httpx
 
 from src.criteria import assess, estimate_implementation_level, estimate_novelty
 from src.models import FieldValue, Innovation, Institution, Source, TimelineEvent
-from src.sources import SourceData
+from src.sources import SourceData, summary_quote
 
 BASE_URL = "https://radon.nauka.gov.pl/opendata/polon"
 NAME = "RAD-on (OPI PIB)"
@@ -33,8 +33,6 @@ EDUCATION_FUNDERS = {
     "Fundacja Rozwoju Systemu Edukacji",
     "European Education and Culture Executive Agency",
 }
-
-_SUMMARY_CHARS = 300
 
 
 def _pages(client: httpx.Client, path: str, params: dict, limit: int | None = None):
@@ -81,21 +79,6 @@ def _refresh_date(raw: dict) -> date | None:
     return datetime.fromtimestamp(int(ms) / 1000, tz=UTC).date() if ms else None
 
 
-def _summary(text: str, url: str) -> FieldValue:
-    """Return the first sentences of the source text as a quote."""
-    text = text.strip()
-    if len(text) <= _SUMMARY_CHARS:
-        cut, value = text, text
-    else:
-        end = text.rfind(". ", 0, _SUMMARY_CHARS)
-        if end > 100:
-            cut = value = text[: end + 1]
-        else:
-            cut = text[: text.rfind(" ", 0, _SUMMARY_CHARS)]
-            value = cut + " …"
-    return FieldValue(value=value, kind="fact", source_url=url, evidence=cut)
-
-
 def _assessed(**fields) -> Innovation:
     data = {**fields}
     data["assessment"] = assess({k: v.model_dump() if isinstance(v, FieldValue) else v for k, v in fields.items()})
@@ -136,7 +119,7 @@ def patent_to_innovation(raw: dict, institution: Institution, retrieved: date) -
     return _assessed(
         id=f"radon-{raw.get('publicationNumber') or raw['protectionUuid']}",
         title=title,
-        summary=_summary(description, url),
+        summary=summary_quote(description, url),
         description=description,
         area=estimate("technological", "Źródłem jest prawo ochronne uczelni w RAD-on: rozwiązanie techniczne."),
         type=FieldValue(value=protection.lower(), kind="fact", source_url=url),
@@ -167,7 +150,9 @@ def patent_to_innovation(raw: dict, institution: Institution, retrieved: date) -
 
 
 def _funders(raw: dict) -> list[str]:
-    return sorted({f["financingInstitutionName"] for f in raw.get("receivedFunds") or [] if f.get("financingInstitutionName")})
+    return sorted(
+        {f["financingInstitutionName"] for f in raw.get("receivedFunds") or [] if f.get("financingInstitutionName")}
+    )
 
 
 def is_innovation_project(raw: dict) -> bool:
@@ -209,7 +194,9 @@ def project_to_innovation(raw: dict, institution: Institution, retrieved: date) 
         label = "Dofinansowanie projektu"
         details = ", ".join(x for x in [program, *funders] if x)
         timeline.append(
-            TimelineEvent(date=grant_date, event="grant", label=f"{label} ({details})" if details else label, source_url=url)
+            TimelineEvent(
+                date=grant_date, event="grant", label=f"{label} ({details})" if details else label, source_url=url
+            )
         )
 
     keywords = [k.strip() for k in (raw.get("keywords") or "").split(",") if k.strip()]
@@ -217,7 +204,7 @@ def project_to_innovation(raw: dict, institution: Institution, retrieved: date) 
     return _assessed(
         id=f"radon-project-{raw['projectUuid']}",
         title=title,
-        summary=_summary(description, url),
+        summary=summary_quote(description, url),
         description=description,
         area=area,
         type=FieldValue(value="projekt " + (program or "badawczo-rozwojowy"), kind="fact", source_url=url),
@@ -275,9 +262,7 @@ def load(
     for institution in institutions:
         filters = [("products", {"institutionName": institution.name}, patent_to_innovation)]
         if include_projects:
-            filters.append(
-                ("projects", {"entityShowingAchievementsName": institution.name}, project_to_innovation)
-            )
+            filters.append(("projects", {"entityShowingAchievementsName": institution.name}, project_to_innovation))
         for path, params, mapper in filters:
             try:
                 for raw in _pages(client, path, params, limit_per_institution):
