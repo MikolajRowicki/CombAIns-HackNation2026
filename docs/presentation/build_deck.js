@@ -238,9 +238,10 @@ async function main() {
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Demo" });
   s.addText("Wpisz potrzebę, dostaniesz istniejące rozwiązania", { placeholder: "title" });
   screenshot(s, search, 0.5, 1.15, 5.75, "Strona wyszukiwania Radaru innowacji z zapytaniem o e-usługi w urzędzie");
-  numbered(s, 1, 6.6, 1.25, 2.9, "Fraza lub opis potrzeby", "np. „e-usługi w urzędzie”, „robotyka w szkole”");
-  numbered(s, 2, 6.6, 2.45, 2.9, "Filtry dla 6 grup", "JST, szkoły, uczelnie, firmy, startupy, innowatorzy");
-  numbered(s, 3, 6.6, 3.7, 2.9, "Ranking: trafność + potencjał", "start: Podkarpacie, szukanie: cała Polska; „Pokaż więcej”");
+  numbered(s, 1, 6.6, 1.15, 2.9, "Fraza lub opis potrzeby", "np. „e-usługi w urzędzie”, „robotyka w szkole”");
+  numbered(s, 2, 6.6, 2.05, 2.9, "Filtry dla 6 grup", "JST, szkoły, uczelnie, firmy, startupy, innowatorzy");
+  numbered(s, 3, 6.6, 2.95, 2.9, "Ranking: trafność + potencjał", "start: Podkarpacie, szukanie: cała Polska");
+  numbered(s, 4, 6.6, 4.15, 2.9, "Działa na telefonie", "wyszukiwanie, karta i porównanie");
   s.addNotes(
     "Użytkownik wpisuje frazę lub opis potrzeby. Tu: samorząd szuka e-usług w urzędzie i dostaje 156 istniejących rozwiązań. " +
       "Filtry obejmują grupę użytkowników, obszar, województwo i minimalny poziom wdrożenia. Każdy wynik pokazuje potencjał i pewność oceny.",
@@ -289,11 +290,11 @@ async function main() {
   );
   const ah = 3.8;
   s.addImage({ data: assessment.data, x: 7.15, y: 1.05, w: ah * assessment.ratio, h: ah, altText: "Panel oceny na karcie wynalazku z kryteriami jako paski", shadow: shadow() });
-  s.addText("Skale: TRL (Komisja Europejska), Oslo Manual 2018, Nesta, Interreg Europe. Wagi do kalibracji z mentorami PCI.", {
+  s.addText("Skale: TRL (Komisja Europejska), Oslo Manual 2018, Nesta, Interreg Europe.", {
     x: 0.5, y: 4.98, w: 9, h: 0.25, fontSize: 9, color: C.accent6, margin: 0, align: "right", isTextBox: true,
   });
   s.addNotes(
-    "Pięć kryteriów: poziom wdrożenia, dojrzałość technologiczna, innowacyjność, potencjał zastosowania i wiarygodność. Wagi to nasza propozycja do kalibracji z PCI. " +
+    "Pięć kryteriów: poziom wdrożenia, dojrzałość technologiczna, innowacyjność, potencjał zastosowania i wiarygodność. Wagi to jawna propozycja zespołu w wersji v0.1. " +
       "Brak danych nie oznacza zera, więc pokazujemy przedział. Potencjał zastosowania liczymy z danych: opisu, kosztu, liczby sektorów i zamówień publicznych. " +
       "Model językowy może proponować wartości, ale nigdy nie jest jedynym źródłem oceny.",
   );
@@ -407,7 +408,7 @@ async function main() {
   radar(s, 8.4, 4.4, 1.5, 55);
   s.addText("Co dalej", { x: 0.6, y: 0.45, w: 6, h: 0.7, fontSize: 32, bold: true, color: C.background1, margin: 0, isTextBox: true });
   const next = [
-    ["Kalibracja wag", "z mentorami i analitykami PCI"],
+    ["Kalibracja wag", ""],
     ["Wyszukiwanie semantyczne", "embeddingi obok wyszukiwania pełnotekstowego"],
     ["Strony szkół i JST", "crawler aktualności i projektów"],
     ["Panel analityka PCI", "potwierdzanie wartości z zapisem powodu"],
@@ -425,11 +426,11 @@ async function main() {
       { x: 1.2, y, w: 5.8, h: 0.5, fontSize: 16, valign: "middle", margin: 0, isTextBox: true },
     );
   });
-  s.addText("Zespół CombAIns: Maciej Momot, Mikołaj Rowicki", {
+  s.addText("Zespół CombAIns: Filip Langiewicz, Maciej Momot, Mikołaj Rowicki", {
     x: 0.6, y: 4.8, w: 6, h: 0.4, fontSize: 14, bold: true, color: C.accent2, margin: 0, isTextBox: true,
   });
   s.addNotes(
-    "Po hackathonie chcemy skalibrować wagi z PCI, dodać wyszukiwanie semantyczne, czytać strony szkół i samorządów, zbudować panel analityka i dodać kolejne źródła. Dziękujemy.",
+    "Po hackathonie chcemy skalibrować wagi, dodać wyszukiwanie semantyczne, czytać strony szkół i samorządów, zbudować panel analityka i dodać kolejne źródła. Dziękujemy.",
   );
 
   await pres.writeFile({ fileName: OUT });

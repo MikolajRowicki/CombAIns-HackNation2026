@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 58-deck-mobile)
+
+- Presentation (`build_deck.js`, PPTX and PDF made again):
+  - slide 4: no "Pokaż więcej"; new point 4 "Działa na telefonie";
+  - slide 6: no sentence about the calibration with the mentors of PCI (also in the speaker notes);
+  - slide 10: "Kalibracja wag" without "z mentorami i analitykami PCI"; the team has Filip Langiewicz.
+- The PDF comes from PowerPoint (VBScript automation), the PPTX from `build_deck.js` with the theme script of the pptx tool. The Node packages were installed outside the repository.
+- Check of the phone version: the pages in a frame of 375 px wide (a headless browser on Windows has a minimum window width, so a plain screenshot cuts the page). All pages fit the screen. Add `docs/screenshots/06-telefon.png` and the README lines.
+
 ## 2026-11-22, MaciejMomot (branch 31-presentation-refresh, issue #17)
 
 - Make the presentation again with the comments of MikolajRowicki in issue #17, on the database of 22.11.2026 (3498 cards, 8 sources and BZP).

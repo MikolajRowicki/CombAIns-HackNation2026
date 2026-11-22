@@ -87,6 +87,7 @@ Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, na
 - **Porównanie** 2–4 kart w tabeli kryteriów.
 - **Obserwowane zapytania:** zapisane wyszukiwanie pokazuje „Nowe od ostatniej wizyty”. Zapis odbywa się tylko w przeglądarce, bez logowania.
 - **Status źródeł:** aplikacja pokazuje, które źródło nie odpowiedziało i kiedy było ostatnio sprawdzone.
+- **Wersja na telefon:** strona dopasowuje się do ekranu telefonu (wyszukiwanie, karta, porównanie). Nie trzeba instalować aplikacji.
 
 ### Grupy użytkowników
 
@@ -112,6 +113,7 @@ Zrzuty pokazują prawdziwe dane z bazy zbudowanej poleceniem `src.pipeline updat
 | Karta innowacji technologicznej z uczelni: dwa źródła, oś czasu grant → patent | [03-karta-technologiczna.png](docs/screenshots/03-karta-technologiczna.png) |
 | Porównanie trzech innowacji z różnych obszarów | [04-porownanie.png](docs/screenshots/04-porownanie.png) |
 | „O radarze”: stan źródeł i jawne kryteria oceny | [05-o-radarze.png](docs/screenshots/05-o-radarze.png) |
+| Wersja na telefon (szerokość 375 px): wyszukiwanie, karta i porównanie | [06-telefon.png](docs/screenshots/06-telefon.png) |
 
 ![Wyszukiwanie](docs/screenshots/01-wyszukiwanie.png)
 
