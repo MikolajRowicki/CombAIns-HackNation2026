@@ -195,6 +195,8 @@ _GENERIC = {
     "organizacja", "ramy", "wysoki", "dwa", "ten", "poprzez", "cel", "proces", "wdrożyć", "wdrożenie",
     "rozwiązanie", "spółka", "ograniczony", "odpowiedzialność", "przedsiębiorstwo", "opracować", "planować",
     "przeprowadzić", "praca", "zmiana", "osoba", "obszar",
+    # Words of the patent law ("prawo ochronne na wzór użytkowy") are not a subject of a purchase.
+    "użytkowy", "własność", "wzór", "ochronny", "prawo", "patent",
 }
 MIN_COMMON_WORDS = 2
 MIN_DEMAND_SCORE = 12.0  # sum of IDF weights; about two rare words

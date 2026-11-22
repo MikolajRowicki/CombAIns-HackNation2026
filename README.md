@@ -10,16 +10,17 @@ Projekt powstał w ramach zadania Podkarpackiego Centrum Innowacji (PCI) na Hack
 2. [Rozwiązanie](#rozwiązanie)
 3. [Jak to działa](#jak-to-działa)
 4. [Główne funkcje](#główne-funkcje)
-5. [Uruchomienie](#uruchomienie)
-6. [Źródła danych](#źródła-danych)
-7. [Kryteria oceny](#kryteria-oceny)
-8. [Założenia i ograniczenia](#założenia-i-ograniczenia)
-9. [Skalowanie na wiele organizacji](#skalowanie-na-wiele-organizacji)
-10. [Bezpieczeństwo i ochrona danych](#bezpieczeństwo-i-ochrona-danych)
-11. [Integracja z istniejącymi systemami](#integracja-z-istniejącymi-systemami)
-12. [Rozwój po hackathonie](#rozwój-po-hackathonie)
-13. [Licencja](#licencja)
-14. [Licencje komponentów](#licencje-komponentów)
+5. [Zrzuty ekranu](#zrzuty-ekranu)
+6. [Uruchomienie](#uruchomienie)
+7. [Źródła danych](#źródła-danych)
+8. [Kryteria oceny](#kryteria-oceny)
+9. [Założenia i ograniczenia](#założenia-i-ograniczenia)
+10. [Skalowanie na wiele organizacji](#skalowanie-na-wiele-organizacji)
+11. [Bezpieczeństwo i ochrona danych](#bezpieczeństwo-i-ochrona-danych)
+12. [Integracja z istniejącymi systemami](#integracja-z-istniejącymi-systemami)
+13. [Rozwój po hackathonie](#rozwój-po-hackathonie)
+14. [Licencja](#licencja)
+15. [Licencje komponentów](#licencje-komponentów)
 
 ## Problem
 
@@ -100,6 +101,20 @@ Wybór grupy nie ukrywa wyników. Najpierw pokazuje obszar grupy, a karty, któr
 | Startupy | Czy mój pomysł jest nowy? | technologiczny | innowacyjność ≥ 3 (nowe w Polsce lub szerzej) |
 | Innowatorzy indywidualni | Czy podobny wynalazek już istnieje? | technologiczny | patent lub wzór użytkowy |
 
+## Zrzuty ekranu
+
+Zrzuty pokazują prawdziwe dane z bazy zbudowanej poleceniem `src.pipeline update` (22.11.2026).
+
+| Widok | Plik |
+|---|---|
+| Wyszukiwanie „e-usługi w urzędzie” dla grupy „instytucje publiczne i JST” | [01-wyszukiwanie.png](docs/screenshots/01-wyszukiwanie.png) |
+| Karta innowacji administracyjnej: ocena, gdzie zastosować, ścieżka z miernikami, zamówienia innych gmin | [02-karta-administracyjna.png](docs/screenshots/02-karta-administracyjna.png) |
+| Karta innowacji technologicznej z uczelni: dwa źródła, oś czasu grant → patent | [03-karta-technologiczna.png](docs/screenshots/03-karta-technologiczna.png) |
+| Porównanie trzech innowacji z różnych obszarów | [04-porownanie.png](docs/screenshots/04-porownanie.png) |
+| „O radarze”: stan źródeł i jawne kryteria oceny | [05-o-radarze.png](docs/screenshots/05-o-radarze.png) |
+
+![Wyszukiwanie](docs/screenshots/01-wyszukiwanie.png)
+
 ## Uruchomienie
 
 Wymagania: [uv](https://docs.astral.sh/uv/getting-started/installation/).
@@ -174,7 +189,7 @@ Pełna lista źródeł, kolejność integracji i źródła wykluczone (z powodam
 
 ### Dane przykładowe
 
-Dane przykładowe (`tests/fixtures/sample_innovations.json`, 18 rekordów) pochodzą z publicznych źródeł, pobranych 22.11.2026. Nie zawierają danych osobowych: aplikacja pomija nazwiska wynalazców i autorów.
+Dane przykładowe (`tests/fixtures/sample_innovations.json`, 18 rekordów) pochodzą z publicznych źródeł, pobranych 22.11.2026. Nie zawierają danych osobowych: aplikacja pomija nazwiska wynalazców i autorów. Korzystają z nich tylko testy; aplikacja pokazuje dane z bazy zbudowanej ze źródeł.
 
 | Źródło | Zawartość | Licencja i sposób użycia |
 |---|---|---|
@@ -275,7 +290,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 
 ## Licencja
 
-Rozwiązanie jest przygotowane do publikacji na licencji [EUPL-1.2](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12).
+Rozwiązanie jest przygotowane do publikacji na licencji [EUPL-1.2](https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12). Pełny tekst licencji jest w pliku [`LICENSE`](LICENSE).
 
 ## Licencje komponentów
 

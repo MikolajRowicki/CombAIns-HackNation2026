@@ -77,6 +77,9 @@ def institution_kind(name: str) -> str:
 
 def _fields(details) -> dict:
     """Read the pairs "heading -> value" of one <details> block of the list page."""
+    # A consortium can be one paragraph with line breaks: a break separates two beneficiaries.
+    for br in details.find_all("br"):
+        br.replace_with("|")
     out = {"title": details.find("summary").get_text(" ", strip=True).replace("\xa0", " ")}
     label = None
     for node in details.find_all(["h3", "p", "li"]):

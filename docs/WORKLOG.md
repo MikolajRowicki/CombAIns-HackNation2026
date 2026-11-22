@@ -2,6 +2,14 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 42-submission, issue #19)
+
+- Add `LICENSE` with the text of EUPL-1.2 (SPDX). The rules of the task (§1 point 10, §4) require this licence; the file did not exist.
+- Add `docs/screenshots/` with 5 screenshots of the real data (search, administrative card, technological card, comparison, "O radarze") and the section "Zrzuty ekranu" in `README.md`.
+- Checks: no trace of AI tools in the files and in the commit messages; no secrets; no large data files in git; 116 tests and 3 slow tests pass.
+- BZP: the words of the patent law ("wzór użytkowy", "prawo ochronne") are generic now. Before, a utility model matched a purchase of heat because of "własność, użytkowy".
+- NCBR: a line break in the list of beneficiaries separates two beneficiaries. Before, a consortium became one long name.
+
 ## 2026-11-22, MikolajRowicki (branch 40-more-sources, more sources)
 
 - Add `src/sources/epo.py`: European patents (B1) of applicants with an address in Poland, last 5 years, from the EPO Linked Open Data SPARQL endpoint (CC BY 4.0, no key, `robots.txt` allows `/linked-data/query`). 1164 cards in 13 s.
