@@ -143,12 +143,12 @@ async function main() {
   pres.addSection({ title: "Wstęp" });
   let s = pres.addSlide({ masterName: "TITLE_DARK", sectionTitle: "Wstęp" });
   radar(s, 8.0, 2.8, 1.75, 45);
-  s.addText("Radar innowacji", { placeholder: "title" });
+  s.addText("Radar Innowacji", { placeholder: "title" });
   s.addText("Istniejące polskie innowacje w jednym miejscu: znalezione automatycznie, ocenione jawnie, gotowe do użycia.", {
     placeholder: "body",
   });
-  s.addText("Wyzwanie Podkarpackiego Centrum Innowacji · HackNation 2026 · zespół CombAIns", {
-    x: 0.6, y: 4.75, w: 7, h: 0.35, fontSize: 13, color: C.accent2, bold: true, margin: 0, isTextBox: true,
+  s.addText("CombAIns", {
+    x: 0.6, y: 4.3, w: 6, h: 0.8, fontSize: 40, color: C.accent2, bold: true, margin: 0, valign: "middle", isTextBox: true,
   });
   s.addNotes(
     "Radar innowacji to jedno miejsce, w którym gmina, szkoła, uczelnia, firma czy inwestor znajdzie polskie innowacje, które już działają. " +

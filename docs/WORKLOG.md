@@ -2,6 +2,10 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 68-title-slide)
+
+- Title slide: the title is "Radar Innowacji"; the line with the challenge and HackNation 2026 is replaced by a large "CombAIns".
+
 ## 2026-11-22, MikolajRowicki (branch 66-speaker-notes)
 
 - Check of all speaker notes of the presentation against the slides and the application. Fixes:
