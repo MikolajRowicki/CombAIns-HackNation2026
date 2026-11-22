@@ -2,6 +2,18 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 02:50, MaciejMomot (branch 09-card-page, issue #6)
+
+- Add the card page `web/innovation.html`. The code is in `web/app.js` and `web/style.css`.
+- Sections: title and summary, main facts, assessment, sources, signal timeline, demand signals (BZP), description, similar innovations.
+- Each field shows "fakt" (quote and source link) or "szacunek" (reason). A null TRL shows "nie dotyczy".
+- The assessment table joins each criterion to the field that caused it. "Jak liczymy ocenę?" shows the scales, weights and references.
+- The card shows no assessment if the innovation has no sources (`AGENTS.md`, rule 1).
+- Add `GET /api/criteria` in `src/app.py`. It returns `CRITERIA` from `src/criteria.py`, so the web page has no copy of the criteria.
+- The page calls `GET /api/innovations/{id}`. If the API does not exist yet (`/api/sources` gives 404), the page uses `web/sample/innovation.json`.
+- Links from the data use only http and https.
+- Check: headless Edge with a test card (desktop and phone width, no console errors).
+
 ## 2026-11-22 02:10, MaciejMomot (branch 07-search-page, issue #5)
 
 - Make the search page: `web/index.html`, `web/app.js`, `web/style.css`. Plain HTML and JS, no library, no build step.
