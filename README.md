@@ -128,7 +128,7 @@ uv run --no-project python -m src.pipeline update --voivodeship podkarpackie
 uv run --no-project uvicorn src.app:app --reload
 ```
 
-Krok `src.pipeline update` pobiera dane ze źródeł i buduje bazę `data/cache/radar.db` (dla województwa podkarpackiego ok. 4 minut: RAD-on ok. 30 s, lista FE ok. 30 s, ogłoszenia BZP z 180 dni ok. 2,5 minuty, bo radar wysyła zapytania do BZP co 3 sekundy; pierwsze pobranie stron NCBR ok. 8 minut). Bez parametru `--voivodeship` pobiera dane z całej Polski. Ten sam krok, uruchamiany cyklicznie (np. przez cron), aktualizuje bazę.
+Krok `src.pipeline update` pobiera dane ze wszystkich źródeł i buduje bazę `data/cache/radar.db` (ok. 30 MB). Pierwsze uruchomienie trwa ok. 20 minut, bo radar czyta strony z przerwami wymaganymi przez serwisy (NCBR ok. 8 min, Kohesio ok. 9 min, ogłoszenia BZP ok. 2,5 min, strony konkursu 60 s między stronami). Kolejne uruchomienia korzystają z pamięci podręcznej stron (7 dni) i trwają ok. 4 minut. Jedno źródło można odświeżyć osobno, np. `--source epo`. Bez parametru `--voivodeship` duże źródła (RAD-on, lista FE, Interreg) obejmują całą Polskę; listy ogólnopolskie (NCBR, EPO, Kohesio, konkursy) radar czyta zawsze w całości. Ten sam krok, uruchamiany cyklicznie (np. przez cron), aktualizuje bazę.
 
 Aplikacja działa pod adresem http://127.0.0.1:8000. Użytkownik nie potrzebuje konta ani klucza API.
 
