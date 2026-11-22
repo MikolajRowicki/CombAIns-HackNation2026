@@ -2,6 +2,13 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 56-school-projects)
+
+- The educational area was the weakest (145 cards). The FE filter dropped school projects, because their category is not an innovation category and their title has no word such as "innowac".
+- `fe_projects.is_innovation()`: a project of the categories 148-150 (pre-school, primary and secondary, higher education) is kept if its title or description names a method or a tool of teaching (robotics, programming, STEAM, experiment, 3D print, formative assessment and others). Categories 145-147 (labour market) are not included.
+- Result for Podkarpackie: 967 FE cards (before 778); the educational area has 333 cards (before 145). "robotyka w szkole" now gives school projects.
+- Add a test in `tests/test_fe_projects.py`.
+
 ## 2026-11-22, MikolajRowicki (branches 50-readme-times and 54-screenshots)
 
 - README: the real times of the update. The first run takes about 20 minutes (NCBR, Kohesio and the competition pages have pauses), later runs about 4 minutes with the page cache.

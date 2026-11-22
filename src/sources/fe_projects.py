@@ -54,6 +54,15 @@ MIN_DESCRIPTION = 80
 
 EDUCATION_CATEGORY = re.compile(r"^1(?:4[5-9]|5[0-2])\b")  # 145-152: education and training
 EDUCATION_TITLE = re.compile(r"szkoł|edukac|uczni|nauczyc|przedszk|dydakt|studen", re.IGNORECASE)
+# A project of a school (categories 148-150: pre-school, primary and secondary, higher education) is an educational
+# innovation if its text names a method or a tool of teaching (FAQ, section 2: methods and tools of education).
+SCHOOL_CATEGORY = re.compile(r"^1(?:48|49|50)\b")
+SCHOOL_METHOD = re.compile(
+    r"robot|programowani|STEAM|\bSTEM\b|metod\w* (?:nauczania|aktywizując|eksperyment|projekt)|eksperyment"
+    r"|pracowni\w* (?:przyrodnicz|cyfrow|robot|chemiczn|fizyczn|matematyczn)|druk\w* 3D|wirtualn\w* rzeczywist"
+    r"|innowac\w* pedagog|tutoring|oceniani\w* kształtując|nauczani\w* zdaln|platform\w* (?:edukac|e-learning)",
+    re.IGNORECASE,
+)
 ADMINISTRATION_CATEGORY = re.compile(r"^016\b")  # ICT solutions and e-services for the public administration
 PUBLIC_BODY = re.compile(
     r"\b(?:gmina|miasto|powiat|województwo|urząd|starostwo|wojewoda|ministerstwo|minister|marszał|"
@@ -284,6 +293,10 @@ def _millions(value) -> str | None:
 def is_innovation(row: dict) -> bool:
     if len(str(row.get("description") or "")) < MIN_DESCRIPTION:
         return False
+    if SCHOOL_CATEGORY.search(str(row.get("category") or "")) and SCHOOL_METHOD.search(
+        f"{row.get('title') or ''} {row.get('description') or ''}"
+    ):
+        return True
     return bool(
         INNOVATION_CATEGORY.search(str(row.get("category") or ""))
         or INNOVATION_TITLE.search(str(row.get("title") or ""))

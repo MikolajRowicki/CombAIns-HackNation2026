@@ -130,3 +130,17 @@ def test_newest_resource_and_cached_file(tmp_path, monkeypatch):
     down = httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(503)))
     path, resource = fe.download(down)
     assert path.name == "fe_2912686.xlsx" and resource["id"] == "2912686"
+
+
+def test_school_project_with_a_teaching_method_is_kept():
+    from src.sources import fe_projects
+
+    description = "Projekt wprowadzi zajęcia z robotyki i programowania dla uczniów szkół podstawowych w gminie."
+    row = {"title": "Mała szkoła - wielkie możliwości", "description": description,
+           "category": "149 Wsparcie na rzecz szkolnictwa podstawowego i średniego"}
+    assert fe_projects.is_innovation(row)
+    row["description"] = "Projekt sfinansuje remont sali gimnastycznej i zakup ławek dla uczniów szkoły w gminie."
+    assert not fe_projects.is_innovation(row)
+    row["category"] = "145 Wsparcie dla rozwoju umiejętności cyfrowych"
+    row["description"] = description
+    assert not fe_projects.is_innovation(row) or fe_projects.INNOVATION_CATEGORY.search(row["category"])
