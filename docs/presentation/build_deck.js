@@ -84,9 +84,7 @@ async function main() {
           text: "",
         },
       },
-      { text: { text: "Radar innowacji · HackNation 2026", options: { x: 0.5, y: 5.25, w: 4, h: 0.25, fontSize: 9, color: C.accent6, margin: 0 } } },
     ],
-    slideNumber: { x: 9.1, y: 5.25, w: 0.4, h: 0.25, fontSize: 9, color: "4F5B67", align: "right" },
   });
 
   const radar = (slide, cx, cy, r, transparency) => {
@@ -99,12 +97,6 @@ async function main() {
     slide.addShape(pres.shapes.OVAL, { x: cx - 0.1, y: cy - 0.1, w: 0.2, h: 0.2, fill: { color: C.accent2 }, line: { type: "none" }, objectName: "Radar centre" });
   };
 
-  const iconCircle = async (slide, Component, x, y, size, fill) => {
-    slide.addShape(pres.shapes.OVAL, { x, y, w: size, h: size, fill: { color: fill }, line: { type: "none" }, objectName: "Icon circle" });
-    const pad = size * 0.25;
-    slide.addImage({ data: await icon(Component), x: x + pad, y: y + pad, w: size - 2 * pad, h: size - 2 * pad, altText: "" });
-  };
-
   const shadow = () => ({ type: "outer", color: "1D1D1B", opacity: 0.16, blur: 6, offset: 2, angle: 90 });
 
   const screenshot = (slide, img, x, y, w, alt) => {
@@ -114,26 +106,14 @@ async function main() {
     return h;
   };
 
-  const numbered = (slide, n, x, y, w, head, body, color = C.accent1) => {
-    slide.addShape(pres.shapes.OVAL, { x, y, w: 0.42, h: 0.42, fill: { color }, line: { type: "none" }, objectName: `Step ${n}` });
-    slide.addText(String(n), { x, y, w: 0.42, h: 0.42, fontSize: 16, bold: true, color: C.background1, align: "center", valign: "middle", margin: 0, isTextBox: true });
+  // A list of "head – body" items as text only.
+  const items = (slide, list, x, y, w, h, size = 13) => {
     slide.addText(
-      [
-        { text: head, options: { bold: true, fontSize: 15, color: C.text1, breakLine: true } },
-        { text: body, options: { fontSize: 13, color: C.accent6 } },
-      ],
-      { x: x + 0.58, y: y - 0.04, w: w - 0.58, h: 0.95, valign: "top", margin: 0, isTextBox: true, paraSpaceAfter: 2 },
-    );
-  };
-
-  const iconRow = async (slide, Icon, x, y, w, head, body, fill = C.accent1) => {
-    await iconCircle(slide, Icon, x, y, 0.5, fill);
-    slide.addText(
-      [
-        { text: head, options: { bold: true, fontSize: 14, color: C.text1, breakLine: true } },
-        { text: body, options: { fontSize: 12, color: C.accent6 } },
-      ],
-      { x: x + 0.65, y: y - 0.08, w: w - 0.65, h: 0.68, valign: "top", margin: 0, isTextBox: true },
+      list.flatMap(([head, body], i) => [
+        { text: head, options: { bold: true, color: C.text1 } },
+        { text: body ? ` – ${body}` : "", options: { color: C.accent6, breakLine: i < list.length - 1 } },
+      ]),
+      { x, y, w, h, fontSize: size, valign: "top", margin: 0, paraSpaceAfter: 7, isTextBox: true },
     );
   };
 
@@ -149,12 +129,12 @@ async function main() {
   s.addText("Istniejące polskie innowacje w jednym miejscu: znalezione automatycznie, ocenione jawnie, gotowe do użycia.", {
     placeholder: "body",
   });
-  s.addText("Zadanie Podkarpackiego Centrum Innowacji · HackNation 2026 · zespół CombAIns", {
+  s.addText("Wyzwanie Podkarpackiego Centrum Innowacji · HackNation 2026 · zespół CombAIns", {
     x: 0.6, y: 4.75, w: 7, h: 0.35, fontSize: 13, color: C.accent2, bold: true, margin: 0, isTextBox: true,
   });
   s.addNotes(
     "Radar innowacji to jedno miejsce, w którym gmina, szkoła, uczelnia, firma czy inwestor znajdzie polskie innowacje, które już działają. " +
-      "Aplikacja sama je odkrywa w otwartych źródłach, ocenia według jawnych kryteriów i pokazuje, gdzie można je zastosować.",
+      "Aplikacja sama odkrywa je w otwartych źródłach, ocenia według jawnych kryteriów i pokazuje, gdzie można je zastosować.",
   );
 
   // ---- 2. Problem ----
@@ -162,112 +142,108 @@ async function main() {
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Problem i rozwiązanie" });
   s.addText("Innowacje już istnieją, ale nikt ich nie widzi", { placeholder: "title" });
   const stats = [
-    ["36 500", "projektów FE 2021–2027 w jednym arkuszu dane.gov.pl, bez wyszukiwarki rozwiązań"],
-    ["19 000+", "patentów jednostek naukowych w RAD-on, opisanych językiem prawnym"],
-    ["~10%", "inwestycji funduszy VC z udziałem środków UE ma komponent naukowy (2019–2026)"],
+    ["36 500", "projektów Funduszy Europejskich 2021–2027 w jednym arkuszu na dane.gov.pl, bez wyszukiwarki rozwiązań"],
+    ["19 000+", "patentów jednostek naukowych w systemie RAD-on, opisanych językiem prawnym"],
+    ["~10%", "inwestycji funduszy VC wspieranych ze środków UE ma komponent naukowy (2019–2026)"],
   ];
   stats.forEach(([num, label], i) => {
-    const y = 1.2 + i * 1.3;
+    const y = 1.25 + i * 1.3;
     s.addText(num, { x: 0.5, y, w: 2.3, h: 0.75, fontSize: 40, bold: true, color: C.accent1, margin: 0, valign: "middle", isTextBox: true });
-    s.addText(label, { x: 2.9, y: y + 0.05, w: 2.6, h: 0.7, fontSize: 12, color: C.accent6, margin: 0, valign: "middle", isTextBox: true });
+    s.addText(label, { x: 2.9, y: y + 0.02, w: 2.7, h: 0.75, fontSize: 12, color: C.accent6, margin: 0, valign: "middle", isTextBox: true });
   });
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 5.9, y: 1.2, w: 3.6, h: 3.75, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "Problem card" });
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 5.9, y: 1.25, w: 3.6, h: 3.7, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "Problem card" });
   s.addText(
     [
       { text: "Informacje są rozproszone", options: { bold: true, breakLine: true } },
       { text: "Projekty UE, patenty, strony urzędów i szkół, wyniki konkursów, zamówienia publiczne.", options: { breakLine: true } },
       { text: " ", options: { fontSize: 6, breakLine: true } },
       { text: "Katalogi wymagają zgłoszeń", options: { bold: true, breakLine: true } },
-      { text: "Obejmują jeden sektor i szybko się dezaktualizują.", options: { breakLine: true } },
+      { text: "Każdy obejmuje jeden sektor i szybko się dezaktualizuje.", options: { breakLine: true } },
       { text: " ", options: { fontSize: 6, breakLine: true } },
       { text: "Skutek", options: { bold: true, breakLine: true } },
-      { text: "Gmina nie wie, że inna gmina już rozwiązała ten sam problem.", options: {} },
+      { text: "Gmina nie wie, że inna gmina rozwiązała już ten sam problem.", options: {} },
     ],
-    { x: 6.15, y: 1.4, w: 3.15, h: 3.4, fontSize: 14, color: C.text1, valign: "top", margin: 0, isTextBox: true },
+    { x: 6.15, y: 1.45, w: 3.15, h: 3.35, fontSize: 14, color: C.text1, valign: "top", margin: 0, isTextBox: true },
   );
   s.addText("Źródła: dane.gov.pl, RAD-on (OPI PIB), xyz.pl na podstawie danych PFR Ventures.", {
-    x: 0.5, y: 4.95, w: 5.2, h: 0.25, fontSize: 9, color: C.accent6, margin: 0, isTextBox: true,
+    x: 0.5, y: 5.05, w: 9, h: 0.25, fontSize: 9, color: C.accent6, margin: 0, isTextBox: true,
   });
   s.addNotes(
-    "Dane o innowacjach istnieją, ale są rozproszone. Lista projektów FE to 36,5 tys. wierszy w jednym pliku. RAD-on ma ponad 19 tys. patentów uczelni. " +
-      "Tylko około 10% inwestycji funduszy VC finansowanych ze środków UE ma komponent naukowy. Katalogi dobrych praktyk wymagają ręcznego zgłaszania.",
+    "Dane o innowacjach istnieją, ale są rozproszone. Lista projektów Funduszy Europejskich to 36,5 tys. wierszy w jednym pliku. RAD-on ma ponad 19 tys. patentów uczelni i instytutów. " +
+      "Tylko około 10% inwestycji funduszy VC wspieranych ze środków UE ma komponent naukowy. Katalogi dobrych praktyk wymagają ręcznego zgłaszania.",
   );
 
   // ---- 3. Solution: process and scale ----
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Problem i rozwiązanie" });
   s.addText("Siedem kroków od źródła do decyzji", { placeholder: "title" });
   const steps = [
-    [fa.FaSearch, "Odkrywanie", "8 otwartych źródeł danych"],
-    [fa.FaDatabase, "Rekord", "jeden schemat, bez danych osobowych"],
-    [fa.FaTags, "Klasyfikacja", "obszar i typ innowacji"],
-    [fa.FaBalanceScale, "Ocena", "5 jawnych kryteriów"],
-    [fa.FaIdCard, "Karta", "dane ze źródła i przybliżenia"],
-    [fa.FaFilter, "Użycie", "wyszukaj, filtruj, porównaj"],
-    [fa.FaSyncAlt, "Aktualizacja", "cykliczne sprawdzanie źródeł"],
+    ["Odkrywanie", "8 otwartych źródeł danych"],
+    ["Rekord", "jeden schemat, bez danych osobowych"],
+    ["Klasyfikacja", "obszar i typ innowacji"],
+    ["Ocena", "5 jawnych kryteriów"],
+    ["Karta", "dane ze źródła i wartości przybliżone"],
+    ["Użycie", "wyszukaj, filtruj, porównaj"],
+    ["Aktualizacja", "cykliczne sprawdzanie źródeł"],
   ];
-  const stepW = 1.22;
-  for (const [i, [Icon, head, body]] of steps.entries()) {
-    const x = 0.5 + i * (stepW + 0.075);
-    await iconCircle(s, Icon, x + (stepW - 0.75) / 2, 1.3, 0.75, i === 3 ? C.accent2 : C.accent1);
-    s.addText(head, { x, y: 2.2, w: stepW, h: 0.35, fontSize: 14, bold: true, color: C.text1, align: "center", margin: 0, isTextBox: true });
-    s.addText(body, { x, y: 2.55, w: stepW, h: 0.6, fontSize: 11, color: C.accent6, align: "center", valign: "top", margin: 0, isTextBox: true });
-    if (i < steps.length - 1) {
-      s.addText("›", { x: x + stepW - 0.08, y: 1.4, w: 0.24, h: 0.5, fontSize: 24, color: "9FB3C4", align: "center", margin: 0, isTextBox: true });
-    }
-  }
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.5, y: 3.4, w: 9, h: 1.55, rectRadius: 0.12, fill: { color: C.background2 }, line: { type: "none" }, objectName: "Numbers" });
+  const stepW = 1.25;
+  s.addShape(pres.shapes.LINE, { x: 0.5 + 0.2, y: 1.75, w: 6 * (stepW + 0.04), h: 0, line: { color: HEX.accent1, width: 1.5 }, objectName: "Process line" });
+  steps.forEach(([head, body], i) => {
+    const x = 0.5 + i * (stepW + 0.04);
+    s.addShape(pres.shapes.OVAL, { x, y: 1.55, w: 0.4, h: 0.4, fill: { color: C.accent1 }, line: { type: "none" }, objectName: `Step ${i + 1}` });
+    s.addText(String(i + 1), { x, y: 1.55, w: 0.4, h: 0.4, fontSize: 14, bold: true, color: C.background1, align: "center", valign: "middle", margin: 0, isTextBox: true });
+    s.addText(head, { x, y: 2.1, w: stepW, h: 0.35, fontSize: 14, bold: true, color: C.text1, margin: 0, isTextBox: true });
+    s.addText(body, { x, y: 2.45, w: stepW - 0.05, h: 0.75, fontSize: 11, color: C.accent6, valign: "top", margin: 0, isTextBox: true });
+  });
   const numbers = [
-    ["3 498", "kart innowacji z całej Polski"],
+    ["3 498", "kart innowacji z 16 województw"],
     ["1 625", "kart z Podkarpacia"],
-    ["614", "kart z poziomem wdrożenia 4–5"],
+    ["614", "kart z poziomem wdrożenia 4–5: pilotaż lub użycie w praktyce"],
     ["< 0,2 s", "czas wyszukiwania"],
   ];
   numbers.forEach(([num, label], i) => {
-    const x = 0.7 + i * 2.2;
-    s.addText(num, { x, y: 3.55, w: 2.0, h: 0.65, fontSize: 30, bold: true, color: C.accent1, margin: 0, valign: "middle", isTextBox: true });
-    s.addText(label, { x, y: 4.2, w: 2.0, h: 0.6, fontSize: 12, color: C.accent6, margin: 0, valign: "top", isTextBox: true });
+    const x = 0.5 + i * 2.3;
+    s.addText(num, { x, y: 3.85, w: 2.1, h: 0.7, fontSize: 32, bold: true, color: C.accent1, margin: 0, valign: "middle", isTextBox: true });
+    s.addText(label, { x, y: 4.55, w: 2.05, h: 0.75, fontSize: 12, color: C.accent6, margin: 0, valign: "top", isTextBox: true });
   });
   s.addNotes(
     "Radar sam odkrywa innowacje w ośmiu otwartych źródłach, porządkuje je w jeden schemat, klasyfikuje i ocenia. " +
-      "Użytkownik niczego nie zgłasza i nie zakłada konta. Baza ma dziś 3 498 kart z całej Polski, w tym 1 625 z Podkarpacia. " +
-      "Indeks powstaje z wyprzedzeniem, więc wyszukiwanie trwa ułamek sekundy, a pełna aktualizacja kilka minut.",
+      "Użytkownik niczego nie zgłasza i nie zakłada konta. Baza ma dziś 3 498 kart z 16 województw, w tym 1 625 z Podkarpacia. " +
+      "Indeks powstaje z wyprzedzeniem, więc wyszukiwanie trwa ułamek sekundy, a aktualizacja źródeł kilka minut.",
   );
 
-  // ---- 4. Main flow: search ----
+  // ---- 4. Demo: from a need to the card ----
   pres.addSection({ title: "Demo" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Demo" });
-  s.addText("Wpisz potrzebę, dostaniesz istniejące rozwiązania", { placeholder: "title" });
-  screenshot(s, search, 0.5, 1.15, 5.75, "Strona wyszukiwania Radaru innowacji z zapytaniem o e-usługi w urzędzie");
-  numbered(s, 1, 6.6, 1.15, 2.9, "Fraza lub opis potrzeby", "np. „e-usługi w urzędzie”, „robotyka w szkole”");
-  numbered(s, 2, 6.6, 2.05, 2.9, "Filtry dla 6 grup", "JST, szkoły, uczelnie, firmy, startupy, innowatorzy");
-  numbered(s, 3, 6.6, 2.95, 2.9, "Ranking: trafność + potencjał", "start: Podkarpacie, szukanie: cała Polska");
-  numbered(s, 4, 6.6, 4.15, 2.9, "Działa na telefonie", "wyszukiwanie, karta i porównanie");
+  s.addText("Od potrzeby do karty innowacji", { placeholder: "title" });
+  screenshot(s, search, 0.5, 1.1, 4.3, "Strona wyszukiwania Radaru innowacji z zapytaniem o e-usługi w urzędzie");
+  screenshot(s, card, 5.2, 1.1, 4.3, "Karta innowacji e-urzędu z oceną i źródłami");
+  items(s, [
+    ["Fraza lub opis potrzeby", "np. „e-usługi w urzędzie”, „robotyka w szkole”"],
+    ["Filtry dla 6 grup", "m.in. samorządy (JST), szkoły, uczelnie, firmy"],
+    ["Ranking", "70% trafność, 30% ocena potencjału"],
+    ["Działa na telefonie", "bez instalacji aplikacji"],
+  ], 0.5, 4.2, 4.3, 1.2, 11);
+  items(s, [
+    ["„Ze źródła”", "wartość z cytatem i linkiem"],
+    ["„Przybliżone”", "wartość z reguły; powód pod „dlaczego?”"],
+    ["Każde źródło", "z datą sprawdzenia i licencją"],
+    ["Brak danych", "opisany wprost, a nie ukryty"],
+  ], 5.2, 4.2, 4.3, 1.2, 11);
   s.addNotes(
-    "Użytkownik wpisuje frazę lub opis potrzeby. Tu: samorząd szuka e-usług w urzędzie i dostaje 156 istniejących rozwiązań. " +
-      "Filtry obejmują grupę użytkowników, obszar, województwo i minimalny poziom wdrożenia. Każdy wynik pokazuje potencjał i pewność oceny.",
+    "Użytkownik wpisuje frazę lub opis potrzeby. Tu samorząd szuka e-usług w urzędzie i dostaje 156 istniejących rozwiązań. " +
+      "Filtry obejmują grupę użytkowników, obszar, województwo i minimalny poziom wdrożenia. JST to jednostki samorządu terytorialnego: gminy, powiaty i województwa. " +
+      "Karta pokazuje opis, obszar, instytucję, status wdrożenia, gotowość technologiczną i ocenę. Każda wartość ma etykietę: „ze źródła” z cytatem i linkiem albo „przybliżone” z powodem.",
   );
 
-  // ---- 5. Card ----
-  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Demo" });
-  s.addText("Karta innowacji: każda informacja ma źródło", { placeholder: "title" });
-  numbered(s, 1, 0.5, 1.25, 3.2, "„Ze źródła” = cytat + link", "wartość pochodzi wprost ze źródła", C.accent3);
-  numbered(s, 2, 0.5, 2.4, 3.2, "„Przybliżone” = powód", "wartość wyliczona regułą; powód pod „dlaczego?”", C.accent4);
-  numbered(s, 3, 0.5, 3.55, 3.2, "Data sprawdzenia i licencja", "przy każdym źródle; brak danych opisany wprost");
-  screenshot(s, card, 3.95, 1.15, 5.55, "Karta innowacji e-urzędu z kafelkami i panelem oceny");
-  s.addNotes(
-    "Karta pokazuje opis, obszar, instytucję, status wdrożenia, gotowość technologiczną i ocenę potencjału. " +
-      "Każda wartość ma etykietę: „ze źródła” z cytatem i linkiem albo „przybliżone” z powodem. Przy każdym źródle jest data sprawdzenia i licencja.",
-  );
-
-  // ---- 6. Assessment ----
+  // ---- 5. Assessment ----
   pres.addSection({ title: "Ocena i dane" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Ocena i dane" });
   s.addText("Jawna ocena według 5 kryteriów", { placeholder: "title" });
   s.addChart(
     pres.charts.BAR,
-    [{ name: "Waga", labels: ["Wiarygodność", "Potencjał zastosowania", "Innowacyjność", "Dojrzałość (TRL)", "Poziom wdrożenia"], values: [15, 20, 20, 15, 30] }],
+    [{ name: "Waga", labels: ["Wiarygodność", "Potencjał zastosowania", "Innowacyjność", "Dojrzałość technologiczna (TRL)", "Poziom wdrożenia"], values: [15, 20, 20, 15, 30] }],
     {
-      x: 0.4, y: 1.1, w: 5.8, h: 2.3, barDir: "bar",
+      x: 0.4, y: 1.0, w: 6.0, h: 2.1, barDir: "bar",
       chartColors: [HEX.accent5], showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 11, dataLabelColor: HEX.dk1,
       dataLabelFontFace: "+mn-lt", catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-lt",
       catAxisLabelFontSize: 11, catAxisLabelColor: HEX.dk1, valAxisHidden: true, valAxisMaxVal: 35,
@@ -275,163 +251,175 @@ async function main() {
       showTitle: true, title: "Wagi kryteriów (suma 100)", titleFontSize: 12, titleColor: HEX.accent6, titleFontFace: "+mn-lt",
     },
   );
-  s.addText(
-    [
-      { text: "Przedział, nie fałszywa precyzja: ", options: { bold: true } },
-      { text: "brak danych to nie zero", options: { breakLine: true } },
-      { text: "Pewność: ", options: { bold: true } },
-      { text: "udział oceny opartej na danych ze źródła", options: { breakLine: true } },
-      { text: "Potencjał zastosowania z danych: ", options: { bold: true } },
-      { text: "opis, koszt, sektory, zamówienia BZP", options: { breakLine: true } },
-      { text: "Powtarzalność: ", options: { bold: true } },
-      { text: "ten sam rekord daje ten sam wynik; AI nie wystawia oceny", options: {} },
-    ],
-    { x: 0.5, y: 3.5, w: 4.8, h: 1.5, fontSize: 13, color: C.text1, valign: "top", margin: 0, paraSpaceAfter: 4, isTextBox: true },
-  );
-  const ah = 3.8;
-  s.addImage({ data: assessment.data, x: 7.15, y: 1.05, w: ah * assessment.ratio, h: ah, altText: "Panel oceny na karcie wynalazku z kryteriami jako paski", shadow: shadow() });
+  items(s, [
+    ["TRL", "poziom gotowości technologii w skali 1–9 Komisji Europejskiej; nie dotyczy innowacji edukacyjnych i administracyjnych"],
+    ["Przedział zamiast fałszywej precyzji", "brak danych to nie zero"],
+    ["Pewność", "jaka część oceny opiera się na danych ze źródła"],
+    ["Potencjał zastosowania z danych", "opis, koszt, liczba sektorów, ogłoszenia o zamówieniach w Biuletynie Zamówień Publicznych (BZP)"],
+    ["Powtarzalność", "ten sam rekord daje ten sam wynik; AI nie wystawia oceny"],
+  ], 0.5, 3.2, 6.1, 2.1, 12);
+  const ah = 3.9;
+  s.addImage({ data: assessment.data, x: 7.0, y: 1.0, w: ah * assessment.ratio, h: ah, altText: "Panel oceny na karcie innowacji z kryteriami jako paski", shadow: shadow() });
   s.addText("Skale: TRL (Komisja Europejska), Oslo Manual 2018, Nesta, Interreg Europe.", {
-    x: 0.5, y: 4.98, w: 9, h: 0.25, fontSize: 9, color: C.accent6, margin: 0, align: "right", isTextBox: true,
+    x: 6.6, y: 5.0, w: 2.9, h: 0.3, fontSize: 9, color: C.accent6, margin: 0, align: "right", isTextBox: true,
   });
   s.addNotes(
     "Pięć kryteriów: poziom wdrożenia, dojrzałość technologiczna, innowacyjność, potencjał zastosowania i wiarygodność. Wagi to jawna propozycja zespołu w wersji v0.1. " +
-      "Brak danych nie oznacza zera, więc pokazujemy przedział. Potencjał zastosowania liczymy z danych: opisu, kosztu, liczby sektorów i zamówień publicznych. " +
-      "Model językowy może proponować wartości, ale nigdy nie jest jedynym źródłem oceny.",
+      "TRL to poziom gotowości technologii od 1 (zasada działania) do 9 (system sprawdzony w użyciu). Brak danych nie oznacza zera, więc pokazujemy przedział. " +
+      "Potencjał zastosowania liczymy z danych: opisu, kosztu, liczby sektorów i ogłoszeń o zamówieniach publicznych. Model językowy nie wystawia oceny.",
   );
 
-  // ---- 7. Sources ----
+  // ---- 6. Sources ----
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Ocena i dane" });
-  s.addText("8 otwartych źródeł i zamówienia publiczne", { placeholder: "title" });
-  const sources = [
-    [fa.FaEuroSign, "Lista projektów FE 2021–2027", "967 kart", "CC0 1.0"],
-    [fa.FaUniversity, "RAD-on (OPI PIB)", "927 kart: patenty i projekty", "CC0 1.0"],
-    [fa.FaCertificate, "EPO Linked Open Data", "1 164 patenty europejskie", "CC BY 4.0"],
-    [fa.FaTrophy, "NCBR: sukcesy beneficjentów", "300 kart", "opis + link"],
-    [fa.FaGlobeEurope, "Kohesio (KE), projekty 2014–2020", "56 kart", "zasady KE"],
-    [fa.FaHandshake, "Interreg 2021–2027", "50 kart", "CC0 1.0"],
-    [fa.FaLandmark, "Konkurs „Innowacyjny Samorząd”", "42 karty", "cytat + link"],
-    [fa.FaShoppingCart, "Zamówienia publiczne (BZP)", "2 803 ogłoszenia: sygnał popytu", "informacja publiczna"],
+  s.addText("8 otwartych źródeł danych", { placeholder: "title" });
+  const head = (text) => ({ text, options: { bold: true, color: C.background1, fill: { color: C.accent1 } } });
+  const rows = [
+    ["Fundusze Europejskie 2021–2027 (dane.gov.pl)", "projekty z opisem, beneficjentem i miejscem", "967", "CC0 1.0"],
+    ["RAD-on (OPI PIB)", "patenty i projekty jednostek naukowych", "927", "CC0 1.0"],
+    ["Europejski Urząd Patentowy (EPO)", "patenty europejskie polskich firm i uczelni", "1 164", "CC BY 4.0"],
+    ["NCBR: sukcesy beneficjentów", "zakończone projekty z opisem problemu i odbiorców", "300", "opis i link"],
+    ["Kohesio (Komisja Europejska)", "zakończone projekty UE 2014–2020", "56", "zasady KE"],
+    ["Interreg 2021–2027 (dane.gov.pl)", "projekty transgraniczne", "50", "CC0 1.0"],
+    ["Konkurs „Innowacyjny Samorząd”", "nagrodzone wdrożenia samorządów", "42", "cytat i link"],
+    ["Biuletyn Zamówień Publicznych (BZP)", "kto kupuje podobne rozwiązania: sygnał popytu", "2 803 ogłoszeń", "informacja publiczna"],
   ];
-  for (const [i, [Icon, head, body, lic]] of sources.entries()) {
-    const col = i % 2;
-    const row = Math.floor(i / 2);
-    const x = 0.5 + col * 4.6;
-    const y = 1.15 + row * 0.86;
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 4.4, h: 0.76, rectRadius: 0.08, fill: { color: C.background2 }, line: { type: "none" }, objectName: `Source ${i + 1}` });
-    await iconCircle(s, Icon, x + 0.15, y + 0.13, 0.5, i === 7 ? C.accent2 : C.accent1);
-    s.addText(
-      [
-        { text: head, options: { bold: true, fontSize: 13, color: C.text1, breakLine: true } },
-        { text: `${body} · `, options: { fontSize: 11, color: C.accent6 } },
-        { text: lic, options: { fontSize: 11, color: C.accent3, bold: true } },
-      ],
-      { x: x + 0.8, y: y + 0.06, w: 3.5, h: 0.64, valign: "middle", margin: 0, isTextBox: true },
-    );
-  }
+  s.addTable(
+    [[head("Źródło"), head("Co daje"), head("Rekordy"), head("Licencja")], ...rows.map((r) => r.map((t) => ({ text: t })))],
+    {
+      x: 0.5, y: 1.05, w: 9, colW: [3.0, 3.5, 1.1, 1.4], rowH: 0.36, fontSize: 11, color: HEX.dk1, fontFace: "Calibri",
+      border: { type: "solid", pt: 0.5, color: "DDE4EA" }, valign: "middle", margin: 0.05,
+    },
+  );
   s.addText("Każdy rekord ma źródło, datę danych, datę pobrania i licencję. Awaria jednego źródła nie zatrzymuje pozostałych.", {
-    x: 0.5, y: 4.65, w: 9, h: 0.4, fontSize: 13, color: C.text1, margin: 0, valign: "middle", isTextBox: true,
+    x: 0.5, y: 4.55, w: 9, h: 0.4, fontSize: 13, color: C.text1, margin: 0, valign: "middle", isTextBox: true,
   });
   s.addNotes(
-    "Korzystamy tylko z bezpłatnych i legalnych źródeł, bez kluczy API. Każdy rekord ma licencję i datę sprawdzenia. " +
-      "Rekordy z różnych źródeł o tej samej innowacji łączymy w jedną kartę z osią czasu. Nie pobieramy danych osób: oceniamy innowację, nie człowieka.",
+    "Korzystamy tylko z bezpłatnych i legalnych źródeł, bez kluczy API. NCBR to Narodowe Centrum Badań i Rozwoju, BZP to Biuletyn Zamówień Publicznych. " +
+      "Rekordy z różnych źródeł o tej samej innowacji łączymy w jedną kartę z osią czasu. Nie pobieramy danych osób: oceniamy innowację, a nie człowieka.",
   );
 
-  // ---- 8. Two use cases: where to apply, who can use it, the next path and its measures ----
+  // ---- 7. Two use cases: where to apply, who can use it, the next path and its measures ----
   pres.addSection({ title: "Przypadki użycia" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Przypadki użycia" });
   s.addText("Dwa przypadki: gdzie zastosować i co dalej", { placeholder: "title" });
-  const useCase = async (x, Icon, fill, head, lines) => {
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.1, w: 4.4, h: 3.95, rectRadius: 0.1, fill: { color: C.background2 }, line: { type: "none" }, objectName: head });
-    await iconCircle(s, Icon, x + 0.2, 1.22, 0.5, fill);
-    s.addText(head, { x: x + 0.82, y: 1.22, w: 3.45, h: 0.5, fontSize: 15, bold: true, color: C.text1, valign: "middle", margin: 0, isTextBox: true });
+  const useCase = (x, title, lines) => {
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y: 1.05, w: 4.4, h: 4.25, rectRadius: 0.1, fill: { color: C.background2 }, line: { type: "none" }, objectName: title });
+    s.addText(title, { x: x + 0.2, y: 1.15, w: 4.0, h: 0.45, fontSize: 15, bold: true, color: C.accent1, valign: "middle", margin: 0, isTextBox: true });
     s.addText(
       lines.flatMap(([label, text], i) => [
         { text: `${label}: `, options: { bold: true, color: C.text1 } },
         { text, options: { color: C.text1, breakLine: i < lines.length - 1 } },
       ]),
-      { x: x + 0.22, y: 1.85, w: 4.0, h: 3.1, fontSize: 13, valign: "top", margin: 0, paraSpaceAfter: 4, isTextBox: true },
+      { x: x + 0.2, y: 1.65, w: 4.0, h: 3.55, fontSize: 12, valign: "top", margin: 0, paraSpaceAfter: 4, isTextBox: true },
     );
   };
-  await useCase(0.5, fa.FaLandmark, C.accent1, "Samorząd szuka e-usług", [
-    ["Zapytanie", "„e-usługi w urzędzie”, grupa JST"],
-    ["Karta", "e-urząd w Gminie Horyniec-Zdrój: wdrożenie pilotażowe, ocena 69 (53–76)"],
+  useCase(0.5, "Samorząd szuka e-usług", [
+    ["Zapytanie", "„e-usługi w urzędzie”, grupa: samorządy (JST)"],
+    ["Karta", "e-urząd w Gminie Horyniec-Zdrój: wdrożenie pilotażowe, ocena 69 (przedział 53–76)"],
     ["Gdzie zastosować", "administracja publiczna; ICT i cyfryzacja"],
     ["Ścieżka", "replikacja w innej instytucji"],
-    ["Mierniki", "instytucje, które przejęły rozwiązanie w 12 mies.; użytkownicy; czas obsługi sprawy"],
-    ["Podobne wdrożenia", "Cieszanów, Krasiczyn, Stubno, Dydnia"],
+    ["Mierniki", "liczba instytucji, które przejęły rozwiązanie w ciągu 12 mies.; liczba użytkowników; czas obsługi sprawy"],
+    ["Podobne wdrożenia", "Radomyśl Wielki, Sędziszów Małopolski, Cieszanów, Grębów"],
     ["Popyt (BZP)", "Biłgoraj, Wadowice, Dąbrowa Tarnowska"],
   ]);
-  await useCase(5.1, fa.FaFlask, C.accent3, "Technologia z uczelni", [
+  useCase(5.1, "Technologia z uczelni", [
     ["Zapytanie", "„elektroda zgrzewanie”"],
-    ["Karta", "bezodpadowa technologia elektrod nasadkowych, Politechnika Rzeszowska: prototyp, ocena 43 (28–63)"],
-    ["Dwa źródła w jednej karcie", "grant 2017 → zgłoszenie 2022 → prawo ochronne 2025; wiarygodność 4/5"],
-    ["Ścieżka", "transfer technologii: licencja lub wspólny projekt B+R"],
-    ["Mierniki", "zapytania od firm; umowa licencyjna lub B+R w 12 mies.; wzrost TRL o co najmniej 1"],
+    ["Karta", "bezodpadowa technologia elektrod nasadkowych, Politechnika Rzeszowska: prototyp, ocena 43 (przedział 28–63)"],
+    ["Dwa źródła w jednej karcie", "grant 2017 → zgłoszenie 2022 → prawo ochronne 2025; wiarygodność 4 z 5"],
+    ["Ścieżka", "transfer technologii: licencja lub wspólny projekt badawczo-rozwojowy (B+R)"],
+    ["Mierniki", "zapytania od firm; umowa licencyjna lub B+R w ciągu 12 mies.; wzrost TRL o co najmniej 1"],
+    ["Kontakt", "strona i e-mail uczelni; centrum transferu technologii"],
   ]);
-
   s.addNotes(
     "Dwa przypadki z prawdziwych danych. Gmina szuka e-usług: radar pokazuje e-urząd w Horyńcu-Zdroju, gminy z podobnym wdrożeniem i instytucje, które kupują podobne rozwiązania. " +
       "Rekomendowana ścieżka to replikacja w innej instytucji, z miernikami skuteczności. " +
-      "Drugi przypadek: technologia Politechniki Rzeszowskiej. Radar łączy projekt badawczy i patent w jedną kartę z osią czasu i proponuje transfer technologii.",
+      "Drugi przypadek: technologia Politechniki Rzeszowskiej. Radar łączy projekt badawczy i prawo ochronne w jedną kartę z osią czasu, proponuje transfer technologii i podaje kontakt do uczelni.",
   );
 
-  // ---- 9. Decision tool and deployment ----
+  // ---- 8. Decision tool and deployment ----
   pres.addSection({ title: "Wartość i wdrożenie" });
   s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Wartość i wdrożenie" });
   s.addText("Narzędzie do decyzji, gotowe do wdrożenia", { placeholder: "title" });
   s.addText("Dla użytkownika", { x: 0.5, y: 1.05, w: 4.3, h: 0.35, fontSize: 15, bold: true, color: C.accent1, margin: 0, isTextBox: true });
   s.addText("Dla PCI i innych organizacji", { x: 5.2, y: 1.05, w: 4.3, h: 0.35, fontSize: 15, bold: true, color: C.accent3, margin: 0, isTextBox: true });
-  const userFeatures = [
-    [fa.FaColumns, "Porównanie 2–4 kart", "kryteria w wierszach, link do udostępnienia"],
-    [fa.FaBell, "Obserwowane wyszukiwania", "„Nowe od ostatniej wizyty”, bez logowania"],
-    [fa.FaStream, "Oś czasu z kilku źródeł", "grant, patent, nagroda, wdrożenie"],
-    [fa.FaFileCsv, "Eksport CSV i API JSON", "dane do arkusza, CRM lub innego systemu"],
-    [fa.FaChartBar, "Anonimowa analityka", "popularne obszary, bez danych o osobach"],
-  ];
-  const orgFeatures = [
-    [fa.FaMapMarkedAlt, "Region w konfiguracji", "inne centrum uruchamia radar bez zmian w kodzie"],
-    [fa.FaPuzzlePiece, "Jedno źródło = jeden moduł", "nowe źródło to jedna funkcja"],
-    [fa.FaServer, "Lekka infrastruktura", "SQLite, zwykły serwer, bez GPU i opłat"],
-    [fa.FaLock, "Bezpieczeństwo", "bez logowania; dane osób ukryte; AI Act"],
-    [fa.FaBalanceScaleLeft, "Licencja EUPL-1.2", "tylko komponenty z otwartymi licencjami"],
-  ];
-  for (const [i, [Icon, head, body]] of userFeatures.entries()) await iconRow(s, Icon, 0.5, 1.55 + i * 0.72, 4.4, head, body, C.accent1);
-  for (const [i, [Icon, head, body]] of orgFeatures.entries()) await iconRow(s, Icon, 5.2, 1.55 + i * 0.72, 4.3, head, body, C.accent3);
+  items(s, [
+    ["Porównanie 2–4 kart", "kryteria w wierszach, link do udostępnienia"],
+    ["Obserwowane wyszukiwania", "„Nowe od ostatniej wizyty”, bez logowania"],
+    ["Oś czasu z kilku źródeł", "grant, patent, nagroda, wdrożenie"],
+    ["Kontakt do instytucji", "oficjalna strona i e-mail, bez danych osób"],
+    ["Eksport CSV i API JSON", "dane do arkusza, CRM lub innego systemu"],
+    ["Wersja na telefon", "bez instalacji aplikacji"],
+  ], 0.5, 1.55, 4.4, 3.7, 13);
+  items(s, [
+    ["Region w konfiguracji", "inne centrum uruchamia radar bez zmian w kodzie"],
+    ["Jedno źródło = jeden moduł", "nowe źródło to jedna funkcja"],
+    ["Lekka infrastruktura", "SQLite, zwykły serwer, bez GPU i opłat"],
+    ["Bezpieczeństwo", "bez logowania i bez danych osobowych; ocena innowacji, a nie osób (AI Act)"],
+    ["Anonimowa analityka", "popularne obszary i karty, bez danych o osobach"],
+    ["Licencja EUPL-1.2", "tylko komponenty z otwartymi licencjami"],
+  ], 5.2, 1.55, 4.3, 3.7, 13);
   s.addNotes(
-    "Radar nie kończy się na liście: można porównać karty, obserwować wyszukiwania, wyeksportować dane do CSV i pobrać je przez API. " +
+    "Radar nie kończy się na liście: można porównać karty, obserwować wyszukiwania, skontaktować się z instytucją, wyeksportować dane do CSV i pobrać je przez API. " +
       "Region i źródła są w konfiguracji, a nie w kodzie, więc radar może działać w każdym województwie. Nie ma logowania ani danych osobowych. " +
       "Fundusze VC budują własne platformy danych do szukania projektów, np. EQT Motherbrain. PFR Ventures w programie Starter Science ocenia, czy fundusze umieją znaleźć projekty z nauki. Radar daje tę metodę PCI, samorządom i uczelniom.",
   );
 
-  // ---- 10. Next steps ----
+  // ---- 9. Next steps ----
   s = pres.addSlide({ masterName: "TITLE_DARK", sectionTitle: "Wartość i wdrożenie" });
   radar(s, 8.4, 4.4, 1.5, 55);
   s.addText("Co dalej", { x: 0.6, y: 0.45, w: 6, h: 0.7, fontSize: 32, bold: true, color: C.background1, margin: 0, isTextBox: true });
   const next = [
     ["Kalibracja wag", ""],
-    ["Wyszukiwanie semantyczne", "embeddingi obok wyszukiwania pełnotekstowego"],
-    ["Strony szkół i JST", "crawler aktualności i projektów"],
+    ["Wyszukiwanie semantyczne", "dopasowanie po znaczeniu, nie tylko po słowach"],
+    ["Strony szkół i samorządów", "automatyczne czytanie aktualności i projektów"],
     ["Panel analityka PCI", "potwierdzanie wartości z zapisem powodu"],
     ["Kolejne źródła", "CORDIS, OpenAlex, wyniki Erasmus+"],
   ];
-  next.forEach(([head, body], i) => {
-    const y = 1.35 + i * 0.65;
-    s.addShape(pres.shapes.OVAL, { x: 0.6, y: y + 0.05, w: 0.4, h: 0.4, fill: { color: C.accent2 }, line: { type: "none" }, objectName: `Next ${i + 1}` });
-    s.addText(String(i + 1), { x: 0.6, y: y + 0.05, w: 0.4, h: 0.4, fontSize: 14, bold: true, color: C.text1, align: "center", valign: "middle", margin: 0, isTextBox: true });
+  next.forEach(([title, body], i) => {
+    const y = 1.45 + i * 0.68;
+    s.addText(String(i + 1), { x: 0.6, y, w: 0.4, h: 0.5, fontSize: 20, bold: true, color: C.accent2, valign: "middle", margin: 0, isTextBox: true });
     s.addText(
       [
-        { text: `${head}  `, options: { bold: true, color: C.background1 } },
+        { text: `${title}  `, options: { bold: true, color: C.background1 } },
         { text: body, options: { color: "E6F3FB" } },
       ],
-      { x: 1.2, y, w: 5.8, h: 0.5, fontSize: 16, valign: "middle", margin: 0, isTextBox: true },
+      { x: 1.1, y, w: 6.0, h: 0.5, fontSize: 16, valign: "middle", margin: 0, isTextBox: true },
     );
   });
-  s.addText("Zespół CombAIns: Filip Langiewicz, Maciej Momot, Mikołaj Rowicki", {
-    x: 0.6, y: 4.8, w: 6, h: 0.4, fontSize: 14, bold: true, color: C.accent2, margin: 0, isTextBox: true,
-  });
   s.addNotes(
-    "Po hackathonie chcemy skalibrować wagi, dodać wyszukiwanie semantyczne, czytać strony szkół i samorządów, zbudować panel analityka i dodać kolejne źródła. Dziękujemy.",
+    "Po hackathonie chcemy skalibrować wagi, dodać wyszukiwanie semantyczne, czytać strony szkół i samorządów, zbudować panel analityka i dodać kolejne źródła.",
   );
+
+  // ---- 10. Team ----
+  s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Wartość i wdrożenie" });
+  s.addText(
+    [
+      { text: "Zespół ", options: { color: C.text1 } },
+      { text: "CombAIns", options: { color: C.accent1 } },
+    ],
+    { placeholder: "title" },
+  );
+  const team = [
+    ["team-filip.jpg", "Filip", "Langiewicz", "filiplangiewicz"],
+    ["team-mikolaj.jpg", "Mikołaj", "Rowicki", "mikolajrowicki"],
+    ["team-maciej.jpg", "Maciej", "Momot", "maciej-momot"],
+  ];
+  team.forEach(([file, first, last, handle], i) => {
+    const cx = 1.95 + i * 3.05;
+    const size = 1.9;
+    s.addImage({ path: path.join(IMG, file), x: cx - size / 2, y: 1.15, w: size, h: size, rounding: true, altText: `${first} ${last}` });
+    s.addText(
+      [
+        { text: first, options: { breakLine: true } },
+        { text: last, options: {} },
+      ],
+      { x: cx - 1.4, y: 3.2, w: 2.8, h: 0.95, fontSize: 22, bold: true, color: C.text1, align: "center", valign: "top", margin: 0, isTextBox: true },
+    );
+    s.addText([{ text: `in/${handle}`, options: { hyperlink: { url: `https://www.linkedin.com/in/${handle}` } } }], {
+      x: cx - 1.4, y: 4.2, w: 2.8, h: 0.35, fontSize: 13, color: C.accent1, align: "center", margin: 0, isTextBox: true,
+    });
+  });
+  s.addNotes("Zespół CombAIns: Filip Langiewicz, Mikołaj Rowicki i Maciej Momot. Dziękujemy.");
 
   await pres.writeFile({ fileName: OUT });
   const applyThemePath = process.argv[2];

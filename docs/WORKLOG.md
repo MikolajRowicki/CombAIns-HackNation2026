@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 62-deck-cleanup)
+
+- Presentation: the same content with a simpler design.
+  - No footer and no slide numbers.
+  - No icon circles: the process is a numbered line, the sources are a table, the feature lists are text.
+  - Abbreviations at first use: JST (samorządy), TRL (poziom gotowości technologii, skala 1-9 KE), BZP (Biuletyn Zamówień Publicznych), Fundusze Europejskie, EPO, B+R. No jargon on "Co dalej" (embeddings, crawler).
+  - The search slide and the card slide are one slide ("Od potrzeby do karty innowacji"), so that the deck keeps 10 slides with the new team slide.
+  - New slide "Zespół CombAIns" with photos and LinkedIn of Filip Langiewicz, Mikołaj Rowicki and Maciej Momot (photos in `docs/presentation/img/team-*.jpg`, from the earlier deck of the team).
+  - Facts checked against the database: 3 498 cards from 16 voivodeships, 1 625 from Podkarpackie, 614 with level 4-5; similar e-offices: Radomyśl Wielki, Sędziszów Małopolski, Cieszanów, Grębów; the contact of the university on the second use case.
+
 ## 2026-11-22, MikolajRowicki (branch 60-contacts)
 
 - Add the contact of institutions: `Institution.website` and `Institution.email` (official channels only).
