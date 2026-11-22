@@ -2,7 +2,15 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
-## 2026-11-22 04:10, MaciejMomot (branch 15-compare, issue #28)
+## 2026-11-22 01:42, MaciejMomot (branch 17-presentation, issue #17)
+
+- Add the first version of the presentation: `docs/presentation/Radar_innowacji.pptx` and `Radar_innowacji.pdf` (10 slides, Polish, speaker notes).
+- Add `docs/presentation/build_deck.js`. It builds the deck from the screenshots in `docs/presentation/img/`. The tools (PptxGenJS, sharp, react-icons) are not dependencies of the application. The procedure is in the head of the script.
+- The screenshots show the sample data of PR #24. Make them again when the API and the real data exist.
+- Record the licenses of the presentation tools and of the Font Awesome icons (CC BY 4.0) in `README.md`.
+- Correct the times of my earlier entries in this file. They now agree with the git history.
+
+## 2026-11-22 01:34, MaciejMomot (branch 15-compare, issue #28)
 
 - Add the comparison of 2-4 innovations: `web/compare.html` and the code in `web/app.js` and `web/style.css`.
 - A checkbox "Porównaj" on each result and on the card. A bar at the bottom shows "Do porównania: N z 4" and the link to the comparison.
@@ -12,14 +20,14 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - Without the API, the page uses the sample data. Only one sample record has the full assessment, so other columns show "brak oceny".
 - Check: headless Edge on the uvicorn server with the sample data (limit of 4, card button, remove, phone width, no console errors).
 
-## 2026-11-22 03:40, MaciejMomot (branch 13-trl-missing)
+## 2026-11-22 01:27, MaciejMomot (branch 13-trl-missing)
 
 - Accept the contract changes of PR #24. Change the TRL rule to the contract: `trl: null` means "nie dotyczy", and `trl.value: null` means that the data is missing.
 - `src/criteria.py`: K2 does not apply only if the field `trl` is null. A missing TRL value now widens the range, as the other criteria do.
 - `web/app.js`: the card shows "nie dotyczy" only for `trl: null`. For a null `trl.value`, it shows "brak danych".
 - Add a test for a missing TRL value. No sample record has a null `trl.value`, so the sample assessments do not change.
 
-## 2026-11-22 03:20, MaciejMomot (branch 11-watchlists, issue #14)
+## 2026-11-22 01:22, MaciejMomot (branch 11-watchlists, issue #14)
 
 - Add watchlists to the search page: the button "Obserwuj to wyszukiwanie" saves the query and the filters.
 - The saved queries stay only in the browser (`localStorage`, key `radar.watchlists.v1`). No login and no personal data.
@@ -48,7 +56,7 @@ Add an entry after each step of work. Give the date, the time, the person and th
   - Page text contains non-breaking spaces. The pipeline must normalize them before the quote check.
 - A script outside the repository made the sample records.
 
-## 2026-11-22 02:50, MaciejMomot (branch 09-card-page, issue #6)
+## 2026-11-22 01:19, MaciejMomot (branch 09-card-page, issue #6)
 
 - Add the card page `web/innovation.html`. The code is in `web/app.js` and `web/style.css`.
 - Sections: title and summary, main facts, assessment, sources, signal timeline, demand signals (BZP), description, similar innovations.
@@ -60,7 +68,7 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - Links from the data use only http and https.
 - Check: headless Edge with a test card (desktop and phone width, no console errors).
 
-## 2026-11-22 02:10, MaciejMomot (branch 07-search-page, issue #5)
+## 2026-11-22 01:16, MaciejMomot (branch 07-search-page, issue #5)
 
 - Make the search page: `web/index.html`, `web/app.js`, `web/style.css`. Plain HTML and JS, no library, no build step.
 - Add `web/config.json`: the default voivodeship and the search examples. Thus the code has no region.
@@ -70,13 +78,21 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - The page builds the DOM with `textContent` only. Thus text from the sources cannot inject HTML.
 - Check: headless Edge with test data (default view, search, filter, back button, no console errors).
 
-## 2026-11-22 01:40, MaciejMomot (branch 05-readme, issue #16)
+## 2026-11-22 01:12, MaciejMomot (branch 05-readme, issue #16)
 
 - Write the structure and the first full text of `README.md` in Polish: problem, solution, process, main functions, user groups, data sources, criteria and rules, assumptions and limits, scale-up, security, integration, development, license.
 - Keep the start procedure and the license table of MikolajRowicki.
 - Open items: MikolajRowicki checks the data sources part. Before the submission, check that each function in the README operates (comparison, CSV export, watchlists).
 
-## 2026-11-22 01:15, MaciejMomot (branch 03-criteria-module, issue #4)
+## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
+
+- Add the application skeleton: `src/app.py` (FastAPI, `GET /api/health`, static files from `web/`), `web/index.html`, `tests/test_app.py`.
+- Add `requirements.in`, `requirements-dev.in` and the lock `requirements.txt`. PyTorch and sentence-transformers come later with the search (issue #9).
+- Decisions: the web page is static HTML and JS that calls the JSON API (no Jinja2). The start command is `uv run --no-project uvicorn src.app:app --reload`.
+- Check: sqlite-vec 0.1.9 and FTS5 load on Python 3.13 (Windows). All licenses are permissive, except certifi (MPL-2.0, a transitive dependency of httpx, used without change).
+- Add `README.md` with the start procedure and the license table.
+
+## 2026-11-22 00:56, MaciejMomot (branch 03-criteria-module, issue #4)
 
 - Add `src/criteria.py`: the criteria K1-K5 with Polish names, scales, weights and references (`CRITERIA`), and the function `assess()`.
 - `assess()` gives `potential`, `low`, `high`, `confidence`, `fact_share`, `criteria_version`, `criteria` and `missing`.
@@ -87,14 +103,6 @@ Add an entry after each step of work. Give the date, the time, the person and th
   - Each entry of `criteria` has `value`, `score` (0-5), `weight` (after the change of weights), `points`, `kind` and `applicable`. This adds fields to the contract of issue #3.
 - Add `estimate_implementation_level(text)` and `estimate_novelty(text)`: rules with Polish keywords, without AI. A plan ("zostanie wdrożony") counts as a concept. The evidence is always an exact part of the text.
 - Add `tests/test_criteria.py` (41 tests).
-
-## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
-
-- Add the application skeleton: `src/app.py` (FastAPI, `GET /api/health`, static files from `web/`), `web/index.html`, `tests/test_app.py`.
-- Add `requirements.in`, `requirements-dev.in` and the lock `requirements.txt`. PyTorch and sentence-transformers come later with the search (issue #9).
-- Decisions: the web page is static HTML and JS that calls the JSON API (no Jinja2). The start command is `uv run --no-project uvicorn src.app:app --reload`.
-- Check: sqlite-vec 0.1.9 and FTS5 load on Python 3.13 (Windows). All licenses are permissive, except certifi (MPL-2.0, a transitive dependency of httpx, used without change).
-- Add `README.md` with the start procedure and the license table.
 
 ## 2026-11-22 00:40, MikolajRowicki (branch 02-web-sources)
 

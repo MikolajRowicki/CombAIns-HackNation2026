@@ -247,5 +247,8 @@ Wszystkie komponenty mają licencje zgodne z EUPL-1.2.
 | simplemma | lematyzacja tekstu polskiego | MIT |
 | certifi (zależność pośrednia httpx) | certyfikaty TLS | MPL-2.0 (używana bez zmian) |
 | pytest, Ruff (tylko dla deweloperów) | testy i kontrola kodu | MIT |
+| PptxGenJS, React, react-icons (tylko prezentacja) | generowanie slajdów `docs/presentation/` | MIT |
+| sharp (tylko prezentacja) | przetwarzanie zrzutów ekranu i ikon | Apache-2.0 |
+| Ikony Font Awesome Free (tylko prezentacja) | ikony na slajdach | CC BY 4.0 (© Fonticons, Inc.) |
 
 Pełna lista pakietów z wersjami: `requirements.txt`.
