@@ -65,21 +65,23 @@ Radar **nie jest** platformą zgłaszania pomysłów, portalem społecznościowy
   └──────────────────────── Regularna aktualizacja ◄───────────────────────────┘
 ```
 
-1. **Odkrywanie.** Moduły źródeł pobierają rekordy ze zbiorów danych i API. Crawler czyta strony instytucji i przestrzega `robots.txt`.
+1. **Odkrywanie.** Moduły źródeł pobierają rekordy ze zbiorów danych i API. Moduły stron WWW (wyniki konkursu „Innowacyjny Samorząd”, lista sukcesów NCBR) czytają wybrane strony, przestrzegają `robots.txt` i przerw między zapytaniami.
 2. **Rekord.** Każdy rekord trafia do jednego schematu danych. Dane osobowe są usuwane.
 3. **Klasyfikacja.** Reguły przypisują obszar i typ na podstawie słów kluczowych i rodzaju źródła.
 4. **Ocena.** Moduł reguł (`src/criteria.py`) liczy pięć kryteriów i potencjał w skali 0–100.
 5. **Karta.** Strona pokazuje kartę z opisem, obszarem zastosowania, źródłami, statusem wdrożenia, poziomem gotowości i oceną potencjału.
 6. **Użycie.** Użytkownik wpisuje frazę, filtruje wyniki i porównuje karty.
-7. **Aktualizacja.** Zadanie cykliczne (`python -m src.pipeline update`) ponownie sprawdza źródła i zapisuje datę sprawdzenia.
+7. **Aktualizacja.** Zadanie cykliczne (`python -m src.pipeline update`) ponownie sprawdza źródła, zapisuje datę sprawdzenia, usuwa rekordy, których źródło już nie podaje, i łączy rekordy różnych źródeł o tej samej innowacji.
 
 Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, nawet gdy źródło jest chwilowo niedostępne.
 
 ## Główne funkcje
 
-- **Wyszukiwarka z rekomendacjami.** Wyniki są sortowane według trafności (70%) i potencjału (30%). Wyszukiwanie hybrydowe łączy pełnotekstowe (BM25) i semantyczne (embeddingi).
+- **Wyszukiwarka z rekomendacjami.** Wyniki są sortowane według trafności (70%) i potencjału (30%). Wyszukiwanie pełnotekstowe (SQLite FTS5, BM25) działa na polskich lematach (simplemma), więc znajduje też odmienione formy słów („śmigłowiec” znajduje „śmigłowców”). Wyszukiwanie semantyczne (embeddingi) to plan po hackathonie.
 - **Filtry:** grupa użytkowników, obszar, województwo, minimalny poziom wdrożenia. Widok startowy to województwo podkarpackie, a wyszukiwanie obejmuje całą Polskę.
 - **Karta innowacji:** opis, obszar i typ, instytucja i region, status wdrożenia, TRL (jeśli dotyczy), ocena z przedziałem i pewnością, każde kryterium z wagą, źródła z datami i licencjami, oś czasu sygnałów, sygnały popytu, podobne innowacje.
+- **Gdzie można zastosować i kto może wdrożyć:** sektory z cytatem ze źródła, grupy odbiorców, instytucje z podobnymi rozwiązaniami (możliwi partnerzy lub kolejni odbiorcy) i rekomendowana ścieżka (transfer technologii, wdrożenie rynkowe, replikacja w innej instytucji, pilotaż z ewaluacją, uzupełnienie danych) z uzasadnieniem i miernikami skuteczności. Reguły są w `src/applications.py` (wersja v0.1).
+- **Eksport CSV** wyników wyszukiwania (`/api/export.csv`) z oceną, pewnością, wersją kryteriów i linkami do źródeł.
 - **Łączenie źródeł:** po każdej aktualizacji radar łączy rekordy różnych źródeł o tej samej innowacji (ta sama instytucja i podobny tytuł). Karta dostaje wtedy wszystkie źródła i wspólną oś czasu, np. grant z 2017 r., zgłoszenie patentowe z 2022 r. i patent z 2025 r. Dwa niezależne źródła podnoszą wiarygodność (K5) do 4. Ten sam projekt w dwóch źródłach (np. RAD-on i lista FE) to jedna karta.
 - **Porównanie** 2–4 kart w tabeli kryteriów.
 - **Obserwowane zapytania:** zapisane wyszukiwanie pokazuje „Nowe od ostatniej wizyty”. Zapis odbywa się tylko w przeglądarce, bez logowania.
@@ -87,14 +89,16 @@ Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, na
 
 ### Grupy użytkowników
 
-| Grupa | Typowe pytanie | Domyślne sortowanie i pola |
-|---|---|---|
-| Inwestorzy i firmy | Które polskie technologie są gotowe do użycia? | TRL, poziom wdrożenia, patent |
-| Instytucje publiczne i JST | Czy inna gmina już rozwiązała ten problem? | Obszar administracyjny, „stosowane w praktyce”, region, zamawiający z BZP |
-| Uczelnie i jednostki naukowe | Kto pracuje nad podobnym tematem? | Podobne projekty, instytucje, TRL |
-| Szkoły | Które metody nauczania działają w innych szkołach? | Obszar edukacyjny, wiarygodność, region |
-| Startupy | Czy mój pomysł jest nowy? | „Czy to już istnieje?”, innowacyjność |
-| Innowatorzy indywidualni | Czy podobny wynalazek już istnieje? | Patenty, „Czy to już istnieje?” |
+Wybór grupy nie ukrywa wyników. Najpierw pokazuje obszar grupy, a karty, które spełniają warunek grupy, dostają +0,1 do wyniku rankingu. Trafność dalej decyduje o kolejności (`src/search.py`, `group_bonus`).
+
+| Grupa | Typowe pytanie | Obszar pokazywany najpierw | Warunek bonusu |
+|---|---|---|---|
+| Inwestorzy i firmy | Które polskie technologie są gotowe do użycia? | technologiczny | TRL ≥ 6 lub poziom wdrożenia ≥ 4 |
+| Instytucje publiczne i JST | Czy inna gmina już rozwiązała ten problem? | administracyjny | poziom wdrożenia ≥ 4 (karta pokazuje też zamówienia z BZP) |
+| Uczelnie i jednostki naukowe | Kto pracuje nad podobnym tematem? | wszystkie | instytucja to uczelnia lub instytut |
+| Szkoły | Które metody nauczania działają w innych szkołach? | edukacyjny | wiarygodność ≥ 4 |
+| Startupy | Czy mój pomysł jest nowy? | technologiczny | innowacyjność ≥ 3 (nowe w Polsce lub szerzej) |
+| Innowatorzy indywidualni | Czy podobny wynalazek już istnieje? | technologiczny | patent lub wzór użytkowy |
 
 ## Uruchomienie
 
@@ -210,13 +214,16 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 - Użytkownikiem jest każda osoba, która szuka innowacji. Żadna grupa nie ma pierwszeństwa.
 - Widok startowy to województwo podkarpackie, a wyszukiwanie obejmuje całą Polskę.
 - Radar ocenia innowację, nie osobę.
-- Prototyp działa bez modelu językowego. Streszczenia pochodzą ze źródeł lub z algorytmu ekstrakcyjnego.
+- Prototyp działa bez modelu językowego. Streszczenie to pierwsze zdania opisu ze źródła (cytat).
 
 **Ograniczenia**
 
 - Wagi v0.1 nie są jeszcze skalibrowane z ekspertami PCI.
 - Wartości przybliżone z reguł słów kluczowych mogą się mylić. Dlatego mają etykietę „przybliżone” i powód.
-- Część innowacji (zwłaszcza w szkołach i JST) jest opisana tylko na stronach instytucji. Crawler znajduje je z dużym szumem, więc karta powstaje tylko wtedy, gdy ma cytat ze źródła.
+- Część innowacji (zwłaszcza w szkołach i JST) jest opisana tylko na stronach instytucji. Radar znajduje je na razie przez wyniki konkursów i listy projektów. Ogólny crawler stron szkół i JST to plan: test na 29 stronach dał dużo szumu.
+- Listy ogólnopolskie (konkursy, NCBR, Kohesio) nie zawsze podają województwo. Takie karty są widoczne przy filtrze „Cała Polska”.
+- Sygnały popytu z BZP to dopasowanie po rzadkich wspólnych słowach. Część dopasowań jest przypadkowa, dlatego karta pokazuje wspólne słowa.
+- Kohesio nie podaje licencji danych; radar przyjmuje zasady ponownego wykorzystania treści Komisji Europejskiej (decyzja 2011/833/UE) i pisze to przy źródle.
 - Dane o wdrożeniach bywają nieaktualne. Karta pokazuje datę ostatniego sprawdzenia każdego źródła.
 - Niektóre strony blokują roboty lub nie odpowiadają. Radar to respektuje i korzysta z pozostałych źródeł.
 
@@ -224,7 +231,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 
 - **Brak danych instytucji w kodzie.** Region startowy, lista stron do crawlera i partnerzy są w konfiguracji i w bazie, nie w kodzie. Inne centrum innowacji uruchamia radar dla swojego regionu bez zmian w kodzie.
 - **Jedno źródło to jeden moduł.** Nowe źródło dodaje się jako moduł w `src/sources/` z jedną funkcją, która zwraca rekordy i metadane: źródło, datę danych, datę pobrania i licencję.
-- **Cała Polska od początku.** Główne źródła (FE 2021–2027, RAD-on, BZP) są ogólnopolskie.
+- **Cała Polska od początku.** Wszystkie źródła (FE 2021–2027, RAD-on, BZP, NCBR, Interreg, Kohesio, „Innowacyjny Samorząd”) są ogólnopolskie.
 - **Lekka infrastruktura.** Jedna baza SQLite z FTS5 i sqlite-vec, serwer FastAPI. Aplikacja działa na zwykłym serwerze lub laptopie, bez GPU i bez płatnych usług. Ciężkie obliczenia (embeddingi dużych zbiorów) mogą być wykonywane z wyprzedzeniem w osobnym zadaniu.
 - **Wersjonowane kryteria.** Organizacja może skalibrować wagi. Każda ocena zapisuje wersję kryteriów, więc wyniki różnych wersji da się porównać.
 
@@ -233,7 +240,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 - **Bez logowania.** Wyszukiwanie i karty są dostępne bez konta. Użytkownik nie potrzebuje klucza API.
 - **Bez danych osobowych.** Radar pobiera tylko dane o innowacji i instytucji. Ukrywa dane osobowe w pobranych zbiorach, na przykład nazwiska twórców w RAD-on i osoby fizyczne na liście projektów FE. Crawler nie zapisuje nazwisk uczniów ani nauczycieli.
 - **Brak profilowania osób.** Ocena dotyczy innowacji, nie ludzi. Dzięki temu system nie jest systemem wysokiego ryzyka w rozumieniu AI Act (art. 6 ust. 3).
-- **Legalne źródła.** Radar korzysta tylko z danych bezpłatnych i legalnych, zapisuje licencję każdego źródła, przestrzega `robots.txt` i warunków korzystania ze stron oraz ogranicza liczbę zapytań do jednego serwera. Ze stron WWW zapisuje tylko krótkie streszczenie i link, a surowy HTML usuwa po ekstrakcji.
+- **Legalne źródła.** Radar korzysta tylko z danych bezpłatnych i legalnych, zapisuje licencję każdego źródła, przestrzega `robots.txt` i warunków korzystania ze stron oraz ogranicza liczbę zapytań do jednego serwera. Ze stron WWW zapisuje tylko opis potrzebny do karty i link. Kopie stron trzyma w lokalnej pamięci podręcznej najwyżej 7 dni, żeby nie obciążać serwerów, a potem je usuwa.
 - **Obserwowane zapytania tylko w przeglądarce.** Zapisane wyszukiwania są w `localStorage` użytkownika, nie na serwerze.
 - **Sekrety poza repozytorium.** Ewentualne klucze są tylko w pliku `.env`, którego nie ma w repozytorium.
 - **Analityka (opcjonalna).** Jeśli zostanie włączona, będzie anonimowa: obszary wyszukiwania, oglądane karty, popularne kategorie. Bez adresów IP i identyfikatorów użytkowników.
@@ -245,19 +252,21 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
   - `GET /api/innovations/{id}` – pełna karta z podobnymi innowacjami;
   - `GET /api/sources` – stan źródeł danych;
   - `GET /api/health` – stan aplikacji.
-- **Eksport CSV** wyników do arkusza lub systemu CRM.
+- **Eksport CSV:** `GET /api/export.csv?q=&area=&voivodeship=&level_min=&group=&limit=` – wyniki z oceną, pewnością, wersją kryteriów i linkami do źródeł, do arkusza lub systemu CRM (UTF-8, separator `;`).
+- **Kryteria:** `GET /api/criteria` – nazwy, skale, wagi i źródła kryteriów oceny.
 - **Otwarty schemat karty.** Każde pole zawiera wartość, rodzaj (ze źródła lub przybliżone), źródło i cytat, więc inne systemy mogą korzystać z danych bez utraty informacji o ich pochodzeniu.
 - **Uzupełnienie, nie zastąpienie.** Radar może zasilać systemy PCI, regionalne katalogi dobrych praktyk i krajowe wyszukiwarki (na przykład Smart Radar) gotowymi kartami.
 
 ## Rozwój po hackathonie
 
 1. Kalibracja wag i skal z mentorami i analitykami PCI.
-2. Kolejne źródła: Kohesio, lista wynalazków UPRP, Interreg, „Innowacyjny Samorząd”, CORDIS, OpenAlex, EPO.
-3. Klasyfikacja i streszczenia przez otwarty model językowy (np. Bielik, Apache-2.0), wykonywane z wyprzedzeniem i oznaczone jako „przybliżone”.
-4. Panel analityka PCI: potwierdzanie lub korekta wartości z zapisem powodu.
-5. Powiadomienia e-mail o nowych kartach dla obserwowanych zapytań.
-6. Historia statusu innowacji: zidentyfikowana, oceniona, pilotaż, wdrożona w kolejnej instytucji.
-7. Mierniki skuteczności: czas znalezienia rozwiązania, odsetek kart z wysoką pewnością, pokrycie znanych laureatów konkursów.
+2. Kolejne źródła: CORDIS (plik pobierany ręcznie lub przez data.europa.eu, bo `robots.txt` blokuje automat), lista wynalazków UPRP, OpenAlex, EPO, kolejne edycje konkursów, ogólny crawler stron szkół i JST z listy podmiotów BIP.
+3. Wyszukiwanie semantyczne: embeddingi `sdadas/mmlw-roberta-base` (Apache-2.0) liczone z wyprzedzeniem.
+4. Klasyfikacja i streszczenia przez otwarty model językowy (np. Bielik, Apache-2.0), wykonywane z wyprzedzeniem i oznaczone jako „przybliżone”.
+5. Panel analityka PCI: potwierdzanie lub korekta wartości z zapisem powodu.
+6. Powiadomienia e-mail o nowych kartach dla obserwowanych zapytań.
+7. Historia statusu innowacji: zidentyfikowana, oceniona, pilotaż, wdrożona w kolejnej instytucji.
+8. Mierniki skuteczności: czas znalezienia rozwiązania, odsetek kart z wysoką pewnością, pokrycie znanych laureatów konkursów.
 
 ## Licencja
 

@@ -64,3 +64,27 @@ def test_api(db_path):
         sources = {s["name"]: s for s in client.get("/api/sources").json()}
         assert sources["RAD-on (OPI PIB)"]["records"] == 7
         assert sources["Źródło testowe"]["error"] == "source down"
+
+
+def test_csv_export(db_path):
+    with TestClient(app_module.app) as client:
+        response = client.get("/api/export.csv", params={"q": "biszkopt"})
+        assert response.status_code == 200
+        assert response.headers["content-type"].startswith("text/csv")
+        text = response.content.decode("utf-8-sig")
+        header, first = text.splitlines()[:2]
+        assert header.startswith("id;tytuł;obszar")
+        assert "radon-" in first and "v0.1" in first and "https://radon.nauka.gov.pl" in first
+
+
+def test_group_bonus_changes_the_order_only_a_little(db_path):
+    conn = db.connect(db_path)
+    plain = search.search(conn).results
+    science = search.search(conn, group="science").results
+    assert {r.id for r in plain} == {r.id for r in science}
+    patent = next(r for r in plain if not r.id.startswith("radon-project-"))
+    card = db.get_innovation(conn, patent.id)
+    assert search.group_bonus("science", card) == search.GROUP_BONUS
+    assert search.group_bonus(None, card) == 0
+    for result in science:
+        assert result.rank_score == pytest.approx(0.7 * result.relevance + 0.3 * (result.potential or 0) / 100, abs=1e-3)

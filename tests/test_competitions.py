@@ -60,3 +60,17 @@ def test_robots_txt_is_obeyed(tmp_path):
     fetcher = PageFetcher(httpx.Client(transport=httpx.MockTransport(handler)), cache=tmp_path)
     with pytest.raises(PermissionError):
         fetcher.get(URL)
+
+
+def test_old_pages_are_deleted(tmp_path):
+    import os
+    import time
+
+    old = tmp_path / "old.html"
+    old.write_text("x", encoding="utf-8")
+    ten_days = time.time() - 10 * 24 * 3600
+    os.utime(old, (ten_days, ten_days))
+    fresh = tmp_path / "fresh.html"
+    fresh.write_text("y", encoding="utf-8")
+    PageFetcher(httpx.Client(), cache=tmp_path)
+    assert not old.exists() and fresh.exists()

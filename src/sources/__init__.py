@@ -27,6 +27,11 @@ class PageFetcher:
         self.cache = cache or PAGE_CACHE
         self.robots: dict[str, Protego] = {}
         self.last: dict[str, float] = {}
+        # Copies of pages stay only as long as necessary (TDM, art. 26³ of the Polish copyright act): delete old ones.
+        old = datetime.now() - timedelta(days=PAGE_CACHE_DAYS)
+        for path in self.cache.glob("*.html") if self.cache.exists() else []:
+            if datetime.fromtimestamp(path.stat().st_mtime) < old:
+                path.unlink()
 
     def get(self, url: str) -> str:
         self.cache.mkdir(parents=True, exist_ok=True)

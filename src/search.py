@@ -108,6 +108,27 @@ def _filters(area, voivodeship, level_min) -> tuple[str, list]:
     return "".join(f" AND {s}" for s in sql), args
 
 
+# A small bonus in the order for the needs of each user group (FAQ, section 3). The relevance stays the main key.
+GROUP_BONUS = 0.1
+
+
+def _value(field) -> int:
+    return (field.value or 0) if field is not None and isinstance(field.value, int) else 0
+
+
+def group_bonus(group: str | None, innovation: Innovation) -> float:
+    """Return the bonus of one card for one user group. The rules are in README.md (table of the user groups)."""
+    rules = {
+        "investors": _value(innovation.trl) >= 6 or _value(innovation.implementation_level) >= 4,
+        "startups": _value(innovation.novelty) >= 3,
+        "innovators": "patent" in str(innovation.type.value or "").lower(),
+        "public": _value(innovation.implementation_level) >= 4,
+        "schools": _value(innovation.credibility) >= 4,
+        "science": innovation.institution.kind == "university",
+    }
+    return GROUP_BONUS if rules.get(group or "") else 0.0
+
+
 def search(
     conn: sqlite3.Connection,
     q: str = "",
@@ -143,9 +164,10 @@ def search(
         scored = [(Innovation.model_validate(json.loads(r["data"])), 1.0) for r in rows]
         total = conn.execute(f"SELECT COUNT(*) FROM innovations i WHERE 1 = 1{where}", args).fetchone()[0]
 
-    results = [_result(innovation, relevance) for innovation, relevance in scored]
     preferred = GROUP_AREAS.get(group or "")
-    results.sort(key=lambda r: (preferred is not None and r.area.value != preferred, -r.rank_score))
+    ranked = [(_result(innovation, relevance), group_bonus(group, innovation)) for innovation, relevance in scored]
+    ranked.sort(key=lambda x: (preferred is not None and x[0].area.value != preferred, -(x[0].rank_score + x[1])))
+    results = [r for r, _ in ranked]
     return SearchResponse(total=max(total, len(results)), results=results[offset : offset + limit])
 
 

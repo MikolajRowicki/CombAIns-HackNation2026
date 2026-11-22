@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 38-review-fixes, review against the criteria of the jury)
+
+- The review compared `README.md`, the presentation and the code. Fixes:
+  - Add `GET /api/export.csv` (UTF-8 with BOM, separator `;`): the presentation (slide 9) and the README promised a CSV export, but it did not exist.
+  - Add `search.group_bonus()`: the cards that meet the condition of the user group get +0.1 in the order. The README table of the user groups now describes the real rules. `rank_score` of the contract does not change.
+  - `PageFetcher` deletes cached pages older than 7 days (TDM: copies only as long as necessary).
+  - README: no claim of a hybrid search with embeddings (the search is BM25 on lemmas); no claim of a general crawler; the card section "Gdzie można zastosować"; the CSV export and `/api/criteria`; new limits (no voivodeship in national lists, noise in BZP matches, Kohesio licence); the development list without the sources that exist now.
+- Add tests: CSV export, group bonus, deletion of old cached pages.
+
 ## 2026-11-22, MikolajRowicki (branch 36-kohesio, new source)
 
 - Add `src/sources/kohesio.py`: finished EU projects of 2014-2020 in Poland from the Kohesio API (no key, no documentation).
