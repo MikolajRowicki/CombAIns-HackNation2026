@@ -4,6 +4,8 @@ Jedno miejsce do odkrywania istniejących polskich innowacji: technologicznych, 
 
 Projekt powstał w ramach zadania Podkarpackiego Centrum Innowacji (PCI) na HackNation 2026 (Bydgoszcz, 21–22 listopada 2026).
 
+**Działająca wersja:** https://radar-innowacji-1075914794742.europe-west1.run.app (Google Cloud Run, baza z 22.11.2026). Wyszukiwanie i karty nie wymagają logowania.
+
 ## Spis treści
 
 1. [Problem](#problem)
@@ -165,6 +167,8 @@ Kontener czyta port ze zmiennej `PORT` (domyślnie 8000), więc działa np. w Go
 ```bash
 gcloud run deploy radar-innowacji --source . --region europe-central2 --allow-unauthenticated
 ```
+
+Działająca wersja demonstracyjna jest w Cloud Run w regionie `europe-west1`: https://radar-innowacji-1075914794742.europe-west1.run.app
 
 Cloud Run nie zachowuje zmian w plikach kontenera. Liczniki anonimowej analityki zerują się po restarcie, a bazę aktualizuje się przez nowe wdrożenie z nową bazą.
 

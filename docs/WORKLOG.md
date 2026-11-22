@@ -11,6 +11,11 @@ Add an entry after each step of work. Give the date, the person and the changes.
 - Check: the image builds (389 MB). Without a database, `/api/health`, the web page and `/api/search` answer.
 - README: section "Uruchomienie w kontenerze (Docker)" and the licenses of the image and of uv.
 
+## 2026-11-22, MikolajRowicki (branch 78-demo-link)
+
+- Deploy the application to Google Cloud Run: new GCP project `radar-innowacji-2026`, region `europe-west1`, the `Dockerfile` from `main` and the database of 22.11.2026.
+- Add the link to the running version to `README.md`.
+
 ## 2026-11-22, MikolajRowicki (branch 76-deck-mega-edits)
 
 - Alternative presentation: a person changed the speaker notes of slide 7 in PowerPoint. The same text is now in `build_deck_mega.js`. The PDF is made again.
