@@ -144,6 +144,7 @@ function renderResult(result, isNew = false) {
     val(result.summary) && el("p", { class: "result-summary" }, val(result.summary)),
     el("p", { class: "result-meta" }, [inst.name, place].filter(Boolean).join(" · ")),
     renderPotential(result),
+    compareToggle(result.id, result.title),
   );
 }
 
@@ -631,6 +632,7 @@ function renderCard(item, definitions) {
         level && tag(item.implementation_level, "tag-level", `Wdrożenie ${level}/5: ${LEVELS[level] || ""}`),
       ),
       el("h1", {}, item.title),
+      compareToggle(item.id, item.title, "Dodaj do porównania"),
       val(item.summary) && el("p", { class: "lead" }, val(item.summary)),
       provenance(item.summary),
     ),
@@ -676,9 +678,18 @@ async function fetchInnovation(id) {
   if (response.status !== 404) throw new Error(`API: HTTP ${response.status}`);
   const probe = await fetch("api/sources");
   if (probe.status !== 404) return { data: null, sample: false };
-  const sample = await fetch("sample/innovation.json");
-  if (!sample.ok) throw new Error("Brak API i brak danych przykładowych");
-  return { data: await sample.json(), sample: true };
+  return { data: await sampleInnovation(id), sample: true };
+}
+
+// The sample has one full card. Other ids get the short record of the sample search results.
+async function sampleInnovation(id) {
+  const getJson = async (url) => {
+    const response = await fetch(url);
+    return response.ok ? response.json() : null;
+  };
+  const [full, search] = await Promise.all([getJson("sample/innovation.json"), getJson("sample/search.json")]);
+  if (full?.id === id) return full;
+  return [...(search?.results || []), ...(full?.similar || [])].find((r) => r.id === id) || null;
 }
 
 async function fetchCriteria() {
@@ -719,7 +730,270 @@ async function initCard() {
   }
 }
 
+// ---- Comparison of 2-4 innovations ----
+// The selection stays only in the browser of the user (localStorage).
+
+const COMPARE_KEY = "radar.compare.v1";
+const COMPARE_MAX = 4;
+
+function loadCompare() {
+  try {
+    const ids = JSON.parse(localStorage.getItem(COMPARE_KEY));
+    return Array.isArray(ids) ? ids.filter((id) => typeof id === "string").slice(0, COMPARE_MAX) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCompare(ids) {
+  try {
+    localStorage.setItem(COMPARE_KEY, JSON.stringify(ids.slice(0, COMPARE_MAX)));
+  } catch {
+    // Without storage the selection lives only in the URL of the comparison page.
+  }
+  updateCompareBar();
+}
+
+function compareUrl(ids) {
+  return `compare.html?ids=${ids.map(encodeURIComponent).join(",")}`;
+}
+
+function compareToggle(id, title, label = "Porównaj") {
+  if (!id) return null;
+  const input = el("input", { type: "checkbox", class: "compare-check" });
+  input.checked = loadCompare().includes(id);
+  input.dataset.compareId = id;
+  input.addEventListener("change", () => {
+    let ids = loadCompare();
+    if (input.checked) {
+      if (ids.length >= COMPARE_MAX) {
+        input.checked = false;
+        announce(`Możesz porównać najwyżej ${COMPARE_MAX} innowacje. Usuń jedną z porównania.`);
+        return;
+      }
+      ids = [...ids.filter((x) => x !== id), id];
+    } else {
+      ids = ids.filter((x) => x !== id);
+    }
+    saveCompare(ids);
+    announce(input.checked ? `Dodano do porównania: ${title}` : `Usunięto z porównania: ${title}`);
+  });
+  return el("label", { class: "compare-toggle" }, input, ` ${label}`);
+}
+
+function announce(text) {
+  const region = $("compare-live");
+  if (region) region.textContent = text;
+}
+
+function updateCompareBar() {
+  const bar = $("compare-bar");
+  if (!bar) return;
+  const ids = loadCompare();
+  for (const box of document.querySelectorAll(".compare-check")) box.checked = ids.includes(box.dataset.compareId);
+  bar.hidden = ids.length === 0;
+  $("compare-count").textContent = `Do porównania: ${ids.length} z ${COMPARE_MAX}`;
+  const go = $("compare-go");
+  go.href = compareUrl(ids);
+  go.classList.toggle("is-disabled", ids.length < 2);
+  go.setAttribute("aria-disabled", ids.length < 2 ? "true" : "false");
+  go.textContent = ids.length < 2 ? "Wybierz co najmniej 2" : "Porównaj →";
+}
+
+function initCompareBar() {
+  const go = el("a", { id: "compare-go", class: "btn-primary btn-small", href: "compare.html" }, "Porównaj →");
+  go.addEventListener("click", (event) => {
+    if (loadCompare().length < 2) event.preventDefault();
+  });
+  const clear = el("button", { type: "button", class: "btn-secondary btn-small" }, "Wyczyść");
+  clear.addEventListener("click", () => {
+    saveCompare([]);
+    announce("Wyczyszczono porównanie.");
+  });
+  document.body.append(
+    el("p", { id: "compare-live", class: "visually-hidden", role: "status", "aria-live": "polite" }),
+    el(
+      "div",
+      { id: "compare-bar", class: "compare-bar", role: "region", "aria-label": "Porównanie", hidden: true },
+      el("div", { class: "wrap compare-bar-inner" }, el("span", { id: "compare-count" }), clear, go),
+    ),
+  );
+  updateCompareBar();
+  // Other tabs can change the selection.
+  window.addEventListener("storage", (event) => {
+    if (event.key === COMPARE_KEY) updateCompareBar();
+  });
+}
+
+function kindBadge(field) {
+  if (field === null || typeof field !== "object" || !field.kind) return null;
+  const estimate = field.kind === "estimate";
+  return el(
+    "span",
+    {
+      class: `kind ${estimate ? "kind-estimate" : "kind-fact"}`,
+      title: estimate ? field.reason || "Wartość oszacowana" : field.evidence || "Fakt ze źródła",
+    },
+    estimate ? "szacunek" : "fakt",
+  );
+}
+
+function valueCell(field, format = (v) => v) {
+  const value = val(field);
+  if (value === null || value === undefined || value === "") return missing();
+  return [el("div", { class: "fact-value" }, format(value)), kindBadge(field)];
+}
+
+function potentialOf(item) {
+  if (Array.isArray(item.sources) && !item.sources.length) return null;
+  return item.assessment ? item.assessment.potential : item.potential;
+}
+
+function renderCompare(items, definitions, onRemove) {
+  const best = Math.max(...items.map((i) => potentialOf(i) ?? -1));
+  const row = (label, cell, cls = "") =>
+    el("tr", { class: cls }, el("th", { scope: "row" }, label), items.map((i) => el("td", {}, cell(i))));
+  const group = (label) => el("tr", { class: "compare-group" }, el("th", { colspan: items.length + 1, scope: "colgroup" }, label));
+
+  const head = el(
+    "tr",
+    {},
+    el("td", {}),
+    items.map((i) => {
+      const remove = el("button", { type: "button", class: "watch-remove", "aria-label": `Usuń z porównania: ${i.title}` }, "×");
+      remove.addEventListener("click", () => onRemove(i.id));
+      return el(
+        "th",
+        { scope: "col" },
+        el("div", { class: "compare-head" }, el("a", { href: `innovation.html?id=${encodeURIComponent(i.id)}` }, i.title), remove),
+      );
+    }),
+  );
+
+  const potential = (i) => {
+    if (Array.isArray(i.sources) && !i.sources.length) return missing("ocena niedostępna: brak źródeł");
+    const a = i.assessment;
+    const p = potentialOf(i);
+    if (p === null || p === undefined) return missing();
+    const conf = a?.confidence ?? i.confidence;
+    return [
+      el("div", { class: "compare-score" }, el("strong", {}, `${p}/100`), p === best && items.length > 1 && el("span", { class: "tag tag-new" }, "najwyższy")),
+      a && el("div", { class: "muted" }, `przedział ${a.low}–${a.high}`),
+      el("div", { class: `confidence confidence-${conf || "low"}` }, `pewność: ${CONFIDENCE[conf] || "brak"}`),
+    ];
+  };
+
+  const criterion = (cid, def) => (i) => {
+    const entry = i.assessment?.criteria?.[cid];
+    if (!entry) return missing("brak oceny");
+    if (entry.applicable === false) return missing("nie dotyczy");
+    if (entry.value === null || entry.value === undefined) return missing();
+    return [el("div", { class: "fact-value" }, `${entry.value} · ${def.scale?.[entry.value] ?? ""}`), kindBadge(def.field ? i[def.field] : null)];
+  };
+
+  const sources = (i) => {
+    if (!Array.isArray(i.sources)) return missing("zobacz kartę");
+    if (!i.sources.length) return missing("brak źródeł");
+    return el(
+      "ul",
+      { class: "compare-sources" },
+      i.sources.map((s) => el("li", {}, link(s.url, s.name) || s.name, el("span", { class: "muted" }, ` · sprawdzono ${formatDate(s.retrieved) || "?"}`))),
+    );
+  };
+
+  const version = items.find((i) => i.assessment)?.assessment.criteria_version || "v0.1";
+  const rows = [
+    group("Podstawowe informacje"),
+    row("Obszar", (i) => valueCell(i.area, (v) => AREAS[v] || v)),
+    row("Typ innowacji", (i) => valueCell(i.type)),
+    row("Instytucja", (i) => i.institution?.name || missing()),
+    row("Region", (i) => [i.institution?.city, i.institution?.voivodeship].filter(Boolean).join(", ") || missing()),
+    row("Status wdrożenia", (i) => valueCell(i.implementation_level, (v) => `${v}/5 · ${LEVELS[v] || ""}`)),
+    row("Gotowość technologiczna", (i) =>
+      i.trl === null ? missing("nie dotyczy") : i.trl === undefined ? missing() : valueCell(i.trl, (v) => `TRL ${v}/9`),
+    ),
+    group(`Ocena (kryteria ${version})`),
+    row("Potencjał", potential, "compare-potential"),
+    definitions
+      ? Object.entries(definitions).map(([cid, def]) => row(`${cid} · ${def.name} (waga ${def.weight})`, criterion(cid, def)))
+      : [],
+    group("Dowody"),
+    row("Źródła", sources),
+    row("Sygnały popytu (BZP)", (i) =>
+      Array.isArray(i.demand) ? (i.demand.length ? `${i.demand.length} zamówień` : missing("brak")) : missing("zobacz kartę"),
+    ),
+    row("Oś czasu sygnałów", (i) =>
+      Array.isArray(i.timeline) ? (i.timeline.length ? `${i.timeline.length} zdarzeń` : missing("brak")) : missing("zobacz kartę"),
+    ),
+  ];
+
+  return el(
+    "div",
+    { class: "table-wrap" },
+    el(
+      "table",
+      { class: "compare-table" },
+      el("caption", { class: "visually-hidden" }, "Porównanie innowacji: innowacje w kolumnach, kryteria w wierszach"),
+      el("thead", {}, head),
+      el("tbody", {}, rows),
+    ),
+  );
+}
+
+async function initCompare() {
+  const box = $("compare");
+  const notice = $("notice");
+  const fromUrl = new URLSearchParams(location.search).get("ids");
+  let ids = fromUrl ? fromUrl.split(",").filter(Boolean).slice(0, COMPARE_MAX) : loadCompare();
+  if (fromUrl) saveCompare(ids);
+
+  const show = (...nodes) => {
+    box.replaceChildren(...nodes.flat(Infinity).filter(Boolean));
+    box.setAttribute("aria-busy", "false");
+  };
+  const remove = (id) => {
+    ids = ids.filter((x) => x !== id);
+    saveCompare(ids);
+    history.replaceState(null, "", compareUrl(ids));
+    render();
+  };
+
+  let loaded = [];
+  let definitions = null;
+  async function render() {
+    if (ids.length < 2) {
+      return show(
+        el("p", {}, "Wybierz co najmniej 2 innowacje: zaznacz „Porównaj” przy wynikach wyszukiwania lub na karcie innowacji."),
+        el("p", {}, el("a", { href: "./" }, "Przejdź do wyszukiwania")),
+      );
+    }
+    const items = ids.map((id) => loaded.find((i) => i.id === id)).filter(Boolean);
+    const lost = ids.length - items.length;
+    show(
+      lost > 0 && el("p", { class: "missing" }, `Nie znaleziono ${lost} z wybranych innowacji.`),
+      items.length ? renderCompare(items, definitions, remove) : null,
+    );
+  }
+
+  try {
+    const [results, defs] = await Promise.all([Promise.all(ids.map((id) => fetchInnovation(id))), fetchCriteria()]);
+    definitions = defs;
+    loaded = results.map((r) => r.data).filter(Boolean);
+    if (results.some((r) => r.sample)) {
+      notice.textContent =
+        "Baza nie jest jeszcze połączona. Pokazuję dane przykładowe: tylko jedna karta ma pełną ocenę kryteriów.";
+      notice.hidden = false;
+    }
+    render();
+  } catch (error) {
+    console.error(error);
+    show(el("p", { class: "missing" }, "Nie udało się wczytać porównania. Spróbuj ponownie za chwilę."));
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+  if ($("compare")) return initCompare();
+  initCompareBar();
   if ($("card")) return initCard();
   const config = await loadConfig();
   if ($("search-form")) initSearch(config);

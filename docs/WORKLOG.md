@@ -2,6 +2,16 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 04:10, MaciejMomot (branch 15-compare, issue #28)
+
+- Add the comparison of 2-4 innovations: `web/compare.html` and the code in `web/app.js` and `web/style.css`.
+- A checkbox "Porównaj" on each result and on the card. A bar at the bottom shows "Do porównania: N z 4" and the link to the comparison.
+- The table has the innovations in columns. The rows are the basic data, the potential, K1-K5 with the weights, the sources, the demand signals and the timeline.
+- Each value shows "fakt" or "szacunek". The highest potential has the tag "najwyższy". The table hides the potential of an innovation without sources.
+- The selection stays in `localStorage` (key `radar.compare.v1`) and in the URL (`compare.html?ids=...`). Thus a user can send the link.
+- Without the API, the page uses the sample data. Only one sample record has the full assessment, so other columns show "brak oceny".
+- Check: headless Edge on the uvicorn server with the sample data (limit of 4, card button, remove, phone width, no console errors).
+
 ## 2026-11-22 03:40, MaciejMomot (branch 13-trl-missing)
 
 - Accept the contract changes of PR #24. Change the TRL rule to the contract: `trl: null` means "nie dotyczy", and `trl.value: null` means that the data is missing.
