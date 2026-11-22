@@ -35,6 +35,17 @@ CREATE VIRTUAL TABLE IF NOT EXISTS innovations_vec USING vec0(
     embedding FLOAT[{EMBEDDING_DIM}] distance_metric=cosine
 );
 
+-- Notices of public purchases (BZP): demand signals. The search module writes lemmas into notices_fts.
+CREATE TABLE IF NOT EXISTS notices (
+    id TEXT PRIMARY KEY,
+    data TEXT NOT NULL,
+    date TEXT
+);
+CREATE VIRTUAL TABLE IF NOT EXISTS notices_fts USING fts5(
+    id UNINDEXED, subject,
+    tokenize = 'unicode61 remove_diacritics 2'
+);
+
 CREATE TABLE IF NOT EXISTS sources (
     name TEXT PRIMARY KEY,
     records INTEGER NOT NULL DEFAULT 0,

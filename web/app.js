@@ -615,7 +615,7 @@ function renderDemand(demand) {
   const intro = el(
     "p",
     { class: "muted" },
-    "Instytucje publiczne, które kupowały podobne rozwiązania (ogłoszenia w Biuletynie Zamówień Publicznych).",
+    "Instytucje publiczne, które w ostatnich 180 dniach ogłosiły zamówienie o podobnym przedmiocie (Biuletyn Zamówień Publicznych). Dopasowanie po rzadkich wspólnych słowach: to szacunek, nie potwierdzony zakup tej innowacji.",
   );
   if (!demand?.length) return section("Sygnały popytu", intro, el("p", { class: "missing" }, "Brak znalezionych zamówień."));
   return section(
@@ -625,7 +625,14 @@ function renderDemand(demand) {
       "ul",
       { class: "demand" },
       demand.map((d) =>
-        el("li", {}, el("strong", {}, d.buyer), ` · ${formatDate(d.date) || ""} · `, link(d.url, d.subject) || d.subject),
+        el(
+          "li",
+          {},
+          el("strong", {}, d.buyer),
+          ` · ${formatDate(d.date) || ""} · `,
+          link(d.url, d.subject) || d.subject,
+          d.reason && el("div", { class: "muted" }, el("span", { class: "tag tag-estimate" }, "szacunek"), ` ${d.reason}`),
+        ),
       ),
     ),
   );

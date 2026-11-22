@@ -54,7 +54,7 @@ Radar **nie jest** platformą zgłaszania pomysłów, portalem społecznościowy
 - **Fakty oddzielone od szacunków.** Każdy fakt ma źródło i cytat. Każdy szacunek ma etykietę „szacunek” i powód.
 - **Jawna, powtarzalna ocena.** Wynik pokazuje przedział, poziom pewności i wersję kryteriów. Ten sam rekord zawsze daje ten sam wynik.
 - **Wynik to przedział, nie fałszywa precyzja.** Brak danych nie oznacza zera. Karta pokazuje, czego brakuje.
-- **Sygnały popytu.** Karta pokazuje instytucje publiczne, które kupowały podobne rozwiązania (ogłoszenia BZP).
+- **Sygnały popytu.** Karta pokazuje instytucje publiczne, które w ostatnich 180 dniach ogłosiły zamówienie o podobnym przedmiocie (BZP). Dopasowanie liczy wagi rzadkich wspólnych słów (IDF) i pokazuje te słowa. To szacunek, nie potwierdzony zakup tej innowacji.
 - **„Czy to już istnieje?”** Użytkownik opisuje potrzebę własnymi słowami i dostaje podobne, istniejące rozwiązania.
 
 ## Jak to działa
@@ -108,7 +108,7 @@ uv run --no-project python -m src.pipeline update --voivodeship podkarpackie
 uv run --no-project uvicorn src.app:app --reload
 ```
 
-Krok `src.pipeline update` pobiera dane ze źródeł i buduje bazę `data/cache/radar.db` (dla województwa podkarpackiego ok. 30 s). Bez parametru `--voivodeship` pobiera dane z całej Polski. Ten sam krok, uruchamiany cyklicznie (np. przez cron), aktualizuje bazę.
+Krok `src.pipeline update` pobiera dane ze źródeł i buduje bazę `data/cache/radar.db` (dla województwa podkarpackiego ok. 4 minut: RAD-on ok. 30 s, lista FE ok. 30 s, ogłoszenia BZP z 180 dni ok. 2,5 minuty, bo radar wysyła zapytania do BZP co 3 sekundy). Bez parametru `--voivodeship` pobiera dane z całej Polski. Ten sam krok, uruchamiany cyklicznie (np. przez cron), aktualizuje bazę.
 
 Aplikacja działa pod adresem http://127.0.0.1:8000. Użytkownik nie potrzebuje konta ani klucza API.
 

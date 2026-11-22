@@ -12,7 +12,7 @@ from datetime import date
 
 from src import db, search
 from src.models import SourceStatus
-from src.sources import SourceData, fe_projects, radon
+from src.sources import SourceData, bzp, fe_projects, radon
 
 # Each source is one function. A new source is one more entry here.
 SOURCES: dict[str, tuple[str, Callable[..., SourceData]]] = {
@@ -37,9 +37,34 @@ def store(conn: sqlite3.Connection, data: SourceData) -> None:
     conn.commit()
 
 
+def update_demand(conn: sqlite3.Connection) -> None:
+    """Load the BZP notices for the demand signals. The card matches them when a user opens it."""
+    start = time.monotonic()
+    try:
+        data = bzp.load()
+    except Exception as error:  # noqa: BLE001 - a failed source must not stop the update
+        data = {"notices": [], "errors": [str(error)], "retrieved": date.today()}
+    for notice in data["notices"]:
+        search.index_notice(conn, notice)
+    db.set_source_status(
+        conn,
+        SourceStatus(
+            name=bzp.NAME,
+            records=len(data["notices"]),
+            last_check=data["retrieved"],
+            error="; ".join(data["errors"][:3]) or None,
+        ),
+    )
+    conn.commit()
+    print(f"bzp: {len(data['notices'])} notices, {len(data['errors'])} errors, {time.monotonic() - start:.0f} s")
+
+
 def update(conn: sqlite3.Connection, voivodeships: list[str] | None = None, sources: list[str] | None = None) -> None:
     """Load the sources one by one. If a source fails, record the error and continue (AGENTS.md, rule 14)."""
-    for name in sources or list(SOURCES):
+    for name in sources or [*SOURCES, "bzp"]:
+        if name == "bzp":
+            update_demand(conn)
+            continue
         label, load = SOURCES[name]
         start = time.monotonic()
         try:
@@ -57,6 +82,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Update the database of Radar innowacji.")
     parser.add_argument("command", choices=["update"])
     parser.add_argument("--voivodeship", action="append", help="for example podkarpackie; default: all of Poland")
-    parser.add_argument("--source", action="append", choices=list(SOURCES), help="default: all sources")
+    parser.add_argument("--source", action="append", choices=[*SOURCES, "bzp"], help="default: all sources")
     args = parser.parse_args()
     update(db.connect(), args.voivodeship, args.source)

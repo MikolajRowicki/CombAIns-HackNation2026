@@ -1,6 +1,7 @@
 """Full-text search with Polish lemmas (SQLite FTS5, BM25), filters, ranking and similar innovations."""
 
 import json
+import math
 import re
 import sqlite3
 from functools import lru_cache
@@ -8,7 +9,13 @@ from functools import lru_cache
 import simplemma
 
 from src import applications
-from src.models import Innovation, InnovationDetail, SearchResponse, SearchResult
+from src.models import (
+    DemandSignal,
+    Innovation,
+    InnovationDetail,
+    SearchResponse,
+    SearchResult,
+)
 
 # Ranking of the contract (src/models.py): relevance has priority, the potential breaks ties.
 RELEVANCE_WEIGHT = 0.7
@@ -145,7 +152,85 @@ def detail(conn: sqlite3.Connection, innovation: Innovation, k: int = 5) -> Inno
     # More candidates than k, so that the list of other institutions is not empty.
     candidates = search(conn, text, exclude=innovation.id, limit=4 * k).results if text.strip() else []
     return InnovationDetail(
-        **innovation.model_dump(),
+        **innovation.model_dump(exclude={"demand"}),
         similar=candidates[:k],
+        demand=innovation.demand or demand(conn, innovation),
         applications=applications.recommend(innovation, candidates),
     )
+
+
+# Words that occur in most notices or titles. A match on these words alone is not a demand signal.
+_GENERIC = {
+    "dostawa", "usługa", "wykonanie", "zakup", "świadczenie", "realizacja", "system", "sposób", "urządzenie",
+    "układ", "gmina", "miasto", "powiat", "projekt", "część", "zadanie", "rok", "nowy", "nowoczesny", "rozwój",
+    "budowa", "przebudowa", "zamówienie", "dostarczenie", "obsługa", "wraz", "element", "materiał", "zestaw",
+    "sprzęt", "program", "rama", "umowa", "okres", "potrzeba", "polska", "województwo", "jednostka", "teren",
+    "wyposażenie", "dostosowanie", "przedmiot", "wynalazek", "zastosowanie", "zwłaszcza", "który", "jego",
+    "podstawa", "wykorzystanie", "oparty", "metoda", "wytwarzanie", "uzyskanie", "dotyczyć", "zakres",
+    "organizacja", "ramy", "wysoki", "dwa", "ten", "poprzez", "cel", "proces", "wdrożyć", "wdrożenie",
+    "rozwiązanie", "spółka", "ograniczony", "odpowiedzialność", "przedsiębiorstwo", "opracować", "planować",
+    "przeprowadzić", "praca", "zmiana", "osoba", "obszar",
+}
+MIN_COMMON_WORDS = 2
+MIN_DEMAND_SCORE = 12.0  # sum of IDF weights; about two rare words
+
+
+def index_notice(conn: sqlite3.Connection, notice: dict) -> None:
+    conn.execute(
+        "INSERT INTO notices (id, data, date) VALUES (?, ?, ?) "
+        "ON CONFLICT(id) DO UPDATE SET data = excluded.data, date = excluded.date",
+        (notice["id"], json.dumps(notice, ensure_ascii=False), notice["date"]),
+    )
+    conn.execute("DELETE FROM notices_fts WHERE id = ?", (notice["id"],))
+    conn.execute("INSERT INTO notices_fts (id, subject) VALUES (?, ?)", (notice["id"], lemmatize(notice["subject"])))
+
+
+def demand(conn: sqlite3.Connection, innovation: Innovation, k: int = 5) -> list[DemandSignal]:
+    """Return the notices of public purchases with a similar subject.
+
+    The match score is the sum of IDF weights of the common words (not generic). A rare word has a high weight.
+    Thus two common words such as "plan" and "lokalny" give a low score, and "rehabilitacja" gives a high score.
+    """
+    text = " ".join([innovation.title, str(innovation.summary.value or ""), *innovation.keywords])
+    lemmas = {_lemma(t) for t in tokens(text)} - _GENERIC
+    if len(lemmas) < MIN_COMMON_WORDS:
+        return []
+    total = conn.execute("SELECT COUNT(*) FROM notices").fetchone()[0]
+    if not total:
+        return []
+    weight = {}
+    for lemma in lemmas:
+        count = conn.execute("SELECT COUNT(*) FROM notices_fts WHERE notices_fts MATCH ?", (f'"{lemma}"',)).fetchone()[0]
+        if count:
+            weight[lemma] = math.log(total / count)
+    if not weight:
+        return []
+    rows = conn.execute(
+        """SELECT n.data, f.subject FROM notices_fts f JOIN notices n ON n.id = f.id
+           WHERE notices_fts MATCH ? ORDER BY bm25(notices_fts) LIMIT 200""",
+        (" OR ".join(f'"{lemma}"' for lemma in sorted(weight)),),
+    ).fetchall()
+    found, seen = [], set()
+    for row in rows:
+        common = set(weight) & set(row["subject"].split())
+        score = sum(weight[w] for w in common)
+        notice = json.loads(row["data"])
+        key = (notice["buyer"].lower(), notice["subject"].lower())
+        if len(common) >= MIN_COMMON_WORDS and score >= MIN_DEMAND_SCORE and key not in seen:
+            seen.add(key)
+            found.append((score, notice, sorted(common, key=lambda w: -weight[w])))
+    found.sort(key=lambda f: (-f[0], f[1]["date"]))
+    signals = []
+    for _, notice, common in found[:k]:
+        place = ", ".join(x for x in (notice.get("city"), notice.get("voivodeship")) if x)
+        signals.append(
+            DemandSignal(
+                buyer=f"{notice['buyer']} ({place})" if place else notice["buyer"],
+                date=notice["date"],
+                subject=notice["subject"],
+                url=notice["url"],
+                voivodeship=notice.get("voivodeship"),
+                reason="Wspólne słowa: " + ", ".join(common),
+            )
+        )
+    return signals

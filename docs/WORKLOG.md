@@ -2,6 +2,18 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 26-bzp, issue #13)
+
+- Add `src/sources/bzp.py`: contract notices of the last 180 days from the e-Zamówienia API (no key) for 7 CPV groups. One request for each group; a full page (500) splits the date window. One request each 3 s.
+- The loader stores the buyer, the subject, the CPV codes, the date and the link. It does not store contractors (a contractor can be a natural person).
+- Findings: the parameter `PageNumber` has no effect; `CpvCode` filters; `organizationProvince` uses TERYT codes (PL18 = podkarpackie). No block in 7 requests with a pause of 3 s.
+- Add the tables `notices` and `notices_fts` to `src/db.py`. `python -m src.pipeline update` loads the notices after the sources (`--source bzp` loads only them). Podkarpackie update: 2803 notices in 152 s.
+- Add `search.demand()`: the card gets the notices with a similar subject. Score: sum of the IDF weights of the common words (not generic), threshold 12. Duplicates (same buyer and subject) are removed. `DemandSignal` has new optional fields `voivodeship` and `reason` (the common words).
+- The card shows the common words with the label "szacunek" (`web/app.js`).
+- Check: "e-usługi w urzędzie" gives e-service purchases of Biłgoraj, Wadowice and Dąbrowa Tarnowska; school labs give purchases of school labs. Patents get few matches. Some matches are noise; the card shows the words, so the user can judge.
+- Not done (part of issue #13): a timeline that joins records of different sources, and K5 from independent events.
+- Add `tests/test_bzp.py` and `tests/fixtures/bzp_notices.json` (5 recorded notices without the HTML body and without contractors).
+
 ## 2026-11-22, MikolajRowicki (branch 24-use-cases, issue #15)
 
 - Add `src/applications.py` (rules v0.1): where an innovation can be used and by whom (task section 6, points d and e). The card gets `applications`:

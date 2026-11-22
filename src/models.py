@@ -74,10 +74,14 @@ class TimelineEvent(BaseModel):
 
 
 class DemandSignal(BaseModel):
+    """A notice of a public purchase with a similar subject (BZP). Estimate: the match uses common words."""
+
     buyer: str
     date: date
     subject: str
     url: str
+    voivodeship: str | None = None
+    reason: str | None = Field(None, description="Common words of the innovation and the notice.")
 
 
 class Innovation(BaseModel):

@@ -1,0 +1,57 @@
+[
+ {
+  "noticeType": "ContractNotice",
+  "noticeNumber": "2026/BZP 00465010/01",
+  "publicationDate": "2026-10-01T06:00:38.4916884Z",
+  "orderObject": "ŚWIADCZENIE USŁUG WSPARCIA ZAMAWIAJĄCEGO I UŻYTKOWNIKÓW PRZY EKSPLOATACJI KOMPLEKSOWEGO SYSTEMU ZARZĄDZANIA BIBLIOTEKĄ PROLIB ENTERPRISE, ŚWIADCZENIE USŁUG SPECJALNYCH ZWIĄZANYCH Z SYSTEMEM",
+  "cpvCode": "72000000-5 (Usługi informatyczne: konsultacyjne, opracowywania oprogramowania, internetowe i wsparcia),72212160-8 (Usługi opracowywania oprogramowania bibliotecznego)",
+  "organizationName": "Uniwersytet Zielonogórski",
+  "organizationCity": "Zielona Góra",
+  "organizationProvince": "PL08",
+  "objectId": "08df1f81-514b-73a6-647d-de0001034260"
+ },
+ {
+  "noticeType": "ContractNotice",
+  "noticeNumber": "2026/BZP 00471587/01",
+  "publicationDate": "2026-10-05T14:01:41.3013815Z",
+  "orderObject": "Opracowanie architektury oraz wykonanie prototypu platformy informatycznej w ramach projektu MAPTur",
+  "cpvCode": "72000000-5 (Usługi informatyczne: konsultacyjne, opracowywania oprogramowania, internetowe i wsparcia)",
+  "organizationName": "Uniwersytet Warszawski",
+  "organizationCity": "Warszawa",
+  "organizationProvince": "PL14",
+  "objectId": "08df22e9-2eaf-5cd0-647d-de00016942d4"
+ },
+ {
+  "noticeType": "ContractNotice",
+  "noticeNumber": "2026/BZP 00472219/01",
+  "publicationDate": "2026-10-06T07:41:14.6166286Z",
+  "orderObject": "Usługa rozwoju Systemu SYRENA",
+  "cpvCode": "72200000-7 (Usługi doradcze w zakresie programowania oprogramowania),72246000-1 (Usługi doradcze w zakresie systemów),72000000-5 (Usługi informatyczne: konsultacyjne, opracowywania oprogramowania, internetowe i wsparcia),72611000-6 (Usługi w zakresie wsparcia technicznego)",
+  "organizationName": "Narodowa Agencja Wymiany Akademickiej",
+  "organizationCity": "Warszawa",
+  "organizationProvince": "PL14",
+  "objectId": "08df237d-332b-ea01-647d-de000169489b"
+ },
+ {
+  "noticeType": "ContractNotice",
+  "noticeNumber": "2026/BZP 00473413/01",
+  "publicationDate": "2026-10-06T11:42:03.7170056Z",
+  "orderObject": "Cyberbezpieczne wodociągi w gminie Międzyrzec Podlaski - OT",
+  "cpvCode": "32420000-3 (Urządzenia sieciowe),31122000-7 (Jednostki prądotwórcze),32510000-1 (Bezprzewodowy system telekomunikacyjny),48000000-8 (Pakiety oprogramowania i systemy informatyczne),48516000-8 (Pakiety oprogramowania do wymiany danych),72000000-5 (Usługi informatyczne: konsultacyjne, opracowywania oprogramowania, internetowe i wsparcia),72263000-6 (Usługi wdrażania oprogramowania),72265000-0 (Usługi konfiguracji oprogramowania),30230000-0 (Sprzęt związany z komputerami)",
+  "organizationName": "GMINA MIĘDZYRZEC PODLASKI",
+  "organizationCity": "Międzyrzec Podlaski",
+  "organizationProvince": "PL06",
+  "objectId": "08df239e-d78b-4ec8-647d-de0001694eaf"
+ },
+ {
+  "noticeType": "ContractNotice",
+  "noticeNumber": "2026/BZP 00474944/01",
+  "publicationDate": "2026-10-07T08:43:50.6578741Z",
+  "orderObject": "Wykonywanie opieki serwisowej dla funkcjonującej infrastruktury informatycznej, infrastruktury telefonicznej, systemu telewizji dozorowej i systemów dostępu.",
+  "cpvCode": "72000000-5 (Usługi informatyczne: konsultacyjne, opracowywania oprogramowania, internetowe i wsparcia)",
+  "organizationName": "„Hevelianum\" Jednostka Budżetowa Gminy Miasta Gdańska",
+  "organizationCity": "Gdańsk",
+  "organizationProvince": "PL22",
+  "objectId": "08df244f-1c60-d27a-647d-de0001c5cdf3"
+ }
+]
