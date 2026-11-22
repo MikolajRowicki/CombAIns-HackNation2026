@@ -241,6 +241,21 @@ def person_name(beneficiary: str, foreign: bool = False) -> str | None:
     return None
 
 
+def names_in(text: str) -> set[str]:
+    """Return each first name with a surname in a free text, for example a sole trader in a project title.
+
+    Some rows have no beneficiary, but the title names the owner ("firmy POW-BUD Jan Kowalski").
+    A patron after "im." is not a person of the project.
+    """
+    text = re.sub(r"\b(?:im\.|imienia)\s+\S+(?:\s+\S+)?", " ", text or "")
+    words = _WORD.findall(text)
+    return {
+        f"{first} {last}"
+        for first, last in itertools.pairwise(words)
+        if first.lower() in FIRST_NAMES and last[:1].isupper() and last.lower() not in FIRST_NAMES | {"sp", "spółka"}
+    }
+
+
 def hide(text: str, name: str | None) -> str:
     """Remove the name of a person from the text. The name can be in the title or in the description."""
     if not name or not text:
@@ -312,8 +327,10 @@ def row_to_innovation(
     """
     beneficiary = str(row.get("beneficiary") or "").strip()
     person = person_name(beneficiary, foreign)
-    title = hide(re.sub(r"\s+", " ", str(row["title"])).strip(), person)
-    description = hide(re.sub(r"\s+", " ", str(row["description"])).strip(), person)
+    title = re.sub(r"\s+", " ", str(row["title"])).strip()
+    description = re.sub(r"\s+", " ", str(row["description"])).strip()
+    for found in {person, *names_in(title), *names_in(description)} - {None}:
+        title, description = hide(title, found), hide(description, found)
     category = re.sub(r"\s+", " ", str(row.get("category") or "")).strip()
     category_label = re.sub(r"^\S+\s+", "", category) or "projekt FE"
     programme = str(row.get("programme") or "").strip()
@@ -381,7 +398,9 @@ def row_to_innovation(
         "summary": summary_quote(description, url),
         "description": description,
         "area": area,
-        "type": FieldValue(value=f"projekt FE: {category_label[:1].lower()}{category_label[1:]}", kind="fact", source_url=url),
+        "type": FieldValue(
+            value=f"projekt FE: {category_label[:1].lower()}{category_label[1:]}", kind="fact", source_url=url
+        ),
         "institution": institution,
         "implementation_level": FieldValue.model_validate(level),
         "trl": estimate(None, "Źródło nie podaje poziomu TRL.") if area.value == "technological" else None,

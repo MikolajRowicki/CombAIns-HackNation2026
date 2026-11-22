@@ -2,6 +2,13 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 29-hide-names-in-titles)
+
+- Fix a leak of personal data: a card showed the name of a sole trader in a project title ("firmy … Jan Kowalski"). The row had no beneficiary, so the rule on the beneficiary name did not find the person.
+- `src/sources/fe_projects.py`: `names_in(text)` finds a first name with a surname in the title and in the description. The loader hides each name. A patron after "im." stays.
+- Result for Podkarpackie: 47 more names hidden in the texts of the FE projects.
+- Add a test with synthetic data.
+
 ## 2026-11-22, MikolajRowicki (branch 56-school-projects)
 
 - The educational area was the weakest (145 cards). The FE filter dropped school projects, because their category is not an innovation category and their title has no word such as "innowac".

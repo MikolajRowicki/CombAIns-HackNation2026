@@ -79,6 +79,22 @@ def test_natural_person_is_hidden(xlsx):
     assert "Testowy" not in json.dumps(record.model_dump(mode="json"), ensure_ascii=False)
 
 
+def test_name_in_title_is_hidden_without_a_beneficiary():
+    # Synthetic data: some rows have no beneficiary, but the title names the owner of the firm.
+    row = dict.fromkeys(fe.COLUMNS)
+    row.update(
+        title="Zwiększenie konkurencyjności firmy ABC-BUD Adam Przykładowy",
+        description="Firma ABC-BUD Adam Przykładowy wdroży nową linię. Szkoła im. Marii Konopnickiej jest partnerem. "
+        * 2,
+        category="027 Procesy innowacji w MŚP",
+        start=date(2024, 1, 1),
+    )
+    record = fe.row_to_innovation(row, "https://dane.gov.pl/pl/dataset/13939/resource/1", None, date(2026, 11, 22))
+    text = json.dumps(record.model_dump(mode="json"), ensure_ascii=False)
+    assert "Przykładowy" not in text and "Adam" not in text
+    assert "Konopnickiej" in text
+
+
 @pytest.mark.parametrize(
     "beneficiary,name",
     [
@@ -136,8 +152,11 @@ def test_school_project_with_a_teaching_method_is_kept():
     from src.sources import fe_projects
 
     description = "Projekt wprowadzi zajęcia z robotyki i programowania dla uczniów szkół podstawowych w gminie."
-    row = {"title": "Mała szkoła - wielkie możliwości", "description": description,
-           "category": "149 Wsparcie na rzecz szkolnictwa podstawowego i średniego"}
+    row = {
+        "title": "Mała szkoła - wielkie możliwości",
+        "description": description,
+        "category": "149 Wsparcie na rzecz szkolnictwa podstawowego i średniego",
+    }
     assert fe_projects.is_innovation(row)
     row["description"] = "Projekt sfinansuje remont sali gimnastycznej i zakup ławek dla uczniów szkoły w gminie."
     assert not fe_projects.is_innovation(row)
