@@ -237,3 +237,13 @@ def test_estimate_feeds_assessment():
     assert a["criteria"]["K1"] == {**a["criteria"]["K1"], "value": 5, "kind": "estimate"}
     assert a["criteria"]["K3"]["value"] == 3
     assert a["confidence"] == "low"
+
+
+def test_estimate_application_potential_counts_checked_items():
+    from src.criteria import estimate_application_potential
+
+    field = estimate_application_potential({0: "opis patentowy", 1: None, 3: "sektory: a, b", 4: None}, "https://x")
+    assert field["value"] == 2 and field["kind"] == "estimate"
+    assert "opis patentowy" in field["reason"] and "Niesprawdzone" in field["reason"]
+    assert "nie wymaga specjalnej infrastruktury" in field["reason"]
+    assert estimate_application_potential({}, None)["value"] == 0

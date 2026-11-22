@@ -220,6 +220,8 @@ Dlaczego te wagi: zadanie akcentuje rzeczywisty poziom rozwoju, a definicja z Po
 4. Brak danych to nie zero. Wynik ma przedział: dolna granica przyjmuje 0 dla nieznanych kryteriów, górna granica 5. Wartość punktowa uwzględnia tylko znane kryteria.
 5. Pewność oceny zależy od udziału wagi opartej na faktach: wysoka od 70%, średnia od 40%, niska poniżej 40%.
 6. Każda ocena zapisuje wersję kryteriów (na przykład „kryteria v0.1”).
+7. K4 (potencjał zastosowania) radar szacuje danymi z kart: opublikowany opis patentowy (dokumentacja), wartość projektu w źródle (znany koszt), co najmniej dwa sektory zastosowania, zamówienia o podobnym przedmiocie w BZP (sygnały popytu). Warunku „nie wymaga specjalnej infrastruktury” źródła nie podają; radar go nie liczy i pisze to w uzasadnieniu. Wartość K4 to liczba spełnionych warunków, z etykietą „przybliżone” i listą warunków.
+8. Dwa niezależne źródła tej samej innowacji podnoszą K5 do 4 (łączenie źródeł).
 
 ### Dane ze źródła i wartości przybliżone
 

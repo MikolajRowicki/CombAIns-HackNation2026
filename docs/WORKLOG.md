@@ -2,6 +2,20 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 46-k4-estimate)
+
+- Before, K4 (application potential) was "brak danych" on all cards, so all scores were wide ranges.
+- Add `criteria.estimate_application_potential(checks)`: K4 is the number of items of K4 that the data shows. The reason lists the items that the data shows and the items that cannot be checked.
+- Add the pipeline step `estimate_application_potential_all()` after the linking step. It checks 4 of the 5 items with the data of the card:
+  - documentation: a published patent description;
+  - known cost: a project value in the timeline (FE, Kohesio, Interreg, NCBR, RAD-on);
+  - more than one sector: `applications.find_sectors()`;
+  - demand signals: `search.demand()` (BZP).
+  The item "no special infrastructure" is not in the data, so it does not count.
+- A K4 value that is a fact from a source does not change.
+- Result: 3310 cards with K4 (0: 71, 1: 1705, 2: 985, 3: 549). The step takes 20 s.
+- Add tests in `tests/test_criteria.py` and `tests/test_linking.py`. README: rules 7 and 8 of the assessment.
+
 ## 2026-11-22, MikolajRowicki (branch 44-analytics)
 
 - Add anonymous usage counters (FAQ, section 7): table `usage` (day, kind, value, count) in `src/db.py`.

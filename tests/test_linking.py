@@ -48,3 +48,17 @@ def test_link_and_merge_records_of_different_sources():
     pipeline.link_records(conn)
     assert db.get_innovation(conn, kept.id).model_dump() == before
     assert db.get_innovation(conn, "d-other").credibility.value == SAMPLES[base]["credibility"]["value"]
+
+
+def test_application_checks_and_k4_step():
+    conn = db.connect(":memory:")
+    record = variant("radon-241314", "k4-card", "Układ do symulacji intruzów w ruchu powietrznym", "Źródło A", date(2022, 9, 5))
+    db.upsert_innovation(conn, record)
+    search.index(conn, record)
+    checks = pipeline.application_checks(conn, record)
+    assert set(checks) == {0, 1, 3, 4}
+    assert checks[4] is None  # no BZP notices in this database
+    assert pipeline.estimate_application_potential_all(conn) == 1
+    card = db.get_innovation(conn, "k4-card")
+    assert card.application_potential.kind == "estimate" and card.application_potential.reason
+    assert card.assessment.model_dump() == assess(card.model_dump())

@@ -11,8 +11,8 @@ import time
 from collections.abc import Callable
 from datetime import date
 
-from src import db, search
-from src.criteria import assess
+from src import applications, db, search
+from src.criteria import assess, estimate_application_potential
 from src.models import FieldValue, Innovation, SourceStatus
 from src.sources import (
     SourceData,
@@ -159,6 +159,39 @@ def link_records(conn: sqlite3.Connection) -> tuple[int, int]:
     return merged, linked
 
 
+_COST = re.compile(r"\d[\d\s,.]*\s*(?:zł|mln zł|EUR)", re.IGNORECASE)
+
+
+def application_checks(conn: sqlite3.Connection, record: Innovation) -> dict[int, str | None]:
+    """Check the items of K4 with the data of the card (the order of CRITERIA["K4"]["items"])."""
+    patent = re.search(r"patent|wzór użytkowy|prawo ochronne", str(record.type.value or ""), re.IGNORECASE)
+    cost = next((e.label for e in record.timeline if _COST.search(e.label)), None)
+    sectors = [s.label for s in applications.find_sectors(record)]
+    demand = search.demand(conn, record)
+    return {
+        0: "opublikowany opis patentowy" if patent else None,
+        1: f"wartość projektu w źródle: {_COST.search(cost).group().strip()}" if cost else None,
+        3: f"sektory: {', '.join(sectors)}" if len(sectors) >= 2 else None,
+        4: f"{len(demand)} zamówień o podobnym przedmiocie w BZP" if demand else None,
+    }
+
+
+def estimate_application_potential_all(conn: sqlite3.Connection) -> int:
+    """Propose K4 for each card without a K4 value from the source. Then calculate the assessment again."""
+    changed = 0
+    for record in db.all_innovations(conn):
+        if record.application_potential.kind == "fact" and record.application_potential.value is not None:
+            continue
+        data = record.model_dump()
+        url = record.sources[0].url
+        data["application_potential"] = estimate_application_potential(application_checks(conn, record), url)
+        data["assessment"] = assess(data)
+        db.upsert_innovation(conn, Innovation.model_validate(data))
+        changed += 1
+    conn.commit()
+    return changed
+
+
 def update(conn: sqlite3.Connection, voivodeships: list[str] | None = None, sources: list[str] | None = None) -> None:
     """Load the sources one by one. If a source fails, record the error and continue (AGENTS.md, rule 14)."""
     for name in sources or [*SOURCES, "bzp"]:
@@ -178,6 +211,7 @@ def update(conn: sqlite3.Connection, voivodeships: list[str] | None = None, sour
         print(f"{name}: {len(data.records)} records, {len(data.errors)} errors, {time.monotonic() - start:.0f} s")
     merged, linked = link_records(conn)
     print(f"link: {merged} merged, {linked} linked")
+    print(f"K4: {estimate_application_potential_all(conn)} cards")
 
 
 if __name__ == "__main__":

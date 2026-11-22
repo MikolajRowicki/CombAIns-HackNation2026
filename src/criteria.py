@@ -365,3 +365,19 @@ def estimate_implementation_level(text: str, source_url: str | None = None) -> d
 def estimate_novelty(text: str, source_url: str | None = None) -> dict:
     """Propose K3 from Polish keywords in the text. The result is a FieldValue with kind "estimate"."""
     return _estimate("K3", text, _NOVELTY_RULES, source_url, "Tekst nie zawiera informacji o zasięgu nowości.")
+
+
+def estimate_application_potential(checks: dict[int, str | None], source_url: str | None = None) -> dict:
+    """Propose K4 from the checks of its items (CRITERIA["K4"]["items"], index 0-4).
+
+    checks maps the index of an item to a reason if the data shows the item, or to None if the data shows no
+    sign of it. An item that is not in checks cannot be checked with the data: it does not count, and the
+    reason says so. K4 is the number of items that the data shows. The result is a FieldValue with kind "estimate".
+    """
+    items = CRITERIA["K4"]["items"]
+    met = [f"{items[i]} ({why})" for i, why in sorted(checks.items()) if why]
+    unchecked = [items[i] for i in range(len(items)) if i not in checks]
+    reason = "Spełnione: " + ("; ".join(met) if met else "żaden warunek") + "."
+    if unchecked:
+        reason += " Niesprawdzone (brak danych w źródłach): " + "; ".join(unchecked).lower() + "."
+    return {"value": len(met), "kind": "estimate", "source_url": source_url, "evidence": None, "reason": reason}
