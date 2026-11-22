@@ -1,0 +1,21 @@
+# Keep the image small: only the code, the web page and the database.
+.git/
+.venv/
+.env
+.kaggle/
+.claude/
+.vscode/
+.idea/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+docs/
+task/
+jobs/
+tests/
+
+# Keep only the database from the cache.
+data/cache/*
+!data/cache/radar.db

@@ -2,6 +2,15 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, FilipLangiewicz (branch 77-docker)
+
+- Add `Dockerfile` and `.dockerignore`: an image of the application for a server or for Google Cloud Run.
+  - The image uses `python:3.13-slim` and installs `requirements.txt` with uv.
+  - Uvicorn reads the port from `PORT` (default 8000), as Cloud Run requires.
+  - If `data/cache/radar.db` exists at build time, the image contains it. Other files of `data/cache/`, `docs/`, `task/` and `tests/` stay out.
+- Check: the image builds (389 MB). Without a database, `/api/health`, the web page and `/api/search` answer.
+- README: section "Uruchomienie w kontenerze (Docker)" and the licenses of the image and of uv.
+
 ## 2026-11-22, MikolajRowicki (branch 76-deck-mega-edits)
 
 - Alternative presentation: a person changed the speaker notes of slide 7 in PowerPoint. The same text is now in `build_deck_mega.js`. The PDF is made again.

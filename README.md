@@ -144,6 +144,30 @@ uv run --no-project python -m pytest -m slow
 
 Pierwsze polecenie nie potrzebuje sieci: używa nagranych odpowiedzi źródeł i stałych przypadków z `tests/cases.json` (obszar, poziom wdrożenia, TRL, przedział oceny, sektory i ścieżka). Drugie polecenie przechodzi cały proces z siecią: pobranie ze źródła, ocena, indeks, wyszukiwanie i karta. Sprawdza też, że karta nowej innowacji powstaje w 30 sekund lub szybciej.
 
+### Uruchomienie w kontenerze (Docker)
+
+Obraz zawiera kod, stronę WWW i bazę `data/cache/radar.db`, jeśli istnieje w chwili budowania. Bez bazy aplikacja startuje z pustą bazą.
+
+```bash
+docker build -t radar-innowacji .
+docker run -p 8000:8000 radar-innowacji
+```
+
+Aktualizacja bazy w kontenerze, z bazą zapisaną poza kontenerem:
+
+```bash
+docker run -v "$(pwd)/data/cache:/app/data/cache" radar-innowacji python -m src.pipeline update --voivodeship podkarpackie
+docker run -p 8000:8000 -v "$(pwd)/data/cache:/app/data/cache" radar-innowacji
+```
+
+Kontener czyta port ze zmiennej `PORT` (domyślnie 8000), więc działa np. w Google Cloud Run:
+
+```bash
+gcloud run deploy radar-innowacji --source . --region europe-central2 --allow-unauthenticated
+```
+
+Cloud Run nie zachowuje zmian w plikach kontenera. Liczniki anonimowej analityki zerują się po restarcie, a bazę aktualizuje się przez nowe wdrożenie z nową bazą.
+
 ### Demonstracja (dwa przypadki użycia, zadanie, sekcja 6)
 
 Przed pokazem zbuduj bazę (`src.pipeline update`). Potem aplikacja działa bez sieci, bo wyszukiwanie korzysta tylko z lokalnej bazy `data/cache/radar.db`.
@@ -315,6 +339,8 @@ Wszystkie komponenty mają licencje zgodne z EUPL-1.2.
 | SQLite (FTS5), sqlite-vec | baza danych i wyszukiwanie | domena publiczna, MIT / Apache-2.0 |
 | simplemma | lematyzacja tekstu polskiego | MIT |
 | certifi (zależność pośrednia httpx) | certyfikaty TLS | MPL-2.0 (używana bez zmian) |
+| Obraz `python:3.13-slim` (tylko kontener) | środowisko Pythona w obrazie Docker | PSF-2.0, Debian (licencje wolne) |
+| uv | instalacja pakietów | MIT / Apache-2.0 |
 | pytest, Ruff (tylko dla deweloperów) | testy i kontrola kodu | MIT |
 | PptxGenJS, React, react-icons (tylko prezentacja) | generowanie slajdów `docs/presentation/` | MIT |
 | sharp (tylko prezentacja) | przetwarzanie zrzutów ekranu i ikon | Apache-2.0 |
