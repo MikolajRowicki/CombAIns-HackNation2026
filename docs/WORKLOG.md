@@ -2,6 +2,10 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MikolajRowicki (branch 72-title-team)
+
+- Title slide: the text is "Zespół CombAIns" with a smaller font (22 pt).
+
 ## 2026-11-22, MikolajRowicki (branch 70-title-color)
 
 - Title slide: "CombAIns" is white, the same color as the title. The green text did not agree with the blue background.
