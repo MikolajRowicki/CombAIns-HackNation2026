@@ -19,6 +19,18 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - `web/app.js`: the card shows "nie dotyczy" only for `trl: null`. For a null `trl.value`, it shows "brak danych".
 - Add a test for a missing TRL value. No sample record has a null `trl.value`, so the sample assessments do not change.
 
+## 2026-11-22 02:45, MikolajRowicki (branch 14-radon-loader, issue #8)
+
+- Add `src/sources/__init__.py`: `SourceData` holds the records of one source and the metadata (source, date of the data, date of the download, license, errors).
+- Add `src/sources/radon.py`: the loader of RAD-on (`institutions`, `products`, `projects`). The function `load(voivodeships)` returns cards (`Innovation`) with an assessment. `None` means all of Poland.
+- The loader takes the city and the voivodeship from the RAD-on list of institutions. Thus the code has no list of institutions.
+- The loader does not read the data of persons (inventors, project managers).
+- Patent: technological area, implementation level 2 and TRL 4 as estimates, novelty 3 (protection in Poland) or 4 (abroad), credibility 3 as a fact.
+- Project: the keyword rules of `src/criteria.py` give the level and the novelty. A finished project without keywords gets level 2. Projects of NCN, NAWA and Fulbright only are skipped: basic research and mobility are not innovations (Oslo Manual).
+- If one request fails, the loader records the error and continues.
+- Add `tests/test_radon.py` and `tests/fixtures/radon_responses.json` (recorded responses without personal data).
+- Check: Podkarpackie gives 977 records (802 patents and utility models, 175 projects) in 30 s without errors. Command: `python -m src.sources.radon --voivodeship podkarpackie`.
+
 ## 2026-11-22 03:20, MaciejMomot (branch 11-watchlists, issue #14)
 
 - Add watchlists to the search page: the button "Obserwuj to wyszukiwanie" saves the query and the filters.
