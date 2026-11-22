@@ -2,6 +2,14 @@
 
 Add an entry after each step of work. Give the date, the time, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22 01:10, MikolajRowicki (branch 04-app-skeleton, issue #2)
+
+- Add the application skeleton: `src/app.py` (FastAPI, `GET /api/health`, static files from `web/`), `web/index.html`, `tests/test_app.py`.
+- Add `requirements.in`, `requirements-dev.in` and the lock `requirements.txt`. PyTorch and sentence-transformers come later with the search (issue #9).
+- Decisions: the web page is static HTML and JS that calls the JSON API (no Jinja2). The start command is `uv run --no-project uvicorn src.app:app --reload`.
+- Check: sqlite-vec 0.1.9 and FTS5 load on Python 3.13 (Windows). All licenses are permissive, except certifi (MPL-2.0, a transitive dependency of httpx, used without change).
+- Add `README.md` with the start procedure and the license table.
+
 ## 2026-11-22 00:40, MikolajRowicki (branch 02-web-sources)
 
 - Change the second team member in `AGENTS.md` to `MaciejMomot` (odd numbers).
