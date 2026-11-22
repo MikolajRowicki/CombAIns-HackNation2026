@@ -11,69 +11,71 @@
 <body>
   <a class="skip-link" href="#results">Przejdź do wyników</a>
   <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">◎</span> Radar innowacji</a>
-      <p class="tagline">Istniejące polskie innowacje w jednym miejscu: technologiczne, edukacyjne i administracyjne.</p>
+    <div class="wrap header-inner">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>Radar innowacji</a>
+      <nav class="nav" aria-label="Menu główne">
+        <a href="./" aria-current="page">Szukaj</a>
+        <a href="compare.html">Porównanie</a>
+        <a href="about.html">O radarze</a>
+      </nav>
     </div>
   </header>
 
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero-title">Znajdź innowację, która już działa</h1>
+      <p class="hero-lead">Polskie rozwiązania technologiczne, edukacyjne i administracyjne z otwartych źródeł, z oceną poziomu wdrożenia i potencjału.</p>
+      <form id="search-form" class="search" role="search">
+        <label for="q" class="visually-hidden">Czego szukasz? Opisz temat lub potrzebę</label>
+        <div class="search-row">
+          <input id="q" name="q" type="search" autocomplete="off" placeholder="Opisz potrzebę, np. system rezerwacji wizyt w urzędzie">
+          <button type="submit" class="btn-primary">Szukaj</button>
+        </div>
+        <p class="examples" id="examples" aria-label="Przykładowe wyszukiwania"></p>
+
+        <fieldset class="filters">
+          <legend class="visually-hidden">Filtry</legend>
+          <div class="filter">
+            <label for="group">Kim jesteś?</label>
+            <select id="group" name="group"></select>
+          </div>
+          <div class="filter">
+            <label for="area">Obszar</label>
+            <select id="area" name="area"></select>
+          </div>
+          <div class="filter">
+            <label for="voivodeship">Województwo</label>
+            <select id="voivodeship" name="voivodeship"></select>
+          </div>
+          <div class="filter">
+            <label for="level_min">Poziom wdrożenia co najmniej</label>
+            <select id="level_min" name="level_min"></select>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
   <main class="wrap">
-    <form id="search-form" class="search" role="search">
-      <label for="q" class="search-label">Czego szukasz? Opisz temat lub potrzebę</label>
-      <div class="search-row">
-        <input id="q" name="q" type="search" autocomplete="off" placeholder="np. system rezerwacji wizyt w urzędzie">
-        <button type="submit" class="btn-primary">Szukaj</button>
-      </div>
-      <p class="examples" id="examples" aria-label="Przykładowe wyszukiwania"></p>
-
-      <fieldset class="filters">
-        <legend class="visually-hidden">Filtry</legend>
-        <div class="filter">
-          <label for="group">Kim jesteś?</label>
-          <select id="group" name="group"></select>
-        </div>
-        <div class="filter">
-          <label for="area">Obszar</label>
-          <select id="area" name="area"></select>
-        </div>
-        <div class="filter">
-          <label for="voivodeship">Województwo</label>
-          <select id="voivodeship" name="voivodeship"></select>
-        </div>
-        <div class="filter">
-          <label for="level_min">Poziom wdrożenia co najmniej</label>
-          <select id="level_min" name="level_min"></select>
-        </div>
-      </fieldset>
-    </form>
-
     <div id="source-notice" class="notice" role="status" hidden></div>
 
     <section id="watchlist" class="watchlist" aria-labelledby="watchlist-title" hidden>
       <h2 id="watchlist-title">Obserwowane wyszukiwania</h2>
-      <p class="muted">Zapisane tylko w tej przeglądarce. Po aktualizacji bazy zobaczysz tu nowe pasujące innowacje.</p>
+      <p class="muted small">Zapisane tylko w tej przeglądarce. Po aktualizacji bazy zobaczysz tu nowe pasujące innowacje.</p>
       <ul id="watch-list" class="watch-list"></ul>
     </section>
 
     <section id="results" class="results" aria-labelledby="results-title" tabindex="-1">
       <div class="results-head">
-        <h2 id="results-title" class="results-title">Wyniki</h2>
+        <div>
+          <h2 id="results-title" class="results-title">Wyniki</h2>
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+        </div>
         <button id="watch-button" type="button" class="btn-secondary" aria-pressed="false">☆ Obserwuj to wyszukiwanie</button>
       </div>
-      <p id="status" class="status" role="status" aria-live="polite"></p>
       <ol id="result-list" class="result-list"></ol>
-    </section>
-
-    <section class="sources-panel" aria-labelledby="sources-title">
-      <h2 id="sources-title">Źródła danych</h2>
-      <ul id="source-list" class="source-list"><li class="missing">Sprawdzam stan źródeł…</li></ul>
+      <p class="more-row"><button id="more" type="button" class="btn-secondary" hidden>Pokaż więcej</button></p>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>Ocena według kryteriów z FAQ zadania (wersja kryteriów v0.1). Każda karta pokazuje źródła i oddziela fakty od szacunków.</p>
-    </div>
-  </footer>
 </body>
 </html>

@@ -188,7 +188,7 @@ The jury checks that the application finds existing innovations, assesses them a
    - credibility: documentation, confirmations of implementation and reliable sources.
 3. Make each criterion clear. Each criterion has a name, a scale with a description of each level, a weight and a reference.
 4. Each card has these items (FAQ, section 5): a description of the solution, the area of application, the source of the information, the implementation status, the readiness level and the assessment of the potential.
-5. Separate confirmed facts from estimates. Each fact has its source. Each estimate (for example a value that a model proposed) has the label "szacunek" and its reason.
+5. Separate confirmed facts from estimates. Each fact has its source. Each estimate (for example a value that a model proposed) has the label "przybliżone" and its reason. The web page shows a fact with the label "ze źródła". Do not use the word "szacunek": users read it as "respect".
 6. Join each score to the data that caused it. The card shows these data and the links to the sources.
 7. Make the assessment repeatable. The same record and the same version of the criteria give the same score. Record the version of the criteria, of the models and of the data with each assessment.
 8. An AI model can extract data, classify and propose a value. It must not be the only source of a score.

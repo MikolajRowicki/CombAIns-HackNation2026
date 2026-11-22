@@ -51,10 +51,10 @@ Radar **nie jest** platformą zgłaszania pomysłów, portalem społecznościowy
 ### Co wyróżnia radar
 
 - **Automatyczne odkrywanie** z wielu polskich źródeł w jednym indeksie, bez ręcznego zgłaszania.
-- **Fakty oddzielone od szacunków.** Każdy fakt ma źródło i cytat. Każdy szacunek ma etykietę „szacunek” i powód.
+- **Dane ze źródła oddzielone od wartości przybliżonych.** Wartość ze źródła ma cytat i link. Wartość przybliżona ma etykietę „przybliżone” i powód.
 - **Jawna, powtarzalna ocena.** Wynik pokazuje przedział, poziom pewności i wersję kryteriów. Ten sam rekord zawsze daje ten sam wynik.
 - **Wynik to przedział, nie fałszywa precyzja.** Brak danych nie oznacza zera. Karta pokazuje, czego brakuje.
-- **Sygnały popytu.** Karta pokazuje instytucje publiczne, które w ostatnich 180 dniach ogłosiły zamówienie o podobnym przedmiocie (BZP). Dopasowanie liczy wagi rzadkich wspólnych słów (IDF) i pokazuje te słowa. To szacunek, nie potwierdzony zakup tej innowacji.
+- **Sygnały popytu.** Karta pokazuje instytucje publiczne, które w ostatnich 180 dniach ogłosiły zamówienie o podobnym przedmiocie (BZP). Dopasowanie liczy wagi rzadkich wspólnych słów (IDF) i pokazuje te słowa. To przybliżenie, nie potwierdzony zakup tej innowacji.
 - **„Czy to już istnieje?”** Użytkownik opisuje potrzebę własnymi słowami i dostaje podobne, istniejące rozwiązania.
 
 ## Jak to działa
@@ -84,7 +84,7 @@ Indeks powstaje z wyprzedzeniem. Dlatego wyszukiwanie działa w kilka sekund, na
 - **Obserwowane zapytania:** zapisane wyszukiwanie pokazuje „Nowe od ostatniej wizyty”. Zapis odbywa się tylko w przeglądarce, bez logowania.
 - **Status źródeł:** aplikacja pokazuje, które źródło nie odpowiedziało i kiedy było ostatnio sprawdzone.
 
-### Grupy użytkowników (FAQ, sekcja 3)
+### Grupy użytkowników
 
 | Grupa | Typowe pytanie | Domyślne sortowanie i pola |
 |---|---|---|
@@ -126,7 +126,7 @@ Pierwsze polecenie nie potrzebuje sieci: używa nagranych odpowiedzi źródeł i
 Przed pokazem zbuduj bazę (`src.pipeline update`). Potem aplikacja działa bez sieci, bo wyszukiwanie korzysta tylko z lokalnej bazy `data/cache/radar.db`.
 
 1. **Technologia z uczelni dla firmy.** Wpisz „śmigłowiec” lub „rehabilitacja”. Radar pokazuje patenty uczelni z Podkarpacia. Karta pokazuje:
-   - poziom wdrożenia i TRL z etykietą „szacunek” i powodem;
+   - poziom wdrożenia i TRL z etykietą „przybliżone” i powodem;
    - ocenę według 5 kryteriów z przedziałem i pewnością;
    - sektory zastosowania z cytatem ze źródła;
    - instytucje z podobnymi rozwiązaniami;
@@ -162,17 +162,17 @@ Dane przykładowe (`tests/fixtures/sample_innovations.json`, 18 rekordów) pocho
 
 ## Kryteria oceny
 
-Kryteria pochodzą z FAQ zadania (sekcja 5). Wagi i skale są propozycją zespołu w wersji **v0.1**. Wymagają kalibracji z mentorami PCI. Wszystkie kryteria, skale, wagi i odwołania są w jednym module: `src/criteria.py`.
+Pięć kryteriów odpowiada wymaganiom zadania PCI. Wagi i skale są propozycją zespołu w wersji **v0.1**. Wymagają kalibracji z mentorami PCI. Wszystkie kryteria, skale, wagi i odwołania są w jednym module: `src/criteria.py`.
 
 | ID | Kryterium | Skala | Waga | Odwołanie |
 |---|---|---|---|---|
-| K1 | Poziom wdrożenia | 1 koncepcja, 2 prototyp, 3 testy, 4 wdrożenie pilotażowe, 5 stosowane w praktyce | 30 | FAQ; Podręcznik Oslo 2018 |
+| K1 | Poziom wdrożenia | 1 koncepcja, 2 prototyp, 3 testy, 4 wdrożenie pilotażowe, 5 stosowane w praktyce | 30 | Podręcznik Oslo 2018 |
 | K2 | Dojrzałość technologiczna | TRL 1–9; „nie dotyczy” dla innowacji nietechnologicznych | 15 | definicja TRL programu Horyzont (KE) |
 | K3 | Innowacyjność | 1 nowe w instytucji, 2 w regionie, 3 w Polsce, 4 w Europie, 5 na świecie | 20 | Podręcznik Oslo 2018 (stopień nowości) |
 | K4 | Potencjał zastosowania | 0–5 pkt: dokumentacja dla innych, znany koszt, brak specjalnej infrastruktury, więcej niż jeden sektor, sygnały popytu (BZP) | 20 | Interreg Europe (dobre praktyki); Rogers (atrybuty dyfuzji) |
-| K5 | Wiarygodność | 0 brak danych, 1 deklaracja własna, 2 opis z liczbami, 3 jedno weryfikowalne źródło, 4 dwa niezależne źródła, 5 publiczne potwierdzenie wdrożenia | 15 | FAQ; Nesta Standards of Evidence |
+| K5 | Wiarygodność | 0 brak danych, 1 deklaracja własna, 2 opis z liczbami, 3 jedno weryfikowalne źródło, 4 dwa niezależne źródła, 5 publiczne potwierdzenie wdrożenia | 15 | Nesta Standards of Evidence |
 
-Dlaczego te wagi: FAQ akcentuje rzeczywisty poziom rozwoju, a definicja z Podręcznika Oslo wymaga wdrożenia, dlatego K1 ma największą wagę. TRL nie dotyczy innowacji edukacyjnych i administracyjnych, dlatego K2 ma małą wagę.
+Dlaczego te wagi: zadanie akcentuje rzeczywisty poziom rozwoju, a definicja z Podręcznika Oslo wymaga wdrożenia, dlatego K1 ma największą wagę. TRL nie dotyczy innowacji edukacyjnych i administracyjnych, dlatego K2 ma małą wagę.
 
 ### Reguły
 
@@ -183,9 +183,9 @@ Dlaczego te wagi: FAQ akcentuje rzeczywisty poziom rozwoju, a definicja z Podrę
 5. Pewność oceny zależy od udziału wagi opartej na faktach: wysoka od 70%, średnia od 40%, niska poniżej 40%.
 6. Każda ocena zapisuje wersję kryteriów (na przykład „kryteria v0.1”).
 
-### Fakty i szacunki
+### Dane ze źródła i wartości przybliżone
 
-Każde pole karty ma wartość, rodzaj (`fakt` lub `szacunek`), link do źródła i krótki cytat. Szacunek ma dodatkowo powód w jednym zdaniu. Aplikacja sprawdza, czy cytat jest częścią tekstu źródła.
+Każde pole karty ma wartość, rodzaj („ze źródła” lub „przybliżone”), link do źródła i krótki cytat. Wartość przybliżona ma dodatkowo powód w jednym zdaniu. Aplikacja sprawdza, czy cytat jest częścią tekstu źródła.
 
 Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych, bez modelu AI. Na przykład „wdrożono” i „stosowane” wskazują poziom 5, „pilotaż” poziom 4, a „pierwsze w Polsce” poziom 3 innowacyjności. Plan na przyszłość („zostanie wdrożony”) liczy się jako koncepcja. Model językowy może w przyszłości proponować wartości, ale nigdy nie będzie jedynym źródłem oceny.
 
@@ -201,7 +201,7 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
 **Ograniczenia**
 
 - Wagi v0.1 nie są jeszcze skalibrowane z ekspertami PCI.
-- Szacunki z reguł słów kluczowych mogą się mylić. Dlatego mają etykietę „szacunek” i powód.
+- Wartości przybliżone z reguł słów kluczowych mogą się mylić. Dlatego mają etykietę „przybliżone” i powód.
 - Część innowacji (zwłaszcza w szkołach i JST) jest opisana tylko na stronach instytucji. Crawler znajduje je z dużym szumem, więc karta powstaje tylko wtedy, gdy ma cytat ze źródła.
 - Dane o wdrożeniach bywają nieaktualne. Karta pokazuje datę ostatniego sprawdzenia każdego źródła.
 - Niektóre strony blokują roboty lub nie odpowiadają. Radar to respektuje i korzysta z pozostałych źródeł.
@@ -232,14 +232,14 @@ Prototyp szacuje poziom wdrożenia i innowacyjność regułami słów kluczowych
   - `GET /api/sources` – stan źródeł danych;
   - `GET /api/health` – stan aplikacji.
 - **Eksport CSV** wyników do arkusza lub systemu CRM.
-- **Otwarty schemat karty.** Każde pole zawiera wartość, rodzaj (fakt lub szacunek), źródło i cytat, więc inne systemy mogą korzystać z danych bez utraty informacji o ich pochodzeniu.
+- **Otwarty schemat karty.** Każde pole zawiera wartość, rodzaj (ze źródła lub przybliżone), źródło i cytat, więc inne systemy mogą korzystać z danych bez utraty informacji o ich pochodzeniu.
 - **Uzupełnienie, nie zastąpienie.** Radar może zasilać systemy PCI, regionalne katalogi dobrych praktyk i krajowe wyszukiwarki (na przykład Smart Radar) gotowymi kartami.
 
 ## Rozwój po hackathonie
 
 1. Kalibracja wag i skal z mentorami i analitykami PCI.
 2. Kolejne źródła: Kohesio, lista wynalazków UPRP, Interreg, „Innowacyjny Samorząd”, CORDIS, OpenAlex, EPO.
-3. Klasyfikacja i streszczenia przez otwarty model językowy (np. Bielik, Apache-2.0), wykonywane z wyprzedzeniem i oznaczone jako „szacunek”.
+3. Klasyfikacja i streszczenia przez otwarty model językowy (np. Bielik, Apache-2.0), wykonywane z wyprzedzeniem i oznaczone jako „przybliżone”.
 4. Panel analityka PCI: potwierdzanie lub korekta wartości z zapisem powodu.
 5. Powiadomienia e-mail o nowych kartach dla obserwowanych zapytań.
 6. Historia statusu innowacji: zidentyfikowana, oceniona, pilotaż, wdrożona w kolejnej instytucji.

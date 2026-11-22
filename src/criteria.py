@@ -10,7 +10,6 @@ CRITERIA_VERSION = "v0.1"
 
 KINDS = ("fact", "estimate")
 
-_FAQ = {"label": "FAQ „Radar Innowacji”, sekcja 5 (kryteria oceny)", "url": None}
 _OSLO = {
     "label": "OECD/Eurostat, Oslo Manual 2018",
     "url": "https://doi.org/10.1787/9789264304604-en",
@@ -48,7 +47,7 @@ CRITERIA = {
             4: "Wdrożenie pilotażowe",
             5: "Stosowane w praktyce",
         },
-        "references": [_FAQ, _OSLO],
+        "references": [_OSLO],
     },
     "K2": {
         "field": "trl",
@@ -72,7 +71,7 @@ CRITERIA = {
             9: "TRL 9: system sprawdzony w środowisku operacyjnym",
         },
         "score_map": "TRL 1–2 → 1, TRL 3–4 → 2, TRL 5–6 → 3, TRL 7–8 → 4, TRL 9 → 5",
-        "references": [_FAQ, _TRL],
+        "references": [_TRL],
     },
     "K3": {
         "field": "novelty",
@@ -88,7 +87,7 @@ CRITERIA = {
             4: "Nowe w Europie",
             5: "Nowe na świecie",
         },
-        "references": [_FAQ, _OSLO],
+        "references": [_OSLO],
     },
     "K4": {
         "field": "application_potential",
@@ -112,7 +111,7 @@ CRITERIA = {
             4: "4 z 5 warunków",
             5: "Wszystkie 5 warunków",
         },
-        "references": [_FAQ, _INTERREG, _ROGERS],
+        "references": [_INTERREG, _ROGERS],
     },
     "K5": {
         "field": "credibility",
@@ -129,7 +128,7 @@ CRITERIA = {
             4: "Dwa niezależne źródła",
             5: "Publiczne potwierdzenie wdrożenia",
         },
-        "references": [_FAQ, _NESTA],
+        "references": [_NESTA],
     },
 }
 

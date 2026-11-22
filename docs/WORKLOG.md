@@ -2,6 +2,19 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-22, MaciejMomot (branch 27-ui-polish)
+
+Changes after the review of the user interface by the team.
+
+- New look with the colors of PCI (logo: blue #0085cc, green #6bb437). A header with the menu "Szukaj, Porównanie, O radarze". No footer.
+- The search is in a blue hero band. Each result shows the potential as a ring on the right.
+- Pagination: the button "Pokaż więcej" and the text "Znaleziono N. Pokazano M." `GET /api/search` has the new parameter `offset`. `src/search.py` reads up to 2000 candidates (`MAX_CANDIDATES`); an empty query takes 0.4 s.
+- Labels: "szacunek" became "przybliżone" and "fakt" became "ze źródła", because users read "szacunek" as "respect". The reason, the quote and the link open under "dlaczego?" or "cytat". `AGENTS.md`, rule 5, now tells the same labels.
+- The card: tiles for the main facts, a side panel with the score, the range and the confidence, and the criteria as bars. "Jak liczymy ocenę?" is short and has no version of the criteria.
+- New page `web/about.html` ("O radarze"): the status of the sources, the meaning of the labels, the method with the criteria, the weights, the scales, the references and the version, and the privacy. The search page shows only a warning if a source failed.
+- No text tells that the source of the criteria is the FAQ: the references in `src/criteria.py` and the text in `README.md` changed.
+- `src/sources/fe_projects.py`: the type keeps the case ("projekt FE: rozwiązania TIK…"). `src/applications.py`: names of the missing criteria, not codes.
+
 ## 2026-11-22, MikolajRowicki (branch 26-bzp, issue #13)
 
 - Add `src/sources/bzp.py`: contract notices of the last 180 days from the e-Zamówienia API (no key) for 7 CPV groups. One request for each group; a full page (500) splits the date window. One request each 3 s.

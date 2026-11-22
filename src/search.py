@@ -19,6 +19,8 @@ from src.models import (
 
 # Ranking of the contract (src/models.py): relevance has priority, the potential breaks ties.
 RELEVANCE_WEIGHT = 0.7
+# The page shows more results with an offset. The group sort needs all candidates in memory.
+MAX_CANDIDATES = 2000
 POTENTIAL_WEIGHT = 0.3
 
 # A user group gets its area first (FAQ, section 3). The group does not remove other results.
@@ -115,6 +117,7 @@ def search(
     group: str | None = None,
     limit: int = 20,
     exclude: str | None = None,
+    offset: int = 0,
 ) -> SearchResponse:
     where, args = _filters(area, voivodeship, level_min)
     if exclude:
@@ -125,7 +128,7 @@ def search(
         rows = conn.execute(
             f"""SELECT i.data, bm25(innovations_fts, 10.0, 4.0, 1.0, 4.0) AS score
                 FROM innovations_fts f JOIN innovations i ON i.id = f.id
-                WHERE innovations_fts MATCH ?{where} ORDER BY score LIMIT 500""",
+                WHERE innovations_fts MATCH ?{where} ORDER BY score LIMIT {MAX_CANDIDATES}""",
             [match, *args],
         ).fetchall()
         # BM25 in SQLite is negative: the best match has the lowest value.
@@ -134,7 +137,7 @@ def search(
         total = len(rows)
     else:
         rows = conn.execute(
-            f"SELECT i.data FROM innovations i WHERE 1 = 1{where} ORDER BY i.potential DESC NULLS LAST LIMIT 500",
+            f"SELECT i.data FROM innovations i WHERE 1 = 1{where} ORDER BY i.potential DESC NULLS LAST LIMIT {MAX_CANDIDATES}",
             args,
         ).fetchall()
         scored = [(Innovation.model_validate(json.loads(r["data"])), 1.0) for r in rows]
@@ -143,7 +146,7 @@ def search(
     results = [_result(innovation, relevance) for innovation, relevance in scored]
     preferred = GROUP_AREAS.get(group or "")
     results.sort(key=lambda r: (preferred is not None and r.area.value != preferred, -r.rank_score))
-    return SearchResponse(total=max(total, len(results)), results=results[:limit])
+    return SearchResponse(total=max(total, len(results)), results=results[offset : offset + limit])
 
 
 def detail(conn: sqlite3.Connection, innovation: Innovation, k: int = 5) -> InnovationDetail:

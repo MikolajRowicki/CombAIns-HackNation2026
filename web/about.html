@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O radarze · Radar innowacji</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#about">Przejdź do treści</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"></span>Radar innowacji</a>
+      <nav class="nav" aria-label="Menu główne">
+        <a href="./">Szukaj</a>
+        <a href="compare.html">Porównanie</a>
+        <a href="about.html" aria-current="page">O radarze</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="about" class="wrap about" tabindex="-1">
+    <h1 class="page-title">O radarze</h1>
+    <p class="lead">Radar innowacji sam znajduje istniejące polskie innowacje w otwartych źródłach, ocenia ich poziom wdrożenia i potencjał według jawnych kryteriów i pokazuje, gdzie można je zastosować. Nie wymaga logowania ani zgłoszeń.</p>
+
+    <section class="card-section" aria-labelledby="zrodla">
+      <h2 id="zrodla">Źródła danych</h2>
+      <p class="muted small">Stan po ostatniej aktualizacji bazy. Radar korzysta tylko z bezpłatnych, legalnych źródeł i zapisuje licencję każdego z nich.</p>
+      <ul id="source-list" class="mini-tiles plain"><li class="missing">Sprawdzam stan źródeł…</li></ul>
+    </section>
+
+    <section class="card-section" aria-labelledby="oznaczenia">
+      <h2 id="oznaczenia">Skąd pochodzą wartości na karcie</h2>
+      <div class="mini-tiles">
+        <div class="mini-tile">
+          <span class="kind kind-fact">ze źródła</span>
+          <p class="small">Wartość pochodzi wprost ze źródła. Karta pokazuje cytat i link.</p>
+        </div>
+        <div class="mini-tile">
+          <span class="kind kind-estimate">przybliżone</span>
+          <p class="small">Wartość wyliczona przez reguły radaru z tekstu i danych źródła. Karta podaje powód.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-section" aria-labelledby="ocena">
+      <h2 id="ocena">Jak oceniamy innowacje</h2>
+      <p>Każde kryterium ma skalę 0–5. Ocena potencjału 0–100 to suma kryteriów pomnożonych przez wagi. Gdy brakuje danych, radar pokazuje przedział od najniższej do najwyższej możliwej oceny. Pewność oceny zależy od tego, jaka część wagi ma dane ze źródła: wysoka od 70%, średnia od 40%. Dojrzałość technologiczna (TRL) nie dotyczy innowacji edukacyjnych i administracyjnych; wtedy jej waga przechodzi na pozostałe kryteria.</p>
+      <p class="muted small">Wersja kryteriów: <span id="criteria-version">…</span>. Wagi są propozycją zespołu i wymagają kalibracji z ekspertami. Ten sam rekord i ta sama wersja kryteriów zawsze dają ten sam wynik.</p>
+      <div id="criteria-list" class="mini-tiles"><p class="missing">Wczytuję kryteria…</p></div>
+    </section>
+
+    <section class="card-section" aria-labelledby="prywatnosc">
+      <h2 id="prywatnosc">Prywatność</h2>
+      <p>Radar nie wymaga konta i nie zbiera danych osobowych. Ocenia innowacje, nie ludzi. Nazwy osób fizycznych z otwartych zbiorów są ukryte. Obserwowane wyszukiwania i wybór do porównania zostają tylko w Twojej przeglądarce.</p>
+    </section>
+  </main>
+</body>
+</html>

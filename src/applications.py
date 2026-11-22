@@ -6,7 +6,7 @@ All results are estimates of rules. Each result has its reason. The rules do not
 
 import re
 
-from src.criteria import _evidence
+from src.criteria import CRITERIA, _evidence
 from src.models import (
     LABELS,
     Adopter,
@@ -178,14 +178,14 @@ def _paths(innovation: Innovation) -> list[Path]:
             )
         )
     if a.missing or a.confidence == "low":
-        missing = ", ".join(a.missing) if a.missing else "dane potwierdzone"
+        missing = ", ".join(CRITERIA[c]["name"].lower() for c in a.missing) if a.missing else "dane potwierdzone"
         paths.append(
             Path(
                 id="P5",
                 name="Uzupełnienie danych i ponowna ocena",
                 reason=f"Pewność oceny: {LABELS['confidence'][a.confidence]}; brakuje: {missing}.",
                 measures=[
-                    "liczba kryteriów z faktem zamiast szacunku",
+                    "liczba kryteriów z danymi ze źródła zamiast wartości przybliżonych",
                     "ponowna ocena po aktualizacji źródeł (do 6 miesięcy)",
                 ],
                 reference=_NESTA,

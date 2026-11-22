@@ -44,9 +44,10 @@ def search_innovations(
     level_min: int | None = Query(None, ge=1, le=5),
     group: str | None = None,
     limit: int = Query(20, ge=1, le=100),
+    offset: int = Query(0, ge=0, le=search.MAX_CANDIDATES),
 ) -> SearchResponse:
     with closing(connection()) as conn:
-        return search.search(conn, q, area, voivodeship, level_min, group, limit)
+        return search.search(conn, q, area, voivodeship, level_min, group, limit, offset=offset)
 
 
 @app.get("/api/innovations/{innovation_id}", response_model=InnovationDetail)

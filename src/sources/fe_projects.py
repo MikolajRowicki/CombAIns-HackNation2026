@@ -355,7 +355,7 @@ def row_to_innovation(row: dict, resource_url: str, data_date: date | None, retr
         "summary": summary_quote(description, url),
         "description": description,
         "area": area,
-        "type": FieldValue(value=f"projekt FE: {category_label}".lower(), kind="fact", source_url=url),
+        "type": FieldValue(value=f"projekt FE: {category_label[:1].lower()}{category_label[1:]}", kind="fact", source_url=url),
         "institution": institution,
         "implementation_level": FieldValue.model_validate(level),
         "trl": estimate(None, "Źródło nie podaje poziomu TRL.") if area.value == "technological" else None,
